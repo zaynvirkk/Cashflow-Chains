@@ -1,0 +1,154 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 4.22,
+      "summary": {
+        "total": 18,
+        "passed": 18,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "CoreTests.BanksApplyOnceEvenWhenSeveralTouchOutlet",
+          "Status": "Passed",
+          "Duration": 0.0844235,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.ExactlyOnceActivationAndFirstClearReward",
+          "Status": "Passed",
+          "Duration": 0.0087156,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.FactoryConversionRecordsBothConsumptionAndProduction",
+          "Status": "Passed",
+          "Duration": 0.0011553,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.InvalidMoveAndPreviewNeverMutateBoard",
+          "Status": "Passed",
+          "Duration": 0.0052411,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.MissingGoodsMeansNoSales",
+          "Status": "Passed",
+          "Duration": 0.000688,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.OneBankOnlyAmplifiesOneOutlet",
+          "Status": "Passed",
+          "Duration": 0.0023108,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.RejectInvalidDefinitionsBudgetsAndMultipliers",
+          "Status": "Passed",
+          "Duration": 0.0150007,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.ResumeRestoresBoardAndRewardIdentity",
+          "Status": "Passed",
+          "Duration": 0.0050006,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.RotationImmediatelyBreaksPathAndUndoRestoresIt",
+          "Status": "Passed",
+          "Duration": 0.0021642,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.TenThousandSeededBoardsConserveAndReplay",
+          "Status": "Passed",
+          "Duration": 3.7583431,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.TutorialHasVisibleFiniteSuppliesAndExactSevenSalesBeats",
+          "Status": "Passed",
+          "Duration": 0.0030718,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.WarehouseCannotCreateGoodsInCycle",
+          "Status": "Passed",
+          "Duration": 0.0038521,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.AtomicRoundTripAndBackupRecovery",
+          "Status": "Passed",
+          "Duration": 0.0528102,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.FreshSaveIsAbsentWithoutError",
+          "Status": "Passed",
+          "Duration": 0.0018437,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.FullGameJsonRoundTripRetainsLedgerAndResolvedBoard",
+          "Status": "Passed",
+          "Duration": 0.0137575,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.InvalidDomainStateRejectedDespiteValidChecksum",
+          "Status": "Passed",
+          "Duration": 0.0065791,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.NoSilentResetWhenBothCopiesCorrupt",
+          "Status": "Passed",
+          "Duration": 0.0147118,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.RecoveryWritePreservesLastKnownGoodBackup",
+          "Status": "Passed",
+          "Duration": 0.01977,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "/home/virk/Projects/CashflowChains"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,133 @@
+{
+  "success": true,
+  "command": "command test_status",
+  "data": {
+    "command": "test_status",
+    "parameters": {},
+    "result": {
+      "status": "completed",
+      "duration": 2.48,
+      "summary": {
+        "total": 15,
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0,
+        "inconclusive": 0
+      },
+      "results": [
+        {
+          "FullName": "CoreTests.BanksApplyOnceEvenWhenSeveralTouchOutlet",
+          "Status": "Passed",
+          "Duration": 0.0436045,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.ExactlyOnceActivationAndFirstClearReward",
+          "Status": "Passed",
+          "Duration": 0.0069664,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.FactoryConversionRecordsBothConsumptionAndProduction",
+          "Status": "Passed",
+          "Duration": 0.0008247,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.InvalidMoveAndPreviewNeverMutateBoard",
+          "Status": "Passed",
+          "Duration": 0.002797,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.MissingGoodsMeansNoSales",
+          "Status": "Passed",
+          "Duration": 0.0005065,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.RejectInvalidDefinitionsBudgetsAndMultipliers",
+          "Status": "Passed",
+          "Duration": 0.1108011,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.ResumeRestoresBoardAndRewardIdentity",
+          "Status": "Passed",
+          "Duration": 0.0029038,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.RotationImmediatelyBreaksPathAndUndoRestoresIt",
+          "Status": "Passed",
+          "Duration": 0.0014537,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.TenThousandSeededBoardsConserveAndReplay",
+          "Status": "Passed",
+          "Duration": 1.736526,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.TutorialHasVisibleFiniteSuppliesAndExactSevenSalesBeats",
+          "Status": "Passed",
+          "Duration": 0.0013899,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CoreTests.WarehouseCannotCreateGoodsInCycle",
+          "Status": "Passed",
+          "Duration": 0.0018483,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.AtomicRoundTripAndBackupRecovery",
+          "Status": "Passed",
+          "Duration": 0.0272598,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.FreshSaveIsAbsentWithoutError",
+          "Status": "Passed",
+          "Duration": 0.0012631,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.InvalidDomainStateRejectedDespiteValidChecksum",
+          "Status": "Passed",
+          "Duration": 0.0042726,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "SaveTests.NoSilentResetWhenBothCopiesCorrupt",
+          "Status": "Passed",
+          "Duration": 0.0080394,
+          "Message": null,
+          "StackTrace": null
+        }
+      ]
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "/home/virk/Projects/CashflowChains"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

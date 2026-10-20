@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "status": "WORKING_TEST_PRICES_NOT_STORE_APPROVED",
+    "rule": "Display actual localized native store price, never productList price here"
+  },
+  "cashflow": [
+    {
+      "id": "cc.start.01",
+      "type": "nonconsumable",
+      "USD_ILLUSTRATIVE": 1.99,
+      "title": "Founder Starter",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "cc.gems.small",
+      "type": "consumable",
+      "USD_ILLUSTRATIVE": 0.99,
+      "title": "90 Gems",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "cc.gems.medium",
+      "type": "consumable",
+      "USD_ILLUSTRATIVE": 4.99,
+      "title": "520 Gems",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "cc.gems.large",
+      "type": "consumable",
+      "USD_ILLUSTRATIVE": 9.99,
+      "title": "1150 Gems",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "cc.reroll.5",
+      "type": "consumable",
+      "USD_ILLUSTRATIVE": 1.99,
+      "title": "5 Draft Rerolls",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "cc.blueprint.4",
+      "type": "nonconsumable",
+      "USD_ILLUSTRATIVE": 3.99,
+      "title": "4 Blueprint Slots",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "cc.skin.neon",
+      "type": "nonconsumable",
+      "USD_ILLUSTRATIVE": 4.99,
+      "title": "Neon City Skin Pack",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "cc.scenario.harbor",
+      "type": "nonconsumable",
+      "USD_ILLUSTRATIVE": 6.99,
+      "title": "Harbor Scenarios",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    }
+  ],
+  "blackbag": [
+    {
+      "id": "bb.start.01",
+      "type": "nonconsumable",
+      "USD_ILLUSTRATIVE": 1.99,
+      "title": "Initiate Starter",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "bb.coins.small",
+      "type": "consumable",
+      "USD_ILLUSTRATIVE": 0.99,
+      "title": "Coin Pack",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "bb.tools.3",
+      "type": "consumable",
+      "USD_ILLUSTRATIVE": 1.99,
+      "title": "3 Gadgets",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "bb.tools.10",
+      "type": "consumable",
+      "USD_ILLUSTRATIVE": 4.99,
+      "title": "10 Gadgets",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "bb.loadouts.3",
+      "type": "nonconsumable",
+      "USD_ILLUSTRATIVE": 3.99,
+      "title": "3 More Saved Loadouts",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "bb.cosmetic.noir",
+      "type": "nonconsumable",
+      "USD_ILLUSTRATIVE": 4.99,
+      "title": "Noir Case Set",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "bb.gallery.gilded",
+      "type": "nonconsumable",
+      "USD_ILLUSTRATIVE": 5.99,
+      "title": "Gilded Gallery",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    },
+    {
+      "id": "bb.campaign.auction",
+      "type": "nonconsumable",
+      "USD_ILLUSTRATIVE": 7.99,
+      "title": "Auction Missions",
+      "status": "DISABLED_UNTIL_APPROVED_AND_FULFILLMENT_TESTED"
+    }
+  ]
+}

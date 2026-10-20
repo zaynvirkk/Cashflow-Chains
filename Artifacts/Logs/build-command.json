@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "command": "command eval",
+  "data": {
+    "command": "eval",
+    "parameters": {
+      "code": "BuildProject.Linux(); return \"Linux build complete\";",
+      "timeout": "600000"
+    },
+    "result": {
+      "output": null,
+      "diagnostics": [],
+      "success": true,
+      "result": "Linux build complete"
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "/home/virk/Projects/CashflowChains"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

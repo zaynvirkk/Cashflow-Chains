@@ -1,0 +1,70 @@
+{
+  "game": "CashflowChains",
+  "status": "PASS",
+  "scope": "desktop OS input / actual rendered player captures / cold resume",
+  "actions": [
+    {
+      "drag": [
+        435,
+        577,
+        285,
+        577
+      ]
+    },
+    {
+      "click": [
+        576,
+        1107
+      ]
+    },
+    {
+      "click": [
+        135,
+        577
+      ]
+    },
+    {
+      "click": [
+        144,
+        1107
+      ]
+    },
+    {
+      "click": [
+        576,
+        1107
+      ]
+    },
+    {
+      "click": [
+        360,
+        1107
+      ]
+    },
+    {
+      "click": [
+        360,
+        1208
+      ]
+    },
+    {
+      "click": [
+        360,
+        1208
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "Assets/_Game/Editor/BuildProject.cs": "b6111854bcfdd2c61cc63f50724197a758e2de18202d53636e77ccf76e8daba8",
+    "Assets/_Game/Scripts/Domain/Cashflow.cs": "1075efd5450e912d791c9ed2e54f1c15e57b0ca851a6d6e06dc633b20a00ec69",
+    "Assets/_Game/Scripts/Infrastructure/AtomicSave.cs": "0499847082de05753177866d1a38b50cdacf32dfa47a87061aff015c660ce712",
+    "Assets/_Game/Scripts/Presentation/BuildingGlyph.cs": "813c32c7b43bf4bc7c269960da61a8c3aebfe865bf8819fe5576891390a62cce",
+    "Assets/_Game/Scripts/Presentation/FlatUI.cs": "382a8b8bef3718e76b7aedde817affda7dbc322aa5e972124bc7af1ee18cbe71",
+    "Assets/_Game/Scripts/Presentation/GameApp.cs": "ab466d3d421f650c808be3c132dd0bea2b0645d8a0e3a67b33375088c9ece305",
+    "Assets/_Game/Tests/EditMode/CoreTests.cs": "06fb0199ff5bffdacd19d73e94afbc5cf00448ad3960b8dbb0f6f2f2e0a9672f",
+    "Assets/_Game/Tests/EditMode/SaveTests.cs": "b2064891273fe5cd47841d29fddfdd033eb1cff0c415e4c3dea53459ce57583b"
+  },
+  "executableSha256": "26901901cc6dd63212d741b339897f072d34cb7b3f08419fe451fc8e77c79a1f",
+  "physicalPhone": "NOT_TESTED",
+  "humanEnjoyment": "NOT_TESTED"
+}

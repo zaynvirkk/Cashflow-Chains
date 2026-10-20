@@ -1,0 +1,1809 @@
+{
+  "meta": {
+    "status": "UNVALIDATED_PREPRODUCTION",
+    "version": 1,
+    "require": "verify masks match drawn silhouettes and bag solver before ship"
+  },
+  "shapes": {
+    "single": [
+      [
+        0,
+        0
+      ]
+    ],
+    "domino": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "long3": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "long4": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "square": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "L3": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "L4": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "T4": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "S4": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "rect2x3": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "hook5": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "plus5": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ]
+  },
+  "loot": [
+    {
+      "id": "jewelry.ruby_ring",
+      "name": "Ruby Ring",
+      "family": "jewelry",
+      "shapeId": "single",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "weight": 1,
+      "baseCredits": 562,
+      "alertCost": 1,
+      "tags": [
+        "jewelry"
+      ],
+      "setId": "imperial",
+      "rarity": "common",
+      "artKey": "art/loot/jewelry.ruby_ring",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "jewelry.sapphire_ring",
+      "name": "Sapphire Ring",
+      "family": "jewelry",
+      "shapeId": "domino",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "weight": 1,
+      "baseCredits": 675,
+      "alertCost": 1,
+      "tags": [
+        "jewelry"
+      ],
+      "setId": "imperial",
+      "rarity": "common",
+      "artKey": "art/loot/jewelry.sapphire_ring",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "jewelry.pearl_brooch",
+      "name": "Pearl Brooch",
+      "family": "jewelry",
+      "shapeId": "L3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 1417,
+      "alertCost": 1,
+      "tags": [
+        "jewelry"
+      ],
+      "setId": "imperial",
+      "rarity": "common",
+      "artKey": "art/loot/jewelry.pearl_brooch",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "jewelry.diamond_collar",
+      "name": "Diamond Collar",
+      "family": "jewelry",
+      "shapeId": "long3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 1417,
+      "alertCost": 1,
+      "tags": [
+        "jewelry"
+      ],
+      "setId": "masquerade",
+      "rarity": "common",
+      "artKey": "art/loot/jewelry.diamond_collar",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "jewelry.emerald_pendant",
+      "name": "Emerald Pendant",
+      "family": "jewelry",
+      "shapeId": "square",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 2916,
+      "alertCost": 1,
+      "tags": [
+        "jewelry"
+      ],
+      "setId": "masquerade",
+      "rarity": "uncommon",
+      "artKey": "art/loot/jewelry.emerald_pendant",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "jewelry.gilded_tiara",
+      "name": "Gilded Tiara",
+      "family": "jewelry",
+      "shapeId": "T4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 2916,
+      "alertCost": 1,
+      "tags": [
+        "jewelry"
+      ],
+      "setId": "masquerade",
+      "rarity": "uncommon",
+      "artKey": "art/loot/jewelry.gilded_tiara",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "jewelry.queen_bracelet",
+      "name": "Queen Bracelet",
+      "family": "jewelry",
+      "shapeId": "S4",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 5248,
+      "alertCost": 1,
+      "tags": [
+        "jewelry"
+      ],
+      "setId": "forbidden",
+      "rarity": "uncommon",
+      "artKey": "art/loot/jewelry.queen_bracelet",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "jewelry.meteor_opal",
+      "name": "Meteor Opal",
+      "family": "jewelry",
+      "shapeId": "rect2x3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 3,
+      "baseCredits": 6561,
+      "alertCost": 2,
+      "tags": [
+        "jewelry"
+      ],
+      "setId": "forbidden",
+      "rarity": "uncommon",
+      "artKey": "art/loot/jewelry.meteor_opal",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "heritage.pocket_watch",
+      "name": "Pocket Watch",
+      "family": "heritage",
+      "shapeId": "L3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 3,
+      "baseCredits": 1487,
+      "alertCost": 1,
+      "tags": [
+        "heritage"
+      ],
+      "setId": "forbidden",
+      "rarity": "common",
+      "artKey": "art/loot/heritage.pocket_watch",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "heritage.bronze_compass",
+      "name": "Bronze Compass",
+      "family": "heritage",
+      "shapeId": "long3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "weight": 3,
+      "baseCredits": 1487,
+      "alertCost": 1,
+      "tags": [
+        "heritage"
+      ],
+      "setId": "forbidden",
+      "rarity": "common",
+      "artKey": "art/loot/heritage.bronze_compass",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "heritage.carved_bust",
+      "name": "Carved Bust",
+      "family": "heritage",
+      "shapeId": "square",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 3060,
+      "alertCost": 1,
+      "tags": [
+        "heritage"
+      ],
+      "setId": "forbidden",
+      "rarity": "common",
+      "artKey": "art/loot/heritage.carved_bust",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "heritage.imperial_egg",
+      "name": "Imperial Egg",
+      "family": "heritage",
+      "shapeId": "T4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 3060,
+      "alertCost": 1,
+      "tags": [
+        "heritage"
+      ],
+      "setId": "celestial",
+      "rarity": "common",
+      "artKey": "art/loot/heritage.imperial_egg",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "heritage.old_manuscript",
+      "name": "Old Manuscript",
+      "family": "heritage",
+      "shapeId": "S4",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 5508,
+      "alertCost": 1,
+      "tags": [
+        "heritage"
+      ],
+      "setId": "celestial",
+      "rarity": "uncommon",
+      "artKey": "art/loot/heritage.old_manuscript",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "heritage.grand_chalice",
+      "name": "Grand Chalice",
+      "family": "heritage",
+      "shapeId": "rect2x3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 7,
+      "baseCredits": 6885,
+      "alertCost": 1,
+      "tags": [
+        "heritage",
+        "uniqueArtifact"
+      ],
+      "setId": "celestial",
+      "rarity": "uncommon",
+      "artKey": "art/loot/heritage.grand_chalice",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "heritage.silver_reliquary",
+      "name": "Silver Reliquary",
+      "family": "heritage",
+      "shapeId": "L4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 9914,
+      "alertCost": 1,
+      "tags": [
+        "heritage",
+        "uniqueArtifact"
+      ],
+      "setId": "jewels",
+      "rarity": "uncommon",
+      "artKey": "art/loot/heritage.silver_reliquary",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "heritage.ivory_miniature",
+      "name": "Ivory Miniature",
+      "family": "heritage",
+      "shapeId": "hook5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "weight": 6,
+      "baseCredits": 11153,
+      "alertCost": 2,
+      "tags": [
+        "heritage",
+        "uniqueArtifact"
+      ],
+      "setId": "jewels",
+      "rarity": "uncommon",
+      "artKey": "art/loot/heritage.ivory_miniature",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "art.miniature_landscape",
+      "name": "Miniature Landscape",
+      "family": "art",
+      "shapeId": "square",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 4500,
+      "alertCost": 1,
+      "tags": [
+        "art",
+        "fragile"
+      ],
+      "setId": "jewels",
+      "rarity": "common",
+      "artKey": "art/loot/art.miniature_landscape",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "art.golden_frame",
+      "name": "Golden Frame",
+      "family": "art",
+      "shapeId": "T4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 4500,
+      "alertCost": 1,
+      "tags": [
+        "art"
+      ],
+      "setId": "jewels",
+      "rarity": "common",
+      "artKey": "art/loot/art.golden_frame",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "art.ceramic_vase",
+      "name": "Ceramic Vase",
+      "family": "art",
+      "shapeId": "S4",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 8100,
+      "alertCost": 1,
+      "tags": [
+        "art",
+        "fragile"
+      ],
+      "setId": "jewels",
+      "rarity": "uncommon",
+      "artKey": "art/loot/art.ceramic_vase",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "art.oil_portrait",
+      "name": "Oil Portrait",
+      "family": "art",
+      "shapeId": "rect2x3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 7,
+      "baseCredits": 10125,
+      "alertCost": 1,
+      "tags": [
+        "art"
+      ],
+      "setId": "inventors",
+      "rarity": "uncommon",
+      "artKey": "art/loot/art.oil_portrait",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "art.art_scroll",
+      "name": "Art Scroll",
+      "family": "art",
+      "shapeId": "L4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 14580,
+      "alertCost": 1,
+      "tags": [
+        "art",
+        "fragile"
+      ],
+      "setId": "inventors",
+      "rarity": "uncommon",
+      "artKey": "art/loot/art.art_scroll",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "art.collector_bust",
+      "name": "Collector Bust",
+      "family": "art",
+      "shapeId": "hook5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "weight": 6,
+      "baseCredits": 16402,
+      "alertCost": 1,
+      "tags": [
+        "art"
+      ],
+      "setId": "inventors",
+      "rarity": "uncommon",
+      "artKey": "art/loot/art.collector_bust",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "art.antique_triptych",
+      "name": "Antique Triptych",
+      "family": "art",
+      "shapeId": "plus5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 6,
+      "baseCredits": 29524,
+      "alertCost": 1,
+      "tags": [
+        "art",
+        "fragile"
+      ],
+      "setId": "heirlooms",
+      "rarity": "rare",
+      "artKey": "art/loot/art.antique_triptych",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "art.obsidian_mask",
+      "name": "Obsidian Mask",
+      "family": "art",
+      "shapeId": "long4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 26244,
+      "alertCost": 2,
+      "tags": [
+        "art"
+      ],
+      "setId": "heirlooms",
+      "rarity": "rare",
+      "artKey": "art/loot/art.obsidian_mask",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gadgets.film_camera",
+      "name": "Film Camera",
+      "family": "gadgets",
+      "shapeId": "S4",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 5940,
+      "alertCost": 1,
+      "tags": [
+        "gadgets"
+      ],
+      "setId": "heirlooms",
+      "rarity": "common",
+      "artKey": "art/loot/gadgets.film_camera",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gadgets.vintage_radio",
+      "name": "Vintage Radio",
+      "family": "gadgets",
+      "shapeId": "rect2x3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 7,
+      "baseCredits": 7425,
+      "alertCost": 1,
+      "tags": [
+        "gadgets"
+      ],
+      "setId": "heirlooms",
+      "rarity": "common",
+      "artKey": "art/loot/gadgets.vintage_radio",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gadgets.encrypted_tablet",
+      "name": "Encrypted Tablet",
+      "family": "gadgets",
+      "shapeId": "L4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 10692,
+      "alertCost": 1,
+      "tags": [
+        "gadgets"
+      ],
+      "setId": "heirlooms",
+      "rarity": "uncommon",
+      "artKey": "art/loot/gadgets.encrypted_tablet",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gadgets.mechanical_cipher",
+      "name": "Mechanical Cipher",
+      "family": "gadgets",
+      "shapeId": "hook5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "weight": 6,
+      "baseCredits": 12028,
+      "alertCost": 1,
+      "tags": [
+        "gadgets"
+      ],
+      "setId": "antiquities",
+      "rarity": "uncommon",
+      "artKey": "art/loot/gadgets.mechanical_cipher",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gadgets.prototype_phone",
+      "name": "Prototype Phone",
+      "family": "gadgets",
+      "shapeId": "plus5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 6,
+      "baseCredits": 21651,
+      "alertCost": 1,
+      "tags": [
+        "gadgets"
+      ],
+      "setId": "antiquities",
+      "rarity": "uncommon",
+      "artKey": "art/loot/gadgets.prototype_phone",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gadgets.microfilm_box",
+      "name": "Microfilm Box",
+      "family": "gadgets",
+      "shapeId": "long4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 19245,
+      "alertCost": 1,
+      "tags": [
+        "gadgets"
+      ],
+      "setId": "antiquities",
+      "rarity": "uncommon",
+      "artKey": "art/loot/gadgets.microfilm_box",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gadgets.crystal_clock",
+      "name": "Crystal Clock",
+      "family": "gadgets",
+      "shapeId": "single",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "weight": 1,
+      "baseCredits": 21651,
+      "alertCost": 1,
+      "tags": [
+        "gadgets"
+      ],
+      "setId": "aristocrats",
+      "rarity": "rare",
+      "artKey": "art/loot/gadgets.crystal_clock",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gadgets.encrypted_ledger",
+      "name": "Encrypted Ledger",
+      "family": "gadgets",
+      "shapeId": "domino",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 25981,
+      "alertCost": 2,
+      "tags": [
+        "gadgets"
+      ],
+      "setId": "aristocrats",
+      "rarity": "rare",
+      "artKey": "art/loot/gadgets.encrypted_ledger",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gold.cash_roll",
+      "name": "Cash Roll",
+      "family": "gold",
+      "shapeId": "L4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 13284,
+      "alertCost": 1,
+      "tags": [
+        "gold"
+      ],
+      "setId": "aristocrats",
+      "rarity": "uncommon",
+      "artKey": "art/loot/gold.cash_roll",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gold.gold_bar",
+      "name": "Gold Bar",
+      "family": "gold",
+      "shapeId": "hook5",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "weight": 6,
+      "baseCredits": 14944,
+      "alertCost": 1,
+      "tags": [
+        "gold"
+      ],
+      "setId": "aristocrats",
+      "rarity": "uncommon",
+      "artKey": "art/loot/gold.gold_bar",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gold.rare_coin",
+      "name": "Rare Coin",
+      "family": "gold",
+      "shapeId": "plus5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 6,
+      "baseCredits": 26900,
+      "alertCost": 1,
+      "tags": [
+        "gold"
+      ],
+      "setId": "aristocrats",
+      "rarity": "uncommon",
+      "artKey": "art/loot/gold.rare_coin",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gold.coin_case",
+      "name": "Coin Case",
+      "family": "gold",
+      "shapeId": "long4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "weight": 4,
+      "baseCredits": 23911,
+      "alertCost": 1,
+      "tags": [
+        "gold"
+      ],
+      "setId": "artmasters",
+      "rarity": "uncommon",
+      "artKey": "art/loot/gold.coin_case",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gold.gold_chain",
+      "name": "Gold Chain",
+      "family": "gold",
+      "shapeId": "single",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "weight": 1,
+      "baseCredits": 26900,
+      "alertCost": 1,
+      "tags": [
+        "gold"
+      ],
+      "setId": "artmasters",
+      "rarity": "rare",
+      "artKey": "art/loot/gold.gold_chain",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gold.minted_ingot",
+      "name": "Minted Ingot",
+      "family": "gold",
+      "shapeId": "domino",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 32280,
+      "alertCost": 1,
+      "tags": [
+        "gold"
+      ],
+      "setId": "artmasters",
+      "rarity": "rare",
+      "artKey": "art/loot/gold.minted_ingot",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gold.treasury_bonds",
+      "name": "Treasury Bonds",
+      "family": "gold",
+      "shapeId": "L3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 3,
+      "baseCredits": 67788,
+      "alertCost": 1,
+      "tags": [
+        "gold"
+      ],
+      "setId": "imperial",
+      "rarity": "rare",
+      "artKey": "art/loot/gold.treasury_bonds",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "gold.royal_seal",
+      "name": "Royal Seal",
+      "family": "gold",
+      "shapeId": "long3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "weight": 3,
+      "baseCredits": 67788,
+      "alertCost": 2,
+      "tags": [
+        "gold"
+      ],
+      "setId": "imperial",
+      "rarity": "rare",
+      "artKey": "art/loot/gold.royal_seal",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "artifacts.sunstone",
+      "name": "Sunstone",
+      "family": "artifacts",
+      "shapeId": "plus5",
+      "cells": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "weight": 3,
+      "baseCredits": 17860,
+      "alertCost": 1,
+      "tags": [
+        "artifacts"
+      ],
+      "setId": "imperial",
+      "rarity": "uncommon",
+      "artKey": "art/loot/artifacts.sunstone",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "artifacts.runic_compass",
+      "name": "Runic Compass",
+      "family": "artifacts",
+      "shapeId": "long4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 15876,
+      "alertCost": 1,
+      "tags": [
+        "artifacts"
+      ],
+      "setId": "imperial",
+      "rarity": "uncommon",
+      "artKey": "art/loot/artifacts.runic_compass",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "artifacts.arcane_atlas",
+      "name": "Arcane Atlas",
+      "family": "artifacts",
+      "shapeId": "single",
+      "cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "weight": 1,
+      "baseCredits": 17860,
+      "alertCost": 1,
+      "tags": [
+        "artifacts"
+      ],
+      "setId": "imperial",
+      "rarity": "uncommon",
+      "artKey": "art/loot/artifacts.arcane_atlas",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "artifacts.star_globe",
+      "name": "Star Globe",
+      "family": "artifacts",
+      "shapeId": "domino",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "weight": 1,
+      "baseCredits": 21432,
+      "alertCost": 1,
+      "tags": [
+        "artifacts"
+      ],
+      "setId": "masquerade",
+      "rarity": "uncommon",
+      "artKey": "art/loot/artifacts.star_globe",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "artifacts.astral_key",
+      "name": "Astral Key",
+      "family": "artifacts",
+      "shapeId": "L3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 45008,
+      "alertCost": 1,
+      "tags": [
+        "artifacts"
+      ],
+      "setId": "masquerade",
+      "rarity": "rare",
+      "artKey": "art/loot/artifacts.astral_key",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "artifacts.imperial_crown",
+      "name": "Imperial Crown",
+      "family": "artifacts",
+      "shapeId": "long3",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 45008,
+      "alertCost": 1,
+      "tags": [
+        "artifacts",
+        "uniqueArtifact"
+      ],
+      "setId": "masquerade",
+      "rarity": "rare",
+      "artKey": "art/loot/artifacts.imperial_crown",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "artifacts.emperor_scepter",
+      "name": "Emperor Scepter",
+      "family": "artifacts",
+      "shapeId": "square",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 92588,
+      "alertCost": 1,
+      "tags": [
+        "artifacts",
+        "uniqueArtifact"
+      ],
+      "setId": "forbidden",
+      "rarity": "rare",
+      "artKey": "art/loot/artifacts.emperor_scepter",
+      "balanced": "TUNING_REQUIRED"
+    },
+    {
+      "id": "artifacts.celestial_reliquary",
+      "name": "Celestial Reliquary",
+      "family": "artifacts",
+      "shapeId": "T4",
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "weight": 2,
+      "baseCredits": 92588,
+      "alertCost": 2,
+      "tags": [
+        "artifacts",
+        "uniqueArtifact"
+      ],
+      "setId": "forbidden",
+      "rarity": "rare",
+      "artKey": "art/loot/artifacts.celestial_reliquary",
+      "balanced": "TUNING_REQUIRED"
+    }
+  ]
+}

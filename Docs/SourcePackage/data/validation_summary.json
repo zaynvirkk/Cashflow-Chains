@@ -1,0 +1,9 @@
+{
+  "contentCounts": {
+    "ccPieceCount": 24,
+    "ccMissionCount": 72,
+    "bbLootCount": 48,
+    "bbMissionCount": 72
+  },
+  "CAUTION": "Seed data generated. Some mechanical models and all 72-level objectives remain unverified until Unity-domain solver and real human playtesting. Do not present as release-complete."
+}

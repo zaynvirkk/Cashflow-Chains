@@ -1,0 +1,13 @@
+{
+  "name": "CashflowChains.Tests",
+  "references": [
+    "CashflowChains.Domain",
+    "CashflowChains.Runtime"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}

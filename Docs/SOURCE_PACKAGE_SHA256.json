@@ -1,0 +1,22 @@
+{
+  "archiveSha256": "2c54c890454a1fca8dff27bcb31a701dcedfd6073da3f2e84fabb6644aaa079b",
+  "files": {
+    "00_START_HERE.md": "478781713f3d55e2ff449582ddbec1a7e67710f8d525288ae4a9819440b2a102",
+    "01_CASHFLOW_CHAINS_MASTER_SPEC.md": "5f56e7fd3bbb68ee03628758b05eb5ec30d8a638b60f19345a8ace28bcdbd5ee",
+    "01_CASHFLOW_CHAINS_MASTER_SPEC.pdf": "464f33d453e66c839c13f66afbc89ca77bcd9cc021d04e6b448f42f72d5b3476",
+    "02_BLACK_BAG_MASTER_SPEC.md": "e0ea749ccb56e01198ec3cdb77d68582f975178deb90b8b6ba4fc1741917c29c",
+    "02_BLACK_BAG_MASTER_SPEC.pdf": "620b454f9fe7c1fff88c733b2309eb0590553c3d01eea970fd3a8c38d652c87f",
+    "03_SHARED_TECH_MONETIZATION_LAUNCH.md": "1ace7e7e7be0012b623373194921db1d4d99eb3cb28224077793a884b6254c73",
+    "03_SHARED_TECH_MONETIZATION_LAUNCH.pdf": "a88781c4abd40003c3002a3cae12bc78ca9615b84e4655a6727690d703eca65f",
+    "04_CODEX_AGENTS_AND_WORKFLOW.md": "62dfb10e1dfd3468fbc6ea50a416a2d1ba3ff6d113e49981b27e5daaa85d4f36",
+    "05_RELEASE_AND_TEST_MATRIX.md": "47b7ee7e3520631d9e401d3c5ca5fea667eff78649c3ed0ffc93836effab18ef",
+    "data/blackbag_48_loot_seed.json": "7414b71ee7ada8b77cfc7ada28e8fcf6c04db365a6d9ebb0adf0ff1e035e0898",
+    "data/blackbag_72_contracts_seed.json": "6ac6ff7fb7184dd89ed909619007e6cebd028119367463cf7cab812d3e3b49fd",
+    "data/cashflow_72_missions_seed.json": "45a098166dc5d225b1a3a3d6f30e86aa57a6511890b0c7ba7e949899c45350a5",
+    "data/cashflow_pieces_seed.json": "3a6c55c6350a5151788761007b9f380c14b09a572a2f5e973032cd921f22c796",
+    "data/iap_catalog_proposal.json": "40b62c8371480fde0a3d6cadd8623af7ea01e25be0a7454c35df7395a1c67391",
+    "data/validation_summary.json": "acf68503cc7ae128bda1064037f1ba681909abcf35abb70823d21f14b4693a84",
+    "tools/generate_seed_catalogs.py": "61af055038a0e9a68f24c10638378e6c192b14c1de13099a105305389f23e14c",
+    "tools/render_documents.py": "04e88ab85f8fa3d47c42680b97191d6582e58c092bd696a0d29f24de8f3ed836"
+  }
+}

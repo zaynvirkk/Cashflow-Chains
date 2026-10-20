@@ -1,0 +1,465 @@
+{
+  "meta": {
+    "status": "PROTOTYPE_SEED_NOT_RELEASE_BALANCED",
+    "version": 1,
+    "require": "define fully normalized port/recipe validation in editor"
+  },
+  "pieces": [
+    {
+      "id": "home",
+      "displayName": "Residential Home",
+      "family": "residential",
+      "tier": 0,
+      "scoreOutput": "people",
+      "baseRate": 3,
+      "ruleHint": "source",
+      "artKey": "art/pieces/home",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "cafe",
+      "displayName": "Neighborhood Cafe",
+      "family": "retail",
+      "tier": 1,
+      "scoreOutput": "credits",
+      "baseRate": 80,
+      "ruleHint": "people+goods",
+      "artKey": "art/pieces/cafe",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "grocer",
+      "displayName": "Corner Grocer",
+      "family": "retail",
+      "tier": 2,
+      "scoreOutput": "credits",
+      "baseRate": 110,
+      "ruleHint": "2people+goods",
+      "artKey": "art/pieces/grocer",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "warehouse",
+      "displayName": "Warehouse",
+      "family": "logistics",
+      "tier": 3,
+      "scoreOutput": "goods",
+      "baseRate": 6,
+      "ruleHint": "router",
+      "artKey": "art/pieces/warehouse",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "farm",
+      "displayName": "Urban Farm",
+      "family": "supply",
+      "tier": 1,
+      "scoreOutput": "goods",
+      "baseRate": 2,
+      "ruleHint": "source",
+      "artKey": "art/pieces/farm",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "power",
+      "displayName": "Power Station",
+      "family": "supply",
+      "tier": 2,
+      "scoreOutput": "energy",
+      "baseRate": 4,
+      "ruleHint": "source",
+      "artKey": "art/pieces/power",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "factory",
+      "displayName": "Assembly Factory",
+      "family": "industry",
+      "tier": 4,
+      "scoreOutput": "goods",
+      "baseRate": 3,
+      "ruleHint": "energy+goods",
+      "artKey": "art/pieces/factory",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "market",
+      "displayName": "Open Market",
+      "family": "retail",
+      "tier": 2,
+      "scoreOutput": "credits",
+      "baseRate": 220,
+      "ruleHint": "2people+2goods",
+      "artKey": "art/pieces/market",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "office",
+      "displayName": "Business Office",
+      "family": "services",
+      "tier": 2,
+      "scoreOutput": "people",
+      "baseRate": 1,
+      "ruleHint": "source+adjacent10pct",
+      "artKey": "art/pieces/office",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 2,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "bank",
+      "displayName": "Bank",
+      "family": "services",
+      "tier": 3,
+      "scoreOutput": "credits",
+      "baseRate": 0,
+      "ruleHint": "adjacent25pct",
+      "artKey": "art/pieces/bank",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 2,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "logistics",
+      "displayName": "Logistics Hub",
+      "family": "logistics",
+      "tier": 4,
+      "scoreOutput": "goods",
+      "baseRate": 5,
+      "ruleHint": "router_range2",
+      "artKey": "art/pieces/logistics",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "apartment",
+      "displayName": "Apartments",
+      "family": "residential",
+      "tier": 3,
+      "scoreOutput": "people",
+      "baseRate": 6,
+      "ruleHint": "source",
+      "artKey": "art/pieces/apartment",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "boutique",
+      "displayName": "Luxury Boutique",
+      "family": "retail",
+      "tier": 2,
+      "scoreOutput": "credits",
+      "baseRate": 240,
+      "ruleHint": "people+2goods",
+      "artKey": "art/pieces/boutique",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "park",
+      "displayName": "City Park",
+      "family": "special",
+      "tier": 1,
+      "scoreOutput": "credits",
+      "baseRate": 0,
+      "ruleHint": "nearhome15pct",
+      "artKey": "art/pieces/park",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 2,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "port",
+      "displayName": "Trade Port",
+      "family": "supply",
+      "tier": 4,
+      "scoreOutput": "goods",
+      "baseRate": 4,
+      "ruleHint": "import",
+      "artKey": "art/pieces/port",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "landmark",
+      "displayName": "Landmark",
+      "family": "special",
+      "tier": 5,
+      "scoreOutput": "credits",
+      "baseRate": 0,
+      "ruleHint": "diversity25pct",
+      "artKey": "art/pieces/landmark",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 2,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "diner",
+      "displayName": "Late Diner",
+      "family": "retail",
+      "tier": 2,
+      "scoreOutput": "credits",
+      "baseRate": 125,
+      "ruleHint": "people+goods",
+      "artKey": "art/pieces/diner",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "shopping_mall",
+      "displayName": "Shopping Mall",
+      "family": "retail",
+      "tier": 4,
+      "scoreOutput": "credits",
+      "baseRate": 350,
+      "ruleHint": "3people+3goods",
+      "artKey": "art/pieces/shopping_mall",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "tech_office",
+      "displayName": "Tech Office",
+      "family": "services",
+      "tier": 4,
+      "scoreOutput": "people",
+      "baseRate": 2,
+      "ruleHint": "source+researchtag",
+      "artKey": "art/pieces/tech_office",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 2,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "recycler",
+      "displayName": "Recycler",
+      "family": "industry",
+      "tier": 3,
+      "scoreOutput": "goods",
+      "baseRate": 2,
+      "ruleHint": "2goods+energy",
+      "artKey": "art/pieces/recycler",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "freight_yard",
+      "displayName": "Freight Yard",
+      "family": "logistics",
+      "tier": 4,
+      "scoreOutput": "goods",
+      "baseRate": 8,
+      "ruleHint": "router",
+      "artKey": "art/pieces/freight_yard",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "hotel",
+      "displayName": "City Hotel",
+      "family": "services",
+      "tier": 4,
+      "scoreOutput": "credits",
+      "baseRate": 190,
+      "ruleHint": "2people+goods",
+      "artKey": "art/pieces/hotel",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 2,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "stadium",
+      "displayName": "Sports Stadium",
+      "family": "special",
+      "tier": 5,
+      "scoreOutput": "credits",
+      "baseRate": 280,
+      "ruleHint": "5people+goods",
+      "artKey": "art/pieces/stadium",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 2,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    },
+    {
+      "id": "solar_array",
+      "displayName": "Solar Array",
+      "family": "supply",
+      "tier": 3,
+      "scoreOutput": "energy",
+      "baseRate": 3,
+      "ruleHint": "source",
+      "artKey": "art/pieces/solar_array",
+      "rotationOptions": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "maxPerBoard": 4,
+      "productionModelStatus": "prototype_guess_validate_recipe",
+      "sourceSpec": "01_CASHFLOW_CHAINS_MASTER_SPEC.md#C04"
+    }
+  ]
+}

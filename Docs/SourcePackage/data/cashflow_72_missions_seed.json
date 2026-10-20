@@ -1,0 +1,2292 @@
+{
+  "meta": {
+    "status": "PREPRODUCTION_BALANCE_SEED",
+    "mandatory": 72,
+    "warning": "Targets are guesses. Codex MUST run constrained solver, produce witness layout for every mission and re-tune; never ship unsolved seeds.",
+    "version": 1
+  },
+  "districts": [
+    {
+      "id": "starter",
+      "displayName": "Starter Street"
+    },
+    {
+      "id": "downtown",
+      "displayName": "Downtown Office"
+    },
+    {
+      "id": "industry",
+      "displayName": "Industrial Bay"
+    },
+    {
+      "id": "retail",
+      "displayName": "Retail Festival"
+    },
+    {
+      "id": "harbor",
+      "displayName": "Harbor Trade"
+    },
+    {
+      "id": "finance",
+      "displayName": "Financial Heights"
+    }
+  ],
+  "missions": [
+    {
+      "id": "cc.starter.01",
+      "district": "starter",
+      "index": 1,
+      "displayName": "Starter Street: Contract 1",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 220,
+      "startingBudget": 300,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe"
+      ],
+      "modifier": "none",
+      "seed": 104729,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.02",
+      "district": "starter",
+      "index": 2,
+      "displayName": "Starter Street: Contract 2",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 307,
+      "startingBudget": 375,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe"
+      ],
+      "modifier": "limited_goods",
+      "seed": 112648,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.03",
+      "district": "starter",
+      "index": 3,
+      "displayName": "Starter Street: Contract 3",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 414,
+      "startingBudget": 450,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer"
+      ],
+      "modifier": "high_housing",
+      "seed": 120567,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.04",
+      "district": "starter",
+      "index": 4,
+      "displayName": "Starter Street: Contract 4",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 529,
+      "startingBudget": 525,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer"
+      ],
+      "modifier": "retail_festival",
+      "seed": 128486,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.05",
+      "district": "starter",
+      "index": 5,
+      "displayName": "Starter Street: Contract 5",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 651,
+      "startingBudget": 600,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "energy_shortage",
+      "seed": 136405,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.06",
+      "district": "starter",
+      "index": 6,
+      "displayName": "Starter Street: Contract 6",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 777,
+      "startingBudget": 675,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "industrial_bonus",
+      "seed": 144324,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.07",
+      "district": "starter",
+      "index": 7,
+      "displayName": "Starter Street: Contract 7",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 907,
+      "startingBudget": 750,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "bank_bonus",
+      "seed": 152243,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.08",
+      "district": "starter",
+      "index": 8,
+      "displayName": "Starter Street: Contract 8",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 1040,
+      "startingBudget": 825,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "road_block",
+      "seed": 160162,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.09",
+      "district": "starter",
+      "index": 9,
+      "displayName": "Starter Street: Contract 9",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 1176,
+      "startingBudget": 900,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "cheap_logistics",
+      "seed": 168081,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.10",
+      "district": "starter",
+      "index": 10,
+      "displayName": "Starter Street: Contract 10",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 1315,
+      "startingBudget": 975,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "luxury_demand",
+      "seed": 176000,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.11",
+      "district": "starter",
+      "index": 11,
+      "displayName": "Starter Street: Contract 11",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 1456,
+      "startingBudget": 1050,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "fragile_supply",
+      "seed": 183919,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.starter.12",
+      "district": "starter",
+      "index": 12,
+      "displayName": "Starter Street: Contract 12",
+      "grid": {
+        "width": 4,
+        "height": 4
+      },
+      "targetScore": 1600,
+      "startingBudget": 1125,
+      "allowedPieceIds": [
+        "home",
+        "farm",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "office_boost",
+      "seed": 191838,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.01",
+      "district": "downtown",
+      "index": 1,
+      "displayName": "Downtown Office: Contract 1",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 800,
+      "startingBudget": 520,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer"
+      ],
+      "modifier": "limited_goods",
+      "seed": 104830,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.02",
+      "district": "downtown",
+      "index": 2,
+      "displayName": "Downtown Office: Contract 2",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 1028,
+      "startingBudget": 595,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer"
+      ],
+      "modifier": "high_housing",
+      "seed": 112749,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.03",
+      "district": "downtown",
+      "index": 3,
+      "displayName": "Downtown Office: Contract 3",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 1306,
+      "startingBudget": 670,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "retail_festival",
+      "seed": 120668,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.04",
+      "district": "downtown",
+      "index": 4,
+      "displayName": "Downtown Office: Contract 4",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 1607,
+      "startingBudget": 745,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "energy_shortage",
+      "seed": 128587,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.05",
+      "district": "downtown",
+      "index": 5,
+      "displayName": "Downtown Office: Contract 5",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 1924,
+      "startingBudget": 820,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm"
+      ],
+      "modifier": "industrial_bonus",
+      "seed": 136506,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.06",
+      "district": "downtown",
+      "index": 6,
+      "displayName": "Downtown Office: Contract 6",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 2253,
+      "startingBudget": 895,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm"
+      ],
+      "modifier": "bank_bonus",
+      "seed": 144425,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.07",
+      "district": "downtown",
+      "index": 7,
+      "displayName": "Downtown Office: Contract 7",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 2592,
+      "startingBudget": 970,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "office"
+      ],
+      "modifier": "road_block",
+      "seed": 152344,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.08",
+      "district": "downtown",
+      "index": 8,
+      "displayName": "Downtown Office: Contract 8",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 2940,
+      "startingBudget": 1045,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "office"
+      ],
+      "modifier": "cheap_logistics",
+      "seed": 160263,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.09",
+      "district": "downtown",
+      "index": 9,
+      "displayName": "Downtown Office: Contract 9",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 3296,
+      "startingBudget": 1120,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "office",
+        "bank"
+      ],
+      "modifier": "luxury_demand",
+      "seed": 168182,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.10",
+      "district": "downtown",
+      "index": 10,
+      "displayName": "Downtown Office: Contract 10",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 3658,
+      "startingBudget": 1195,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "office",
+        "bank"
+      ],
+      "modifier": "fragile_supply",
+      "seed": 176101,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.11",
+      "district": "downtown",
+      "index": 11,
+      "displayName": "Downtown Office: Contract 11",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 4026,
+      "startingBudget": 1270,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "office",
+        "bank",
+        "park"
+      ],
+      "modifier": "office_boost",
+      "seed": 184020,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.downtown.12",
+      "district": "downtown",
+      "index": 12,
+      "displayName": "Downtown Office: Contract 12",
+      "grid": {
+        "width": 5,
+        "height": 5
+      },
+      "targetScore": 4400,
+      "startingBudget": 1345,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "office",
+        "bank",
+        "park"
+      ],
+      "modifier": "none",
+      "seed": 191939,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.01",
+      "district": "industry",
+      "index": 1,
+      "displayName": "Industrial Bay: Contract 1",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 1800,
+      "startingBudget": 740,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm"
+      ],
+      "modifier": "high_housing",
+      "seed": 104931,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.02",
+      "district": "industry",
+      "index": 2,
+      "displayName": "Industrial Bay: Contract 2",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 2256,
+      "startingBudget": 815,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm"
+      ],
+      "modifier": "retail_festival",
+      "seed": 112850,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.03",
+      "district": "industry",
+      "index": 3,
+      "displayName": "Industrial Bay: Contract 3",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 2813,
+      "startingBudget": 890,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse"
+      ],
+      "modifier": "energy_shortage",
+      "seed": 120769,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.04",
+      "district": "industry",
+      "index": 4,
+      "displayName": "Industrial Bay: Contract 4",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 3415,
+      "startingBudget": 965,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse"
+      ],
+      "modifier": "industrial_bonus",
+      "seed": 128688,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.05",
+      "district": "industry",
+      "index": 5,
+      "displayName": "Industrial Bay: Contract 5",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 4049,
+      "startingBudget": 1040,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse",
+        "power"
+      ],
+      "modifier": "bank_bonus",
+      "seed": 136607,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.06",
+      "district": "industry",
+      "index": 6,
+      "displayName": "Industrial Bay: Contract 6",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 4707,
+      "startingBudget": 1115,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse",
+        "power"
+      ],
+      "modifier": "road_block",
+      "seed": 144526,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.07",
+      "district": "industry",
+      "index": 7,
+      "displayName": "Industrial Bay: Contract 7",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 5385,
+      "startingBudget": 1190,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse",
+        "power",
+        "factory"
+      ],
+      "modifier": "cheap_logistics",
+      "seed": 152445,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.08",
+      "district": "industry",
+      "index": 8,
+      "displayName": "Industrial Bay: Contract 8",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 6081,
+      "startingBudget": 1265,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse",
+        "power",
+        "factory"
+      ],
+      "modifier": "luxury_demand",
+      "seed": 160364,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.09",
+      "district": "industry",
+      "index": 9,
+      "displayName": "Industrial Bay: Contract 9",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 6792,
+      "startingBudget": 1340,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse",
+        "power",
+        "factory",
+        "market"
+      ],
+      "modifier": "fragile_supply",
+      "seed": 168283,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.10",
+      "district": "industry",
+      "index": 10,
+      "displayName": "Industrial Bay: Contract 10",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 7516,
+      "startingBudget": 1415,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse",
+        "power",
+        "factory",
+        "market"
+      ],
+      "modifier": "office_boost",
+      "seed": 176202,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.11",
+      "district": "industry",
+      "index": 11,
+      "displayName": "Industrial Bay: Contract 11",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 8252,
+      "startingBudget": 1490,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse",
+        "power",
+        "factory",
+        "market",
+        "logistics"
+      ],
+      "modifier": "none",
+      "seed": 184121,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.industry.12",
+      "district": "industry",
+      "index": 12,
+      "displayName": "Industrial Bay: Contract 12",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 9000,
+      "startingBudget": 1565,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "warehouse",
+        "power",
+        "factory",
+        "market",
+        "logistics"
+      ],
+      "modifier": "limited_goods",
+      "seed": 192040,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.01",
+      "district": "retail",
+      "index": 1,
+      "displayName": "Retail Festival: Contract 1",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 2400,
+      "startingBudget": 960,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm"
+      ],
+      "modifier": "retail_festival",
+      "seed": 105032,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.02",
+      "district": "retail",
+      "index": 2,
+      "displayName": "Retail Festival: Contract 2",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 3072,
+      "startingBudget": 1035,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm"
+      ],
+      "modifier": "energy_shortage",
+      "seed": 112951,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.03",
+      "district": "retail",
+      "index": 3,
+      "displayName": "Retail Festival: Contract 3",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 3892,
+      "startingBudget": 1110,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market"
+      ],
+      "modifier": "industrial_bonus",
+      "seed": 120870,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.04",
+      "district": "retail",
+      "index": 4,
+      "displayName": "Retail Festival: Contract 4",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 4778,
+      "startingBudget": 1185,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market"
+      ],
+      "modifier": "bank_bonus",
+      "seed": 128789,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.05",
+      "district": "retail",
+      "index": 5,
+      "displayName": "Retail Festival: Contract 5",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 5711,
+      "startingBudget": 1260,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market",
+        "grocer"
+      ],
+      "modifier": "road_block",
+      "seed": 136708,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.06",
+      "district": "retail",
+      "index": 6,
+      "displayName": "Retail Festival: Contract 6",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 6680,
+      "startingBudget": 1335,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market",
+        "grocer"
+      ],
+      "modifier": "cheap_logistics",
+      "seed": 144627,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.07",
+      "district": "retail",
+      "index": 7,
+      "displayName": "Retail Festival: Contract 7",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 7679,
+      "startingBudget": 1410,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market",
+        "grocer",
+        "boutique"
+      ],
+      "modifier": "luxury_demand",
+      "seed": 152546,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.08",
+      "district": "retail",
+      "index": 8,
+      "displayName": "Retail Festival: Contract 8",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 8703,
+      "startingBudget": 1485,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market",
+        "grocer",
+        "boutique"
+      ],
+      "modifier": "fragile_supply",
+      "seed": 160465,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.09",
+      "district": "retail",
+      "index": 9,
+      "displayName": "Retail Festival: Contract 9",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 9749,
+      "startingBudget": 1560,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market",
+        "grocer",
+        "boutique",
+        "apartment"
+      ],
+      "modifier": "office_boost",
+      "seed": 168384,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.10",
+      "district": "retail",
+      "index": 10,
+      "displayName": "Retail Festival: Contract 10",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 10815,
+      "startingBudget": 1635,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market",
+        "grocer",
+        "boutique",
+        "apartment"
+      ],
+      "modifier": "none",
+      "seed": 176303,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.11",
+      "district": "retail",
+      "index": 11,
+      "displayName": "Retail Festival: Contract 11",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 11899,
+      "startingBudget": 1710,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market",
+        "grocer",
+        "boutique",
+        "apartment",
+        "shopping_mall"
+      ],
+      "modifier": "limited_goods",
+      "seed": 184222,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.retail.12",
+      "district": "retail",
+      "index": 12,
+      "displayName": "Retail Festival: Contract 12",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 13000,
+      "startingBudget": 1785,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "farm",
+        "market",
+        "grocer",
+        "boutique",
+        "apartment",
+        "shopping_mall"
+      ],
+      "modifier": "high_housing",
+      "seed": 192141,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.01",
+      "district": "harbor",
+      "index": 1,
+      "displayName": "Harbor Trade: Contract 1",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 5000,
+      "startingBudget": 1180,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power"
+      ],
+      "modifier": "energy_shortage",
+      "seed": 105133,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.02",
+      "district": "harbor",
+      "index": 2,
+      "displayName": "Harbor Trade: Contract 2",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 6142,
+      "startingBudget": 1255,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power"
+      ],
+      "modifier": "industrial_bonus",
+      "seed": 113052,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.03",
+      "district": "harbor",
+      "index": 3,
+      "displayName": "Harbor Trade: Contract 3",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 7534,
+      "startingBudget": 1330,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory"
+      ],
+      "modifier": "bank_bonus",
+      "seed": 120971,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.04",
+      "district": "harbor",
+      "index": 4,
+      "displayName": "Harbor Trade: Contract 4",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 9039,
+      "startingBudget": 1405,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory"
+      ],
+      "modifier": "road_block",
+      "seed": 128890,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.05",
+      "district": "harbor",
+      "index": 5,
+      "displayName": "Harbor Trade: Contract 5",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 10623,
+      "startingBudget": 1480,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory",
+        "warehouse"
+      ],
+      "modifier": "cheap_logistics",
+      "seed": 136809,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.06",
+      "district": "harbor",
+      "index": 6,
+      "displayName": "Harbor Trade: Contract 6",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 12269,
+      "startingBudget": 1555,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory",
+        "warehouse"
+      ],
+      "modifier": "luxury_demand",
+      "seed": 144728,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.07",
+      "district": "harbor",
+      "index": 7,
+      "displayName": "Harbor Trade: Contract 7",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 13964,
+      "startingBudget": 1630,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory",
+        "warehouse",
+        "logistics"
+      ],
+      "modifier": "fragile_supply",
+      "seed": 152647,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.08",
+      "district": "harbor",
+      "index": 8,
+      "displayName": "Harbor Trade: Contract 8",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 15703,
+      "startingBudget": 1705,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory",
+        "warehouse",
+        "logistics"
+      ],
+      "modifier": "office_boost",
+      "seed": 160566,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.09",
+      "district": "harbor",
+      "index": 9,
+      "displayName": "Harbor Trade: Contract 9",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 17480,
+      "startingBudget": 1780,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory",
+        "warehouse",
+        "logistics",
+        "port"
+      ],
+      "modifier": "none",
+      "seed": 168485,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.10",
+      "district": "harbor",
+      "index": 10,
+      "displayName": "Harbor Trade: Contract 10",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 19290,
+      "startingBudget": 1855,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory",
+        "warehouse",
+        "logistics",
+        "port"
+      ],
+      "modifier": "limited_goods",
+      "seed": 176404,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.11",
+      "district": "harbor",
+      "index": 11,
+      "displayName": "Harbor Trade: Contract 11",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 21131,
+      "startingBudget": 1930,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory",
+        "warehouse",
+        "logistics",
+        "port",
+        "freight_yard"
+      ],
+      "modifier": "high_housing",
+      "seed": 184323,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.harbor.12",
+      "district": "harbor",
+      "index": 12,
+      "displayName": "Harbor Trade: Contract 12",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 23000,
+      "startingBudget": 2005,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "power",
+        "factory",
+        "warehouse",
+        "logistics",
+        "port",
+        "freight_yard"
+      ],
+      "modifier": "retail_festival",
+      "seed": 192242,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.01",
+      "district": "finance",
+      "index": 1,
+      "displayName": "Financial Heights: Contract 1",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 9000,
+      "startingBudget": 1400,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer"
+      ],
+      "modifier": "industrial_bonus",
+      "seed": 105234,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.02",
+      "district": "finance",
+      "index": 2,
+      "displayName": "Financial Heights: Contract 2",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 10839,
+      "startingBudget": 1475,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer"
+      ],
+      "modifier": "bank_bonus",
+      "seed": 113153,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.03",
+      "district": "finance",
+      "index": 3,
+      "displayName": "Financial Heights: Contract 3",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 13083,
+      "startingBudget": 1550,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "road_block",
+      "seed": 121072,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.04",
+      "district": "finance",
+      "index": 4,
+      "displayName": "Financial Heights: Contract 4",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 15508,
+      "startingBudget": 1625,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse"
+      ],
+      "modifier": "cheap_logistics",
+      "seed": 128991,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.05",
+      "district": "finance",
+      "index": 5,
+      "displayName": "Financial Heights: Contract 5",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 18060,
+      "startingBudget": 1700,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm"
+      ],
+      "modifier": "luxury_demand",
+      "seed": 136910,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.06",
+      "district": "finance",
+      "index": 6,
+      "displayName": "Financial Heights: Contract 6",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 20711,
+      "startingBudget": 1775,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm"
+      ],
+      "modifier": "fragile_supply",
+      "seed": 144829,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 1
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.07",
+      "district": "finance",
+      "index": 7,
+      "displayName": "Financial Heights: Contract 7",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 23443,
+      "startingBudget": 1850,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "power"
+      ],
+      "modifier": "office_boost",
+      "seed": 152748,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.08",
+      "district": "finance",
+      "index": 8,
+      "displayName": "Financial Heights: Contract 8",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 26244,
+      "startingBudget": 1925,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "power"
+      ],
+      "modifier": "none",
+      "seed": 160667,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.09",
+      "district": "finance",
+      "index": 9,
+      "displayName": "Financial Heights: Contract 9",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 29107,
+      "startingBudget": 2000,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "power",
+        "factory"
+      ],
+      "modifier": "limited_goods",
+      "seed": 168586,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.10",
+      "district": "finance",
+      "index": 10,
+      "displayName": "Financial Heights: Contract 10",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 32023,
+      "startingBudget": 2075,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "power",
+        "factory"
+      ],
+      "modifier": "high_housing",
+      "seed": 176505,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.11",
+      "district": "finance",
+      "index": 11,
+      "displayName": "Financial Heights: Contract 11",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 34989,
+      "startingBudget": 2150,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "power",
+        "factory",
+        "market"
+      ],
+      "modifier": "retail_festival",
+      "seed": 184424,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    },
+    {
+      "id": "cc.finance.12",
+      "district": "finance",
+      "index": 12,
+      "displayName": "Financial Heights: Contract 12",
+      "grid": {
+        "width": 6,
+        "height": 6
+      },
+      "targetScore": 38000,
+      "startingBudget": 2225,
+      "allowedPieceIds": [
+        "home",
+        "cafe",
+        "grocer",
+        "warehouse",
+        "farm",
+        "power",
+        "factory",
+        "market"
+      ],
+      "modifier": "energy_shortage",
+      "seed": 192343,
+      "secondStar": {
+        "objective": "finish_under_budget",
+        "factorBasisPoints": 9000
+      },
+      "thirdStar": {
+        "objective": "activate_unique_combo",
+        "minimum": 2
+      },
+      "mandatoryOneStarFree": true,
+      "validation": "UNVALIDATED_REQUIRES_SOLVER_REFERENCE_LAYOUT_AND_HUMAN_PLAYTEST"
+    }
+  ]
+}
