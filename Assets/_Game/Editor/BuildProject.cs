@@ -30,7 +30,7 @@ public static class BuildProject
         PlayerSettings.companyName="VirkGames";PlayerSettings.productName="Cashflow Chains";PlayerSettings.bundleVersion="1.0.0";
         PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Android,"com.virkgames.cashflowchains");
         PlayerSettings.defaultInterfaceOrientation=UIOrientation.Portrait;PlayerSettings.defaultScreenWidth=1280;PlayerSettings.defaultScreenHeight=720;PlayerSettings.resizableWindow=true;PlayerSettings.fullScreenMode=FullScreenMode.FullScreenWindow;PlayerSettings.runInBackground=true;
-        PlayerSettings.Android.forceInternetPermission=false;PlayerSettings.Android.bundleVersionCode=1;PlayerSettings.stripEngineCode=true;
+        PlayerSettings.Android.forceInternetPermission=true;PlayerSettings.Android.bundleVersionCode=1;PlayerSettings.stripEngineCode=true;
         PlayerSettings.Android.minSdkVersion=(AndroidSdkVersions)26;PlayerSettings.Android.targetSdkVersion=(AndroidSdkVersions)36;PlayerSettings.Android.targetArchitectures=AndroidArchitecture.ARM64;
         PlayerSettings.SetScriptingBackend(NamedBuildTarget.Android,ScriptingImplementation.IL2CPP);
         PlayerSettings.SetUseDefaultGraphicsAPIs(BuildTarget.StandaloneLinux64,false);PlayerSettings.SetGraphicsAPIs(BuildTarget.StandaloneLinux64,new[]{GraphicsDeviceType.OpenGLCore});

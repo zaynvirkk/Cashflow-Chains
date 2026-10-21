@@ -10,3 +10,6 @@ Current runtime: original painted city environments, a 24-building atlas, plante
 - Native C# produces material frames, route ribbons, resource tokens, floating payouts, particles, press springs, drag ghosts, legal-cell magnet previews and landing animations. These cannot grant currency or alter scoring.
 
 `Docs/ORIGINAL_ASSETS.json` hashes the current runtime resources and preserved vector sources. Generated assets use no runtime model or network service. The hand-authored game wordmark is the only decorative text asset; game instructions, labels, amounts and controls are native text. Review actual captures in `Docs/REVIEW.html` rather than treating concept references as gameplay proof.
+
+
+V5 expansion: eight advanced building icons and eight actual neon cosmetic sprites in Resources/Art/V5, plus an eight-district atlas. Exact prompts: Docs/VisualV5/EXECUTED_PROMPTS.json. Alpha rectangles are metadata; generated pixels are preserved. Building life, oriented traffic with visible roofs/headlights, smoke/steam/fountain animation and real per-building forecast plates are native code. Compact short-screen mode prioritizes readable building names when a second value line cannot fit; the full exact forecast and inspector remain available.

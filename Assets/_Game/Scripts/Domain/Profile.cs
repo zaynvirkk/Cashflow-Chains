@@ -8,7 +8,7 @@ namespace LocalGame.Data {
  public List<GrantRecord> Grants=new List<GrantRecord>(),Spends=new List<GrantRecord>();
  public int Schema=2,Selected,Theme; public int[] Stars=new int[104]; public long[] Best=new long[104];
  public long Credits=350;public bool Music=true,Sound=true,Haptics=true,ReducedMotion,HighContrast;
- public bool TutorialSeen;public List<string> Collection=new List<string>(),Receipts=new List<string>();
+ public bool TutorialSeen,FastResolve;public List<string> Collection=new List<string>(),Receipts=new List<string>();
  public int TotalStars=>Stars.Sum();public int Cleared=>Stars.Count(x=>x>0);public int Unlocked=>Math.Min(71,Stars.Take(72).Count(x=>x>0)+2);
  public bool Award(int level,int stars,long score,string receipt,IEnumerable<string> collected=null) {
   if(level<0||level>=104||stars<0||stars>3||score<0||score>1000000000||string.IsNullOrEmpty(receipt)||receipt.Length>100)throw new ArgumentException("Invalid award");
@@ -22,9 +22,10 @@ namespace LocalGame.Data {
  public bool StyleUnlocked(int theme)=>theme>=0&&theme<6&&(theme<=Cleared/12||Spends.Any(s=>s.Id=="style-"+theme)||theme==3&&Entitlements.Contains("cc.skin.neon")||theme==5&&Entitlements.Contains("bb.cosmetic.noir"));
  bool Spend(string id,long amount){if(amount<=0||Credits<amount||Spends.Any(s=>s.Id==id))return false;Spends.Add(new GrantRecord{Id=id,Amount=amount});Credits-=amount;return true;}
  public bool BuyStyle(int theme){if(theme<1||theme>5||StyleUnlocked(theme))return false;return Spend("style-"+theme,StyleCost(theme));}
- public int BlueprintCapacity=>Math.Min(8,2+Stars.Take(72).Count(x=>x>0)/12+Spends.Count(s=>s.Id.StartsWith("blueprint-")))+(Entitlements.Contains("cc.blueprint.4")?4:0);
+ public int EarnedBlueprintCapacity=>Math.Min(8,2+Stars.Take(72).Count(x=>x>0)/12+Spends.Count(s=>s.Id.StartsWith("blueprint-")));
+ public int BlueprintCapacity=>EarnedBlueprintCapacity+(Entitlements.Contains("cc.blueprint.4")?4:0);
  public long BlueprintPrice=>500+250L*Spends.Count(s=>s.Id.StartsWith("blueprint-"));
- public bool BuyBlueprintSlot(){if(Cleared==0||BlueprintCapacity>=8)return false;int count=Spends.Count(s=>s.Id.StartsWith("blueprint-"));return Spend("blueprint-"+(count+1),BlueprintPrice);}
+ public bool BuyBlueprintSlot(){if(Cleared==0||EarnedBlueprintCapacity>=8)return false;int count=Spends.Count(s=>s.Id.StartsWith("blueprint-"));return Spend("blueprint-"+(count+1),BlueprintPrice);}
  public void SelectDaily(int level){if(level<0||level>=104)throw new ArgumentException("Invalid daily puzzle");Selected=level;}
  public void Select(int level){if(level<0||!CanSelect(level))throw new ArgumentException("Locked level");Selected=level;}
  public void SetTheme(int theme){if(!StyleUnlocked(theme))throw new ArgumentException("Locked palette");Theme=theme;}

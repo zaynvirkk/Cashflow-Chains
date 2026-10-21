@@ -13,3 +13,6 @@ V2 visual/audio revision: painted environments and sprite atlases generated spec
 
 
 Release tool: Google bundletool 1.18.3 (Apache-2.0), downloaded from https://github.com/google/bundletool/releases/tag/1.18.3 for local bundle validation. It is not shipped in the game. Android build tools and Unity are build-time dependencies. Unity Purchasing and service analytics packages are absent from this free release.
+
+
+Production expansion restores Unity Purchasing 5.4.4 via Package Manager Client.Add (operator explicitly requested C12 monetization). Platform Google Play billing only, with real metadata/receipt validation. INTERNET and BILLING permissions support optional commerce; core gameplay remains offline. No ad SDK, Unity Analytics initialization, D2C payment provider or authentication login is configured. IAP 5.4+ SDK privacy still requires full review before publishing: https://docs.unity.com/en-us/iap/privacy-and-consent/overview . Prior free-only dependency statements are historical.

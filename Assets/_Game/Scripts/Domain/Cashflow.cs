@@ -59,8 +59,8 @@ namespace CashflowChains.Domain
     }
     [Serializable] public sealed class Board
     {
-        public int Width=4,Height=4,Budget=300,Challenge,ImportQuota,ImportCost,DraftRoll;public bool DraftMode; public ulong Blocked; public List<Node> Nodes=new List<Node>();
-        public Board Copy()=>new Board{Width=Width,Height=Height,Budget=Budget,Challenge=Challenge,ImportQuota=ImportQuota,ImportCost=ImportCost,DraftMode=DraftMode,DraftRoll=DraftRoll,Blocked=Blocked,Nodes=Nodes.Select(x=>x.Copy()).ToList()};
+        public int Width=4,Height=4,Budget=300,Challenge,ImportQuota,ImportCost,DraftRoll;public bool DraftMode;public List<string> DraftOperations=new List<string>(); public ulong Blocked; public List<Node> Nodes=new List<Node>();
+        public Board Copy()=>new Board{Width=Width,Height=Height,Budget=Budget,Challenge=Challenge,ImportQuota=ImportQuota,ImportCost=ImportCost,DraftMode=DraftMode,DraftRoll=DraftRoll,DraftOperations=new List<string>(DraftOperations??new List<string>()),Blocked=Blocked,Nodes=Nodes.Select(x=>x.Copy()).ToList()};
         public static Board Tutorial(int index)
         {
             var b=new Board{Challenge=index,Width=index==2?5:4,Height=index==2?5:4,Budget=index==2?500:300};
@@ -73,6 +73,8 @@ namespace CashflowChains.Domain
         public string Fingerprint()=>Width+"x"+Height+":"+Challenge+":"+Budget+":"+ImportQuota+":"+ImportCost+":"+string.Join(";",Nodes.OrderBy(x=>x.Id).Select(n=>$"{n.Id},{n.Kind},{n.X},{n.Y},{n.Rotation},{n.InitialGoods},{n.InitialEnergy}"));
         public void Validate()
         {
+            if(DraftOperations==null)DraftOperations=new List<string>();
+            if(DraftOperations.Count!=DraftRoll||DraftOperations.Count>100||DraftOperations.Any(string.IsNullOrEmpty)||DraftOperations.Any(s=>s.Length>100)||DraftOperations.Distinct().Count()!=DraftOperations.Count)throw new ArgumentException("Invalid draft history");
             if(Width<1||Height<1||Width>7||Height>7||Nodes==null||Nodes.Count>Width*Height||Budget<0||Budget>1000000||Challenge<0||Challenge>103||ImportQuota<0||ImportQuota>64||ImportCost<0||ImportCost>10||DraftRoll<0||DraftRoll>100)throw new ArgumentException("Invalid board");
             var ids=new HashSet<int>();var cells=new HashSet<int>();
             foreach(var n in Nodes)

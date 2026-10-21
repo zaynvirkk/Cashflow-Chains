@@ -5,7 +5,7 @@ from pathlib import Path
 import argparse,json,os,subprocess,time,datetime,hashlib
 p=Path(__file__).resolve().parent.parent;cc=p.name=='CashflowChains';a=argparse.ArgumentParser();a.add_argument('--display',default=':1');a.add_argument('--resume');opt=a.parse_args();env={**os.environ,'DISPLAY':opt.display}
 out=Path(opt.resume) if opt.resume else p/'Artifacts/CampaignReplay'/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out.mkdir(parents=True,exist_ok=bool(opt.resume))
-solutions=[json.loads(x) for x in (p/'Artifacts/Campaign/witnesses.jsonl').read_text().splitlines()];actions=[];results=[];window=None;segments=[]
+solutions=[json.loads(x) for x in (p/'Artifacts/Campaign/witnesses.jsonl').read_text().splitlines()][:72];actions=[];results=[];window=None;segments=[]
 if opt.resume:
  prior=json.loads((out/'progress.json').read_text());results=prior['levels'];segments=prior.get('segments',[]);actions=prior.get('actions',[])
  for file,h in prior['source'].items():assert hashlib.sha256((p/file).read_bytes()).hexdigest()==h,file

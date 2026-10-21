@@ -18,7 +18,7 @@ namespace LocalGame {
   }
   public Rect OnBoard(Rect r){var b=BoardArea;float sourceY=Studio.Velvet?260:310;float s=b.width/644;return new Rect(b.x+(r.x-38)*s,b.y+(r.y-sourceY)*s,r.width*s,r.height*s);}
   public Vector2 Point(float x,float y,bool board=true){if(View=="title"&&x>=80&&y>=400&&y<770){var title=Layout("Title connection",new Rect(x,y,0,0));return new Vector2(title.x-Width/2,Height/2-title.y);}if(board&&View=="board"){var r=OnBoard(new Rect(x,y,0,0));return new Vector2(r.x-Width/2,Height/2-r.y);}return new Vector2(x/720*Width-Width/2,Height/2-y/1280*Height);}
-  public Rect Layout(string name,Rect r){float w=Width,h=Height,extra=h-1280;bool board=View=="board";
+  public Rect Layout(string name,Rect r){float w=Width,h=Height,extra=h-1280;bool board=View=="board";if(board&&Wide&&name=="City wallet")return new Rect(28,386,252,24);
    if(name=="Title wordmark")return Wide?new Rect(52,45,w*.42f,245):new Rect(38,60,644,270);
    if(name=="Living route"||name=="Scrim")return new Rect(0,0,w,h);
    if(name=="Reading shade")return Wide?(board?new Rect(0,0,292,h):View=="title"?new Rect(0,0,w*.48f,h):new Rect(0,0,w,210)):new Rect(0,0,w,260*Mathf.Min(1,h/1280));

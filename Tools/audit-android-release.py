@@ -8,9 +8,10 @@ manifest=run([sdk/'cmdline-tools/latest/bin/apkanalyzer','manifest','print',apk]
 assert root.get('package')=='com.virkgames.cashflowchains';assert root.get(ns+'versionCode')=='1';assert root.get(ns+'versionName')=='1.0.0'
 uses=root.find('uses-sdk');assert int(uses.get(ns+'targetSdkVersion'))>=36 and int(uses.get(ns+'minSdkVersion'))==26
 assert root.find('application').get(ns+'debuggable','false')=='false'
-permissions=[e.get(ns+'name') for e in root.findall('uses-permission')];assert not any(any(word in x for word in ['BILLING','INTERNET','AD_ID','RECORD_AUDIO','ACCESS_FINE_LOCATION']) for x in permissions),permissions
+permissions=[e.get(ns+'name') for e in root.findall('uses-permission')];assert not any(any(word in x for word in ['AD_ID','RECORD_AUDIO','ACCESS_FINE_LOCATION']) for x in permissions),permissions
+assert 'com.android.vending.BILLING' in permissions,permissions
 for name in ['Packages/manifest.json','Packages/packages-lock.json']:
- text=(p/name).read_text();assert not any(x in text for x in ['com.unity.purchasing','com.unity.services.analytics','com.unity.ads'])
+ text=(p/name).read_text();assert not any(x in text for x in ['com.unity.services.analytics','com.unity.ads'])
 def elf_alignment(data):
  assert data[:5]==b'\x7fELF\x02' and data[5]==1,'Expected 64 bit little endian ELF'
  offset=struct.unpack_from('<Q',data,32)[0];size,count=struct.unpack_from('<HH',data,54);loads=[]
