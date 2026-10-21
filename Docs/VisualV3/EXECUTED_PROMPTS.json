@@ -1,0 +1,58 @@
+[
+  {
+    "key": "cc-objects",
+    "project": "CashflowChains",
+    "name": "objects.png",
+    "transparent": true,
+    "ref": "/tmp/codex-clipboard-mOdeUm.png",
+    "prompt": "FINAL PRODUCTION SPRITE ATLAS for an original 2D mobile city-chain puzzle. Use attached image ONLY as a reference for bright, bold, playful toy-city art: thick clean dark-blue outlines, saturated emerald/pink/cyan/gold, glossy highlights, warm windows, cute front-facing miniature buildings, strong clear silhouettes. Exactly SIX columns by FOUR rows, 24 independent sprites, consistent equal cells and transparent padding. NO text, NO letters, NO prices, NO UI, no isometric angle, no shared ground. Each sprite shows front elevation with a tiny matching ground plinth. Catalog order must be: row1 green-roof yellow HOUSE, hot pink CAFE with large white coffee cup, greenhouse FARM, electric-blue WAREHOUSE with garage, cyan WIND TURBINE power station, orange brick FACTORY. Row2 green vegetable GROCER, classical gold BANK with dollar-symbol emblem, blue-glass OFFICE, lush little PARK, coral-roof MARKET stalls, teal LOGISTICS depot. Row3 cheerful APARTMENT, purple fashion BOUTIQUE, blue cargo PORT crane and container, gold CLOCK TOWER with dots instead of numbers, red retro DINER, pink/cyan SHOPPING MALL. Row4 purple TECH OFFICE chip emblem, green RECYCLING workshop, orange RAIL FREIGHT yard with little train front, violet HOTEL with gold stars, colorful miniature STADIUM, blue SOLAR panels. All 24 fully inside their cells, generously isolated, genuine transparent background. Make them feel like collectible board-game toys, matching the visual energy of the reference. No existing franchise logos or assets."
+  },
+  {
+    "key": "cc-plot",
+    "project": "CashflowChains",
+    "name": "plot.png",
+    "transparent": true,
+    "ref": "/tmp/codex-clipboard-mOdeUm.png",
+    "prompt": "One FINAL PRODUCTION SQUARE GRASS PLOT sprite for a playful polished 2D mobile city puzzle, matching the attached reference's bright toy-city style. Flat directly overhead square island, gently rounded corners, thick clean dark-navy outlines, lush emerald grass with subtle center gradient, a narrow pale curb/pavement rim, tiny lush shrubs and flowers clustered OUTSIDE the four corners. The CENTER 75 percent is EMPTY plain green grass, unobstructed, for an independently rendered building. Keep the border restrained so tiny buildings remain readable. Transparent background OUTSIDE the island and foliage. No roads, NO text, no symbols, no plus sign, no building, NO UI, no perspective tilt, no isometric angle. Exactly square, isolated, complete sprite with generous transparent margin. Glossy colorful mobile game art, native resolution detail, no photorealism."
+  },
+  {
+    "key": "cc-world-portrait",
+    "project": "CashflowChains",
+    "name": "world-portrait.png",
+    "transparent": false,
+    "ref": "/tmp/codex-clipboard-mOdeUm.png",
+    "prompt": "FINAL PRODUCTION PORTRAIT BACKGROUND for an original polished 2D mobile city puzzle game. Use attached reference ONLY for its vibrant glossy cartoon toy-city art, thick confident dark-blue outlines, saturated green trees, rich navy-blue streets, tiny warm streetlights, little colorful city blocks. Paint a NEW original scene, artwork only, NO UI, NO text, no buttons, no logos, no counters, no grid or individual playable plots. Portrait composition with a lush cheerful miniature CITY framing the outer edges: trees and parks, cute colorful front-facing buildings, little traffic lights and lamps, crosswalks near the corners. Center 75 percent is quiet dark-blue asphalt/paving with no buildings or trees so a separate live game board can render there. Top 15 and bottom15 percent have beautiful detailed lively town framing and warm pools of light. Evening-blue lighting but bright and readable, playful and energetic, no photorealism, no antique European palace architecture. Flat 2D illustration, no isometric game board. Fill the whole image with environment artwork, no blank bars."
+  },
+  {
+    "key": "cc-world-wide",
+    "project": "CashflowChains",
+    "name": "world-wide.png",
+    "transparent": false,
+    "ref": "/tmp/codex-clipboard-mOdeUm.png",
+    "prompt": "FINAL PRODUCTION WIDE LANDSCAPE 16:9 GAME BACKGROUND for an original polished 2D city-chain puzzle. Reference ONLY the attached image's bright glossy cartoon miniature-city style: thick clean dark-blue contours, saturated emerald trees, colorful cute front-facing shops/houses, rich navy asphalt, warm lamps and small crosswalks. Paint a coherent new PANORAMIC neighborhood scene. CENTRAL 55 percent is a broad quiet empty dark navy square for a separate real puzzle board. Outer left/right edges and top/bottom corners have lively colorful town blocks and trees, little parked cars and warm lights, without clutter in the center. Artwork only, no text, no logos, NO UI, no counters, no buttons, NO grid, no playable grass plots, no building in center. Cheerful energetic mobile game world, bold readable painted shapes, no photorealism, no antique European palace architecture, no isometric board. Full scene edge to edge, no blank bars."
+  },
+  {
+    "key": "bb-rim",
+    "project": "BlackBag",
+    "name": "case-rim.png",
+    "transparent": true,
+    "ref": "/tmp/codex-clipboard-KqtOsO.png",
+    "prompt": "FINAL PRODUCTION 2D GAME SPRITE: substantial luxury black leather ATTACHE CASE RIM viewed FLAT directly from above, inspired only by the attached reference's materials and high-end collector-heist mood. SQUARE outer silhouette with rounded corners, very thick stitched black leather padded edge, double antique gold/brass piping, beautiful gold corner hardware, two small brass hinges at TOP, heavy front latches and a red leather/brass carrying handle at BOTTOM. The INNER central 78 percent must be GENUINELY TRANSPARENT, a clean square hole for a real separately rendered velvet packing grid. Outside the rim and handle also GENUINELY TRANSPARENT. No back lid, NO velvet center, NO objects, no grid, NO UI, no lettering or numbers. Rich painterly black leather grain, glowing antique metal highlights and strong dark outlines; complete isolated rim sprite with generous margin. Keep corner hardware concentrated at corners for a native nine-slice border. No perspective tilt in the inner opening."
+  },
+  {
+    "key": "bb-lid",
+    "project": "BlackBag",
+    "name": "case-lid.png",
+    "transparent": true,
+    "ref": "/tmp/codex-clipboard-KqtOsO.png",
+    "prompt": "FINAL PRODUCTION 2D GAME SPRITE: back LID of an OPEN vintage luxury attache case, a wide horizontal rectangle, roughly 3:1 aspect, standing slightly upright behind a separately rendered flat packing case. Reference attached image only for rich black leather, antique brass, oxblood red brocade, collector-heist mood. Complete isolated top/back lid only: rounded black leather outer rim with thick gold piping, stitched leather corners, glowing brass hinges at bottom, sumptuous dark oxblood brocade INSIDE. Central brocade area quiet and empty for native gold title lettering to be added by the game. No main lower suitcase body, NO objects, no text or emblems, NO logos, NO UI or grid. GENUINELY transparent around the whole lid. Painterly precise hardware, dark opulent material highlights, high quality game art. Keep the lid's complete rectangular silhouette and thin surrounding transparent margin."
+  },
+  {
+    "key": "bb-tools",
+    "project": "BlackBag",
+    "name": "tools.png",
+    "transparent": true,
+    "ref": "/tmp/codex-clipboard-KqtOsO.png",
+    "prompt": "FINAL PRODUCTION GAME TOOL SPRITE SHEET, THREE columns by TWO rows, exactly SIX independent isolated tools for an original illustrated collector-heist packing puzzle. Reference attached image only for ornate black leather, worn brass, deep crimson, fine painterly highlights and realistic illustrated prop materials. Clear distinct shapes, strong silhouettes, consistent top/front presentation with no scene background. Order row1: rolled padded FOAM LINING with strap; compact brass handheld SCANNER with lens and small screen; tiny ornate mechanical NOISEMAKER distraction device. Row2: PIVOT KIT of two crossed lockpick/wrench tools; worn leather LEDGER book with metal corners; SECURE SEAL red wax stamp with brass handle and ribbon. No gun, no real tool instructions, no text, no numbers, no logos, no UI. Exactly6 props, equal cells, no overlap, generous genuine transparent margins/background. Detailed but readable at small mobile-game sizes."
+  }
+]

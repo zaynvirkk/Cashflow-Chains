@@ -1,9 +1,12 @@
-# Original asset record
+# Cashflow Chains asset provenance
 
-All building, object, location and interface sprites were authored as SVG paths for this project and rasterized using CairoSVG. Sources are in `Assets/_Game/Art/Source`; runtime PNGs are in `Resources/Art`. Native text is never baked into the art. Black Bag's normalized production masks are in `Docs/ProductionLoot.json`; the supplied seeds remain untouched under `Docs/SourcePackage`.
+Current runtime: original painted city environments, a 24-building atlas, planted plots and a bespoke wordmark generated for this project using the built-in image-generation tool. These are integrated sprites with native controls and text, rather than screenshots used as interactive UI. No assets from the named inspiration games are used.
 
-The music and cues are original deterministic synthesis with no external recordings or samples. The generator layers sine-based keys, bass and soft noise percussion; exports are 22.05 kHz mono waveforms. Cashflow has six 24-second loops and 24 cues; Black Bag has four 24-second loops and 24 cues. Runtime music streams with Vorbis compression; short cues decompress on load. Music and effects can be disabled independently.
+- Art: `Assets/_Game/Resources/Art/V3/` and `V4/`. Exact executed prompts and supplied references: `Docs/VisualV3/EXECUTED_PROMPTS.json`, `Docs/VisualV4/EXECUTED_WORDMARK_PROMPTS.json` and `Docs/VisualV3/References/`.
+- Icon: `Assets/_Game/Art/AppIcon.png`. Generated full-bleed city/chain illustration; standard Play icon exported by Unity's texture pipeline to `Release/Store/icon-512.png`.
+- Atlas and wordmark alpha bounds are metadata, preserving original generated pixels. Authored vector sources remain in `Assets/_Game/Art/Source/`. Superseded assets outside Resources are in `Docs/SourceArchive/`.
+- Display font: Bungee. Body: Barlow Condensed; DejaVu fallback. Font files remain unmodified, with OFL/DejaVu licenses under `Docs/Licenses/` and `Docs/FONT_LICENSE.txt`. Earlier licensed font experiments remain documented.
+- Audio: original deterministic stereo synthesis from `Tools/sound-v3.py` and `Tools/sound-v4.py`, with no external recordings/samples. Runtime V4 contains six music tracks and action/ambient cues. Independent saved music/effects switches; reduced motion and haptics settings.
+- Native C# produces material frames, route ribbons, resource tokens, floating payouts, particles, press springs, drag ghosts, legal-cell magnet previews and landing animations. These cannot grant currency or alter scoring.
 
-DejaVu Sans and Serif are distributed under the included `FONT_LICENSE.txt`. Python art tooling uses CairoSVG, NumPy and Pillow only during authoring, not during gameplay. There is no runtime image or model service. Per-file hashes are recorded in `ORIGINAL_ASSETS.json`.
-
-Black Bag uses one continuous illustration per footprint, clipped to the authoritative cell union. `Tools/author-loot.py` exports all 48 objects; `Tools/verify-art.py` checks alpha boundaries across all 192 rotations. Source masks remain separate from art. Distinct catalog items have distinct raster files.
+`Docs/ORIGINAL_ASSETS.json` hashes the current runtime resources and preserved vector sources. Generated assets use no runtime model or network service. The hand-authored game wordmark is the only decorative text asset; game instructions, labels, amounts and controls are native text. Review actual captures in `Docs/REVIEW.html` rather than treating concept references as gameplay proof.

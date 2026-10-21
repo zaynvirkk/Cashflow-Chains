@@ -1,6 +1,6 @@
 # Cashflow Chains: final local test log
 
-Unity **6000.3.26f1 LTS**, URP 17.3.0, Input System 1.20.0, uGUI/TMP 2.0, Test Framework 1.6.0, IAP 5.4.4, embedded Pipeline 0.8.0-exp.1. Fresh test start: `2026-10-21 03:44:13Z`. **39 passed / 0 failed.** See Artifacts/Tests/ci.xml. Original kickoff log is preserved as KICKOFF_TEST_LOG.md.
+Unity **6000.3.26f1 LTS**, URP 17.3.0, Input System 1.20.0, uGUI/TMP 2.0, Test Framework 1.6.0, IAP 5.4.4, embedded Pipeline 0.8.0-exp.1. Fresh test start: `2026-10-21 04:57:10Z`. **39 passed / 0 failed.** See Artifacts/Tests/ci.xml. Original kickoff log is preserved as KICKOFF_TEST_LOG.md.
 
 Commands from this project root, one Unity process at a time:
 
@@ -13,11 +13,11 @@ python3 Tools/playtest.py --display :1
 python3 Tools/campaign-playtest.py --display :1
 python3 Tools/android-playtest.py
 python3 Tools/android-gesture-test.py
-python3 Tools/earned-playtest.py --display :1 --campaign Artifacts/CampaignReplay/20261021T002538Z
+python3 Tools/earned-playtest.py --display :1 --campaign Artifacts/CampaignReplay/20261021T043558Z
 python3 Tools/package-playtest.py
 ```
 
-Campaign continuation uses `--resume Artifacts/CampaignReplay/20261021T002538Z` against the driver's actual saved progress with unchanged source/binary hashes. Intermediate stops and retained segments are explicit in the report. Final current artifacts: native `Artifacts/Playtest/20261021T002230Z`, campaign `Artifacts/CampaignReplay/20261021T002538Z`, Android `Artifacts/Android/20261021T033949Z`, earned `Artifacts/EarnedPlaytest/20261021T035614Z`. Actual commands use isolated review saves, pointer/key events and native captures; no synthetic game rewards or real store receipts are substituted.
+Campaign continuation uses `--resume Artifacts/CampaignReplay/20261021T043558Z` against the driver's actual saved progress with unchanged source/binary hashes. Intermediate stops and retained segments are explicit in the report. Final current artifacts: native `Artifacts/Playtest/20261021T043218Z`, campaign `Artifacts/CampaignReplay/20261021T043558Z`, Android `Artifacts/Android/20261021T050403Z`, earned `Artifacts/EarnedPlaytest/20261021T045932Z`. Actual commands use isolated review saves, pointer/key events and native captures; no synthetic game rewards or real store receipts are substituted.
 
 Build scripts call the Unity CLI with target/BuildProject methods, DOTNET_PROCESSOR_COUNT=4, affinity cores 0–3 and two job workers. Both release-style local builds report success/exit 0. Nonfatal authoring IAP cloud-sync warnings remain in the sanitized build logs; player exception and overflow checks pass. A previous global OOM with concurrent Editors/builds/emulator led to the sequential resource cap; no machine-wide process killer is used.
 

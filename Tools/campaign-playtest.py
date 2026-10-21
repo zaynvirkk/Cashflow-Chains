@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Play all 72 certified solutions through ordinary native input, never writing a save."""
+from ui_map import local_point
 from pathlib import Path
 import argparse,json,os,subprocess,time,datetime,hashlib
 p=Path(__file__).resolve().parent.parent;cc=p.name=='CashflowChains';a=argparse.ArgumentParser();a.add_argument('--display',default=':1');a.add_argument('--resume');opt=a.parse_args();env={**os.environ,'DISPLAY':opt.display}
@@ -38,15 +39,17 @@ def wait(screen=None):
   time.sleep(.1)
  raise AssertionError('Missing screen '+str(screen))
 def click(x,y):
- before=(out/'campaign-state.json').stat().st_mtime_ns;xd('mousemove','--window',window,round(x*.75),round(y*.75),'mousedown','1');time.sleep(.06);xd('mouseup','1');actions.append(['click',x,y])
+ activate();ax,ay=local_point(out,x,y)
+ before=(out/'campaign-state.json').stat().st_mtime_ns;xd('mousemove','--window',window,ax,ay,'mousedown','1');time.sleep(.06);xd('mouseup','1');actions.append(['click',x,y])
  for _ in range(100):
   time.sleep(.015)
   if (out/'campaign-state.json').stat().st_mtime_ns>before:break
  time.sleep(.035)
-def key(k):xd('keydown',k);time.sleep(.08);xd('keyup',k);time.sleep(.16);actions.append(['key',k])
+def key(k):activate();xd('keydown',k);time.sleep(.08);xd('keyup',k);time.sleep(.16);actions.append(['key',k])
 def drag(x,y,tx,ty):
- xd('mousemove','--window',window,round(x*.75),round(y*.75),'mousedown','1');time.sleep(.08)
- for i in range(1,7):xd('mousemove','--window',window,round((x+(tx-x)*i/6)*.75),round((y+(ty-y)*i/6)*.75));time.sleep(.025)
+ activate();ax,ay=local_point(out,x,y);bx,by=local_point(out,tx,ty)
+ xd('mousemove','--window',window,ax,ay,'mousedown','1');time.sleep(.08)
+ for i in range(1,7):xd('mousemove','--window',window,round(ax+(bx-ax)*i/6),round(ay+(by-ay)*i/6));time.sleep(.025)
  xd('mouseup','1');time.sleep(.12);actions.append(['drag',x,y,tx,ty])
 def capture(label):
  before=time.time();key('F12');time.sleep(.5);files=sorted(out.glob(('cashflow' if cc else 'blackbag')+'-*.png'),key=lambda f:f.stat().st_mtime)

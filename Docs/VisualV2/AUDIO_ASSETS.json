@@ -1,0 +1,246 @@
+{
+  "passed": true,
+  "method": "Source WAV signal check, no microphone; preference unmeasured",
+  "assets": [
+    {
+      "project": "CashflowChains",
+      "file": "alarm.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.2437744140625,
+      "rms": 0.08627640579526531
+    },
+    {
+      "project": "CashflowChains",
+      "file": "beat.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.133544921875,
+      "rms": 0.05946763838302926
+    },
+    {
+      "project": "CashflowChains",
+      "file": "bonus.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.133544921875,
+      "rms": 0.053248507684270516
+    },
+    {
+      "project": "CashflowChains",
+      "file": "cash.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.131622314453125,
+      "rms": 0.053249164820570676
+    },
+    {
+      "project": "CashflowChains",
+      "file": "collect.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.3226318359375,
+      "rms": 0.0984760056928017
+    },
+    {
+      "project": "CashflowChains",
+      "file": "deny.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.15576171875,
+      "rms": 0.07388625252704567
+    },
+    {
+      "project": "CashflowChains",
+      "file": "drop.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.27606201171875,
+      "rms": 0.06273384781792449
+    },
+    {
+      "project": "CashflowChains",
+      "file": "escape.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.343841552734375,
+      "rms": 0.07401643786104548
+    },
+    {
+      "project": "CashflowChains",
+      "file": "hint.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.12969970703125,
+      "rms": 0.05324769801750693
+    },
+    {
+      "project": "CashflowChains",
+      "file": "loss.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.15576171875,
+      "rms": 0.048525966576769906
+    },
+    {
+      "project": "CashflowChains",
+      "file": "music0.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.125579833984375,
+      "rms": 0.027177282894381392
+    },
+    {
+      "project": "CashflowChains",
+      "file": "music1.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.12762451171875,
+      "rms": 0.026960692754766112
+    },
+    {
+      "project": "CashflowChains",
+      "file": "music2.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.1224365234375,
+      "rms": 0.02714990654004107
+    },
+    {
+      "project": "CashflowChains",
+      "file": "music3.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.12158203125,
+      "rms": 0.0270571508585616
+    },
+    {
+      "project": "CashflowChains",
+      "file": "music4.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.125579833984375,
+      "rms": 0.027177605872643458
+    },
+    {
+      "project": "CashflowChains",
+      "file": "music5.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.127655029296875,
+      "rms": 0.026961044338404398
+    },
+    {
+      "project": "CashflowChains",
+      "file": "open.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.257904052734375,
+      "rms": 0.062370078765989025
+    },
+    {
+      "project": "CashflowChains",
+      "file": "page.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.138671875,
+      "rms": 0.05324850091953829
+    },
+    {
+      "project": "CashflowChains",
+      "file": "place.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.255523681640625,
+      "rms": 0.06289515555222752
+    },
+    {
+      "project": "CashflowChains",
+      "file": "result.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.343841552734375,
+      "rms": 0.07401643786104548
+    },
+    {
+      "project": "CashflowChains",
+      "file": "rotate.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.27679443359375,
+      "rms": 0.06280921328070152
+    },
+    {
+      "project": "CashflowChains",
+      "file": "save.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.131622314453125,
+      "rms": 0.053249164820570676
+    },
+    {
+      "project": "CashflowChains",
+      "file": "select.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.131622314453125,
+      "rms": 0.05946970572120185
+    },
+    {
+      "project": "CashflowChains",
+      "file": "star.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.136688232421875,
+      "rms": 0.05324763172677093
+    },
+    {
+      "project": "CashflowChains",
+      "file": "take.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.27752685546875,
+      "rms": 0.06262867339051272
+    },
+    {
+      "project": "CashflowChains",
+      "file": "tap.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.12969970703125,
+      "rms": 0.059466941597077015
+    },
+    {
+      "project": "CashflowChains",
+      "file": "tool.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.136688232421875,
+      "rms": 0.05324763172677093
+    },
+    {
+      "project": "CashflowChains",
+      "file": "undo.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.136688232421875,
+      "rms": 0.05324763172677093
+    },
+    {
+      "project": "CashflowChains",
+      "file": "unlock.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.343841552734375,
+      "rms": 0.07401643786104548
+    },
+    {
+      "project": "CashflowChains",
+      "file": "win.wav",
+      "channels": 2,
+      "rate": 32000,
+      "peak": 0.343841552734375,
+      "rms": 0.07401643786104548
+    }
+  ]
+}

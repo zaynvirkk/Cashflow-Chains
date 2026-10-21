@@ -38,7 +38,15 @@ namespace CashflowChains.Domain
             new Piece("freight_yard","FREIGHT","10 goods / beat",130,9,6,new[]{0,1,0},new[]{0,1,0},10),
             new Piece("hotel","HOTEL","2 customers + 1 goods = 140",150,12,0,new[]{2,1,0},rate:2,credits:140),
             new Piece("stadium","STADIUM","5 customers + 1 goods = 360",230,12,0,new[]{5,1,0},rate:1,credits:360),
-            new Piece("solar_array","SOLAR","3 energy / beat",60,0,2,source:2,sourceRate:3)
+            new Piece("solar_array","SOLAR","3 energy / beat",60,0,2,source:2,sourceRate:3),
+            new Piece("bakery","BAKERY","1 customer + 1 goods = 65; 3 sales / beat",110,12,0,new[]{1,1,0},rate:3,credits:65),
+            new Piece("cinema","CINEMA","3 customers + 1 energy = 240",170,12,0,new[]{3,0,1},rate:1,credits:240),
+            new Piece("university","UNIVERSITY","1 customer + 1 energy → 3 customers",170,9,6,new[]{1,0,1},new[]{3,0,0},2),
+            new Piece("battery","BATTERY","Splits up to 10 energy / beat",100,9,6,new[]{0,0,1},new[]{0,0,1},10),
+            new Piece("greenhouse","GREENHOUSE","1 energy → 2 goods; 2 crafts / beat",140,9,6,new[]{0,0,1},new[]{0,2,0},2),
+            new Piece("data_center","DATA CENTER","2 energy → 5 goods; 1 craft / beat",190,9,6,new[]{0,0,2},new[]{0,5,0},1),
+            new Piece("tram","TRAM","Splits up to 8 customers / beat",100,9,6,new[]{1,0,0},new[]{1,0,0},8),
+            new Piece("exchange","EXCHANGE","2 customers + 1 goods + 1 energy = 320",250,13,0,new[]{2,1,1},rate:2,credits:320)
         };
         public static Piece Get(string id) {var p=All.FirstOrDefault(x=>x.Id==id);if(p==null)throw new ArgumentException("Unknown piece");return p;}
         public static int Ports(int mask,int rotation) {for(int k=0;k<rotation;k++) mask=((mask<<1)&15)|((mask>>3)&1);return mask;}
@@ -51,8 +59,8 @@ namespace CashflowChains.Domain
     }
     [Serializable] public sealed class Board
     {
-        public int Width=4,Height=4,Budget=300,Challenge; public ulong Blocked; public List<Node> Nodes=new List<Node>();
-        public Board Copy()=>new Board{Width=Width,Height=Height,Budget=Budget,Challenge=Challenge,Blocked=Blocked,Nodes=Nodes.Select(x=>x.Copy()).ToList()};
+        public int Width=4,Height=4,Budget=300,Challenge,ImportQuota,ImportCost,DraftRoll;public bool DraftMode; public ulong Blocked; public List<Node> Nodes=new List<Node>();
+        public Board Copy()=>new Board{Width=Width,Height=Height,Budget=Budget,Challenge=Challenge,ImportQuota=ImportQuota,ImportCost=ImportCost,DraftMode=DraftMode,DraftRoll=DraftRoll,Blocked=Blocked,Nodes=Nodes.Select(x=>x.Copy()).ToList()};
         public static Board Tutorial(int index)
         {
             var b=new Board{Challenge=index,Width=index==2?5:4,Height=index==2?5:4,Budget=index==2?500:300};
@@ -62,10 +70,10 @@ namespace CashflowChains.Domain
         }
         public bool Move(int id,int x,int y)
         {var n=Nodes.FirstOrDefault(z=>z.Id==id);if(n==null||x<0||y<0||x>=Width||y>=Height||(Blocked&(1UL<<(y*Width+x)))!=0||Nodes.Any(z=>z.Id!=id&&z.X==x&&z.Y==y))return false;n.X=x;n.Y=y;return true;}
-        public string Fingerprint()=>Width+"x"+Height+":"+Challenge+":"+Budget+":"+string.Join(";",Nodes.OrderBy(x=>x.Id).Select(n=>$"{n.Id},{n.Kind},{n.X},{n.Y},{n.Rotation},{n.InitialGoods},{n.InitialEnergy}"));
+        public string Fingerprint()=>Width+"x"+Height+":"+Challenge+":"+Budget+":"+ImportQuota+":"+ImportCost+":"+string.Join(";",Nodes.OrderBy(x=>x.Id).Select(n=>$"{n.Id},{n.Kind},{n.X},{n.Y},{n.Rotation},{n.InitialGoods},{n.InitialEnergy}"));
         public void Validate()
         {
-            if(Width<1||Height<1||Width>7||Height>7||Nodes==null||Nodes.Count>Width*Height||Budget<0||Budget>1000000||Challenge<0||Challenge>71)throw new ArgumentException("Invalid board");
+            if(Width<1||Height<1||Width>7||Height>7||Nodes==null||Nodes.Count>Width*Height||Budget<0||Budget>1000000||Challenge<0||Challenge>103||ImportQuota<0||ImportQuota>64||ImportCost<0||ImportCost>10||DraftRoll<0||DraftRoll>100)throw new ArgumentException("Invalid board");
             var ids=new HashSet<int>();var cells=new HashSet<int>();
             foreach(var n in Nodes)
             {
@@ -96,7 +104,7 @@ namespace CashflowChains.Domain
             board.Validate();if(roundBasisPoints<0||roundBasisPoints>80000)throw new ArgumentOutOfRangeException(nameof(roundBasisPoints));
             var nodes=board.Nodes.OrderBy(n=>n.Id).ToArray();int len=nodes.Length;
             var r=new RoundResult();var stock=new int[len,3];var outgoing=new int[len,3];var inbox=new int[len,3];var farmStarted=new bool[len];
-            var sourceCarry=new int[len];
+            var sourceCarry=new int[len];int imported=0;
             var pieces=nodes.Select(n=>Pieces.Get(n.Kind)).ToArray();
             for(int i=0;i<len;i++){stock[i,1]=nodes[i].InitialGoods;stock[i,2]=nodes[i].InitialEnergy;r.Initial[1]+=stock[i,1];r.Initial[2]+=stock[i,2];}
             for(int beat=1;beat<=8;beat++)
@@ -110,7 +118,7 @@ namespace CashflowChains.Domain
                     {if(stock[i,2]<1)continue;stock[i,2]--;r.Consumed[2]++;farmStarted[i]=true;}
                     int amount=p.SourceRate;
                     if(p.Id=="home"||p.Id=="apartment") {int parks=nodes.Count(n=>n.Kind=="park"&&Math.Abs(n.X-nodes[i].X)+Math.Abs(n.Y-nodes[i].Y)==1);sourceCarry[i]+=amount*(10000+parks*1500);amount=sourceCarry[i]/10000;sourceCarry[i]%=10000;}
-                    if(p.Id=="port"){long cost=amount*2L;r.Credits-=cost;r.Events.Add(new FlowEvent{Beat=beat,Source=nodes[i].Id,Target=nodes[i].Id,Credits=-cost,Count=amount,Reason="import"});}
+                    if(p.Id=="port"){if(board.ImportQuota>0)amount=Math.Min(amount,Math.Max(0,board.ImportQuota-imported));imported+=amount;long cost=amount*(board.ImportCost==0?2L:board.ImportCost);r.Credits-=cost;r.Events.Add(new FlowEvent{Beat=beat,Source=nodes[i].Id,Target=nodes[i].Id,Credits=-cost,Count=amount,Reason="import"});}
                     r.Generated[p.SourceKind]+=amount;Add(outgoing,i,p.SourceKind,amount,r);
                 }
                 // Transport a bounded snapshot before processing recipes. Converter output waits a beat.

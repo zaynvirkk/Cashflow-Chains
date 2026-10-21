@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Actual native player input replay. Private X display; no gameplay state injection."""
 import argparse,json,subprocess,time,os,datetime,shutil,hashlib,wave,math,struct
+from ui_map import local_point
 from pathlib import Path
 p=Path(__file__).resolve().parent.parent
 opt=argparse.ArgumentParser();opt.add_argument('--display',default=':1');opt.add_argument('--campaign',required=True);args=opt.parse_args();env={**os.environ,'DISPLAY':args.display};cc=p.name=='CashflowChains'
@@ -21,11 +22,12 @@ def wait_state(name=None):
   except (FileNotFoundError,json.JSONDecodeError):pass
   time.sleep(.15)
  raise AssertionError('State not reached: '+str(name))
-def click(x,y):xd('mousemove','--window',window,round(x*.75),round(y*.75));time.sleep(.08);xd('mousedown','1');time.sleep(.08);xd('mouseup','1');actions.append({'click':[x,y]});time.sleep(.25)
-def key(name):xd('keydown',name);time.sleep(.08);xd('keyup',name);actions.append({'key':name});time.sleep(.25)
+def click(x,y):activate();xd('mousemove','--window',window,*local_point(out,x,y));time.sleep(.08);xd('mousedown','1');time.sleep(.08);xd('mouseup','1');actions.append({'click':[x,y]});time.sleep(.25)
+def key(name):activate();xd('keydown',name);time.sleep(.08);xd('keyup',name);actions.append({'key':name});time.sleep(.25)
 def drag(x,y,tx,ty):
- xd('mousemove','--window',window,round(x*.75),round(y*.75),'mousedown','1');time.sleep(.15)
- for i in range(1,9):xd('mousemove','--window',window,round((x+(tx-x)*i/8)*.75),round((y+(ty-y)*i/8)*.75));time.sleep(.025)
+ activate();ax,ay=local_point(out,x,y);bx,by=local_point(out,tx,ty)
+ xd('mousemove','--window',window,ax,ay,'mousedown','1');time.sleep(.15)
+ for i in range(1,9):xd('mousemove','--window',window,round(ax+(bx-ax)*i/8),round(ay+(by-ay)*i/8));time.sleep(.025)
  xd('mouseup','1');actions.append({'drag':[x,y,tx,ty]});time.sleep(.35)
 def cap(name):
  before=time.time();key('F12');time.sleep(.5);prefix='cashflow' if cc else 'blackbag';files=sorted(out.glob(prefix+'-*.png'),key=lambda f:f.stat().st_mtime);assert files and files[-1].stat().st_mtime>=before,'Fresh capture missing';shutil.copyfile(files[-1],out/(name+'.png'));(out/(name+'.json')).write_text(json.dumps(state(),indent=2))
@@ -41,7 +43,9 @@ def start():
   if proc.poll() is not None:raise RuntimeError('Player exited')
   try:
    window=xd('search','--onlyvisible','--pid',proc.pid).splitlines()[-1];xd('windowraise',window);xd('windowfocus',window)
-   if (out/'campaign-state.json').exists() and (out/'campaign-state.json').stat().st_mtime>=before:return
+   if (out/'ui-layout.json').exists() and (out/'ui-layout.json').stat().st_mtime>=before and json.loads((out/'ui-layout.json').read_text()).get('Screen')=='title':
+    if args.display==':1':xd('windowmove',window,2100,45)
+    activate();time.sleep(1);return
   except subprocess.CalledProcessError:pass
   time.sleep(.2)
  raise RuntimeError('Player timeout')
@@ -55,7 +59,10 @@ campaign=Path(args.campaign);proof=json.loads((campaign/'report.json').read_text
 shutil.copytree(campaign/'Saves',out/'Saves')
 input_saves={f.name:hashlib.sha256(f.read_bytes()).hexdigest() for f in (out/'Saves').iterdir() if f.is_file()}
 try:
- start();activate();time.sleep(2);click(360,1060);time.sleep(1)
+ start();activate();time.sleep(2)
+ for attempt in range(3):
+  if state()['Screen']!='title':break
+  activate();click(360,1060);time.sleep(1)
  if not cc and state()['Screen']=='result':click(360,1100)
  wait_state('board');profile=state()['Save']['Profile'];assert sum(profile['Stars'])==216;wallet=profile['Credits'];cap('01-earned-campaign')
  if cc:

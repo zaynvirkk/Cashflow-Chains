@@ -1,56 +1,35 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.Purchasing;
-using LocalGame.Data;
+using System;using System.Collections.Generic;using System.Linq;using System.Threading.Tasks;using System.Security.Cryptography;using System.Text;using UnityEngine;using UnityEngine.Purchasing;using LocalGame.Data;
 namespace LocalGame {
  [Serializable] public sealed class StoreConfiguration {public bool EnableGooglePlay;public string GooglePublicKeyBase64="";}
+ // Only this adapter crosses the platform purchase boundary. No Fake Store in a player build.
  public sealed class LocalStore:MonoBehaviour {
-  StoreController controller;Profile profile;Func<bool> save;string sku;StoreConfiguration config;Product product;bool connecting;
-  public string Status{get;private set;}="Purchases are unavailable in this local edition.";
-  public string Price=>Ready?product.metadata.localizedPriceString:null;public bool Ready=>product!=null&&product.availableToPurchase&&config!=null&&config.EnableGooglePlay;
-  public bool Owned=>profile!=null&&profile.Entitlements.Contains(sku);
-  public void Setup(Profile p,Func<bool> persist,bool city){profile=p;save=persist;sku=city?"cc.skin.neon":"bb.cosmetic.noir";}
-  public async Task Connect(){await Task.CompletedTask;
-   if(connecting||controller!=null)return;var text=Resources.Load<TextAsset>("StoreConfiguration");
-   if(!text){Status="The store is not enabled in this build.";return;}try{config=JsonUtility.FromJson<StoreConfiguration>(text.text);}catch(Exception){Status="Store configuration is invalid.";return;}
+  StoreController controller;Profile profile;Func<bool> save;StoreConfiguration config;readonly Dictionary<string,Product> products=new Dictionary<string,Product>();bool connecting,inFlight;string legacySku="cc.skin.neon";
+  public event Action Changed;public string Status{get;private set;}="Google Play purchases are not connected in this build.";
+  public string Price=>PriceFor(legacySku);public bool Ready=>ReadyFor(legacySku);public bool Owned=>profile!=null&&profile.Entitlements.Contains(legacySku);
+  public void Setup(Profile p,Func<bool> persist,bool city=true){profile=p;save=persist;}
+  void Notice(string text){Status=text;Changed?.Invoke();}
+  public string PriceFor(string id)=>ReadyFor(id)?products[id].metadata.localizedPriceString:null;
+  public bool ReadyFor(string id)=>!inFlight&&controller!=null&&products.TryGetValue(id,out var product)&&product.availableToPurchase&&product.metadata!=null&&product.metadata.localizedPrice>0&&!string.IsNullOrEmpty(product.metadata.localizedPriceString);
+  List<ProductDefinition> Definitions()=>CommerceCatalog.All.Select(p=>new ProductDefinition(p.Id,p.Consumable?ProductType.Consumable:ProductType.NonConsumable)).ToList();
+  public async Task Connect(){await Task.CompletedTask;if(connecting||controller!=null)return;var text=Resources.Load<TextAsset>("StoreConfiguration");if(!text)return;try{config=JsonUtility.FromJson<StoreConfiguration>(text.text);}catch(Exception){Notice("Store configuration could not be read. Your game remains playable.");return;}
 #if !UNITY_ANDROID || UNITY_EDITOR
-   Status="Native store purchases require the Google Play edition. No fake store is used.";return;
+   Notice("Purchases use Google Play in the Android edition. Nothing can be purchased on this laptop.");return;
 #else
-   if(config==null||!config.EnableGooglePlay||string.IsNullOrWhiteSpace(config.GooglePublicKeyBase64)){Status="The store is not configured. No purchase can begin.";return;}
-   try{new UnityEngine.Purchasing.Security.CrossPlatformValidator(Convert.FromBase64String(config.GooglePublicKeyBase64),Application.identifier);}catch(Exception){Status="Store validation configuration is invalid. No purchase can begin.";return;}
-   connecting=true;try{
-    controller=UnityIAPServices.StoreController();
-    controller.OnStoreConnected+=()=>controller.FetchProducts(new List<ProductDefinition>{new ProductDefinition(sku,ProductType.NonConsumable)});
-    controller.OnStoreDisconnected+=failure=>{product=null;Status="Store connection unavailable. Your game remains playable.";};
-    controller.OnProductsFetched+=products=>{product=products.FirstOrDefault(p=>p.definition.id==sku);Status=product==null?"This cosmetic is unavailable.":"Optional cosmetic. No purchase is needed to play.";controller.FetchPurchases();};
-    controller.OnProductsFetchFailed+=failure=>{product=null;Status="The store could not load this product. Try again later.";};
-    controller.OnPurchasesFetched+=orders=>{foreach(var order in orders.ConfirmedOrders)Deliver(order);foreach(var order in orders.PendingOrders)Pending(order);};
-    controller.OnPurchasesFetchFailed+=failure=>Status="Purchase history unavailable. Nothing was changed.";
-    controller.OnPurchasePending+=Pending;controller.OnPurchaseFailed+=failure=>Status="Purchase was not completed. Nothing was granted.";
-    controller.OnPurchaseDeferred+=order=>Status="Awaiting platform approval. No content has been granted.";
-    controller.OnPurchaseConfirmed+=order=>Status=order is ConfirmedOrder?"Cosmetic delivered and saved.":"Confirmation failed. The store can safely redeliver.";
-    controller.OnAuthAccountChanged+=()=>{product=null;controller.FetchProducts(new List<ProductDefinition>{new ProductDefinition(sku,ProductType.NonConsumable)});};
-    await controller.Connect();
-   }catch(Exception){controller=null;product=null;Status="Could not connect to the store.";}finally{connecting=false;}
+   if(config==null||!config.EnableGooglePlay||string.IsNullOrWhiteSpace(config.GooglePublicKeyBase64))return;
+   try{new UnityEngine.Purchasing.Security.CrossPlatformValidator(Convert.FromBase64String(config.GooglePublicKeyBase64),Application.identifier);}catch(Exception){Notice("Google Play validation is not configured. No purchase can begin.");return;}
+   connecting=true;Notice("Connecting to Google Play…");try{controller=UnityIAPServices.StoreController();controller.OnStoreConnected+=()=>controller.FetchProducts(Definitions());controller.OnStoreDisconnected+=failure=>{products.Clear();inFlight=false;Notice("Google Play is offline. Your core game and saved purchases remain available.");};controller.OnProductsFetched+=items=>{products.Clear();foreach(var item in items)products[item.definition.id]=item;Notice("Prices loaded from Google Play.");controller.FetchPurchases();};controller.OnProductsFetchFailed+=failure=>{products.Clear();Notice("Google Play could not load its prices. Nothing can be charged.");};controller.OnPurchasesFetchFailed+=failure=>Notice("Purchase history is unavailable. Existing ownership was preserved.");controller.OnPurchasesFetched+=History;controller.OnPurchasePending+=Pending;controller.OnPurchaseDeferred+=order=>{inFlight=false;Notice("Awaiting platform approval. No content has been granted.");};controller.OnPurchaseFailed+=order=>{inFlight=false;Notice("Purchase was canceled or could not complete. Nothing was granted.");};controller.OnPurchaseConfirmed+=order=>{inFlight=false;Notice(order is ConfirmedOrder?"Purchase delivered and saved.":"Confirmation did not finish. Google Play can safely redeliver.");};controller.OnCheckEntitlement+=entitlement=>{if(entitlement.Status==EntitlementStatus.Unknown)Notice("Ownership could not be checked. Existing access was preserved.");};controller.OnAuthAccountChanged+=()=>{products.Clear();inFlight=false;controller.FetchProducts(Definitions());};await controller.Connect();}catch(Exception){controller=null;products.Clear();Notice("Google Play could not connect. Try again later.");}finally{connecting=false;}
 #endif
   }
-  public bool Buy(){if(!Ready||Owned)return false;controller.PurchaseProduct(product);Status="Waiting for the platform…";return true;}
-  public bool Restore(){if(controller==null){Status="Restore is unavailable until the real store is connected.";return false;}controller.RestoreTransactions((ok,message)=>Status=ok?"Restore requested. Verified entitlements will be saved.":"Restore did not complete. Nothing was changed.");return true;}
-  void Pending(PendingOrder order){if(Deliver(order))controller.ConfirmPurchase(order);}
-  bool Deliver(Order order){
+  public bool Buy()=>Buy(legacySku);
+  public bool Buy(string id){if(profile==null||!ReadyFor(id)||!CommerceCatalog.Eligible(profile,id))return false;inFlight=true;Notice("Waiting for the Google Play purchase sheet…");try{controller.PurchaseProduct(products[id]);return true;}catch(Exception){inFlight=false;Notice("The purchase sheet could not open. Nothing was granted.");return false;}}
+  public bool Restore(){if(controller==null){Notice("Restore requires the Android edition connected to the same Google Play account.");return false;}controller.RestoreTransactions((ok,message)=>{Notice(ok?"Restore requested. Ownership will be checked before any change.":"Restore did not complete. Existing ownership was preserved.");if(ok)controller.FetchPurchases();});return true;}
+  void Pending(PendingOrder order){if(Deliver(order,out _))controller.ConfirmPurchase(order);}
+  void History(Orders orders){var owned=new List<string>();bool verified=true;foreach(var order in orders.ConfirmedOrders){if(Deliver(order,out var sku)){if(!CommerceCatalog.Get(sku).Consumable)owned.Add(sku);}else verified=false;}foreach(var order in orders.PendingOrders){if(Deliver(order,out var sku)){if(!CommerceCatalog.Get(sku).Consumable)owned.Add(sku);controller.ConfirmPurchase(order);}else verified=false;}if(!verified){Notice("Some purchase history could not be verified. Existing ownership was preserved.");return;}string previous=JsonUtility.ToJson(profile);profile.ReconcilePurchases(owned,true);if(!save()){JsonUtility.FromJsonOverwrite(previous,profile);Notice("Could not save restored ownership. Try again before changing devices.");return;}Changed?.Invoke();}
+  bool Deliver(Order order,out string sku){sku=null;
 #if UNITY_ANDROID && !UNITY_EDITOR
-   try{
-    if(order?.Info==null||order.CartOrdered.Items().Count!=1||order.CartOrdered.Items()[0].Product.definition.id!=sku)return false;
-    var validator=new UnityEngine.Purchasing.Security.CrossPlatformValidator(Convert.FromBase64String(config.GooglePublicKeyBase64),Application.identifier);
-    var receipts=validator.Validate(order.Info.Receipt);var valid=receipts.OfType<UnityEngine.Purchasing.Security.GooglePlayReceipt>().SingleOrDefault(r=>r.productID==sku&&r.transactionID==order.Info.TransactionID&&r.purchaseState==UnityEngine.Purchasing.Security.GooglePurchaseState.Purchased);
-    if(valid==null||string.IsNullOrEmpty(valid.transactionID)){Status="Receipt could not be verified. Nothing was granted.";return false;}
-    profile.GrantCosmetic(sku,valid.transactionID);if(!save()){Status="Save unavailable. Purchase is unconfirmed and can be redelivered.";return false;}return true;
-   }catch(Exception){Status="Receipt verification failed. No purchase was confirmed.";return false;}
+   try{if(order?.Info==null||order.CartOrdered.Items().Count!=1)return false;sku=order.CartOrdered.Items()[0].Product.definition.id;var item=CommerceCatalog.Get(sku);var validator=new UnityEngine.Purchasing.Security.CrossPlatformValidator(Convert.FromBase64String(config.GooglePublicKeyBase64),Application.identifier);var receipts=validator.Validate(order.Info.Receipt);string wanted=sku;var valid=receipts.OfType<UnityEngine.Purchasing.Security.GooglePlayReceipt>().SingleOrDefault(r=>r.productID==wanted&&r.transactionID==order.Info.TransactionID&&r.purchaseState==UnityEngine.Purchasing.Security.GooglePurchaseState.Purchased);if(valid==null||string.IsNullOrEmpty(valid.transactionID)){Notice("The purchase receipt could not be verified. Nothing was granted.");return false;}string reference;using(var hash=SHA256.Create())reference=Convert.ToBase64String(hash.ComputeHash(Encoding.UTF8.GetBytes(valid.transactionID)));string previous=JsonUtility.ToJson(profile);profile.ApplyPurchase(sku,reference);try{Profile.Validate(profile);if(save())return true;}catch(Exception){}JsonUtility.FromJsonOverwrite(previous,profile);Notice("Save unavailable. The purchase remains unconfirmed for safe redelivery.");return false;}catch(Exception){Notice("Purchase verification failed. No order was confirmed.");return false;}
 #else
-   Status="This build cannot verify platform receipts.";return false;
+   Notice("This build cannot verify Google Play purchases.");return false;
 #endif
   }
  }

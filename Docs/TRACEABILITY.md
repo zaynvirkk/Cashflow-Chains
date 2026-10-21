@@ -7,7 +7,7 @@ The later operator instruction supersedes the initial kickoff stop. Rows disting
 | CC-P00 | Pinned project, reproducible scene, headless build/test, atomic save | PASS local; Linux and ARM64 APK |
 | CC-P01 | Native drag/tap/rotate/preview; domain-authoritative actions | PASS native and emulator touch |
 | CC-P02 | Deterministic rules, score/economy and randomized invariant tests | PASS 39 tests, including 10k cases |
-| CC-P03 | Original flat art/audio, previews, responsive feedback | Implemented; actual captures and mix checked; human preference unknown |
+| CC-P03 | Painted art, material controls, particles, motion and stereo audio | Visual revision 2 implemented; actual captures, movies and mix checked; human preference unknown |
 | CC-P04 | Playable opening and free progression | Implemented; novice comprehension and 15-minute human study unknown |
 | CC-P05 | Full catalogs, six locations and normalized 72-case campaign | PASS 72 visible-input three-star witnesses; original seeds unchanged |
 | CC-P06 | Offline progression, earned loadouts/blueprints/contracts, saves | Implemented; domain and earned UI tests; source generators/witness exporter retained |

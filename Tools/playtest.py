@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Actual native player input replay. Private X display; no gameplay state injection."""
-import argparse,json,subprocess,time,os,datetime,shutil,hashlib,wave,math,struct
+import argparse,json,subprocess,time,os,datetime,shutil,hashlib,wave,math,struct,signal
+from ui_map import local_point
 from pathlib import Path
 p=Path(__file__).resolve().parent.parent
 opt=argparse.ArgumentParser();opt.add_argument('--display',default=':93');args=opt.parse_args();env={**os.environ,'DISPLAY':args.display};cc=p.name=='CashflowChains'
 out=p/'Artifacts/Playtest'/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out.mkdir(parents=True)
-actions=[];proc=None;window=None
+actions=[];proc=None;window=None;movie=None
 
 def xd(*v):return subprocess.check_output(['xdotool',*map(str,v)],env=env,text=True,stderr=subprocess.DEVNULL,timeout=10).strip()
 def activate():
@@ -21,11 +22,12 @@ def wait_state(name=None):
   except (FileNotFoundError,json.JSONDecodeError):pass
   time.sleep(.15)
  raise AssertionError('State not reached: '+str(name))
-def click(x,y):xd('mousemove','--window',window,round(x*.75),round(y*.75),'click','1');actions.append({'click':[x,y]});time.sleep(.25)
-def key(name):xd('keydown',name);time.sleep(.08);xd('keyup',name);actions.append({'key':name});time.sleep(.25)
+def click(x,y):activate();xd('mousemove','--window',window,*local_point(out,x,y),'mousedown','1');time.sleep(.08);xd('mouseup','1');actions.append({'click':[x,y]});time.sleep(.25)
+def key(name):activate();xd('keydown',name);time.sleep(.08);xd('keyup',name);actions.append({'key':name});time.sleep(.25)
 def drag(x,y,tx,ty):
- xd('mousemove','--window',window,round(x*.75),round(y*.75),'mousedown','1');time.sleep(.15)
- for i in range(1,9):xd('mousemove','--window',window,round((x+(tx-x)*i/8)*.75),round((y+(ty-y)*i/8)*.75));time.sleep(.025)
+ activate();ax,ay=local_point(out,x,y);bx,by=local_point(out,tx,ty)
+ xd('mousemove','--window',window,ax,ay,'mousedown','1');time.sleep(.15)
+ for i in range(1,9):xd('mousemove','--window',window,round(ax+(bx-ax)*i/8),round(ay+(by-ay)*i/8));time.sleep(.025)
  xd('mouseup','1');actions.append({'drag':[x,y,tx,ty]});time.sleep(.35)
 def cap(name):
  before=time.time();key('F12');time.sleep(.5);prefix='cashflow' if cc else 'blackbag';files=sorted(out.glob(prefix+'-*.png'),key=lambda f:f.stat().st_mtime);assert files and files[-1].stat().st_mtime>=before,'Fresh capture missing';shutil.copyfile(files[-1],out/(name+'.png'));(out/(name+'.json')).write_text(json.dumps(state(),indent=2))
@@ -41,17 +43,22 @@ def start():
   if proc.poll() is not None:raise RuntimeError('Player exited')
   try:
    window=xd('search','--onlyvisible','--pid',proc.pid).splitlines()[-1];xd('windowraise',window);xd('windowfocus',window)
-   if (out/'campaign-state.json').exists() and (out/'campaign-state.json').stat().st_mtime>=before:return
+   if (out/'ui-layout.json').exists() and (out/'ui-layout.json').stat().st_mtime>=before and json.loads((out/'ui-layout.json').read_text()).get('Screen')=='title':
+    if args.display==':1':xd('windowmove',window,2100,45)
+    activate();time.sleep(1);return
   except subprocess.CalledProcessError:pass
   time.sleep(.2)
  raise RuntimeError('Player timeout')
+def begin_movie():
+ global movie
+ movie=subprocess.Popen(['ffmpeg','-hide_banner','-loglevel','error','-y','-f','x11grab','-window_id',window,'-framerate','30','-video_size','540x960','-i',args.display,'-t','25','-an','-c:v','libx264','-threads','2','-preset','ultrafast','-crf','21','-pix_fmt','yuv420p',str(out/'actual-first-session.mp4')],stdout=subprocess.DEVNULL,stderr=open(out/'movie-log.txt','w'))
 def stop():
  if proc is not None and proc.poll() is None:
   proc.terminate()
   try:proc.wait(timeout=12)
   except subprocess.TimeoutExpired:proc.kill();proc.wait(timeout=5)
 try:
- start();activate();time.sleep(1);# title probe written on Save/Board, title initially no Probe, fixed in production
+ start();activate();time.sleep(1);begin_movie();# title probe written on Save/Board, title initially no Probe, fixed in production
  cap('01-title');click(360,1060);wait_state('board');cap('02-first-case')
  if cc:
   wallet=state()['Save']['Profile']['Credits'];click(630,1030);cap('25-building-tray');click(620,660);click(118,390);assert len(state()['Save']['Board']['Nodes'])==3;assert state()['Save']['Profile']['Credits']==wallet;key('z');assert len(state()['Save']['Board']['Nodes'])==2
@@ -87,7 +94,7 @@ try:
   click(360,914);wait_state('hideout');cap('19-hideout');desk()
  # daily opens a certified advanced puzzle through actual UI, never by save injection
  click(360,506);cap('20-daily-offer');click(360,1068);wait_state('board');cap('21-daily-board');desk()
- click(360,1118);cap('22-about');click(360,1070);cap('23-store-unavailable');before=state()['Save']['Profile']['Credits'];click(360,1080);assert state()['Save']['Profile']['Credits']==before;key('Escape');desk()
+ click(360,1118);cap('22-free-edition-about');before=state()['Save']['Profile']['Credits'];layout=json.loads((out/'ui-layout.json').read_text());assert not any(any(word in e['Name'].upper() for word in ['PURCHASE','RESTORE','UNAVAILABLE']) for e in layout['Elements'] if e['Priority']>1000);key('Escape');assert state()['Save']['Profile']['Credits']==before;desk()
  click(360,1016);wait_state('settings');cap('08-settings');click(360,320);click(360,658);click(360,770);s=state()['Save']['Profile'];assert not s['Music'] and s['ReducedMotion'] and s['HighContrast'];key('Escape')
  # portrait / short / landscape fit; allow one draw after resize
  for w,h,label in [(540,960,'laptop'),(720,1600,'tall'),(720,1024,'short'),(1080,720,'landscape')]:

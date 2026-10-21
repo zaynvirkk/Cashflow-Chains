@@ -14,3 +14,7 @@ __pycache__/
 /Tools/.art-env/
 
 .utmp/
+
+/.local-signing/
+*.keystore
+*.jks
