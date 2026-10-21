@@ -1,0 +1,5 @@
+{
+  "scope": "Captured logcat tail; full log retained. No errors found by listed signatures.",
+  "signatures": "FATAL EXCEPTION, AndroidRuntime Exception/Error, Fatal signal, NullReferenceException, MissingMethodException, DllNotFoundException",
+  "matches": []
+}

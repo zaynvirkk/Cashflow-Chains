@@ -11,162 +11,253 @@
     },
     "result": {
       "Summary": {
-        "Total": 21,
-        "Passed": 21,
+        "Total": 34,
+        "Passed": 34,
         "Failed": 0,
         "Skipped": 0,
         "Inconclusive": 0
       },
       "Results": [
         {
+          "FullName": "CampaignTests.All24BuildingRecipesAreNormalized",
+          "Status": "Passed",
+          "Duration": 0.022692,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CampaignTests.All72ReferenceNetworksAreFreeLegalAndThreeStar",
+          "Status": "Passed",
+          "Duration": 0.0926045,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CampaignTests.BlockedTilesRejectMovementAndPreviewIsPure",
+          "Status": "Passed",
+          "Duration": 0.0028985,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CampaignTests.PortCostsAreInTheMoneyLedger",
+          "Status": "Passed",
+          "Duration": 0.0005705,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CampaignTests.ProfileRejectsForgedCurrencyAndMalformedStars",
+          "Status": "Passed",
+          "Duration": 0.0048196,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "CampaignTests.RewardReplaysNeverFarmCredits",
+          "Status": "Passed",
+          "Duration": 0.0527053,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "ContractTests.DailyUsesUtcCalendarAndCertified72Pool",
+          "Status": "Passed",
+          "Duration": 0.0376112,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "ContractTests.OfflineContractReturnsExactlyOnceAndClockRollbackCannotCollect",
+          "Status": "Passed",
+          "Duration": 0.0051658,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
           "FullName": "CoreTests.BanksApplyOnceEvenWhenSeveralTouchOutlet",
           "Status": "Passed",
-          "Duration": 0.0269609,
+          "Duration": 0.0011931,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.EveryLaboratoryBoardHasAFreeLegalWitness",
           "Status": "Passed",
-          "Duration": 0.0046443,
+          "Duration": 0.0007811,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.ExactlyOnceActivationAndFirstClearReward",
           "Status": "Passed",
-          "Duration": 0.0030921,
+          "Duration": 0.0019929,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.FactoryConversionRecordsBothConsumptionAndProduction",
           "Status": "Passed",
-          "Duration": 0.0003429,
+          "Duration": 0.0003284,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.InvalidMoveAndPreviewNeverMutateBoard",
           "Status": "Passed",
-          "Duration": 0.0016349,
+          "Duration": 0.0002509,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.MissingGoodsMeansNoSales",
           "Status": "Passed",
-          "Duration": 0.0002185,
+          "Duration": 0.000213,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.OneBankOnlyAmplifiesOneOutlet",
           "Status": "Passed",
-          "Duration": 0.0006757,
+          "Duration": 0.0006536,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.RejectInvalidDefinitionsBudgetsAndMultipliers",
           "Status": "Passed",
-          "Duration": 0.0032278,
+          "Duration": 0.0016065,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.ResumeRestoresBoardAndRewardIdentity",
           "Status": "Passed",
-          "Duration": 0.0017573,
+          "Duration": 0.0013956,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.RotationImmediatelyBreaksPathAndUndoRestoresIt",
           "Status": "Passed",
-          "Duration": 0.0007698,
+          "Duration": 0.0007263,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.StableNodeIdentitySurvivesContainerOrderChanges",
           "Status": "Passed",
-          "Duration": 0.0014494,
+          "Duration": 0.001206,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.StockTraversesARealFourNodeCycleWithoutMultiplication",
           "Status": "Passed",
-          "Duration": 0.0012491,
+          "Duration": 0.0007138,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.TenThousandSeededBoardsConserveAndReplay",
           "Status": "Passed",
-          "Duration": 1.2716442,
+          "Duration": 1.3526135,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.TutorialHasVisibleFiniteSuppliesAndExactSevenSalesBeats",
           "Status": "Passed",
-          "Duration": 0.000679,
+          "Duration": 0.0004946,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "CoreTests.WarehouseCannotCreateGoodsInCycle",
           "Status": "Passed",
-          "Duration": 0.0013007,
+          "Duration": 0.000485,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "ProductionRoutingTests.AllEightCombosCanActuallyBeDemonstrated",
+          "Status": "Passed",
+          "Duration": 0.0201076,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "ProductionRoutingTests.EveryBuildingAppearsInTheFreeCampaign",
+          "Status": "Passed",
+          "Duration": 0.0082734,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "ProductionRoutingTests.FactoryForkFeedsBothLegalCashOutlets",
+          "Status": "Passed",
+          "Duration": 0.0011067,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "SaveTests.AtomicRoundTripAndBackupRecovery",
           "Status": "Passed",
-          "Duration": 0.0187662,
+          "Duration": 0.0232011,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "SaveTests.FreshSaveIsAbsentWithoutError",
           "Status": "Passed",
-          "Duration": 0.0005559,
+          "Duration": 0.000529,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "SaveTests.FullGameJsonRoundTripRetainsLedgerAndResolvedBoard",
           "Status": "Passed",
-          "Duration": 0.0046361,
+          "Duration": 0.0054663,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "SaveTests.InvalidDomainStateRejectedDespiteValidChecksum",
           "Status": "Passed",
-          "Duration": 0.0038455,
+          "Duration": 0.0046104,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "SaveTests.NoSilentResetWhenBothCopiesCorrupt",
           "Status": "Passed",
-          "Duration": 0.0135688,
+          "Duration": 0.0070597,
           "Message": null,
           "StackTrace": null
         },
         {
           "FullName": "SaveTests.RecoveryWritePreservesLastKnownGoodBackup",
           "Status": "Passed",
-          "Duration": 0.0163099,
+          "Duration": 0.01052,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "StoreTests.MissingRealStoreConfigFailsClosedWithoutPricesOrGrants",
+          "Status": "Passed",
+          "Duration": 0.0018488,
+          "Message": null,
+          "StackTrace": null
+        },
+        {
+          "FullName": "StoreTests.PureDomainCosmeticDeliveryIsIdempotentFixtureOnly",
+          "Status": "Passed",
+          "Duration": 0.0007378,
           "Message": null,
           "StackTrace": null
         }
       ],
-      "Duration": 4.21,
+      "Duration": 5.66,
       "StatusPath": null,
       "Mode": "EditMode",
       "FilterApplied": "assembly: CashflowChains.Tests",

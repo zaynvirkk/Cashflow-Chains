@@ -24,6 +24,7 @@ namespace LocalGame
                 recoveredBackup=false;
             }
         }
+        public string ArchiveForReset(){lock(gate){string suffix=".archived-"+Guid.NewGuid().ToString("N");foreach(string file in new[]{path,path+".bak",path+".tmp"})if(File.Exists(file))File.Move(file,file+suffix);recoveredBackup=false;return suffix;}}
         public T Read<T>(Action<T> validate,out string status) where T:class
         {
             status="New local game";if(!File.Exists(path)&&!File.Exists(path+".bak"))return null;

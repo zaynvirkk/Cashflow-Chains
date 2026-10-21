@@ -2,11 +2,9 @@
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 platform="${1:-linux}"
-case "$platform" in linux) method=Linux;; android) method=Android;; *) echo 'Use linux or android' >&2;exit 2;; esac
-mkdir -p "$root/Artifacts/Logs"
-unity command eval --caller plugin --skill unity-cli --project-path "$root" --timeout 1800 --format json -- --code "BuildProject.$method(); return \"Build complete\";" --timeout 1800000 > "$root/Artifacts/Logs/build-$platform.json"
-python3 - "$root/Artifacts/Logs/build-$platform.json" <<'PYBUILD'
-import json,sys
-r=json.load(open(sys.argv[1]));print(r)
-if not r.get('success') or not r.get('data',{}).get('result',{}).get('success'):raise SystemExit(1)
-PYBUILD
+case "$platform" in linux) method=Linux; target=StandaloneLinux64;; android) method=Android; target=Android;; *) echo 'Use linux or android' >&2; exit 2;; esac
+cd "$root"
+mkdir -p Artifacts/Logs
+trap 'python3 "$root/Tools/sanitize-logs.py" "$root/Artifacts/Logs/$platform-release-build.log"' EXIT
+# One Unity process at a time; cap workers after the laptop memory incident.
+DOTNET_PROCESSOR_COUNT=4 taskset -c 0-3 unity build "$root" --target "$target" --execute-method "BuildProject.$method" --args '-job-worker-count 2' --log-file "$root/Artifacts/Logs/$platform-release-build.log" --no-tail

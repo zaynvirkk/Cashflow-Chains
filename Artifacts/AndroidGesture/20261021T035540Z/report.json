@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "method": "Android system gestural navigation enabled; revealed immersive system navigation with a bottom-edge swipe, then actual left-edge swipe through adb input from x=8 to half-screen over 220 ms. Board -> menu observed, no KEYCODE_BACK substitution.",
+  "activity": "com.virkgames.cashflowchains/com.virkgames.platform.GameEntryActivity",
+  "apk_sha256": "2638ec5b89fbd2b64157c74b9707b8134651cc97f4968d9188dd946d1ead6da3",
+  "before": "board",
+  "after": "menu"
+}

@@ -1,6 +1,8 @@
-# CashflowChains implementation plan
+# CashflowChains initial implementation plan
 
-Authority: operator request dated 20 October 2026 and supplied package. Build two independent projects; no shared runtime dependency. Kickoff scope is CC-P00 through CC-P02 only. Supplied catalogs remain explicitly unvalidated in Docs/SourcePackage/data.
+Historical kickoff plan below. The later operator instruction authorizes the full local mobile/laptop edition; see FULL_PLAYTEST_BUILD.md, TRACEABILITY.md and MOBILE_ACCEPTANCE.md for current work and acceptance. Old milestone permission stops do not apply to the authorized local work.
+
+Original authority: operator request dated 20 October 2026 and supplied package. Build two independent projects; no shared runtime dependency. Kickoff scope is CC-P00 through CC-P02 only. Supplied catalogs remain explicitly unvalidated in Docs/SourcePackage/data.
 
 | Milestone | Files / work | Required proof |
 |---|---|---|

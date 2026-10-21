@@ -21,7 +21,12 @@ namespace LocalGame
     public sealed class SafeCanvas:MonoBehaviour
     {
         public RectTransform Safe;Rect last;int w,h;
-        void Update(){if(last==Screen.safeArea&&w==Screen.width&&h==Screen.height)return;last=Screen.safeArea;w=Screen.width;h=Screen.height;Safe.anchorMin=new Vector2(last.x/w,last.y/h);Safe.anchorMax=new Vector2(last.xMax/w,last.yMax/h);Safe.offsetMin=Safe.offsetMax=Vector2.zero;}
+        void Update(){if(Screen.width<1||Screen.height<1)return;if(last==Screen.safeArea&&w==Screen.width&&h==Screen.height)return;last=Screen.safeArea;w=Screen.width;h=Screen.height;Safe.anchorMin=new Vector2(last.x/w,last.y/h);Safe.anchorMax=new Vector2(last.xMax/w,last.yMax/h);Safe.offsetMin=Safe.offsetMax=Vector2.zero;}
+    }
+    public sealed class PortraitFit:MonoBehaviour
+    {
+        public RectTransform Safe;
+        void LateUpdate(){if(!Safe)return;float fit=Mathf.Min(Safe.rect.width/720f,Safe.rect.height/1280f);if(fit>0)transform.localScale=new Vector3(fit,fit,1);}
     }
     public static class FlatUI
     {
@@ -34,7 +39,7 @@ namespace LocalGame
             var scaler=go.GetComponent<CanvasScaler>();scaler.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;scaler.referenceResolution=new Vector2(720,1280);scaler.matchWidthOrHeight=0.5f;
             var fill=Panel(go.transform,"Backdrop",0,0,720,1280,background);fill.anchorMin=Vector2.zero;fill.anchorMax=Vector2.one;fill.offsetMin=fill.offsetMax=Vector2.zero;
             var safe=new GameObject("SafeArea",typeof(RectTransform)).GetComponent<RectTransform>();safe.SetParent(go.transform,false);safe.anchorMin=Vector2.zero;safe.anchorMax=Vector2.one;safe.offsetMin=safe.offsetMax=Vector2.zero;go.AddComponent<SafeCanvas>().Safe=safe;
-            var root=new GameObject("PortraitContent",typeof(RectTransform),typeof(AspectRatioFitter)).GetComponent<RectTransform>();root.SetParent(safe,false);root.GetComponent<AspectRatioFitter>().aspectMode=AspectRatioFitter.AspectMode.FitInParent;root.GetComponent<AspectRatioFitter>().aspectRatio=720f/1280f;
+            var root=new GameObject("PortraitContent",typeof(RectTransform),typeof(PortraitFit)).GetComponent<RectTransform>();root.SetParent(safe,false);root.anchorMin=root.anchorMax=new Vector2(.5f,.5f);root.anchoredPosition=Vector2.zero;root.sizeDelta=new Vector2(720,1280);root.GetComponent<PortraitFit>().Safe=safe;
             if(!UnityEngine.Object.FindFirstObjectByType<EventSystem>())new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));
             return root;
         }
@@ -65,7 +70,6 @@ namespace LocalGame
         {var args=Environment.GetCommandLineArgs();int i=Array.IndexOf(args,key);return i>=0&&i+1<args.Length?args[i+1]:null;}
         public static void Capture(string game)
         {
-            if(!Debug.isDebugBuild&&!Application.isEditor)return;
             string directory=Arg("-capture-dir");if(directory==null)return;Directory.CreateDirectory(directory);ScreenCapture.CaptureScreenshot(Path.Combine(directory,game+"-"+DateTime.UtcNow.ToString("HHmmssfff")+".png"));
         }
     }

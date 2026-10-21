@@ -1,24 +1,12 @@
 {
-  "success": true,
-  "command": "command eval",
-  "data": {
-    "command": "eval",
-    "parameters": {
-      "code": "BuildProject.Linux(); return \"Build complete\";",
-      "timeout": "1800000"
-    },
-    "result": {
-      "output": null,
-      "diagnostics": [],
-      "success": true,
-      "result": "Build complete"
-    },
-    "target": {
-      "host": "127.0.0.1",
-      "port": 7800,
-      "projectPath": "/home/virk/Projects/CashflowChains"
+  "success": false,
+  "command": "unity command eval",
+  "data": null,
+  "errors": [
+    {
+      "code": "COMMAND_FAILED",
+      "message": "Failed to execute command 'eval': Network error: An error occurred while sending the request."
     }
-  },
-  "errors": [],
+  ],
   "warnings": []
 }

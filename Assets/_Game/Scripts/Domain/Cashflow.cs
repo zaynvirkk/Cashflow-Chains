@@ -24,7 +24,21 @@ namespace CashflowChains.Domain
             new Piece("grocer","GROCER","2 customers + 1 goods = 110 cr",110,12,0,new[]{2,1,0},rate:2,credits:110),
             new Piece("bank","BANK","+25% adjacent outlet · once",150,15,0),
             new Piece("office","OFFICE","1 customer / beat · +10% adjacent sales",100,0,2,source:0,sourceRate:1),
-            new Piece("park","PARK","+5% adjacent cafe sales",50,0,0)
+            new Piece("park","PARK","+15% nearby residents; +5% cafe sales",50,0,0),
+            new Piece("market","MARKET","2 customers + 2 goods = 180",130,12,0,new[]{2,2,0},rate:2,credits:180),
+            new Piece("logistics","LOGISTICS","6 goods / beat; bridges one empty tile",100,9,6,new[]{0,1,0},new[]{0,1,0},6),
+            new Piece("apartment","APARTMENT","5 customers / beat",130,0,2,source:0,sourceRate:5),
+            new Piece("boutique","BOUTIQUE","1 customer + 2 goods = 170",150,12,0,new[]{1,2,0},rate:2,credits:170),
+            new Piece("port","PORT","4 imported goods / beat; 2 cr per unit",100,0,2,source:1,sourceRate:4),
+            new Piece("landmark","LANDMARK","3 different profitable shops: +25% round",160,0,0),
+            new Piece("diner","DINER","1 customer + 1 goods = 90",110,12,0,new[]{1,1,0},rate:2,credits:90),
+            new Piece("shopping_mall","MALL","3 customers + 3 goods = 330",220,12,0,new[]{3,3,0},rate:2,credits:330),
+            new Piece("tech_office","TECH OFFICE","3 customers / beat; +10% adjacent sales",180,0,2,source:0,sourceRate:3),
+            new Piece("recycler","RECYCLER","2 goods + 1 energy = 4 goods",100,9,6,new[]{0,2,1},new[]{0,4,0},2),
+            new Piece("freight_yard","FREIGHT","10 goods / beat",130,9,6,new[]{0,1,0},new[]{0,1,0},10),
+            new Piece("hotel","HOTEL","2 customers + 1 goods = 140",150,12,0,new[]{2,1,0},rate:2,credits:140),
+            new Piece("stadium","STADIUM","5 customers + 1 goods = 360",230,12,0,new[]{5,1,0},rate:1,credits:360),
+            new Piece("solar_array","SOLAR","3 energy / beat",60,0,2,source:2,sourceRate:3)
         };
         public static Piece Get(string id) {var p=All.FirstOrDefault(x=>x.Id==id);if(p==null)throw new ArgumentException("Unknown piece");return p;}
         public static int Ports(int mask,int rotation) {for(int k=0;k<rotation;k++) mask=((mask<<1)&15)|((mask>>3)&1);return mask;}
@@ -37,8 +51,8 @@ namespace CashflowChains.Domain
     }
     [Serializable] public sealed class Board
     {
-        public int Width=4,Height=4,Budget=300,Challenge; public List<Node> Nodes=new List<Node>();
-        public Board Copy()=>new Board{Width=Width,Height=Height,Budget=Budget,Challenge=Challenge,Nodes=Nodes.Select(x=>x.Copy()).ToList()};
+        public int Width=4,Height=4,Budget=300,Challenge; public ulong Blocked; public List<Node> Nodes=new List<Node>();
+        public Board Copy()=>new Board{Width=Width,Height=Height,Budget=Budget,Challenge=Challenge,Blocked=Blocked,Nodes=Nodes.Select(x=>x.Copy()).ToList()};
         public static Board Tutorial(int index)
         {
             var b=new Board{Challenge=index,Width=index==2?5:4,Height=index==2?5:4,Budget=index==2?500:300};
@@ -47,15 +61,15 @@ namespace CashflowChains.Domain
             return b;
         }
         public bool Move(int id,int x,int y)
-        {var n=Nodes.FirstOrDefault(z=>z.Id==id);if(n==null||x<0||y<0||x>=Width||y>=Height||Nodes.Any(z=>z.Id!=id&&z.X==x&&z.Y==y))return false;n.X=x;n.Y=y;return true;}
+        {var n=Nodes.FirstOrDefault(z=>z.Id==id);if(n==null||x<0||y<0||x>=Width||y>=Height||(Blocked&(1UL<<(y*Width+x)))!=0||Nodes.Any(z=>z.Id!=id&&z.X==x&&z.Y==y))return false;n.X=x;n.Y=y;return true;}
         public string Fingerprint()=>Width+"x"+Height+":"+Challenge+":"+Budget+":"+string.Join(";",Nodes.OrderBy(x=>x.Id).Select(n=>$"{n.Id},{n.Kind},{n.X},{n.Y},{n.Rotation},{n.InitialGoods},{n.InitialEnergy}"));
         public void Validate()
         {
-            if(Width<1||Height<1||Width>7||Height>7||Nodes==null||Nodes.Count>Width*Height||Budget<0||Budget>1000000||Challenge<0||Challenge>2)throw new ArgumentException("Invalid board");
+            if(Width<1||Height<1||Width>7||Height>7||Nodes==null||Nodes.Count>Width*Height||Budget<0||Budget>1000000||Challenge<0||Challenge>71)throw new ArgumentException("Invalid board");
             var ids=new HashSet<int>();var cells=new HashSet<int>();
             foreach(var n in Nodes)
             {
-                if(n==null||n.Id<1||!ids.Add(n.Id)||n.X<0||n.Y<0||n.X>=Width||n.Y>=Height||!cells.Add(n.Y*Width+n.X)||n.Rotation<0||n.Rotation>3||n.InitialGoods<0||n.InitialGoods>64||n.InitialEnergy<0||n.InitialEnergy>64)throw new ArgumentException("Invalid node");
+                if(n==null||n.Id<1||!ids.Add(n.Id)||n.X<0||n.Y<0||n.X>=Width||n.Y>=Height||!cells.Add(n.Y*Width+n.X)||(Blocked&(1UL<<(n.Y*Width+n.X)))!=0||n.Rotation<0||n.Rotation>3||n.InitialGoods<0||n.InitialGoods>64||n.InitialEnergy<0||n.InitialEnergy>64)throw new ArgumentException("Invalid node");
                 Pieces.Get(n.Kind);
             }
             if(Nodes.Sum(n=>Pieces.Get(n.Kind).Price)>Budget)throw new ArgumentException("Board exceeds budget");
@@ -82,6 +96,7 @@ namespace CashflowChains.Domain
             board.Validate();if(roundBasisPoints<0||roundBasisPoints>80000)throw new ArgumentOutOfRangeException(nameof(roundBasisPoints));
             var nodes=board.Nodes.OrderBy(n=>n.Id).ToArray();int len=nodes.Length;
             var r=new RoundResult();var stock=new int[len,3];var outgoing=new int[len,3];var inbox=new int[len,3];var farmStarted=new bool[len];
+            var sourceCarry=new int[len];
             var pieces=nodes.Select(n=>Pieces.Get(n.Kind)).ToArray();
             for(int i=0;i<len;i++){stock[i,1]=nodes[i].InitialGoods;stock[i,2]=nodes[i].InitialEnergy;r.Initial[1]+=stock[i,1];r.Initial[2]+=stock[i,2];}
             for(int beat=1;beat<=8;beat++)
@@ -93,22 +108,34 @@ namespace CashflowChains.Domain
                     var p=pieces[i];if(p.SourceKind<0)continue;
                     if(p.Id=="farm"&&!farmStarted[i])
                     {if(stock[i,2]<1)continue;stock[i,2]--;r.Consumed[2]++;farmStarted[i]=true;}
-                    int amount=p.SourceRate;r.Generated[p.SourceKind]+=amount;Add(outgoing,i,p.SourceKind,amount,r);
+                    int amount=p.SourceRate;
+                    if(p.Id=="home"||p.Id=="apartment") {int parks=nodes.Count(n=>n.Kind=="park"&&Math.Abs(n.X-nodes[i].X)+Math.Abs(n.Y-nodes[i].Y)==1);sourceCarry[i]+=amount*(10000+parks*1500);amount=sourceCarry[i]/10000;sourceCarry[i]%=10000;}
+                    if(p.Id=="port"){long cost=amount*2L;r.Credits-=cost;r.Events.Add(new FlowEvent{Beat=beat,Source=nodes[i].Id,Target=nodes[i].Id,Credits=-cost,Count=amount,Reason="import"});}
+                    r.Generated[p.SourceKind]+=amount;Add(outgoing,i,p.SourceKind,amount,r);
                 }
                 // Transport a bounded snapshot before processing recipes. Converter output waits a beat.
-                for(int i=0;i<len;i++)for(int direction=0;direction<4;direction++)
+                for(int i=0;i<len;i++)
                 {
-                    if((Pieces.Ports(pieces[i].Outputs,nodes[i].Rotation)&(1<<direction))==0)continue;
-                    int tx=nodes[i].X+Dx[direction],ty=nodes[i].Y+Dy[direction];int target=Array.FindIndex(nodes,n=>n.X==tx&&n.Y==ty);
-                    if(target<0||(Pieces.Ports(pieces[target].Inputs,nodes[target].Rotation)&(1<<((direction+2)%4)))==0)continue;
-                    int capacity=6;
-                    for(int k=0;k<3;k++)
-                    {
-                        if(pieces[target].Need[k]<=0)continue;
-                        int count=Math.Min(outgoing[i,k],capacity);if(count==0)continue;
-                        outgoing[i,k]-=count;inbox[target,k]+=count;capacity-=count;
-                        r.Events.Add(new FlowEvent{Beat=beat,Source=nodes[i].Id,Target=nodes[target].Id,Kind=k,Count=count,Reason="shipment"});
+                    var targets=new int[4];var capacity=new int[4];var sent=new int[4,3];
+                    for(int direction=0;direction<4;direction++) {
+                        targets[direction]=-1;if((Pieces.Ports(pieces[i].Outputs,nodes[i].Rotation)&(1<<direction))==0)continue;
+                        int tx=nodes[i].X+Dx[direction],ty=nodes[i].Y+Dy[direction];int target=Array.FindIndex(nodes,n=>n.X==tx&&n.Y==ty);
+                        if(target<0&&pieces[i].Id=="logistics"){tx+=Dx[direction];ty+=Dy[direction];target=Array.FindIndex(nodes,n=>n.X==tx&&n.Y==ty);}
+                        if(target<0||(Pieces.Ports(pieces[target].Inputs,nodes[target].Rotation)&(1<<((direction+2)%4)))==0)continue;
+                        targets[direction]=target;capacity[direction]=pieces[i].Id=="freight_yard"?10:6;
                     }
+                    // Round-robin one unit at a time: a fork never starves its second legal destination.
+                    // Two beats of recipe demand bounds deliveries; resources remain conserved in transit.
+                    for(int k=0;k<3;k++)for(int pass=0;pass<64&&outgoing[i,k]>0;pass++) {
+                        bool moved=false;
+                        for(int direction=0;direction<4&&outgoing[i,k]>0;direction++) {
+                            int target=targets[direction];if(target<0||capacity[direction]<=0||pieces[target].Need[k]<=0)continue;
+                            int demand=pieces[target].Need[k]*Math.Max(1,pieces[target].Rate)*2-stock[target,k]-inbox[target,k];if(demand<=0)continue;
+                            outgoing[i,k]--;inbox[target,k]++;capacity[direction]--;sent[direction,k]++;moved=true;
+                        }
+                        if(!moved)break;
+                    }
+                    for(int direction=0;direction<4;direction++)for(int k=0;k<3;k++)if(sent[direction,k]>0)r.Events.Add(new FlowEvent{Beat=beat,Source=nodes[i].Id,Target=nodes[targets[direction]].Id,Kind=k,Count=sent[direction,k],Reason="shipment"});
                 }
                 for(int i=0;i<len;i++)
                 {
@@ -124,12 +151,14 @@ namespace CashflowChains.Domain
                         var adjacent=nodes.Where(n=>Math.Abs(n.X-nodes[i].X)+Math.Abs(n.Y-nodes[i].Y)==1).ToArray();
                         // Auxiliary bank links select one outlet (lowest stable ID). Several banks never stack.
                         bool bank=adjacent.Any(n=>n.Kind=="bank"&&nodes.Where(z=>Pieces.Get(z.Kind).Credits>0&&Math.Abs(z.X-n.X)+Math.Abs(z.Y-n.Y)==1).OrderBy(z=>z.Id).First().Id==nodes[i].Id);
-                        int bp=10000+(bank?2500:0)+adjacent.Count(n=>n.Kind=="office")*1000+(p.Id=="cafe"?adjacent.Count(n=>n.Kind=="park")*500:0);
+                        int bp=10000+(bank?2500:0)+adjacent.Count(n=>n.Kind=="office"||n.Kind=="tech_office")*1000+(p.Id=="cafe"?adjacent.Count(n=>n.Kind=="park")*500:0);
                         bp=Math.Min(30000,bp);long credit=checked(checked(ops*p.Credits)*bp/10000);credit=checked(credit*roundBasisPoints/10000);
                         r.Credits=checked(r.Credits+credit);r.Events.Add(new FlowEvent{Beat=beat,Source=nodes[i].Id,Target=nodes[i].Id,Credits=credit,Count=ops,Reason="sale"});
                     }
                 }
             }
+            if(nodes.Any(n=>n.Kind=="landmark")&&r.Events.Where(e=>e.Reason=="sale").Select(e=>nodes.First(n=>n.Id==e.Source).Kind).Distinct().Count()>=3)
+            {long bonus=r.Events.Where(e=>e.Reason=="sale").Sum(e=>e.Credits)/4;r.Credits+=bonus;r.Events.Add(new FlowEvent{Beat=8,Credits=bonus,Reason="diversity"});}
             for(int i=0;i<len;i++)for(int k=0;k<3;k++)r.Remaining[k]+=stock[i,k]+outgoing[i,k]+inbox[i,k];
             if(!r.Conserved())throw new InvalidOperationException("Conservation failed");return r;
         }

@@ -1,11 +1,13 @@
-# CashflowChains
+# Cashflow Chains
 
-Independent Unity 6.3 LTS pure 2D mobile game, created from the operator's 20 October package. Current deliverable is the P00–P02 mechanic slice: three small laboratory boards, local save/resume, deterministic rules and original flat prototype visuals. Full launch content and commercial systems are not implemented.
+Independent Unity 6.3 LTS pure 2D offline puzzle game. Full local playtest campaign: six locations and 72 free challenges, original flat artwork and music, progression, collections, settings and atomic save recovery. Original package and early prototype evidence remain preserved.
 
-Run locally: `./play.sh` (Linux build). Open this project root in Unity **6000.3.26f1**, then open `Assets/_Game/Scenes/Main.unity`. Rebuild scene through **Game → Rebuild scene**. With that editor running, `Tools/test.sh`, `Tools/build.sh linux`, or `Tools/build.sh android`. Android target API 36, min 26, ARM64 IL2CPP; a configured target does not prove physical-device support.
+Run the laptop application with [`./Play.sh`](Play.sh). The Linux player opens at 540×960 and can be resized. Install the ARM64 APK from `Builds/Android/CashflowChains-Playtest-1.0.apk` for Android testing. These are local playtest builds, not published store releases.
 
-F12 captures in development builds when launched with `-capture-dir /absolute/path`. `-save-dir /absolute/path` isolates test saves; normal play uses Unity's persistent data directory. These diagnostics cannot grant loot or credits.
+Open this project root in Unity **6000.3.26f1** and open `Assets/_Game/Scenes/Main.unity`. Scene/settings are reproducible through Game → Rebuild scene. Close the Editor before running `Tools/test.sh` or `Tools/build.sh linux` / `Tools/build.sh android`. Run one Unity process at a time; the scripts cap CPU workers. Android: portrait, API 36 target, API 26 minimum, ARM64 IL2CPP.
 
-Read [implementation status](Docs/IMPLEMENTATION_STATUS.md), [test evidence](Docs/TEST_LOG.md), [plan](Docs/IMPLEMENTATION_PLAN.md), [decisions](Docs/DECISIONS.md), [risks](Docs/RISKS.md). Supplied specification and seed catalogs preserved in Docs/SourcePackage; no seed catalog is labelled solved or release-balanced.
+Actual native input replays: `python3 Tools/playtest.py --display :1` and `python3 Tools/campaign-playtest.py --display :1`. They use an isolated review save directory. Android replay: `python3 Tools/android-playtest.py` with one compatible connected device (or use any Python environment with Pillow). F12 screenshots require explicit `-capture-dir /absolute/path`; `-save-dir /absolute/path` isolates saves. These options cannot grant progress or currency.
 
-No billing, advertising, account requirement or runtime server. Human visual acceptance, phone touch/performance, enjoyment, retention and revenue remain unverified.
+See [acceptance evidence](Docs/MOBILE_ACCEPTANCE.md), [implementation status](Docs/IMPLEMENTATION_STATUS.md), [original assets](Docs/ASSET_PROVENANCE.md), and [dependency notes](Docs/DEPENDENCY_ADDITIONS.md). Daily puzzles select from the certified offline campaign by UTC date. English is the current supported language.
+
+No account, advertising, real cash redemption or gameplay server. Optional IAP code is pinned to Unity IAP 5.4.4 and fails closed without genuine store configuration; purchases are unavailable in this local edition. Publishing, genuine billing, physical phone QA, localization expansion and real-player retention/revenue remain separate release work. Steam, Windows and iOS releases are not asserted.

@@ -1,0 +1,146 @@
+{
+  "passed": true,
+  "game": "CashflowChains",
+  "actions": [
+    {
+      "key": "F12"
+    },
+    {
+      "click": [
+        360,
+        1060
+      ]
+    },
+    {
+      "key": "F12"
+    },
+    {
+      "drag": [
+        414,
+        578,
+        306,
+        578
+      ]
+    },
+    {
+      "key": "r"
+    },
+    {
+      "key": "z"
+    },
+    {
+      "click": [
+        375,
+        1198
+      ]
+    },
+    {
+      "key": "F12"
+    },
+    {
+      "click": [
+        360,
+        1070
+      ]
+    },
+    {
+      "key": "space"
+    },
+    {
+      "key": "F12"
+    },
+    {
+      "click": [
+        360,
+        922
+      ]
+    },
+    {
+      "key": "Escape"
+    },
+    {
+      "key": "F12"
+    },
+    {
+      "click": [
+        360,
+        1038
+      ]
+    },
+    {
+      "key": "F12"
+    },
+    {
+      "click": [
+        360,
+        320
+      ]
+    },
+    {
+      "click": [
+        360,
+        658
+      ]
+    },
+    {
+      "click": [
+        360,
+        770
+      ]
+    },
+    {
+      "key": "Escape"
+    },
+    {
+      "key": "F12"
+    },
+    {
+      "key": "F12"
+    },
+    {
+      "key": "F12"
+    },
+    {
+      "click": [
+        360,
+        1060
+      ]
+    },
+    {
+      "key": "F12"
+    }
+  ],
+  "audio": {
+    "samples": 2125824,
+    "peak": 0.072357177734375,
+    "rms": 0.01032628619925948
+  },
+  "source": {
+    "Assets/_Game/Editor/AssetImport.cs": "c7d9ab648a2d33cb3642052ebdf405bfc66530d2889be91077267d2549c515ad",
+    "Assets/_Game/Editor/BuildProject.cs": "15b235a9edc058bbb90fc5132e0bc8c78ed1a638732f1fc2c0071cb5e2da6d0b",
+    "Assets/_Game/Scripts/Infrastructure/AtomicSave.cs": "0499847082de05753177866d1a38b50cdacf32dfa47a87061aff015c660ce712",
+    "Assets/_Game/Scripts/Presentation/FlatUI.cs": "382a8b8bef3718e76b7aedde817affda7dbc322aa5e972124bc7af1ee18cbe71",
+    "Assets/_Game/Scripts/Presentation/StudioUI.cs": "e4f1127e955c84964f3426fafb5f2c79573b7a076d187ee2a7cd4c2bf7cd0dce",
+    "Assets/_Game/Scripts/Presentation/BuildingGlyph.cs": "813c32c7b43bf4bc7c269960da61a8c3aebfe865bf8819fe5576891390a62cce",
+    "Assets/_Game/Scripts/Presentation/GameApp.cs": "ab466d3d421f650c808be3c132dd0bea2b0645d8a0e3a67b33375088c9ece305",
+    "Assets/_Game/Scripts/Presentation/RuntimeReview.cs": "9843041021123ff2af68e67ee7600f37ed633457a9d8890fde53d7b230d4a4f1",
+    "Assets/_Game/Scripts/Presentation/MobileGameApp.cs": "7e8a24f556df196bedfb421f14be4c7aae0585a128a86f9e0e31c9389e1c3a75",
+    "Assets/_Game/Scripts/Domain/Campaign.cs": "9ddca0c2669225863fc1e7e697074a35f637d16d83530d6f5f4bfb2a7d663c35",
+    "Assets/_Game/Scripts/Domain/Cashflow.cs": "00794a8b9c70171007b07d63a868224a6e89609fe2ded58272322057d05929eb",
+    "Assets/_Game/Scripts/Domain/Profile.cs": "659642bdc252cb61da20f235896ce42d91e00a050326091ec312da38a62831f8",
+    "Assets/_Game/Tests/EditMode/SaveTests.cs": "b2064891273fe5cd47841d29fddfdd033eb1cff0c415e4c3dea53459ce57583b",
+    "Assets/_Game/Tests/EditMode/CampaignTests.cs": "ce9496f0bdd4da0727d59c0d8c5c7bb62ef0eebd7480d3b81c974ff3043a53fa",
+    "Assets/_Game/Tests/EditMode/CoreTests.cs": "e6ce387a6b7372ece77e1292f6d089ed1b135be8faa6e217ad4948494c89f5c0"
+  },
+  "screenshots": [
+    "08-settings.png",
+    "03-forecast.png",
+    "09-short.png",
+    "04-three-stars.png",
+    "07-desk.png",
+    "09-tall.png",
+    "01-title.png",
+    "09-landscape.png",
+    "02-first-case.png"
+  ]
+}

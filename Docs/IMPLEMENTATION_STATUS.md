@@ -1,21 +1,15 @@
-# CashflowChains implementation status
+# Cashflow Chains: implementation status
 
-**20 October 2026 — playable P00–P02 mechanic slice; desktop verified.** This is the package's explicitly scoped kickoff deliverable, not the complete commercial game. Working names remain provisional.
+21 October 2026. **Full offline local playtest edition, ready for operator testing. Commercial release acceptance remains open.** The later operator request authorizes implementation and local testing beyond the original kickoff. Original package files remain byte-preserved in Docs/SourcePackage; normalized production content is separate.
 
-- Independent Unity **6000.3.26f1 LTS Universal 2D** project and local Git repository. Native uGUI/TextMeshPro, fixed orthographic camera, zero scene MeshRenderers, original flat geometry, licensed DejaVu Sans. No dependency on the other game's runtime or assets.
-- Three free laboratory puzzles, placement/rotation, Undo, exact preview, eight-beat event timeline and first-clear ledger. Domain remains pure C#.
-- Checksummed atomic local save, backup recovery, full-game JSON, duplicate-operation protection. Exact round/heist state survives a real process stop/restart; read failures do not silently reset progress.
-- **21/21 EditMode tests pass**, including one 10,000-case randomized test. A real four-router cycle retains its five goods; stable node IDs preserve event order. All three lab fixtures have legal free witness solutions.
-- Linux development player at `Builds/Linux/CashflowChains.x86_64`; launcher `./play.sh`. Actual mouse gestures/results/cold resume and 720×1280, 720×1600, 720×1024 captures: path in `Artifacts/latest-native-review.txt`. Visual review: [actual capture gallery](REVIEW.html).
-- 17 original package files byte-preserved. Supplied 72-level catalogs remain unvalidated preproduction material; their full solvability and balance are not asserted.
+The game contains 24 buildings, six districts, eight-beat resource forecasts and animated resolution, editable build budgets, eight blueprint slots, 15 one-time offline delivery commissions, 30 achievements, six earned palettes and a UTC daily certified city. Core outcomes and idempotent rewards are authoritative in pure C# domain code. Important state is atomically saved in a checksummed schema-2 envelope with backup validation, corruption preservation and explicit archive/reset. Ordinary play requires no account or server.
 
-| Milestone | Current evidence | Remaining boundary |
-|---|---|---|
-| P00 setup | Desktop compile + native Linux build, package lock, scene generator, save schema, CI entrypoint | Headless CI invocation and Android/iOS build not run; mobile hardware not tested |
-| P01 interaction | Actual desktop drag/tap/rotation, invalid placement rules and native captures | Physical touch/notch/accessibility target-size acceptance unknown |
-| P02 pure mechanic | 21 tests + 10k invariant cases, actual native result and cold resume | Mobile performance and subjective replay value unknown |
-| P03–P10 | Plan, risks and traceability recorded | Production art/audio, guided onboarding, full progression/content, commercial services and release work remain |
+All 24 building types are reachable; the production campaign and eight combo families have deterministic reference coverage. Blueprint slot 8, all six palettes, the last commission page and all achievement pages were exercised with legitimately earned progress.
 
-**Stop boundary from the supplied master specification:** “Implement only P00-P02.” The next game-specific gate is a representative original art pipeline and approval of the playable slice; no mass art batch or store was built.
+Production presentation uses an orthographic URP 2D camera, native uGUI/TextMeshPro, original flat illustrations, licensed DejaVu fonts and original synthesized music/cues. Pointer ghosts follow the drag and flag invalid placements. Portrait content fits the safe area at tall, short and landscape resolutions. Separate music/effects/haptics, reduced motion and high contrast persist. English is supported; translation catalogs and screen-reader acceptance remain release work.
 
-Known limitations: prototype graphics and simple laboratory selection; no full hub/collection, complete 72-level campaign, audio, localization catalog, IAP, game analytics uploader, ad SDK, external account or publishing. Reduced motion is available for Cashflow animation; further accessibility/localization/device work remains. `Tools/ci.sh` is prepared but has not been invoked on a clean headless worker. Android portrait/API36/min26/ARM64 IL2CPP is configured; no Android artifact or physical phone result is claimed. Human novice testing, visual approval, engagement, retention, sales and profit remain UNKNOWN.
+**39 fresh EditMode tests pass**, including 10,000-case randomized invariants, campaign witnesses, economy/idempotency, invalid saves, recovery and fail-closed unconfigured store behavior. Actual native full-campaign replay passes all 72 cases with 216 stars and zero persistent text overflow. Native menus/cold resume/reset and Android installation/touch/offline restart/Back/modal tests pass. See [exact evidence](MOBILE_ACCEPTANCE.md) and [gallery](REVIEW.html).
+
+Unity IAP **5.4.4** supplies an optional validated Android nonconsumable adapter. The local edition has no genuine store configuration, checkout or displayed prices. No fake transactions are accepted. Real sandbox/pending/deferred/restore/refund/revocation behavior, store privacy compliance, publication, physical phones and human commercial outcomes remain open. Steam was discussed as a future possibility; no Steam/Windows/iOS/controller release is asserted.
+
+Linux and Android builds use BuildOptions.None and succeeded with exit 0. The APK is ARM64 IL2CPP, minimum API 26, target API 36, locally debug-key signed for testing. Headless commands cap workers after the earlier laptop OOM; run one Unity process at a time. Build logs retain a nonfatal IAP authoring cloud-sync warning; actual BuildPipeline/CLI results and player checks determine local build acceptance.

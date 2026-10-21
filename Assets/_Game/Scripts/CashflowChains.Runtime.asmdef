@@ -4,6 +4,9 @@
     "CashflowChains.Domain",
     "Unity.ugui",
     "Unity.TextMeshPro",
-    "Unity.InputSystem"
+    "Unity.InputSystem",
+    "Unity.Purchasing",
+    "Unity.Purchasing.Security",
+    "Unity.Purchasing.SecurityCore"
   ]
 }

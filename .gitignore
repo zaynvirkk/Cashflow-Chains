@@ -10,3 +10,7 @@
 .vscode/
 *.slnx
 __pycache__/
+
+/Tools/.art-env/
+
+.utmp/

@@ -1,0 +1,36 @@
+CashflowChains 1 1120
+CashflowChains 2 1148
+CashflowChains 3 1176
+CashflowChains 4 1100
+CashflowChains 5 2436
+CashflowChains 6 890
+CashflowChains 7 850
+CashflowChains 8 1123
+CashflowChains 9 1323
+CashflowChains 10 1260
+CashflowChains 11 1148
+CashflowChains 12 1153
+CashflowChains 13 1470
+CashflowChains 14 1505
+CashflowChains 15 1540
+CashflowChains 16 1436
+CashflowChains 17 2555
+CashflowChains 18 935
+CashflowChains 19 890
+CashflowChains 20 2065
+CashflowChains 21 1729
+CashflowChains 22 1652
+CashflowChains 23 1505
+CashflowChains 24 2114
+CashflowChains 25 1540
+CashflowChains 26 1701
+CashflowChains 27 1610
+CashflowChains 28 1810
+CashflowChains 29 2135
+Traceback (most recent call last):
+  File "/home/virk/Projects/CashflowChains/Tools/campaign-playtest.py", line 73, in <module>
+    click(*pos(n['X'],n['Y']));until(lambda d:d['Selected']==n['Id'])
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/virk/Projects/CashflowChains/Tools/campaign-playtest.py", line 31, in until
+    raise AssertionError('Expected state transition was not observed')
+AssertionError: Expected state transition was not observed

@@ -1,0 +1,49 @@
+Applications Memory Usage (in Kilobytes):
+Uptime: 12620141 Realtime: 12620141
+
+** MEMINFO in pid 6113 [com.virkgames.cashflowchains] **
+                   Pss  Private  Private  SwapPss      Rss     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty    Total     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------   ------
+  Native Heap    35109    35060       28       81    36008    45504    38903     3104
+  Dalvik Heap     1345     1292       24      186     2196     5246     2655     2591
+ Dalvik Other      893      836        0        6     1404                           
+        Stack      924      924        0        0      932                           
+       Ashmem       51        0        0        0      636                           
+    Other dev       20        0       12        0      384                           
+     .so mmap   102570    32152    63512       21   134260                           
+    .jar mmap     1670        0       48        0    34788                           
+    .apk mmap      246        0        0        0     1900                           
+    .ttf mmap      155        0        0        0      652                           
+    .dex mmap     5767        4     5744        0     6612                           
+    .oat mmap      620        0       20        0    12216                           
+    .art mmap     1214      556       36      319    18844                           
+   Other mmap   167718   138584    11372        0   255616                           
+      Unknown   151158   151144        4        0   151572                           
+        TOTAL   470073   360552    80800      613   658020    50750    41558     5695
+ 
+ App Summary
+                       Pss(KB)                        Rss(KB)
+                        ------                         ------
+           Java Heap:     1884                          21040
+         Native Heap:    35060                          36008
+                Code:   101484                         190532
+               Stack:      924                            932
+            Graphics:        0                              0
+       Private Other:   302000
+              System:    28721
+             Unknown:                                  409508
+ 
+           TOTAL PSS:   470073            TOTAL RSS:   658020       TOTAL SWAP PSS:      613
+ 
+ Objects
+               Views:        9         ViewRootImpl:        1
+         AppContexts:        5           Activities:        1
+              Assets:       20        AssetManagers:        0
+       Local Binders:       20        Proxy Binders:       72
+       Parcel memory:        9         Parcel count:       38
+    Death Recipients:        0             WebViews:        0
+ 
+ SQL
+         MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0

@@ -1,0 +1,11 @@
+# Runtime dependency addition
+
+Unity IAP `com.unity.purchasing` 5.4.4 was installed through the Unity Package Manager Client API. Its resolved dependencies are pinned in `Packages/packages-lock.json`. It prepares optional nonconsumable cosmetics (`cc.skin.neon` / `bb.cosmetic.noir`) from the supplied proposal. No illustrative USD price is displayed.
+
+`LocalStore` does not connect on startup. Store configuration is absent in this local edition; ordinary play stays offline. Android connection requires an explicit enabled `Resources/StoreConfiguration.json` and a genuine Google Play RSA public key. Receipt/product/transaction/purchased-state verification precedes a domain entitlement grant, durable save, and confirmation. Save or validation failure leaves the order unconfirmed. Nonconsumable restores follow the same path; no consumables are sold. Desktop and Apple receipt processing fail closed.
+
+Before a store edition ships: configure actual native products, use a licensed tester account and genuine pending/failure/deferred/restore/refund tests, audit SDK privacy manifests/permissions and validate receipts against current platform state. No real purchase, account, cloud service or publication occurred here. Offline local entitlements cannot provide a server-authoritative revocation system; it remains a release limitation.
+
+Android permission inventory: `INTERNET`, `ACCESS_NETWORK_STATE`, `com.android.vending.BILLING`, `VIBRATE`, and the package-scoped AndroidX dynamic-receiver permission. The optional haptic implementation adds VIBRATE through the post-build manifest hook; it does not request a runtime permission dialog. See THIRD_PARTY.md for purposes and release review limits.
+
+Native Android Back uses a small original `GameEntryActivity` subclass and the AndroidX `OnBackPressedDispatcher` already supplied by Unity GameActivity 4.4.0. It routes hardware and gesture Back to the same game UI handler without requiring a hardware keyboard. No new SDK, permission or network service was added. The manifest postprocessor selects the subclass while retaining the generated activity attributes. Reference: https://developer.android.com/guide/navigation/custom-back/predictive-back-gesture . Actual APK navigation tests remain the acceptance oracle.

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "archive_sha256": "dba1dc4cc7f19fc445541b8887cbbc4eed026bde0eda9d734b00564431946577",
+  "method": "Fresh archive extraction, preserved executable modes, ordinary Play.sh launch, isolated save, actual X11 pixels and 600+ advancing frames. No pointer input or profile edits.",
+  "performance": {
+    "Width": 540,
+    "Height": 960,
+    "Frames": 600,
+    "AudioSampleRate": 48000,
+    "MedianMs": 16.667098999023438,
+    "P95Ms": 16.680322647094727,
+    "MaxMs": 20.272136688232422,
+    "AllocatedBytes": 93541079
+  },
+  "screen": "title",
+  "errors": []
+}
