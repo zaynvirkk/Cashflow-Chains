@@ -18,3 +18,13 @@ __pycache__/
 /.local-signing/
 *.keystore
 *.jks
+
+/.local-backend/
+/Backend/.venv/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+!/Backend/DomainService/CC2Tools.csproj
+/Backend/DomainService/bin/
+/Backend/DomainService/obj/

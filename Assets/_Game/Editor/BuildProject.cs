@@ -71,6 +71,13 @@ public static class BuildProject
         finally{PlayerSettings.productName="Cashflow Chains";AssetDatabase.SaveAssets();}
     }
 
+    public static void EmpireSandbox()
+    {
+        CreateScene();CampaignProof.Export();Directory.CreateDirectory("Builds/EmpireSandbox");
+        try{PlayerSettings.productName="Cashflow Chains (Empire Sandbox)";var r=BuildPipeline.BuildPlayer(new[]{ScenePath},"Builds/EmpireSandbox/CashflowChains-Empire.x86_64",BuildTarget.StandaloneLinux64,BuildOptions.Development);if(r.summary.result!=BuildResult.Succeeded)throw new Exception("Empire sandbox build failed");}
+        finally{PlayerSettings.productName="Cashflow Chains";AssetDatabase.SaveAssets();}
+    }
+
     public static void StoreIcon()
     {
         // CPU texture export also works with the CLI's Null graphics device.

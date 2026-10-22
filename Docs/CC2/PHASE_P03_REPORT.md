@@ -1,0 +1,9 @@
+# P03 first empire vertical slice — local sandbox verified
+
+The first playable chain→Cash/materials→construction→owned business→production loop runs in a separately labelled development build. Regular release rejects the sandbox command. New real-money features remain disabled; this is not a hosted/purchased account.
+
+88/88 Unity tests pass; Linux regular and EmpireSandbox builds compile with exit0. Commands: Tools/test.sh; Tools/build.sh linux; Tools/build.sh empire-sandbox; python3 Tools/cc2_empire_playtest.py. Actual native input completes the three teaching puzzles,grants exactly280Cash/35Wood/one earned chest,spends100Cash/10Wood on a home,waits the real30-second builder timer,replays while occupied without farming,completes the business and cold-resumes it. The test waits the genuine450-second production interval,then collects an actual saved Cash unit. No clock/config/save/inventory injection. Portrait,short and wide captures have zero persistent text overflow and no matched player exceptions. Evidence: Artifacts/CC2/EmpireVerified/report.json and sibling captures. Full original isolated replay remains locally under Artifacts/CC2/EmpireReplay.
+
+Domain tests cover timer boundaries,save rollback,capped8-hour output,fractional carry,repeated claims,clock rollback,upgrade accrual across one offline horizon and serialized recovery. The local server repeats these commands through actual C# and durable SQLite;13 API tests pass on two runtimes,including independent .NET10.0.402 publication.
+
+Scope limits: construction levels stop at five authored tiers; business star abilities,research,renewable dispatch,manager/equipment and full map evolution are subsequent work. New source definitions for future systems remain inactive. The preliminary180-day economy rejects this short catalog; no commercial activation or final release signoff. P03's initial offline sandbox gate passes; production cloud/UI reconciliation remains open.

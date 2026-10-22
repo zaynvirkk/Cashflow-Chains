@@ -1,0 +1,1177 @@
+{
+  "Schema": 1,
+  "Revision": 1,
+  "OfflineCapSeconds": 28800,
+  "ProductionBonusCapBp": 10000,
+  "TimeReductionCapBp": 5000,
+  "LegacyCashCap": 1000000,
+  "DailyOperationCash": 600,
+  "OperationCash": 30,
+  "OperationWood": 3,
+  "FirstContractSeconds": 60,
+  "ContractCash": 60,
+  "ContractWood": 8,
+  "Items": [
+    {
+      "Id": "CASH",
+      "Kind": "currency",
+      "DisplayKey": "item.cash",
+      "MaxStack": 1000000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "GEMS",
+      "Kind": "premium",
+      "DisplayKey": "item.gems",
+      "MaxStack": 1000000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "WOOD",
+      "Kind": "material",
+      "DisplayKey": "item.wood",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "STEEL",
+      "Kind": "material",
+      "DisplayKey": "item.steel",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "PLANS",
+      "Kind": "material",
+      "DisplayKey": "item.plans",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "RESEARCH_DOCS",
+      "Kind": "material",
+      "DisplayKey": "item.research_docs",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "MANAGER_XP",
+      "Kind": "xp",
+      "DisplayKey": "item.manager_xp",
+      "MaxStack": 1000000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "SKILL_BOOK",
+      "Kind": "material",
+      "DisplayKey": "item.skill_book",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "GEAR_PARTS",
+      "Kind": "material",
+      "DisplayKey": "item.gear_parts",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "GEAR_CORES",
+      "Kind": "material",
+      "DisplayKey": "item.gear_cores",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "CONSTRUCTION_SPEEDUP_MIN",
+      "Kind": "speedup",
+      "DisplayKey": "item.construction_speedup_min",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "RESEARCH_SPEEDUP_MIN",
+      "Kind": "speedup",
+      "DisplayKey": "item.research_speedup_min",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "DISPATCH_SPEEDUP_MIN",
+      "Kind": "speedup",
+      "DisplayKey": "item.dispatch_speedup_min",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "GENERAL_SPEEDUP_MIN",
+      "Kind": "speedup",
+      "DisplayKey": "item.general_speedup_min",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "RECRUIT_TICKET",
+      "Kind": "ticket",
+      "DisplayKey": "item.recruit_ticket",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "MERCHANT_VOUCHER",
+      "Kind": "ticket",
+      "DisplayKey": "item.merchant_voucher",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "CONTRACT_TOKEN",
+      "Kind": "token",
+      "DisplayKey": "item.contract_token",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "ARENA_TOKEN",
+      "Kind": "token",
+      "DisplayKey": "item.arena_token",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "ALLIANCE_TOKEN",
+      "Kind": "token",
+      "DisplayKey": "item.alliance_token",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "VIP_XP",
+      "Kind": "xp",
+      "DisplayKey": "item.vip_xp",
+      "MaxStack": 1000000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "THEME_TOKEN",
+      "Kind": "token",
+      "DisplayKey": "item.theme_token",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "CHEST:bronze",
+      "Kind": "chest",
+      "DisplayKey": "item.chest.bronze",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "CHEST:silver",
+      "Kind": "chest",
+      "DisplayKey": "item.chest.silver",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "CHEST:gold",
+      "Kind": "chest",
+      "DisplayKey": "item.chest.gold",
+      "MaxStack": 1000000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:home",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.home",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:cafe",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.cafe",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:farm",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.farm",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:warehouse",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.warehouse",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:power",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.power",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:bank",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.bank",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:logistics",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.logistics",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:greenhouse",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.greenhouse",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:cinema",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.cinema",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG:exchange",
+      "Kind": "fragment",
+      "DisplayKey": "item.fragment.exchange",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG_UNIVERSAL:common",
+      "Kind": "fragment",
+      "DisplayKey": "item.universal.common",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG_UNIVERSAL:rare",
+      "Kind": "fragment",
+      "DisplayKey": "item.universal.rare",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG_UNIVERSAL:epic",
+      "Kind": "fragment",
+      "DisplayKey": "item.universal.epic",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    },
+    {
+      "Id": "BIZ_FRAG_UNIVERSAL:legendary",
+      "Kind": "fragment",
+      "DisplayKey": "item.universal.legendary",
+      "MaxStack": 100000,
+      "Exclusive": false,
+      "CanExpire": false
+    }
+  ],
+  "Sources": [
+    {
+      "Id": "operation:CASH",
+      "ItemId": "CASH",
+      "Feature": "empire",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 3
+    },
+    {
+      "Id": "mission:CASH",
+      "ItemId": "CASH",
+      "Feature": "empire",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 3
+    },
+    {
+      "Id": "operation:GEMS",
+      "ItemId": "GEMS",
+      "Feature": "future.premium",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:GEMS",
+      "ItemId": "GEMS",
+      "Feature": "future.premium",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:WOOD",
+      "ItemId": "WOOD",
+      "Feature": "empire",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 3
+    },
+    {
+      "Id": "mission:WOOD",
+      "ItemId": "WOOD",
+      "Feature": "empire",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 3
+    },
+    {
+      "Id": "operation:STEEL",
+      "ItemId": "STEEL",
+      "Feature": "empire",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 3
+    },
+    {
+      "Id": "mission:STEEL",
+      "ItemId": "STEEL",
+      "Feature": "empire",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 3
+    },
+    {
+      "Id": "operation:PLANS",
+      "ItemId": "PLANS",
+      "Feature": "empire",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 3
+    },
+    {
+      "Id": "mission:PLANS",
+      "ItemId": "PLANS",
+      "Feature": "empire",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 3
+    },
+    {
+      "Id": "operation:RESEARCH_DOCS",
+      "ItemId": "RESEARCH_DOCS",
+      "Feature": "future.material",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:RESEARCH_DOCS",
+      "ItemId": "RESEARCH_DOCS",
+      "Feature": "future.material",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:MANAGER_XP",
+      "ItemId": "MANAGER_XP",
+      "Feature": "future.xp",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:MANAGER_XP",
+      "ItemId": "MANAGER_XP",
+      "Feature": "future.xp",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:SKILL_BOOK",
+      "ItemId": "SKILL_BOOK",
+      "Feature": "future.material",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:SKILL_BOOK",
+      "ItemId": "SKILL_BOOK",
+      "Feature": "future.material",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:GEAR_PARTS",
+      "ItemId": "GEAR_PARTS",
+      "Feature": "future.material",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:GEAR_PARTS",
+      "ItemId": "GEAR_PARTS",
+      "Feature": "future.material",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:GEAR_CORES",
+      "ItemId": "GEAR_CORES",
+      "Feature": "future.material",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:GEAR_CORES",
+      "ItemId": "GEAR_CORES",
+      "Feature": "future.material",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:CONSTRUCTION_SPEEDUP_MIN",
+      "ItemId": "CONSTRUCTION_SPEEDUP_MIN",
+      "Feature": "future.speedup",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:CONSTRUCTION_SPEEDUP_MIN",
+      "ItemId": "CONSTRUCTION_SPEEDUP_MIN",
+      "Feature": "future.speedup",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:RESEARCH_SPEEDUP_MIN",
+      "ItemId": "RESEARCH_SPEEDUP_MIN",
+      "Feature": "future.speedup",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:RESEARCH_SPEEDUP_MIN",
+      "ItemId": "RESEARCH_SPEEDUP_MIN",
+      "Feature": "future.speedup",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:DISPATCH_SPEEDUP_MIN",
+      "ItemId": "DISPATCH_SPEEDUP_MIN",
+      "Feature": "future.speedup",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:DISPATCH_SPEEDUP_MIN",
+      "ItemId": "DISPATCH_SPEEDUP_MIN",
+      "Feature": "future.speedup",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:GENERAL_SPEEDUP_MIN",
+      "ItemId": "GENERAL_SPEEDUP_MIN",
+      "Feature": "future.speedup",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:GENERAL_SPEEDUP_MIN",
+      "ItemId": "GENERAL_SPEEDUP_MIN",
+      "Feature": "future.speedup",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:RECRUIT_TICKET",
+      "ItemId": "RECRUIT_TICKET",
+      "Feature": "future.ticket",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:RECRUIT_TICKET",
+      "ItemId": "RECRUIT_TICKET",
+      "Feature": "future.ticket",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:MERCHANT_VOUCHER",
+      "ItemId": "MERCHANT_VOUCHER",
+      "Feature": "future.ticket",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:MERCHANT_VOUCHER",
+      "ItemId": "MERCHANT_VOUCHER",
+      "Feature": "future.ticket",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:CONTRACT_TOKEN",
+      "ItemId": "CONTRACT_TOKEN",
+      "Feature": "future.token",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:CONTRACT_TOKEN",
+      "ItemId": "CONTRACT_TOKEN",
+      "Feature": "future.token",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:ARENA_TOKEN",
+      "ItemId": "ARENA_TOKEN",
+      "Feature": "future.token",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:ARENA_TOKEN",
+      "ItemId": "ARENA_TOKEN",
+      "Feature": "future.token",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:ALLIANCE_TOKEN",
+      "ItemId": "ALLIANCE_TOKEN",
+      "Feature": "future.token",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:ALLIANCE_TOKEN",
+      "ItemId": "ALLIANCE_TOKEN",
+      "Feature": "future.token",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:VIP_XP",
+      "ItemId": "VIP_XP",
+      "Feature": "future.xp",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:VIP_XP",
+      "ItemId": "VIP_XP",
+      "Feature": "future.xp",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:THEME_TOKEN",
+      "ItemId": "THEME_TOKEN",
+      "Feature": "future.token",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:THEME_TOKEN",
+      "ItemId": "THEME_TOKEN",
+      "Feature": "future.token",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:CHEST:bronze",
+      "ItemId": "CHEST:bronze",
+      "Feature": "future.chest",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:CHEST:bronze",
+      "ItemId": "CHEST:bronze",
+      "Feature": "future.chest",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:CHEST:silver",
+      "ItemId": "CHEST:silver",
+      "Feature": "future.chest",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:CHEST:silver",
+      "ItemId": "CHEST:silver",
+      "Feature": "future.chest",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:CHEST:gold",
+      "ItemId": "CHEST:gold",
+      "Feature": "future.chest",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:CHEST:gold",
+      "ItemId": "CHEST:gold",
+      "Feature": "future.chest",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:home",
+      "ItemId": "BIZ_FRAG:home",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:home",
+      "ItemId": "BIZ_FRAG:home",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:cafe",
+      "ItemId": "BIZ_FRAG:cafe",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:cafe",
+      "ItemId": "BIZ_FRAG:cafe",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:farm",
+      "ItemId": "BIZ_FRAG:farm",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:farm",
+      "ItemId": "BIZ_FRAG:farm",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:warehouse",
+      "ItemId": "BIZ_FRAG:warehouse",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:warehouse",
+      "ItemId": "BIZ_FRAG:warehouse",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:power",
+      "ItemId": "BIZ_FRAG:power",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:power",
+      "ItemId": "BIZ_FRAG:power",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:bank",
+      "ItemId": "BIZ_FRAG:bank",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:bank",
+      "ItemId": "BIZ_FRAG:bank",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:logistics",
+      "ItemId": "BIZ_FRAG:logistics",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:logistics",
+      "ItemId": "BIZ_FRAG:logistics",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:greenhouse",
+      "ItemId": "BIZ_FRAG:greenhouse",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:greenhouse",
+      "ItemId": "BIZ_FRAG:greenhouse",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:cinema",
+      "ItemId": "BIZ_FRAG:cinema",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:cinema",
+      "ItemId": "BIZ_FRAG:cinema",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG:exchange",
+      "ItemId": "BIZ_FRAG:exchange",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG:exchange",
+      "ItemId": "BIZ_FRAG:exchange",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG_UNIVERSAL:common",
+      "ItemId": "BIZ_FRAG_UNIVERSAL:common",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG_UNIVERSAL:common",
+      "ItemId": "BIZ_FRAG_UNIVERSAL:common",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG_UNIVERSAL:rare",
+      "ItemId": "BIZ_FRAG_UNIVERSAL:rare",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG_UNIVERSAL:rare",
+      "ItemId": "BIZ_FRAG_UNIVERSAL:rare",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG_UNIVERSAL:epic",
+      "ItemId": "BIZ_FRAG_UNIVERSAL:epic",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG_UNIVERSAL:epic",
+      "ItemId": "BIZ_FRAG_UNIVERSAL:epic",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "operation:BIZ_FRAG_UNIVERSAL:legendary",
+      "ItemId": "BIZ_FRAG_UNIVERSAL:legendary",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": true,
+      "UnlockClears": 6
+    },
+    {
+      "Id": "mission:BIZ_FRAG_UNIVERSAL:legendary",
+      "ItemId": "BIZ_FRAG_UNIVERSAL:legendary",
+      "Feature": "future.fragment",
+      "Free": true,
+      "Repeatable": false,
+      "UnlockClears": 6
+    }
+  ],
+  "Exchanges": [
+    {
+      "Id": "cash-wood",
+      "Input": "CASH",
+      "Output": "WOOD",
+      "Cost": 12,
+      "Quantity": 1
+    },
+    {
+      "Id": "wood-cash",
+      "Input": "WOOD",
+      "Output": "CASH",
+      "Cost": 1,
+      "Quantity": 4
+    }
+  ],
+  "Upgrades": [
+    {
+      "Level": 1,
+      "Seconds": 30,
+      "Costs": [
+        {
+          "ItemId": "CASH",
+          "Quantity": 100
+        },
+        {
+          "ItemId": "WOOD",
+          "Quantity": 10
+        }
+      ]
+    },
+    {
+      "Level": 2,
+      "Seconds": 180,
+      "Costs": [
+        {
+          "ItemId": "CASH",
+          "Quantity": 240
+        },
+        {
+          "ItemId": "WOOD",
+          "Quantity": 20
+        },
+        {
+          "ItemId": "STEEL",
+          "Quantity": 5
+        }
+      ]
+    },
+    {
+      "Level": 3,
+      "Seconds": 720,
+      "Costs": [
+        {
+          "ItemId": "CASH",
+          "Quantity": 550
+        },
+        {
+          "ItemId": "WOOD",
+          "Quantity": 35
+        },
+        {
+          "ItemId": "STEEL",
+          "Quantity": 15
+        },
+        {
+          "ItemId": "PLANS",
+          "Quantity": 3
+        }
+      ]
+    },
+    {
+      "Level": 4,
+      "Seconds": 2700,
+      "Costs": [
+        {
+          "ItemId": "CASH",
+          "Quantity": 1200
+        },
+        {
+          "ItemId": "WOOD",
+          "Quantity": 60
+        },
+        {
+          "ItemId": "STEEL",
+          "Quantity": 30
+        },
+        {
+          "ItemId": "PLANS",
+          "Quantity": 8
+        }
+      ]
+    },
+    {
+      "Level": 5,
+      "Seconds": 7200,
+      "Costs": [
+        {
+          "ItemId": "CASH",
+          "Quantity": 2800
+        },
+        {
+          "ItemId": "WOOD",
+          "Quantity": 100
+        },
+        {
+          "ItemId": "STEEL",
+          "Quantity": 65
+        },
+        {
+          "ItemId": "PLANS",
+          "Quantity": 20
+        }
+      ]
+    }
+  ],
+  "Businesses": [
+    {
+      "Id": "home",
+      "Recipe": "home",
+      "Rarity": "Common",
+      "Role": "Residential",
+      "Output": "CASH",
+      "UnlockClears": 3,
+      "BaseHourly": 8,
+      "Storage": 64,
+      "Ability": "population-preset"
+    },
+    {
+      "Id": "cafe",
+      "Recipe": "cafe",
+      "Rarity": "Rare",
+      "Role": "Retail",
+      "Output": "CASH",
+      "UnlockClears": 6,
+      "BaseHourly": 15,
+      "Storage": 120,
+      "Ability": "mixed-service-contract"
+    },
+    {
+      "Id": "farm",
+      "Recipe": "farm",
+      "Rarity": "Common",
+      "Role": "Industrial",
+      "Output": "WOOD",
+      "UnlockClears": 9,
+      "BaseHourly": 6,
+      "Storage": 48,
+      "Ability": "material-production"
+    },
+    {
+      "Id": "warehouse",
+      "Recipe": "warehouse",
+      "Rarity": "Rare",
+      "Role": "Logistics",
+      "Output": "STEEL",
+      "UnlockClears": 12,
+      "BaseHourly": 3,
+      "Storage": 24,
+      "Ability": "storage-capacity"
+    },
+    {
+      "Id": "power",
+      "Recipe": "power",
+      "Rarity": "Common",
+      "Role": "Energy",
+      "Output": "PLANS",
+      "UnlockClears": 15,
+      "BaseHourly": 1,
+      "Storage": 8,
+      "Ability": "efficiency-research"
+    },
+    {
+      "Id": "bank",
+      "Recipe": "bank",
+      "Rarity": "Epic",
+      "Role": "Financial",
+      "Output": "CASH",
+      "UnlockClears": 18,
+      "BaseHourly": 25,
+      "Storage": 200,
+      "Ability": "finance-contract"
+    },
+    {
+      "Id": "logistics",
+      "Recipe": "logistics",
+      "Rarity": "Rare",
+      "Role": "Logistics",
+      "Output": "STEEL",
+      "UnlockClears": 21,
+      "BaseHourly": 4,
+      "Storage": 32,
+      "Ability": "dispatch-efficiency"
+    },
+    {
+      "Id": "greenhouse",
+      "Recipe": "greenhouse",
+      "Rarity": "Rare",
+      "Role": "Industrial",
+      "Output": "WOOD",
+      "UnlockClears": 24,
+      "BaseHourly": 10,
+      "Storage": 80,
+      "Ability": "resource-conversion"
+    },
+    {
+      "Id": "cinema",
+      "Recipe": "cinema",
+      "Rarity": "Epic",
+      "Role": "Civic",
+      "Output": "CASH",
+      "UnlockClears": 27,
+      "BaseHourly": 30,
+      "Storage": 240,
+      "Ability": "festival-production"
+    },
+    {
+      "Id": "exchange",
+      "Recipe": "exchange",
+      "Rarity": "Legendary",
+      "Role": "Financial",
+      "Output": "CASH",
+      "UnlockClears": 30,
+      "BaseHourly": 40,
+      "Storage": 320,
+      "Ability": "trade-discount"
+    }
+  ],
+  "StarFragments": [
+    10,
+    10,
+    25,
+    55,
+    110,
+    220
+  ],
+  "FirstCash": [
+    80,
+    100,
+    100
+  ],
+  "FirstWood": [
+    10,
+    10,
+    15
+  ],
+  "EnabledFeatures": []
+}

@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "negative-cost",
+      "rejected": true,
+      "layer": "schema"
+    },
+    {
+      "case": "zero-cost",
+      "rejected": true,
+      "layer": "shared-CSharp"
+    },
+    {
+      "case": "boolean-money",
+      "rejected": true,
+      "layer": "schema"
+    },
+    {
+      "case": "duplicate-item",
+      "rejected": true,
+      "layer": "shared-CSharp"
+    },
+    {
+      "case": "positive-arbitrage",
+      "rejected": true,
+      "layer": "shared-CSharp"
+    },
+    {
+      "case": "purchased-gem-expiry",
+      "rejected": true,
+      "layer": "shared-CSharp"
+    },
+    {
+      "case": "missing-repeatable-free-source",
+      "rejected": true,
+      "layer": "shared-CSharp"
+    },
+    {
+      "case": "unknown-field",
+      "rejected": true,
+      "layer": "schema"
+    },
+    {
+      "case": "unbounded-offline-cap",
+      "rejected": true,
+      "layer": "shared-CSharp"
+    },
+    {
+      "case": "unknown-recipe",
+      "rejected": true,
+      "layer": "shared-CSharp"
+    },
+    {
+      "case": "unknown-output-item",
+      "rejected": true,
+      "layer": "shared-CSharp"
+    }
+  ],
+  "canonical_sha256": "a86d5799166ed3258b77b7d5800005a6516cd6cfbda3178d37b4a60adc308120"
+}

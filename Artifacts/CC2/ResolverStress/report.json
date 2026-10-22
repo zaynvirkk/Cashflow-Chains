@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "cases": 100000,
+  "seed": 21022026,
+  "buildingTypes": 32,
+  "maxEvents": 40,
+  "scope": "Actual unchanged8-beat production resolver; all32 recipes,imports,conservation,exact money trace,determinism,bounded event count"
+}

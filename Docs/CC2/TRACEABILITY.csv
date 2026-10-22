@@ -8,23 +8,23 @@ CC2-006,01 Product,Open City/Empire Operations mode,NOT_STARTED,,,,
 CC2-007,01 Product,Timed verified dispatch mode,NOT_STARTED,,,,
 CC2-008,01 Product,Fair skill leaderboard distinct from paid-power league,NOT_STARTED,,,,
 CC2-009,01 Product,Permanent aesthetic evolution,NOT_STARTED,,,,
-CC2-010,02 Economy,Canonical item/source/sink definitions,NOT_STARTED,,,,
-CC2-011,02 Economy,Server wallet ledger with idempotency,NOT_STARTED,,,,
-CC2-012,02 Economy,Round score distinct from durable CASH,NOT_STARTED,,,,
+CC2-010,02 Economy,Canonical item/source/sink definitions,IN_PROGRESS,Assets/_Game/Scripts/Domain/Economy/EconomyCatalog.cs; Assets/_Game/Data/CC2/balance-v1.json,CC2EconomyTests.ConfigDefinesFiniteCapsAndHasNoPositiveExchangeCycle,,38 canonical items; later manager/event/offer content remains unimplemented
+CC2-011,02 Economy,Server wallet ledger with idempotency,IN_PROGRESS,Assets/_Game/Scripts/Domain/Economy/CurrencyLedger.cs; Backend/cc2/app.py,Backend/tests/test_authority.py,,Local durable/authenticated slice passes13 API tests on two runtimes; live premium/hosting integration incomplete
+CC2-012,02 Economy,Round score distinct from durable CASH,DONE_VERIFIED,Assets/_Game/Scripts/Domain/Economy/RoundRewardPolicy.cs; Presentation/EmpireSandboxUI.cs,CC2EconomyTests.OneSuccessfulLevelCannotFarmCashThroughAnotherRoundOrLayout,,Round score and explicit first-clear CASH remain distinct; new features default off
 CC2-013,02 Economy,Earnable alternatives to scarce resources,NOT_STARTED,,,,
-CC2-014,02 Economy,Offline reward proof and replay defense,NOT_STARTED,,,,
-CC2-015,02 Economy,Positive exchange loop detection,NOT_STARTED,,,,
-CC2-016,03 Empire,Persistent owned franchise/business distinction,NOT_STARTED,,,,
-CC2-017,03 Empire,Business levels and star promotion,NOT_STARTED,,,,
+CC2-014,02 Economy,Offline reward proof and replay defense,IN_PROGRESS,Backend/cc2/app.py; Tools/CC2/ServerBridge.cs,Backend/tests/test_authority.py,,Expiring account-bound proof and actual solver replay tested locally; offline client sync remains work
+CC2-015,02 Economy,Positive exchange loop detection,DONE_VERIFIED,Assets/_Game/Scripts/Domain/Economy/EconomyCatalog.cs,Tools/cc2_catalog_adversarial.py,,Positive-product cycle rejected;11 adversarial catalogs fail closed
+CC2-016,03 Empire,Persistent owned franchise/business distinction,IN_PROGRESS,Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs,CC2EmpireTests,,Ten owned business types distinct from unchanged board recipes; full progression later
+CC2-017,03 Empire,Business levels and star promotion,IN_PROGRESS,Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs,CC2EmpireTests,,Construction levels implemented; star promotion not yet active
 CC2-018,03 Empire,Business-specific and universal fragments,NOT_STARTED,,,,
-CC2-019,03 Empire,Construction/queue/plot system,NOT_STARTED,,,,
-CC2-020,03 Empire,Production/storage/offline cap,NOT_STARTED,,,,
+CC2-019,03 Empire,Construction/queue/plot system,IN_PROGRESS,Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs; Presentation/EmpireSandboxUI.cs,CC2EmpireTests,,One builder and ten franchise plots in local sandbox; cloud client not connected
+CC2-020,03 Empire,Production/storage/offline cap,IN_PROGRESS,Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs,CC2EmpireTests.CappedProductionCannotBeClaimedTwiceOrCompoundThroughClockChanges,Artifacts/CC2/EmpireVerified/14-real-production-collected.png,Initial8h-cap/storage model and genuine450-second native claim verified; cloud client reconciliation remains open
 CC2-021,03 Empire,Manager skill and assignment,NOT_STARTED,,,,
 CC2-022,03 Empire,Manager recruitment and XP,NOT_STARTED,,,,
 CC2-023,03 Empire,Equipment mastery and salvage,NOT_STARTED,,,,
 CC2-024,03 Empire,Research trees with caps,NOT_STARTED,,,,
 CC2-025,03 Empire,Timed renewable dispatch contracts,NOT_STARTED,,,,
-CC2-026,04 Rewards,Direct deterministic rewards,NOT_STARTED,,,,
+CC2-026,04 Rewards,Direct deterministic rewards,IN_PROGRESS,Assets/_Game/Scripts/Domain/Economy/RoundRewardPolicy.cs,CC2EconomyTests; CC2EmpireTests,,First-clear cash/material/chest inventory grants; chest opening remains later phase
 CC2-027,04 Rewards,Earned chests and tiered loot pools,NOT_STARTED,,,,
 CC2-028,04 Rewards,Paid chance containers with odds disclosure,NOT_STARTED,,,,
 CC2-029,04 Rewards,Choice chests,NOT_STARTED,,,,
@@ -94,8 +94,8 @@ CC2-092,10 Onboarding,Trigger-based manager unlock,NOT_STARTED,,,,
 CC2-093,10 Onboarding,Merchant and recruitment unlock gates,NOT_STARTED,,,,
 CC2-094,10 Onboarding,Progression not tied to invented Day 1 schedules,NOT_STARTED,,,,
 CC2-095,10 Onboarding,Returner flow and optional account recovery,NOT_STARTED,,,,
-CC2-096,11 Screens,Main Board/Forecast/Activate/Result,NOT_STARTED,,,,
-CC2-097,11 Screens,Empire/Business/Construction/Research,NOT_STARTED,,,,
+CC2-096,11 Screens,Main Board/Forecast/Activate/Result,IN_PROGRESS,Assets/_Game/Scripts/Presentation/MobileGameApp.cs,Tools/cc2_empire_playtest.py,Artifacts/CC2/EmpireVerified/05-portrait-empire.png,Actual multi-resource first-clear receipt in development sandbox
+CC2-097,11 Screens,Empire/Business/Construction/Research,IN_PROGRESS,Assets/_Game/Scripts/Presentation/EmpireSandboxUI.cs,Tools/cc2_empire_playtest.py,Artifacts/CC2/EmpireVerified/05-portrait-empire.png,Business/construction/production screens implemented; research remains P04
 CC2-098,11 Screens,Manager/Recruitment/Equipment,NOT_STARTED,,,,
 CC2-099,11 Screens,Chest/Merchant/Inventory/SourceFinder,NOT_STARTED,,,,
 CC2-100,11 Screens,Events/Pass/VIP/Daily,NOT_STARTED,,,,
@@ -112,16 +112,16 @@ CC2-110,12 Feel,Chest/manager rarity truthful visual reveals,NOT_STARTED,,,,
 CC2-111,12 Feel,Upgrade/collection/VIP reward animations,NOT_STARTED,,,,
 CC2-112,12 Feel,Reduced motion and accessible controls,NOT_STARTED,,,,
 CC2-113,12 Feel,Portrait aspect/device frame time measurements,NOT_STARTED,,,,
-CC2-114,13 Balance,Tunable initial economy config,NOT_STARTED,,,,
-CC2-115,13 Balance,Free/payer cohort progression simulator,NOT_STARTED,,,,
-CC2-116,13 Balance,Upgrade/time/material curves and caps,NOT_STARTED,,,,
+CC2-114,13 Balance,Tunable initial economy config,DONE_VERIFIED,Assets/_Game/Data/CC2/balance-v1.json,Tools/cc2_content_validate.py; CC2EconomyTests,,Initial versioned hypotheses only; shipping balance explicitly rejected
+CC2-115,13 Balance,Free/payer cohort progression simulator,IN_PROGRESS,Tools/CC2/Simulation.cs; Tools/cc2_economy_sim.py,Artifacts/CC2/EconomySimulation/report.json,,200k accounts plus200k paired counterfactuals; aggregate construction model only; wider economy not simulated
+CC2-116,13 Balance,Upgrade/time/material curves and caps,IN_PROGRESS,Assets/_Game/Data/CC2/balance-v1.json,CC2EmpireTests; Artifacts/CC2/EconomySimulation/report.json,,Five initial tiers and caps; long horizon needs useful authored progression
 CC2-117,13 Balance,RNG/statistical odds distribution test,NOT_STARTED,,,,
-CC2-118,13 Balance,Tuning guardrails and supply/demand report,NOT_STARTED,,,,
-CC2-119,14 Architecture,Typed commands and event bus,NOT_STARTED,,,,
-CC2-120,14 Architecture,Client/server authority split,NOT_STARTED,,,,
-CC2-121,14 Architecture,Authenticated cloud APIs,NOT_STARTED,,,,
-CC2-122,14 Architecture,Content catalog schemas and versioning,NOT_STARTED,,,,
-CC2-123,14 Architecture,Legacy save schema migration and entitlements,NOT_STARTED,,,,
+CC2-118,13 Balance,Tuning guardrails and supply/demand report,IN_PROGRESS,Docs/CC2/BALANCE_REPORT.md,Artifacts/CC2/EconomySimulation/report.json,,Finite content/excess cash alerts keep new revenue catalogs disabled
+CC2-119,14 Architecture,Typed commands and event bus,IN_PROGRESS,Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs,CC2EmpireTests.RepeatedRoundHasOneEconomicEventAndNoDuplicateRewards,,Typed commands/events exist for initial slice; full replay-safe event bus pending
+CC2-120,14 Architecture,Client/server authority split,IN_PROGRESS,Backend/cc2/domain.py; Presentation/EmpireSandboxUI.cs,Backend/tests/test_authority.py,,Shared domain; separate labelled local sandbox; production client sync not connected
+CC2-121,14 Architecture,Authenticated cloud APIs,IN_PROGRESS,Backend/cc2/app.py,Artifacts/CC2/Backend/report.json,,Rotating hashed sessions and authenticated local APIs tested; hosted cloud acceptance pending
+CC2-122,14 Architecture,Content catalog schemas and versioning,IN_PROGRESS,Assets/_Game/Data/CC2/balance-v1.schema.json,Tools/cc2_content_validate.py,,Balance schema only; remaining entity catalogs/schemas tracked work
+CC2-123,14 Architecture,Legacy save schema migration and entitlements,IN_PROGRESS,Assets/_Game/Scripts/Domain/Economy/LegacyMigration.cs,CC2EconomyTests.LegacyPlanPreservesPaidOwnershipProgressAndBlueprintsWithoutGrantingVerifiedMoney,,Untouched legacy snapshot/import escrow plan; actual cloud import/reconciliation not complete
 CC2-124,14 Architecture,Error-safe offline reconciling and sync,NOT_STARTED,,,,
 CC2-125,15 Purchases,Unity IAP 5.4.4 pending/confirm behavior,NOT_STARTED,,,,
 CC2-126,15 Purchases,Verified backend purchase fulfillment,NOT_STARTED,,,,
@@ -137,10 +137,11 @@ CC2-135,16 Analytics,Offer funnel and attribution,NOT_STARTED,,,,
 CC2-136,16 Analytics,A/B experiments with rollback,NOT_STARTED,,,,
 CC2-137,16 Analytics,Backoffice audit and content publishing,NOT_STARTED,,,,
 CC2-138,17 Launch,Original artistic provenance and localization,NOT_STARTED,,,,
-CC2-139,17 Launch,All 104 puzzle regressions,NOT_STARTED,,,,
+CC2-139,17 Launch,All 104 puzzle regressions,IN_PROGRESS,Assets/_Game/Tests/EditMode/CC2EconomyTests.cs,EveryOriginalCertifiedScoreIsUnchangedByCC2RewardPolicy; Artifacts/CC2/ResolverStress/report.json,,104 domain references and100k solver boards pass; full final visible-input campaign acceptance remains separate
 CC2-140,17 Launch,Android actual screen-state/device matrix,NOT_STARTED,,,,
 CC2-141,17 Launch,Play sandbox purchase matrix,NOT_STARTED,,,,
 CC2-142,17 Launch,Security and backend outage drills,NOT_STARTED,,,,
 CC2-143,17 Launch,Balance and human playtest report,NOT_STARTED,,,,
 CC2-144,17 Launch,Store policy/privacy review and operator approval,NOT_STARTED,,,,
 CC2-145,17 Launch,Post-launch monitoring and support runbook,NOT_STARTED,,,,
+CC2-020a,03 Empire,Initial capped production with genuine real-time native claim,DONE_VERIFIED,Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs,CC2EmpireTests; Tools/cc2_empire_playtest.py,Artifacts/CC2/EmpireVerified/14-real-production-collected.png,Local development sandbox only; no cloud or paid ownership claim

@@ -1,0 +1,1179 @@
+{
+  "simulationOnly": true,
+  "shippingAccepted": false,
+  "scope": "Shared C# catalog/math; aggregate180-day construction/production/contract projection only. Manager/recruitment/event/merchant/pass economics not implemented and not validated. No conversion or revenue evidence.",
+  "configRevision": 1,
+  "days": 180,
+  "accountsPerCohort": 10000,
+  "cohorts": 20,
+  "totalSyntheticAccounts": 200000,
+  "counterfactualAccounts": 200000,
+  "hiatusAccounts": "5% omit days21-34",
+  "demandModel": "Voluntary utility/price-sensitive Monte Carlo;0.2-3.0 cents/minute assumed willingness,25% opportunity acceptance; lifetime budgets are ceilings,never forced spend. Not calibrated to players.",
+  "alerts": [
+    "FINITE_CONTENT_EXHAUSTION: authored business tier horizon ends before180 days; later tiers/sinks required before shipping",
+    "CASH_CAP_LOSS: production outpaces useful authored sinks for some accounts"
+  ],
+  "cohortsData": [
+    {
+      "minutesPerDay": 8,
+      "lifetimeBudgetCents": 0,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 0,
+        "p90": 0
+      },
+      "purchasers": 0,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 5,
+        "p50": 5,
+        "p90": 7
+      },
+      "noUpgradeDays": {
+        "p10": 134,
+        "p50": 134,
+        "p90": 134
+      },
+      "shortageDays": {
+        "p10": 58,
+        "p50": 58,
+        "p90": 58
+      },
+      "lostCash": {
+        "p10": 32286,
+        "p50": 32596,
+        "p90": 32856
+      },
+      "lostProduction": {
+        "p10": 67562,
+        "p50": 67591,
+        "p90": 67612
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 8,
+      "lifetimeBudgetCents": 99,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 99,
+        "p90": 99
+      },
+      "purchasers": 8696,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 5,
+        "p50": 5,
+        "p90": 7
+      },
+      "noUpgradeDays": {
+        "p10": 133,
+        "p50": 134,
+        "p90": 134
+      },
+      "shortageDays": {
+        "p10": 58,
+        "p50": 58,
+        "p90": 58
+      },
+      "lostCash": {
+        "p10": 32316,
+        "p50": 32626,
+        "p90": 32896
+      },
+      "lostProduction": {
+        "p10": 67557,
+        "p50": 67591,
+        "p90": 67648
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 8,
+      "lifetimeBudgetCents": 1000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 990,
+        "p90": 990
+      },
+      "purchasers": 8696,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 5,
+        "p50": 5,
+        "p90": 7
+      },
+      "noUpgradeDays": {
+        "p10": 134,
+        "p50": 135,
+        "p90": 135
+      },
+      "shortageDays": {
+        "p10": 56,
+        "p50": 57,
+        "p90": 58
+      },
+      "lostCash": {
+        "p10": 32556,
+        "p50": 33896,
+        "p90": 34456
+      },
+      "lostProduction": {
+        "p10": 67444,
+        "p50": 67762,
+        "p90": 67881
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 8,
+      "lifetimeBudgetCents": 4000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 2970,
+        "p90": 3960
+      },
+      "purchasers": 8696,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 5,
+        "p50": 5,
+        "p90": 7
+      },
+      "noUpgradeDays": {
+        "p10": 134,
+        "p50": 135,
+        "p90": 136
+      },
+      "shortageDays": {
+        "p10": 52,
+        "p50": 53,
+        "p90": 58
+      },
+      "lostCash": {
+        "p10": 32556,
+        "p50": 37326,
+        "p90": 39546
+      },
+      "lostProduction": {
+        "p10": 67577,
+        "p50": 67932,
+        "p90": 68242
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 8,
+      "lifetimeBudgetCents": 20000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 2970,
+        "p90": 3960
+      },
+      "purchasers": 8696,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 5,
+        "p50": 5,
+        "p90": 7
+      },
+      "noUpgradeDays": {
+        "p10": 134,
+        "p50": 135,
+        "p90": 136
+      },
+      "shortageDays": {
+        "p10": 51,
+        "p50": 53,
+        "p90": 58
+      },
+      "lostCash": {
+        "p10": 32556,
+        "p50": 37336,
+        "p90": 39786
+      },
+      "lostProduction": {
+        "p10": 67577,
+        "p50": 67934,
+        "p90": 68251
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 15,
+      "lifetimeBudgetCents": 0,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 0,
+        "p90": 0
+      },
+      "purchasers": 0,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 4
+      },
+      "noUpgradeDays": {
+        "p10": 144,
+        "p50": 146,
+        "p90": 147
+      },
+      "shortageDays": {
+        "p10": 42,
+        "p50": 43,
+        "p90": 44
+      },
+      "lostCash": {
+        "p10": 63976,
+        "p50": 65686,
+        "p90": 67086
+      },
+      "lostProduction": {
+        "p10": 72077,
+        "p50": 72525,
+        "p90": 72879
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 15,
+      "lifetimeBudgetCents": 99,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 99,
+        "p90": 99
+      },
+      "purchasers": 8714,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 4
+      },
+      "noUpgradeDays": {
+        "p10": 144,
+        "p50": 146,
+        "p90": 147
+      },
+      "shortageDays": {
+        "p10": 42,
+        "p50": 43,
+        "p90": 44
+      },
+      "lostCash": {
+        "p10": 64146,
+        "p50": 65866,
+        "p90": 67276
+      },
+      "lostProduction": {
+        "p10": 72095,
+        "p50": 72564,
+        "p90": 72904
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 15,
+      "lifetimeBudgetCents": 1000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 990,
+        "p90": 990
+      },
+      "purchasers": 8714,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 4
+      },
+      "noUpgradeDays": {
+        "p10": 144,
+        "p50": 146,
+        "p90": 147
+      },
+      "shortageDays": {
+        "p10": 41,
+        "p50": 42,
+        "p90": 43
+      },
+      "lostCash": {
+        "p10": 65026,
+        "p50": 67376,
+        "p90": 68936
+      },
+      "lostProduction": {
+        "p10": 72159,
+        "p50": 72669,
+        "p90": 73085
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 15,
+      "lifetimeBudgetCents": 4000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 1584,
+        "p90": 2376
+      },
+      "purchasers": 8714,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 4
+      },
+      "noUpgradeDays": {
+        "p10": 144,
+        "p50": 146,
+        "p90": 147
+      },
+      "shortageDays": {
+        "p10": 39,
+        "p50": 41,
+        "p90": 43
+      },
+      "lostCash": {
+        "p10": 65246,
+        "p50": 68676,
+        "p90": 71026
+      },
+      "lostProduction": {
+        "p10": 72217,
+        "p50": 72714,
+        "p90": 73149
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 15,
+      "lifetimeBudgetCents": 20000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 1584,
+        "p90": 2376
+      },
+      "purchasers": 8714,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 4
+      },
+      "noUpgradeDays": {
+        "p10": 144,
+        "p50": 146,
+        "p90": 147
+      },
+      "shortageDays": {
+        "p10": 39,
+        "p50": 41,
+        "p90": 43
+      },
+      "lostCash": {
+        "p10": 65246,
+        "p50": 68676,
+        "p90": 71026
+      },
+      "lostProduction": {
+        "p10": 72217,
+        "p50": 72714,
+        "p90": 73149
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 45,
+      "lifetimeBudgetCents": 0,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 0,
+        "p90": 0
+      },
+      "purchasers": 0,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 153,
+        "p50": 155,
+        "p90": 156
+      },
+      "shortageDays": {
+        "p10": 26,
+        "p50": 27,
+        "p90": 28
+      },
+      "lostCash": {
+        "p10": 173686,
+        "p50": 176356,
+        "p90": 178356
+      },
+      "lostProduction": {
+        "p10": 75249,
+        "p50": 75804,
+        "p90": 76259
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 45,
+      "lifetimeBudgetCents": 99,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 99,
+        "p90": 99
+      },
+      "purchasers": 8688,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 153,
+        "p50": 155,
+        "p90": 156
+      },
+      "shortageDays": {
+        "p10": 26,
+        "p50": 27,
+        "p90": 28
+      },
+      "lostCash": {
+        "p10": 173966,
+        "p50": 176546,
+        "p90": 178496
+      },
+      "lostProduction": {
+        "p10": 75271,
+        "p50": 75824,
+        "p90": 76265
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 45,
+      "lifetimeBudgetCents": 1000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 990,
+        "p90": 990
+      },
+      "purchasers": 8688,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 153,
+        "p50": 155,
+        "p90": 156
+      },
+      "shortageDays": {
+        "p10": 25,
+        "p50": 26,
+        "p90": 27
+      },
+      "lostCash": {
+        "p10": 175066,
+        "p50": 177916,
+        "p90": 179976
+      },
+      "lostProduction": {
+        "p10": 75288,
+        "p50": 75879,
+        "p90": 76322
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 45,
+      "lifetimeBudgetCents": 4000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 1089,
+        "p90": 1881
+      },
+      "purchasers": 8688,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 153,
+        "p50": 155,
+        "p90": 156
+      },
+      "shortageDays": {
+        "p10": 24,
+        "p50": 25,
+        "p90": 27
+      },
+      "lostCash": {
+        "p10": 175266,
+        "p50": 178536,
+        "p90": 180836
+      },
+      "lostProduction": {
+        "p10": 75299,
+        "p50": 75901,
+        "p90": 76341
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 45,
+      "lifetimeBudgetCents": 20000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 1089,
+        "p90": 1881
+      },
+      "purchasers": 8688,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 153,
+        "p50": 155,
+        "p90": 156
+      },
+      "shortageDays": {
+        "p10": 24,
+        "p50": 25,
+        "p90": 27
+      },
+      "lostCash": {
+        "p10": 175266,
+        "p50": 178536,
+        "p90": 180836
+      },
+      "lostProduction": {
+        "p10": 75299,
+        "p50": 75901,
+        "p90": 76341
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 90,
+      "lifetimeBudgetCents": 0,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 0,
+        "p90": 0
+      },
+      "purchasers": 0,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 158,
+        "p50": 159,
+        "p90": 159
+      },
+      "shortageDays": {
+        "p10": 21,
+        "p50": 22,
+        "p90": 22
+      },
+      "lostCash": {
+        "p10": 240236,
+        "p50": 242556,
+        "p90": 244416
+      },
+      "lostProduction": {
+        "p10": 77118,
+        "p50": 77383,
+        "p90": 77592
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 90,
+      "lifetimeBudgetCents": 99,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 99,
+        "p90": 99
+      },
+      "purchasers": 8668,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 158,
+        "p50": 159,
+        "p90": 159
+      },
+      "shortageDays": {
+        "p10": 21,
+        "p50": 22,
+        "p90": 22
+      },
+      "lostCash": {
+        "p10": 240416,
+        "p50": 242716,
+        "p90": 244576
+      },
+      "lostProduction": {
+        "p10": 77117,
+        "p50": 77389,
+        "p90": 77604
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 90,
+      "lifetimeBudgetCents": 1000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 891,
+        "p90": 990
+      },
+      "purchasers": 8668,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 158,
+        "p50": 159,
+        "p90": 159
+      },
+      "shortageDays": {
+        "p10": 20,
+        "p50": 21,
+        "p90": 22
+      },
+      "lostCash": {
+        "p10": 241356,
+        "p50": 243996,
+        "p90": 245996
+      },
+      "lostProduction": {
+        "p10": 77129,
+        "p50": 77414,
+        "p90": 77643
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 90,
+      "lifetimeBudgetCents": 4000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 891,
+        "p90": 1485
+      },
+      "purchasers": 8668,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 158,
+        "p50": 159,
+        "p90": 159
+      },
+      "shortageDays": {
+        "p10": 20,
+        "p50": 21,
+        "p90": 22
+      },
+      "lostCash": {
+        "p10": 241436,
+        "p50": 244236,
+        "p90": 246436
+      },
+      "lostProduction": {
+        "p10": 77134,
+        "p50": 77418,
+        "p90": 77656
+      },
+      "exhaustedAccounts": 10000
+    },
+    {
+      "minutesPerDay": 90,
+      "lifetimeBudgetCents": 20000,
+      "accounts": 10000,
+      "noPurchaseCounterfactual": true,
+      "upgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "counterfactualUpgrades": {
+        "p10": 50,
+        "p50": 50,
+        "p90": 50
+      },
+      "cash": {
+        "p10": 100000,
+        "p50": 100000,
+        "p90": 100000
+      },
+      "spendCents": {
+        "p10": 0,
+        "p50": 891,
+        "p90": 1485
+      },
+      "purchasers": 8668,
+      "firstManagerDay": {
+        "p10": 2,
+        "p50": 2,
+        "p90": 2
+      },
+      "timeToTier3": {
+        "p10": 3,
+        "p50": 3,
+        "p90": 3
+      },
+      "noUpgradeDays": {
+        "p10": 158,
+        "p50": 159,
+        "p90": 159
+      },
+      "shortageDays": {
+        "p10": 20,
+        "p50": 21,
+        "p90": 22
+      },
+      "lostCash": {
+        "p10": 241436,
+        "p50": 244236,
+        "p90": 246436
+      },
+      "lostProduction": {
+        "p10": 77134,
+        "p50": 77418,
+        "p90": 77656
+      },
+      "exhaustedAccounts": 10000
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+using System;
+using System.IO;
+using System.Linq;
+using NUnit.Framework;
+using UnityEngine;
+using CashflowChains.Economy;
+using CashflowChains.Empire;
+using CashflowChains.Domain;
+
+public sealed class CC2EmpireTests {
+ BalanceConfig config;
+ [SetUp] public void Setup(){config=JsonUtility.FromJson<BalanceConfig>(File.ReadAllText(Path.Combine(Application.dataPath,"_Game/Data/CC2/balance-v1.json")));config.Validate();}
+ EmpireEngine Empire(Func<EmpireAccount,bool> save=null)=>new EmpireEngine(config,new EmpireAccount{Economy=new EconomyState{AccountId="local-test"}},save??(_=>true));
+ void Clear(EmpireEngine e,int count){for(int i=0;i<count;i++)e.RecordCertified(i,Campaign.Get(i).Solution,100+i);}
+ [Test] public void ThreeRealChainsFundTheFirstBusinessAndBuilderNeverStopsPuzzlePlay(){var e=Empire();Assert.Throws<InvalidOperationException>(()=>e.StartConstruction("early","home",1));Clear(e,3);Assert.AreEqual(280,e.Snapshot.Economy.Amount("CASH"));e.StartConstruction("build","home",200);Assert.AreEqual(180,e.Snapshot.Economy.Amount("CASH"));Assert.AreEqual(25,e.Snapshot.Economy.Amount("WOOD"));Assert.Throws<InvalidOperationException>(()=>e.StartConstruction("second","home",201));e.RecordCertified(3,Campaign.Get(3).Solution,202);Assert.AreEqual(260,e.Snapshot.Economy.Amount("CASH"));Assert.AreEqual(1,e.Snapshot.Construction.Count);}
+ [Test] public void ConstructionTimerBoundaryAndReplayAreExact(){var e=Empire();Clear(e,3);e.StartConstruction("build","home",200);Assert.Throws<InvalidOperationException>(()=>e.FinishConstruction("finish","build",229));Assert.Zero(e.Snapshot.Businesses[0].Level);e.FinishConstruction("finish","build",230);e.FinishConstruction("finish","build",231);Assert.AreEqual(1,e.Snapshot.Businesses[0].Level);Assert.IsEmpty(e.Snapshot.Construction);Assert.AreEqual(1,e.Snapshot.Events.Count(x=>x.Kind==EmpireEventKind.ConstructionCompleted));}
+ [Test] public void CappedProductionCannotBeClaimedTwiceOrCompoundThroughClockChanges(){var e=Empire();Clear(e,3);e.StartConstruction("build","home",200);e.FinishConstruction("finish","build",230);long before=e.Snapshot.Economy.Amount("CASH");e.CollectAll("collect",230+86400);Assert.AreEqual(before+64,e.Snapshot.Economy.Amount("CASH"));e.CollectAll("collect",230+86400);e.CollectAll("collect-again",230+86400);Assert.AreEqual(before+64,e.Snapshot.Economy.Amount("CASH"));Assert.Throws<ArgumentException>(()=>e.CollectAll("rollback-clock",230+86399));}
+ [Test] public void FrequentCollectionsKeepFractionalProductionWithoutCreatingExtraUnits(){var e=Empire();Clear(e,3);e.StartConstruction("build","home",200);e.FinishConstruction("finish","build",230);long before=e.Snapshot.Economy.Amount("CASH");for(int i=1;i<=60;i++)e.CollectAll("minute-"+i,230+i*60);Assert.AreEqual(before+8,e.Snapshot.Economy.Amount("CASH"));Assert.Zero(e.Snapshot.Businesses[0].Carry);}
+ [Test] public void FailedSaveRollsBackCostProjectAndEventTogether(){bool fail=false;var e=Empire(_=>!fail);Clear(e,3);long before=e.Snapshot.Economy.Amount("CASH");fail=true;Assert.Throws<InvalidOperationException>(()=>e.StartConstruction("build","home",200));Assert.AreEqual(before,e.Snapshot.Economy.Amount("CASH"));Assert.IsEmpty(e.Snapshot.Businesses);Assert.IsEmpty(e.Snapshot.Construction);fail=false;e.StartConstruction("build","home",200);Assert.AreEqual(1,e.Snapshot.Construction.Count);}
+ [Test] public void RepeatedRoundHasOneEconomicEventAndNoDuplicateRewards(){var e=Empire();Clear(e,3);e.RecordCertified(0,Campaign.Get(0).Solution,200);Assert.AreEqual(3,e.Snapshot.Events.Count);Assert.AreEqual(280,e.Snapshot.Economy.Amount("CASH"));}
+ [Test] public void UpgradeCompletionDoesNotAccrueTwoOfflineWindows(){var e=Empire();Clear(e,12);e.StartConstruction("build","home",200);e.FinishConstruction("finish","build",230);e.StartConstruction("warehouse","warehouse",240);e.FinishConstruction("warehouse-finish","warehouse",270);e.CollectAll("materials",11000);e.StartConstruction("upgrade","home",11100);long before=e.Snapshot.Economy.Amount("CASH");e.FinishConstruction("upgrade-finish","upgrade",100000);e.CollectAll("collect",100000);Assert.LessOrEqual(e.Snapshot.Economy.Amount("CASH")-before,64);Assert.AreEqual(2,e.Snapshot.Businesses[0].Level);}
+ [Test] public void SerializedEmpireCanRestoreAndValidateWithoutChangingOriginalPuzzleScoring(){var e=Empire();Clear(e,3);e.StartConstruction("build","home",200);var raw=JsonUtility.ToJson(e.Snapshot);var restored=JsonUtility.FromJson<EmpireAccount>(raw);restored.Validate(config);var resumed=new EmpireEngine(config,restored,_=>true);resumed.FinishConstruction("finish","build",230);Assert.AreEqual(1,resumed.Snapshot.Businesses[0].Level);Assert.AreEqual(1120,Resolver.Run(Campaign.Get(0).Solution).Credits);}
+}

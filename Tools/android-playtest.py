@@ -34,7 +34,7 @@ def launch():
  shell('uiautomator dump '+remote+'/system-ui.xml');tree=ET.fromstring(shell('cat '+remote+'/system-ui.xml'))
  if any(n.get('resource-id')=='android:id/immersive_cling_title' for n in tree.iter('node')):
   node=next(n for n in tree.iter('node') if n.get('resource-id')=='android:id/ok');x1,y1,x2,y2=map(int,re.findall(r'\d+',node.get('bounds')));shell('input tap '+str((x1+x2)//2)+' '+str((y1+y2)//2));actions.append({'system':'Dismissed Android full-screen help'});time.sleep(2)
-print(command('install','-r',apk,timeout=180));activity=shell('cmd package resolve-activity --brief '+package).splitlines()[-1];assert '/' in activity,activity
+print(command('install','--no-incremental','-r',apk,timeout=180));activity=shell('cmd package resolve-activity --brief '+package).splitlines()[-1];assert '/' in activity,activity
 try:
  launch();first=capture('01-title');scale,top=detect_layout(first);tap(360,1060);wait('board');capture('02-first-case')
  if not cc:

@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "time_utc": "2026-10-22T18:27:29.564214+00:00",
+  "scope": "Balance-v1 schema and shared C# semantic validation only; future content schemas are not accepted",
+  "catalog_sha256": "a86d5799166ed3258b77b7d5800005a6516cd6cfbda3178d37b4a60adc308120",
+  "schema_sha256": "04b1aeed9077f6d98d8e0aa3d18c49196e4ca272362de2fac3663e21fd8e1e9a"
+}

@@ -1,0 +1,371 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "Schema",
+    "Revision",
+    "OfflineCapSeconds",
+    "ProductionBonusCapBp",
+    "TimeReductionCapBp",
+    "LegacyCashCap",
+    "DailyOperationCash",
+    "OperationCash",
+    "OperationWood",
+    "FirstContractSeconds",
+    "ContractCash",
+    "ContractWood",
+    "Items",
+    "Sources",
+    "Exchanges",
+    "Upgrades",
+    "Businesses",
+    "StarFragments",
+    "FirstCash",
+    "FirstWood",
+    "EnabledFeatures"
+  ],
+  "properties": {
+    "Schema": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "Revision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "OfflineCapSeconds": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "ProductionBonusCapBp": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "TimeReductionCapBp": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "LegacyCashCap": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "DailyOperationCash": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "OperationCash": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "OperationWood": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "FirstContractSeconds": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "ContractCash": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "ContractWood": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "Items": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "Id",
+          "Kind",
+          "DisplayKey",
+          "MaxStack",
+          "Exclusive",
+          "CanExpire"
+        ],
+        "properties": {
+          "Id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Kind": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "DisplayKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "MaxStack": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "Exclusive": {
+            "type": "boolean"
+          },
+          "CanExpire": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "Sources": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "Id",
+          "ItemId",
+          "Feature",
+          "Free",
+          "Repeatable",
+          "UnlockClears"
+        ],
+        "properties": {
+          "Id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "ItemId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Feature": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Free": {
+            "type": "boolean"
+          },
+          "Repeatable": {
+            "type": "boolean"
+          },
+          "UnlockClears": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          }
+        }
+      }
+    },
+    "Exchanges": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "Id",
+          "Input",
+          "Output",
+          "Cost",
+          "Quantity"
+        ],
+        "properties": {
+          "Id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Input": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Output": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Cost": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "Quantity": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          }
+        }
+      }
+    },
+    "Upgrades": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "Level",
+          "Seconds",
+          "Costs"
+        ],
+        "properties": {
+          "Level": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "Seconds": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "Costs": {
+            "type": "array",
+            "maxItems": 1000,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "ItemId",
+                "Quantity"
+              ],
+              "properties": {
+                "ItemId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 160
+                },
+                "Quantity": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1000000000
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Businesses": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "Id",
+          "Recipe",
+          "Rarity",
+          "Role",
+          "Output",
+          "UnlockClears",
+          "BaseHourly",
+          "Storage",
+          "Ability"
+        ],
+        "properties": {
+          "Id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Recipe": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Rarity": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Role": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "Output": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "UnlockClears": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "BaseHourly": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "Storage": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "Ability": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          }
+        }
+      }
+    },
+    "StarFragments": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000000
+      }
+    },
+    "FirstCash": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000000
+      }
+    },
+    "FirstWood": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000000000
+      }
+    },
+    "EnabledFeatures": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cashflow-cc2/balance-v1"
+}

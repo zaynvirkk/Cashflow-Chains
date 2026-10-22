@@ -1,0 +1,137 @@
+{
+  "passed": true,
+  "package": "com.virkgames.cashflowchains",
+  "activity": "com.virkgames.cashflowchains/com.virkgames.platform.GameEntryActivity",
+  "device": "x86_64,arm64-v8a",
+  "api": "36",
+  "page_size": 16384,
+  "apk_sha256": "13ff5bfe2508e0f1276f3dca5491c2d9367523ab8b71bdbd8bd30ca0777cc4cd",
+  "text_overflow_count": 0,
+  "runtime_error_matches": [],
+  "layout": {
+    "scale": 1.5,
+    "top": 0
+  },
+  "audio": {
+    "peak": 0.234893798828125,
+    "rms": 0.009378956215546476
+  },
+  "actions": [
+    {
+      "tap": [
+        360,
+        1060
+      ]
+    },
+    {
+      "drag": [
+        602,
+        712,
+        441,
+        712
+      ]
+    },
+    {
+      "tap": [
+        222,
+        1198
+      ]
+    },
+    {
+      "tap": [
+        84,
+        1198
+      ]
+    },
+    {
+      "tap": [
+        375,
+        1198
+      ]
+    },
+    {
+      "tap": [
+        360,
+        1069
+      ]
+    },
+    {
+      "tap": [
+        580,
+        1198
+      ]
+    },
+    {
+      "tap": [
+        360,
+        1060
+      ]
+    },
+    {
+      "key": "Android Back"
+    },
+    {
+      "tap": [
+        360,
+        1118
+      ]
+    },
+    {
+      "key": "Android Back"
+    },
+    {
+      "tap": [
+        360,
+        1016
+      ]
+    },
+    {
+      "tap": [
+        360,
+        915
+      ]
+    },
+    {
+      "tap": [
+        360,
+        320
+      ]
+    },
+    {
+      "key": "Android Back"
+    },
+    {
+      "tap": [
+        360,
+        320
+      ]
+    },
+    {
+      "tap": [
+        360,
+        658
+      ]
+    },
+    {
+      "tap": [
+        360,
+        770
+      ]
+    }
+  ],
+  "screenshots": [
+    "08-settings.png",
+    "03-forecast.png",
+    "07-native-back-desk.png",
+    "13-free-edition-about.png",
+    "09-help.png",
+    "04-three-stars.png",
+    "01-title.png",
+    "11-tall.png",
+    "12-restored-size.png",
+    "06-offline-cold-resume.png",
+    "11-compact.png",
+    "10-accessibility.png",
+    "02-first-case.png"
+  ]
+}

@@ -1,0 +1,28 @@
+[Unit]
+Description=Cashflow CC2 authority service (operator-managed staging)
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=cashflow-cc2
+StateDirectoryMode=0700
+WorkingDirectory=/opt/cashflow
+Environment=CC2_STATE_DIRECTORY=/var/lib/cashflow-cc2
+Environment=CC2_DOMAIN_DLL=/opt/cashflow/Builds/BackendDomain/CC2Tools.dll
+Environment=CC2_DOTNET=/usr/bin/dotnet
+Environment=DOTNET_CLI_TELEMETRY_OPTOUT=1
+ExecStart=/opt/cashflow/Backend/.venv/bin/uvicorn cc2.start:app --app-dir /opt/cashflow/Backend --host 127.0.0.1 --port 8765 --no-access-log
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+UMask=0077
+MemoryMax=1G
+CPUQuota=200%
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target
