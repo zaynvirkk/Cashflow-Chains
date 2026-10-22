@@ -1,6 +1,19 @@
 """Map authored UI coordinates to actual presented controls, including wide layouts."""
 import json,time
 
+def archive_review(out):
+ """Keep every player's audit before a cold restart overwrites the latest files."""
+ import shutil
+ index=len(list(out.glob('session-*-text-overflows.json')))
+ for name in ('text-overflows.json','performance.json','actual-mix.wav'):
+  source=out/name
+  if source.exists():shutil.copyfile(source,out/f'session-{index}-{name}')
+
+def review_issues(out):
+ files=list(out.glob('session-*-text-overflows.json'))
+ if not files:files=[out/'text-overflows.json']
+ return [issue for file in files for issue in json.loads(file.read_text())['Issues']]
+
 def map_point(layout,x,y,grid=False):
  candidates=[]
  for e in layout.get('Elements',[]):

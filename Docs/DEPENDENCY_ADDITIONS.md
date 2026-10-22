@@ -1,5 +1,9 @@
 # Runtime dependency addition
 
+23 October CC2 correction: the paragraphs below describe the historical baseline. Current IAP v5 integration supports the existing nine product IDs and connects only with genuine enabled configuration; new CC2 commerce remains disabled pending authoritative fulfillment and real platform tests. Governing product and dependency status is under Docs/CC2. The old cosmetics-only summary is not the CC2 requirement.
+
+Local native UI verification additionally uses Ubuntu Xvfb21.1.12 and Openbox3.6.1, extracted under ignored Builds/Tools/headless-x without installing system packages. They isolate test cursor input from the user's desktop. These are development tools, not shipped SDKs or game network dependencies. Readability fonts are unmodified Barlow Regular/SemiBold under SIL OFL; see Docs/Licenses/Barlow-OFL.txt.
+
 Unity IAP `com.unity.purchasing` 5.4.4 was installed through the Unity Package Manager Client API. Its resolved dependencies are pinned in `Packages/packages-lock.json`. It prepares optional nonconsumable cosmetics (`cc.skin.neon` / `bb.cosmetic.noir`) from the supplied proposal. No illustrative USD price is displayed.
 
 `LocalStore` does not connect on startup. Store configuration is absent in this local edition; ordinary play stays offline. Android connection requires an explicit enabled `Resources/StoreConfiguration.json` and a genuine Google Play RSA public key. Receipt/product/transaction/purchased-state verification precedes a domain entitlement grant, durable save, and confirmation. Save or validation failure leaves the order unconfirmed. Nonconsumable restores follow the same path; no consumables are sold. Desktop and Apple receipt processing fail closed.

@@ -24,6 +24,24 @@ def test_authenticated_accounts_and_rotating_tokens(service):
 def test_expired_session_cannot_mutate_wallet(service):
  c,h,clock,_,_=service;clock[0]+=3601;assert c.get('/v1/account/snapshot',headers=h).status_code==401
 
+def test_verified_plans_are_account_bound_and_survive_restart(service):
+ c,h,clock,path,_=service;assert c.get('/v1/puzzle/plans').status_code==401;body,result=win(c,h,0);assert c.get('/v1/puzzle/plans',headers=h).json()['plans']==[body['board']]
+ other=c.post('/v1/auth/guest').json();assert not c.get('/v1/puzzle/plans',headers={'Authorization':'Bearer '+other['accessToken']}).json()['plans']
+ restarted=TestClient(create_app(path,clock=lambda:clock[0]));assert restarted.get('/v1/puzzle/plans',headers=h).json()['plans']==[body['board']]
+ bad=board(1);bad['Budget']+=100;ticket=c.post('/v1/puzzle/challenge/1',headers=h).json();rejected=c.post('/v1/puzzle/verify-and-claim',headers=h,json={'requestId':uuid.uuid4().hex,'expectedVersion':result['version'],'challengeId':ticket['challengeId'],'board':bad});assert rejected.status_code==409;assert len(c.get('/v1/puzzle/plans',headers=h).json()['plans'])==1
+
+def test_acquisition_uses_authoritative_balances_and_promotes_affordable_upgrade(service):
+ c,h,_,_,_=service;assert c.get('/v1/development/home/sources').status_code==401
+ for level in range(3):win(c,h,level)
+ before=snapshot(c,h);r=c.get('/v1/development/home/sources',headers=h);assert r.status_code==200;r=r.json();assert r['primaryAction']=='upgrade';assert all(x['missing']==0 and not x['sources'] for x in r['requirements']);assert not r['paidRoutes'];assert snapshot(c,h)==before
+ assert c.get('/v1/development/unknown/sources',headers=h).status_code==404
+
+def test_source_finder_lists_real_free_routes_without_future_gacha_or_fake_prices(service):
+ c,h,clock,_,_=service
+ for level in range(3):win(c,h,level)
+ built=command(c,h,'build',businessId='home');assert built.status_code==200;assert c.get('/v1/development/home/sources',headers=h).json()['primaryAction']=='builder-busy';clock[0]+=30;assert command(c,h,'finish',projectId=built.json()['state']['Construction'][0]['Id']).status_code==200
+ before=snapshot(c,h);r=c.get('/v1/development/home/sources',headers=h).json();assert r['primaryAction']=='find-resources';steel=next(x for x in r['requirements'] if x['itemId']=='STEEL');assert steel['missing']==5;routes=steel['sources'];assert any(x['kind']=='dispatch' and x['templateId']=='route-1' and x['unlocked'] for x in routes);assert any(x['kind']=='production' and not x['available'] for x in routes);assert not r['paidCommerceEnabled'];assert snapshot(c,h)==before
+
 def test_proof_replay_and_changed_request_payload(service):
  c,h,_,_,_=service;body,r=win(c,h,0);assert amount(r['state'],'CASH')==80;assert c.post('/v1/puzzle/verify-and-claim',headers=h,json=body).json()==r
  body['board']['Nodes'][0]['Rotation']=1;assert c.post('/v1/puzzle/verify-and-claim',headers=h,json=body).status_code==409;assert amount(snapshot(c,h)['state'],'CASH')==80
@@ -69,3 +87,17 @@ def test_config_drift_requires_an_explicit_database_migration(service):
  c,h,clock,path,_=service
  with sqlite3.connect(path) as db:db.execute("UPDATE metadata SET value='different' WHERE key='content_hash'")
  with pytest.raises(RuntimeError):create_app(path,clock=lambda:clock[0])
+
+def test_dispatch_and_research_are_durable_and_cannot_be_double_claimed(service):
+ c,h,clock,path,g=service
+ for level in range(6):win(c,h,level)
+ built=command(c,h,'build',businessId='home').json()['state']['Construction'][0];clock[0]=built['FinishAt'];assert command(c,h,'finish',projectId=built['Id']).status_code==200
+ for n in range(3):
+  sent=command(c,h,'dispatch',template='route-1',board=board(0));assert sent.status_code==200,sent.text;d=sent.json()['state']['Dispatches'][-1];clock[0]=d['FinishAt'];returned=command(c,h,'dispatch-claim',projectId=d['Id']);assert returned.status_code==200,returned.text;cash=amount(returned.json()['state'],'CASH');assert command(c,h,'dispatch-claim',projectId=d['Id']).status_code==200;assert amount(snapshot(c,h)['state'],'CASH')==cash
+ started=command(c,h,'research-start',nodeId='operations-1');assert started.status_code==200,started.text;research=started.json()['state']['ResearchQueue'][0];assert command(c,h,'research-finish',projectId=research['Id']).status_code==409;clock[0]=research['FinishAt'];finished=command(c,h,'research-finish',projectId=research['Id']);assert finished.status_code==200;assert 'operations-1' in finished.json()['state']['Research'];assert amount(finished.json()['state'],'RECRUIT_TICKET')==1
+
+def test_dispatch_rejects_unverified_layout_and_wrong_speedup_currency(service):
+ c,h,clock,path,g=service
+ for level in range(3):win(c,h,level)
+ built=command(c,h,'build',businessId='home').json()['state']['Construction'][0];clock[0]=built['FinishAt'];command(c,h,'finish',projectId=built['Id']);bad=board(0);bad['Nodes'][1]['InitialGoods']=64;before=snapshot(c,h)['state'];assert command(c,h,'dispatch',template='route-1',board=bad).status_code==409;assert snapshot(c,h)['state']==before
+ sent=command(c,h,'dispatch',template='route-1',board=board(0)).json()['state']['Dispatches'][0];assert command(c,h,'speedup',projectId=sent['Id'],sourceItem='GEMS',minutes=1).status_code==409

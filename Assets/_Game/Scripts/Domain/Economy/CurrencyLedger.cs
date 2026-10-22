@@ -12,7 +12,7 @@ namespace CashflowChains.Economy {
   public LedgerEntry Copy()=>(LedgerEntry)MemberwiseClone();
  }
  [Serializable] public sealed class CommandReceipt {
-  public string CommandId,Fingerprint,Result;public long Revision;public CommandReceipt Copy()=>(CommandReceipt)MemberwiseClone();
+  public string CommandId,Fingerprint,Result;public int ConfigRevision;public long Revision;public CommandReceipt Copy()=>(CommandReceipt)MemberwiseClone();
  }
  [Serializable] public sealed class EconomyState {
   public int Schema=1;public string AccountId;public long Revision,LastTrustedAt;
@@ -43,8 +43,8 @@ namespace CashflowChains.Economy {
   public EconomyState Snapshot {get{lock(gate)return state.Copy();}}
   public static string Hash(string value){using(var sha=SHA256.Create())return BitConverter.ToString(sha.ComputeHash(Encoding.UTF8.GetBytes(value))).Replace("-","").ToLowerInvariant();}
   public CommandReceipt Execute(string id,string payload,string source,string reason,long trustedNow,Action<EconomyTransaction> command,Func<EconomyState,bool> persist){
-   lock(gate){if(string.IsNullOrWhiteSpace(id)||id.Length>160||string.IsNullOrEmpty(source)||string.IsNullOrEmpty(reason)||trustedNow<state.LastTrustedAt||command==null||persist==null)throw new ArgumentException("Invalid command context");string fingerprint=Hash(config.Revision+"|"+source+"|"+reason+"|"+payload);var prior=state.Receipts.Find(x=>x.CommandId==id);if(prior!=null){if(prior.Fingerprint!=fingerprint)throw new InvalidOperationException("Idempotency key reused with another payload");return prior.Copy();}
-    var candidate=state.Copy();candidate.LastTrustedAt=trustedNow;command(new EconomyTransaction(candidate,config,id,source,reason,trustedNow));var receipt=new CommandReceipt{CommandId=id,Fingerprint=fingerprint,Result="committed",Revision=checked(candidate.Revision+1)};candidate.Revision=receipt.Revision;candidate.Receipts.Add(receipt);candidate.Validate(config);if(!persist(candidate.Copy()))throw new InvalidOperationException("Durable commit failed");state=candidate;return receipt.Copy();
+   lock(gate){if(string.IsNullOrWhiteSpace(id)||id.Length>160||string.IsNullOrEmpty(source)||string.IsNullOrEmpty(reason)||trustedNow<state.LastTrustedAt||command==null||persist==null)throw new ArgumentException("Invalid command context");var prior=state.Receipts.Find(x=>x.CommandId==id);int revision=prior==null?config.Revision:Math.Max(1,prior.ConfigRevision);string fingerprint=Hash(revision+"|"+source+"|"+reason+"|"+payload);if(prior!=null){if(prior.Fingerprint!=fingerprint)throw new InvalidOperationException("Idempotency key reused with another payload");return prior.Copy();}
+    var candidate=state.Copy();candidate.LastTrustedAt=trustedNow;command(new EconomyTransaction(candidate,config,id,source,reason,trustedNow));var receipt=new CommandReceipt{CommandId=id,Fingerprint=fingerprint,ConfigRevision=config.Revision,Result="committed",Revision=checked(candidate.Revision+1)};candidate.Revision=receipt.Revision;candidate.Receipts.Add(receipt);candidate.Validate(config);if(!persist(candidate.Copy()))throw new InvalidOperationException("Durable commit failed");state=candidate;return receipt.Copy();
    }
   }
  }

@@ -1,6 +1,6 @@
 {
   "Schema": 1,
-  "Revision": 1,
+  "Revision": 2,
   "OfflineCapSeconds": 28800,
   "ProductionBonusCapBp": 10000,
   "TimeReductionCapBp": 5000,
@@ -1173,5 +1173,1436 @@
     10,
     15
   ],
-  "EnabledFeatures": []
+  "EnabledFeatures": [],
+  "Operations": {
+    "Revision": 1,
+    "DailyDispatchStarts": 12,
+    "SecondFreeDispatchClears": 12,
+    "ResearchUnlockClears": 6,
+    "ResearchUnlockClaims": 3,
+    "Dispatches": [
+      {
+        "Id": "route-1",
+        "Title": "Morning deliveries",
+        "RequiredRecipe": "home",
+        "Business": "home",
+        "UnlockClears": 3,
+        "Seconds": 60,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 10
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 60
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 1
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 1
+          },
+          {
+            "ItemId": "BIZ_FRAG:home",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "CONSTRUCTION_SPEEDUP_MIN",
+            "Quantity": 1
+          }
+        ]
+      },
+      {
+        "Id": "route-2",
+        "Title": "Cafe supplies",
+        "RequiredRecipe": "cafe",
+        "Business": "cafe",
+        "UnlockClears": 6,
+        "Seconds": 60,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 12
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 75
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 9
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 1
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 1
+          },
+          {
+            "ItemId": "BIZ_FRAG:cafe",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "route-3",
+        "Title": "Neighbourhood pantry",
+        "RequiredRecipe": "home",
+        "Business": "farm",
+        "UnlockClears": 9,
+        "Seconds": 60,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 14
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 90
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 10
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 1
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 1
+          },
+          {
+            "ItemId": "BIZ_FRAG:farm",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "route-4",
+        "Title": "Warehouse connection",
+        "RequiredRecipe": "warehouse",
+        "Business": "warehouse",
+        "UnlockClears": 12,
+        "Seconds": 180,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 16
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 105
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 11
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 1
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 1
+          },
+          {
+            "ItemId": "BIZ_FRAG:warehouse",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "route-5",
+        "Title": "Power appointment",
+        "RequiredRecipe": "power",
+        "Business": "power",
+        "UnlockClears": 15,
+        "Seconds": 180,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 18
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 120
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 12
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 1
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "BIZ_FRAG:power",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "route-6",
+        "Title": "Banking circuit",
+        "RequiredRecipe": "bank",
+        "Business": "bank",
+        "UnlockClears": 18,
+        "Seconds": 180,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 135
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 13
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "BIZ_FRAG:bank",
+            "Quantity": 3
+          }
+        ]
+      },
+      {
+        "Id": "route-7",
+        "Title": "Greenhouse exchange",
+        "RequiredRecipe": "cafe",
+        "Business": "logistics",
+        "UnlockClears": 21,
+        "Seconds": 900,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 22
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 150
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 14
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "BIZ_FRAG:logistics",
+            "Quantity": 3
+          }
+        ]
+      },
+      {
+        "Id": "route-8",
+        "Title": "Cinema interval",
+        "RequiredRecipe": "home",
+        "Business": "greenhouse",
+        "UnlockClears": 24,
+        "Seconds": 900,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 24
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 165
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 15
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "BIZ_FRAG:greenhouse",
+            "Quantity": 3
+          }
+        ]
+      },
+      {
+        "Id": "route-9",
+        "Title": "Downtown route",
+        "RequiredRecipe": "warehouse",
+        "Business": "cinema",
+        "UnlockClears": 27,
+        "Seconds": 900,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 26
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 180
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 16
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "BIZ_FRAG:cinema",
+            "Quantity": 3
+          }
+        ]
+      },
+      {
+        "Id": "route-10",
+        "Title": "Evening service",
+        "RequiredRecipe": "cafe",
+        "Business": "exchange",
+        "UnlockClears": 30,
+        "Seconds": 3600,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 28
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 195
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 17
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 2
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "BIZ_FRAG:exchange",
+            "Quantity": 3
+          }
+        ]
+      },
+      {
+        "Id": "route-11",
+        "Title": "Freight arrival",
+        "RequiredRecipe": "factory",
+        "Business": "home",
+        "UnlockClears": 33,
+        "Seconds": 3600,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 30
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 210
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 18
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "BIZ_FRAG:home",
+            "Quantity": 4
+          }
+        ]
+      },
+      {
+        "Id": "route-12",
+        "Title": "Festival delivery",
+        "RequiredRecipe": "market",
+        "Business": "cafe",
+        "UnlockClears": 36,
+        "Seconds": 3600,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 32
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 225
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 19
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "BIZ_FRAG:cafe",
+            "Quantity": 4
+          }
+        ]
+      },
+      {
+        "Id": "route-13",
+        "Title": "Harbor appointment",
+        "RequiredRecipe": "port",
+        "Business": "farm",
+        "UnlockClears": 39,
+        "Seconds": 14400,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 34
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 240
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 20
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 6
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "BIZ_FRAG:farm",
+            "Quantity": 4
+          }
+        ]
+      },
+      {
+        "Id": "route-14",
+        "Title": "Night shift",
+        "RequiredRecipe": "power",
+        "Business": "warehouse",
+        "UnlockClears": 42,
+        "Seconds": 14400,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 36
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 255
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 21
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 6
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "BIZ_FRAG:warehouse",
+            "Quantity": 4
+          }
+        ]
+      },
+      {
+        "Id": "route-15",
+        "Title": "Citywide commission",
+        "RequiredRecipe": "shopping_mall",
+        "Business": "power",
+        "UnlockClears": 45,
+        "Seconds": 14400,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 38
+          }
+        ],
+        "Rewards": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 270
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 22
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 6
+          },
+          {
+            "ItemId": "PLANS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "BIZ_FRAG:power",
+            "Quantity": 4
+          }
+        ]
+      }
+    ],
+    "Research": [
+      {
+        "Id": "operations-1",
+        "Title": "Better throughput 1",
+        "Tree": "Operations",
+        "Prerequisite": "",
+        "Bonus": "production-bp",
+        "UnlockClears": 6,
+        "Seconds": 60,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 80
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 1
+          }
+        ]
+      },
+      {
+        "Id": "operations-2",
+        "Title": "Larger storerooms 1",
+        "Tree": "Operations",
+        "Prerequisite": "",
+        "Bonus": "storage-bp",
+        "UnlockClears": 8,
+        "Seconds": 240,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 160
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "operations-3",
+        "Title": "Better throughput 2",
+        "Tree": "Operations",
+        "Prerequisite": "",
+        "Bonus": "production-bp",
+        "UnlockClears": 10,
+        "Seconds": 540,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 240
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 12
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 1
+          }
+        ]
+      },
+      {
+        "Id": "operations-4",
+        "Title": "Larger storerooms 2",
+        "Tree": "Operations",
+        "Prerequisite": "operations-1",
+        "Bonus": "storage-bp",
+        "UnlockClears": 12,
+        "Seconds": 960,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 320
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 16
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "operations-5",
+        "Title": "Better throughput 3",
+        "Tree": "Operations",
+        "Prerequisite": "operations-2",
+        "Bonus": "production-bp",
+        "UnlockClears": 14,
+        "Seconds": 1500,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 400
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 20
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 5
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 3
+          }
+        ]
+      },
+      {
+        "Id": "operations-6",
+        "Title": "Larger storerooms 3",
+        "Tree": "Operations",
+        "Prerequisite": "operations-3",
+        "Bonus": "storage-bp",
+        "UnlockClears": 16,
+        "Seconds": 2160,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 480
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 24
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 6
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 4
+          }
+        ]
+      },
+      {
+        "Id": "operations-7",
+        "Title": "Better throughput 4",
+        "Tree": "Operations",
+        "Prerequisite": "operations-4",
+        "Bonus": "production-bp",
+        "UnlockClears": 18,
+        "Seconds": 2940,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 560
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 28
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 7
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Id": "operations-8",
+        "Title": "Larger storerooms 4",
+        "Tree": "Operations",
+        "Prerequisite": "operations-5",
+        "Bonus": "storage-bp",
+        "UnlockClears": 20,
+        "Seconds": 3600,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 640
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 32
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 8
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 6
+          }
+        ]
+      },
+      {
+        "Id": "operations-9",
+        "Title": "Better throughput 5",
+        "Tree": "Operations",
+        "Prerequisite": "operations-6",
+        "Bonus": "production-bp",
+        "UnlockClears": 22,
+        "Seconds": 3600,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 720
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 36
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 9
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 7
+          }
+        ]
+      },
+      {
+        "Id": "operations-10",
+        "Title": "Larger storerooms 5",
+        "Tree": "Operations",
+        "Prerequisite": "operations-7",
+        "Bonus": "storage-bp",
+        "UnlockClears": 24,
+        "Seconds": 3600,
+        "BonusBp": 1000,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 800
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 40
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 10
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 8
+          }
+        ]
+      },
+      {
+        "Id": "logistics-1",
+        "Title": "Faster routes 1",
+        "Tree": "Logistics",
+        "Prerequisite": "",
+        "Bonus": "dispatch-time-bp",
+        "UnlockClears": 6,
+        "Seconds": 60,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 80
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 1
+          }
+        ]
+      },
+      {
+        "Id": "logistics-2",
+        "Title": "Useful deliveries 1",
+        "Tree": "Logistics",
+        "Prerequisite": "",
+        "Bonus": "dispatch-yield-bp",
+        "UnlockClears": 8,
+        "Seconds": 240,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 160
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "logistics-3",
+        "Title": "Faster routes 2",
+        "Tree": "Logistics",
+        "Prerequisite": "",
+        "Bonus": "dispatch-time-bp",
+        "UnlockClears": 10,
+        "Seconds": 540,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 240
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 12
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 1
+          }
+        ]
+      },
+      {
+        "Id": "logistics-4",
+        "Title": "Useful deliveries 2",
+        "Tree": "Logistics",
+        "Prerequisite": "logistics-1",
+        "Bonus": "dispatch-yield-bp",
+        "UnlockClears": 12,
+        "Seconds": 960,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 320
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 16
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "logistics-5",
+        "Title": "Faster routes 3",
+        "Tree": "Logistics",
+        "Prerequisite": "logistics-2",
+        "Bonus": "dispatch-time-bp",
+        "UnlockClears": 14,
+        "Seconds": 1500,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 400
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 20
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 5
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 3
+          }
+        ]
+      },
+      {
+        "Id": "logistics-6",
+        "Title": "Useful deliveries 3",
+        "Tree": "Logistics",
+        "Prerequisite": "logistics-3",
+        "Bonus": "dispatch-yield-bp",
+        "UnlockClears": 16,
+        "Seconds": 2160,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 480
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 24
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 6
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 4
+          }
+        ]
+      },
+      {
+        "Id": "logistics-7",
+        "Title": "Faster routes 4",
+        "Tree": "Logistics",
+        "Prerequisite": "logistics-4",
+        "Bonus": "dispatch-time-bp",
+        "UnlockClears": 18,
+        "Seconds": 2940,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 560
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 28
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 7
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Id": "logistics-8",
+        "Title": "Useful deliveries 4",
+        "Tree": "Logistics",
+        "Prerequisite": "logistics-5",
+        "Bonus": "dispatch-yield-bp",
+        "UnlockClears": 20,
+        "Seconds": 3600,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 640
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 32
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 8
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 6
+          }
+        ]
+      },
+      {
+        "Id": "logistics-9",
+        "Title": "Faster routes 5",
+        "Tree": "Logistics",
+        "Prerequisite": "logistics-6",
+        "Bonus": "dispatch-time-bp",
+        "UnlockClears": 22,
+        "Seconds": 3600,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 720
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 36
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 9
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 7
+          }
+        ]
+      },
+      {
+        "Id": "logistics-10",
+        "Title": "Useful deliveries 5",
+        "Tree": "Logistics",
+        "Prerequisite": "logistics-7",
+        "Bonus": "dispatch-yield-bp",
+        "UnlockClears": 24,
+        "Seconds": 3600,
+        "BonusBp": 1000,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 800
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 40
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 10
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 8
+          }
+        ]
+      },
+      {
+        "Id": "innovation-1",
+        "Title": "Efficient builders 1",
+        "Tree": "Innovation",
+        "Prerequisite": "",
+        "Bonus": "build-time-bp",
+        "UnlockClears": 6,
+        "Seconds": 60,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 80
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 1
+          }
+        ]
+      },
+      {
+        "Id": "innovation-2",
+        "Title": "Better laboratories 1",
+        "Tree": "Innovation",
+        "Prerequisite": "",
+        "Bonus": "research-time-bp",
+        "UnlockClears": 8,
+        "Seconds": 240,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 160
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "innovation-3",
+        "Title": "Efficient builders 2",
+        "Tree": "Innovation",
+        "Prerequisite": "",
+        "Bonus": "build-time-bp",
+        "UnlockClears": 10,
+        "Seconds": 540,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 240
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 12
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 3
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 1
+          }
+        ]
+      },
+      {
+        "Id": "innovation-4",
+        "Title": "Better laboratories 2",
+        "Tree": "Innovation",
+        "Prerequisite": "innovation-1",
+        "Bonus": "research-time-bp",
+        "UnlockClears": 12,
+        "Seconds": 960,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 320
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 16
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 4
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "innovation-5",
+        "Title": "Efficient builders 3",
+        "Tree": "Innovation",
+        "Prerequisite": "innovation-2",
+        "Bonus": "build-time-bp",
+        "UnlockClears": 14,
+        "Seconds": 1500,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 400
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 20
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 5
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 3
+          }
+        ]
+      },
+      {
+        "Id": "innovation-6",
+        "Title": "Better laboratories 3",
+        "Tree": "Innovation",
+        "Prerequisite": "innovation-3",
+        "Bonus": "research-time-bp",
+        "UnlockClears": 16,
+        "Seconds": 2160,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 480
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 24
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 6
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 4
+          }
+        ]
+      },
+      {
+        "Id": "innovation-7",
+        "Title": "Efficient builders 4",
+        "Tree": "Innovation",
+        "Prerequisite": "innovation-4",
+        "Bonus": "build-time-bp",
+        "UnlockClears": 18,
+        "Seconds": 2940,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 560
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 28
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 7
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Id": "innovation-8",
+        "Title": "Better laboratories 4",
+        "Tree": "Innovation",
+        "Prerequisite": "innovation-5",
+        "Bonus": "research-time-bp",
+        "UnlockClears": 20,
+        "Seconds": 3600,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 640
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 32
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 8
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 6
+          }
+        ]
+      },
+      {
+        "Id": "innovation-9",
+        "Title": "Efficient builders 5",
+        "Tree": "Innovation",
+        "Prerequisite": "innovation-6",
+        "Bonus": "build-time-bp",
+        "UnlockClears": 22,
+        "Seconds": 3600,
+        "BonusBp": 500,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 720
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 36
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 9
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 7
+          }
+        ]
+      },
+      {
+        "Id": "innovation-10",
+        "Title": "Better laboratories 5",
+        "Tree": "Innovation",
+        "Prerequisite": "innovation-7",
+        "Bonus": "research-time-bp",
+        "UnlockClears": 24,
+        "Seconds": 3600,
+        "BonusBp": 1000,
+        "Costs": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 800
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 40
+          },
+          {
+            "ItemId": "RESEARCH_DOCS",
+            "Quantity": 10
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 8
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -9,6 +9,7 @@ from typing import Literal
 from fastapi import FastAPI,HTTPException,Header,Request
 from pydantic import BaseModel,ConfigDict,Field
 from .domain import Domain,ROOT
+from .acquisition import development_sources
 
 def compact(value):return json.dumps(value,separators=(',',':'),sort_keys=True)
 def digest(value):return hashlib.sha256(value.encode()).hexdigest()
@@ -18,7 +19,7 @@ class Node(Strict):
 class Board(Strict):
  Width:int=Field(ge=1,le=7);Height:int=Field(ge=1,le=7);Budget:int=Field(ge=0,le=1000000);Challenge:int=Field(ge=0,le=103);ImportQuota:int=Field(default=0,ge=0,le=64);ImportCost:int=Field(default=0,ge=0,le=10);DraftRoll:int=Field(default=0,ge=0,le=0);DraftMode:Literal[False]=False;DraftOperations:list[str]=Field(default_factory=list,max_length=0);Blocked:int=Field(default=0,ge=0,le=2**49-1);Nodes:list[Node]=Field(max_length=49)
 class Command(Strict):
- requestId:str=Field(min_length=16,max_length=100,pattern=r'^[A-Za-z0-9_-]+$');expectedVersion:int=Field(ge=0);kind:Literal['build','finish','collect'];businessId:str|None=Field(default=None,max_length=40);projectId:str|None=Field(default=None,max_length=160)
+ requestId:str=Field(min_length=16,max_length=100,pattern=r'^[A-Za-z0-9_-]+$');expectedVersion:int=Field(ge=0);kind:Literal['build','finish','collect','dispatch','dispatch-claim','research-start','research-finish','speedup'];businessId:str|None=Field(default=None,max_length=40);projectId:str|None=Field(default=None,max_length=160);template:str|None=Field(default=None,max_length=80);nodeId:str|None=Field(default=None,max_length=80);sourceItem:str|None=Field(default=None,max_length=80);minutes:int=Field(default=0,ge=0,le=1000000);board:Board|None=None
 class RoundClaim(Strict):
  requestId:str=Field(min_length=16,max_length=100,pattern=r'^[A-Za-z0-9_-]+$');expectedVersion:int=Field(ge=0);challengeId:str=Field(min_length=16,max_length=100);board:Board
 class Refresh(Strict):refreshToken:str=Field(min_length=32,max_length=200)
@@ -47,6 +48,7 @@ def create_app(database:Path,clock=time.time):
   CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,refresh TEXT UNIQUE NOT NULL,account TEXT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,expires INTEGER NOT NULL,refresh_expires INTEGER NOT NULL);
   CREATE TABLE IF NOT EXISTS requests(account TEXT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,id TEXT NOT NULL,hash TEXT NOT NULL,response TEXT NOT NULL,PRIMARY KEY(account,id));
   CREATE TABLE IF NOT EXISTS challenges(id TEXT PRIMARY KEY,account TEXT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,level INTEGER NOT NULL,content_hash TEXT NOT NULL,expires INTEGER NOT NULL);
+  CREATE TABLE IF NOT EXISTS puzzle_plans(account TEXT NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,level INTEGER NOT NULL,board TEXT NOT NULL,PRIMARY KEY(account,level));
   CREATE TABLE IF NOT EXISTS rates(bucket TEXT NOT NULL,window INTEGER NOT NULL,count INTEGER NOT NULL,PRIMARY KEY(bucket,window));''')
  with connect(True) as db:
   previous=db.execute("SELECT value FROM metadata WHERE key='content_hash'").fetchone()
@@ -89,7 +91,17 @@ def create_app(database:Path,clock=time.time):
  def snapshot(authorization:str|None=Header(default=None)):
   with connect() as db:account=identity(db,authorization);row=db.execute('SELECT state,version FROM accounts WHERE id=?',(account,)).fetchone();return {'accountId':account,'version':row['version'],'serverTime':now(),'state':json.loads(row['state'])}
  @app.get('/v1/config/manifest')
- def manifest():return {'revision':config['Revision'],'contentHash':content_hash,'enabledFeatures':['certified-rewards','construction','production'],'paidCommerceEnabled':False}
+ def manifest():return {'revision':config['Revision'],'contentHash':content_hash,'enabledFeatures':['certified-rewards','construction','production','dispatch','research','completed-plans','acquisition-guidance'],'paidCommerceEnabled':False}
+ @app.get('/v1/puzzle/plans')
+ def plans(authorization:str|None=Header(default=None)):
+  with connect() as db:
+   account=identity(db,authorization);rows=db.execute('SELECT board FROM puzzle_plans WHERE account=? ORDER BY level',(account,)).fetchall();return {'plans':[json.loads(row['board']) for row in rows],'serverTime':now(),'contentHash':content_hash}
+ @app.get('/v1/development/{business_id}/sources')
+ def sources(business_id:str,authorization:str|None=Header(default=None)):
+  with connect() as db:
+   account=identity(db,authorization);state=json.loads(db.execute('SELECT state FROM accounts WHERE id=?',(account,)).fetchone()['state'])
+   try:return development_sources(config,state,business_id,now())
+   except KeyError:raise HTTPException(404,'Unknown business')
  @app.post('/v1/puzzle/challenge/{level}')
  def challenge(level:int,authorization:str|None=Header(default=None)):
   if not 0<=level<72:raise HTTPException(403,'Expansion ownership is not yet server-verified')
@@ -111,10 +123,12 @@ def create_app(database:Path,clock=time.time):
     if not ticket or ticket['expires']<now() or ticket['content_hash']!=content_hash:raise HTTPException(409,'Challenge expired or invalid')
     if body.board.Challenge!=ticket['level']:raise HTTPException(409,'Challenge proof mismatch')
     command.update(Level=ticket['level'],Board=body.board.model_dump())
-   else:command.update(BusinessId=body.businessId,ProjectId=body.projectId)
+   else:command.update(BusinessId=body.businessId,ProjectId=body.projectId,Template=body.template,NodeId=body.nodeId,SourceItem=body.sourceItem,Minutes=body.minutes,Board=body.board.model_dump() if body.board else None)
    try:state=domain.apply(command)
    except (ValueError,TimeoutError):raise HTTPException(409,'Command rejected; no resources changed')
-   version=state['Economy']['Revision'];response={'version':version,'serverTime':now(),'state':state};db.execute('UPDATE accounts SET state=?,version=? WHERE id=?',(compact(state),version,account));db.execute('INSERT INTO requests VALUES(?,?,?,?)',(account,body.requestId,request_hash,compact(response)));return response
+   version=state['Economy']['Revision'];response={'version':version,'serverTime':now(),'state':state};db.execute('UPDATE accounts SET state=?,version=? WHERE id=?',(compact(state),version,account));db.execute('INSERT INTO requests VALUES(?,?,?,?)',(account,body.requestId,request_hash,compact(response)))
+   if kind=='round':db.execute('INSERT INTO puzzle_plans VALUES(?,?,?) ON CONFLICT(account,level) DO UPDATE SET board=excluded.board',(account,body.board.Challenge,compact(body.board.model_dump())))
+   return response
  @app.post('/v1/puzzle/verify-and-claim')
  def claim(body:RoundClaim,authorization:str|None=Header(default=None)):return execute(body,'round',authorization)
  @app.post('/v1/economy/command')

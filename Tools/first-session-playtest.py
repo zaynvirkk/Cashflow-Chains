@@ -3,7 +3,7 @@
 from pathlib import Path
 from ui_map import local_point
 import subprocess,os,time,json,datetime,hashlib,shutil
-p=Path(__file__).resolve().parent.parent;env={**os.environ,'DISPLAY':':1'}
+p=Path(__file__).resolve().parent.parent;env={**os.environ,'DISPLAY':os.environ.get('CASHFLOW_TEST_DISPLAY',':1')}
 out=p/'Artifacts/FirstSession'/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out.mkdir(parents=True)
 proc=subprocess.Popen([str(p/'Play.sh'),'-screen-fullscreen','0','-screen-width','540','-screen-height','960','-save-dir',str(out/'Saves'),'-capture-dir',str(out),'-logFile',str(out/'player.log')],env=env,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 checks=[];actions=[];movie=None
@@ -19,7 +19,8 @@ def wait(screen):
  raise AssertionError('Missing '+screen)
 def focus():
  if xd('getactivewindow')!=window:xd('windowactivate','--sync',window)
-def click(x,y):focus();xd('mousemove','--window',window,*local_point(out,x,y),'mousedown','1');time.sleep(.08);xd('mouseup','1');time.sleep(.2);actions.append(['click',x,y])
+def click(x,y):
+ focus();point=local_point(out,x,y);xd('mousemove','--window',window,*point,'mousedown','1');time.sleep(.08);xd('mousemove','--window',window,*point,'mouseup','1');time.sleep(.2);actions.append(['click',x,y])
 def key(k):focus();xd('keydown',k);time.sleep(.08);xd('keyup',k);time.sleep(.16)
 def cap(label):
  if 'result' in label or 'lessons-complete' in label:time.sleep(.65)
@@ -35,17 +36,17 @@ def pos(x,y):return 38+(x+.5)*161,310+(y+.5)*161
 try:
  for _ in range(180):
   try:
-   window=xd('search','--onlyvisible','--pid',proc.pid).splitlines()[-1];wait('title');break
+   window=xd('search','--onlyvisible','--pid',proc.pid).splitlines()[-1];wait('board');break
   except subprocess.CalledProcessError:time.sleep(.2)
- focus();xd('windowmove',window,2100,45);time.sleep(1)
- movie=subprocess.Popen(['ffmpeg','-hide_banner','-loglevel','error','-y','-f','x11grab','-window_id',window,'-framerate','30','-video_size','540x960','-i',':1','-t','65','-an','-c:v','libx264','-threads','2','-preset','ultrafast','-crf','23','-pix_fmt','yuv420p',str(out/'first-three-cities.mp4')],stdout=subprocess.DEVNULL,stderr=open(out/'video.log','w'))
- cap('01-title');started=time.monotonic();click(360,1060);wait('board');initial=state()['Save']['Profile']['Credits'];assert initial==350;cap('02-one-clear-instruction')
+ focus();xd('windowmove',window,50 if env['DISPLAY']!=':1' else 2100,45);time.sleep(1)
+ movie=subprocess.Popen(['ffmpeg','-hide_banner','-loglevel','error','-y','-f','x11grab','-window_id',window,'-framerate','30','-video_size','540x960','-i',env['DISPLAY'],'-t','65','-an','-c:v','libx264','-threads','2','-preset','ultrafast','-crf','23','-pix_fmt','yuv420p',str(out/'first-three-cities.mp4')],stdout=subprocess.DEVNULL,stderr=open(out/'video.log','w'))
+ started=time.monotonic();initial=state()['Save']['Profile']['Credits'];assert initial==350;cap('02-one-clear-instruction');checks.append('First launch opens directly on the teaching board')
  drag(*pos(3,2),*pos(2,2),'03-lift-and-snap');assert node(2)['X']==2;assert state()['Save']['Profile']['Credits']==initial;cap('04-connection-made')
  # Real tray drag spends build budget, never the persistent wallet. Undo restores the board.
  before=nodes();drag(500,1030,*pos(0,0),'05-tray-preview');assert len(nodes())==3 and nodes()[-1]['Kind']=='farm';assert state()['Save']['Profile']['Credits']==initial;click(84,1198);assert nodes()==before
  board=state()['Save']['Board'];click(580,1198);time.sleep(.45);cap('06-city-paying-out')
  click(630,80);click(222,1198);click(120,1030);key('r');assert state()['Screen']=='board' and state()['Save']['Board']==board,'Controls changed a resolving city';checks.append('Menu, rotation, keyboard and tray blocked during payout')
- wait('result');first=time.monotonic()-started;assert state()['Save']['Profile']['Stars'][0]==3 and state()['Save']['Profile']['Credits']==650;cap('07-first-city-result');checks.append('One connection earns three stars; actual reward is 300 city coins')
+ wait('result');first=time.monotonic()-started;assert state()['Save']['Profile']['Stars'][0]==3 and state()['Save']['Profile']['Credits']==650;cap('07-first-city-result');wallet=next(e for e in json.loads((out/'ui-layout.json').read_text())['Elements'] if e['Kind']=='wallet');assert wallet['DisplayText']=='650 COINS','Saved reward and displayed wallet disagree';checks.append('One connection earns three stars; actual reward is 300 city coins and the displayed wallet reconciles')
  click(360,990);wait('board');assert state()['Save']['Profile']['Selected']==1;cap('08-delivery-lesson');click(*pos(2,3));click(222,1198);assert node(3)['Rotation']==3;cap('09-delivery-connected');click(580,1198);wait('result');assert state()['Save']['Profile']['Stars'][1]==3;cap('10-second-city-result')
  click(360,990);wait('board');assert state()['Save']['Profile']['Selected']==2;drag(*pos(0,2),*pos(1,2));click(*pos(2,3));click(222,1198);click(580,1198);wait('result');s=state()['Save'];assert s['Profile']['Stars'][:3]==[3,3,3] and s['Profile']['Credits']==1250;cap('11-three-lessons-complete');checks.append('Move, rotate and combined lessons all produce three stars through visible controls')
 finally:

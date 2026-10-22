@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 namespace LocalGame {
  public sealed class RuntimeReview:MonoBehaviour {
+  public static void InputTrace(string action,GameObject target,Vector2 position){
+   string directory=FlatUI.Arg("-capture-dir");if(directory==null)return;
+   string path=target?target.name:"none";for(Transform p=target?target.transform.parent:null;p;p=p.parent)path=p.name+"/"+path;
+   Directory.CreateDirectory(directory);File.AppendAllText(Path.Combine(directory,"input-trace.txt"),Time.frameCount+" | "+FlatUI.InputScreen+" | "+action+" | "+position+" | "+path+"\n");
+  }
+  void LateUpdate(){var pointer=Pointer.current;if(dir==null||pointer==null||(!pointer.press.wasPressedThisFrame&&!pointer.press.wasReleasedThisFrame)||!EventSystem.current)return;var e=new PointerEventData(EventSystem.current){position=pointer.position.ReadValue()};var hits=new List<RaycastResult>();EventSystem.current.RaycastAll(e,hits);InputTrace(pointer.press.wasPressedThisFrame?"raw-down":"raw-up",hits.Count>0?hits[0].gameObject:null,e.position);}
   readonly List<OverflowIssue> overflow=new List<OverflowIssue>();readonly Dictionary<string,int> suspects=new Dictionary<string,int>();int auditFrames;
   string dir;readonly List<float> frame=new List<float>();float elapsed;int frames;void Start(){dir=FlatUI.Arg("-capture-dir");if(dir==null){enabled=false;return;}var listener=FindFirstObjectByType<AudioListener>();if(listener){var audio=listener.gameObject.AddComponent<MixCapture>();audio.DirectoryPath=dir;} }
   void Update(){if(++auditFrames%6==0&&dir!=null)AuditText();elapsed+=Time.unscaledDeltaTime;if(elapsed<3)return;frames++;if(frame.Count<30000)frame.Add(Time.unscaledDeltaTime*1000);if(frames%600==0)Write();}void OnApplicationQuit(){if(dir!=null)Write();}

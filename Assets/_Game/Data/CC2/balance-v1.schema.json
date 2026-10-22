@@ -22,7 +22,8 @@
     "StarFragments",
     "FirstCash",
     "FirstWood",
-    "EnabledFeatures"
+    "EnabledFeatures",
+    "Operations"
   ],
   "properties": {
     "Schema": {
@@ -102,17 +103,17 @@
         "properties": {
           "Id": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Kind": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "DisplayKey": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "MaxStack": {
@@ -146,17 +147,17 @@
         "properties": {
           "Id": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "ItemId": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Feature": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Free": {
@@ -189,17 +190,17 @@
         "properties": {
           "Id": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Input": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Output": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Cost": {
@@ -250,7 +251,7 @@
               "properties": {
                 "ItemId": {
                   "type": "string",
-                  "minLength": 1,
+                  "minLength": 0,
                   "maxLength": 160
                 },
                 "Quantity": {
@@ -284,27 +285,27 @@
         "properties": {
           "Id": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Recipe": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Rarity": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Role": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "Output": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           },
           "UnlockClears": {
@@ -324,7 +325,7 @@
           },
           "Ability": {
             "type": "string",
-            "minLength": 1,
+            "minLength": 0,
             "maxLength": 160
           }
         }
@@ -363,6 +364,229 @@
       "items": {
         "type": "string",
         "minLength": 1
+      }
+    },
+    "Operations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Revision",
+        "DailyDispatchStarts",
+        "SecondFreeDispatchClears",
+        "ResearchUnlockClears",
+        "ResearchUnlockClaims",
+        "Dispatches",
+        "Research"
+      ],
+      "properties": {
+        "Revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "DailyDispatchStarts": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "SecondFreeDispatchClears": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "ResearchUnlockClears": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "ResearchUnlockClaims": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "Dispatches": {
+          "type": "array",
+          "maxItems": 1000,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "Id",
+              "Title",
+              "RequiredRecipe",
+              "Business",
+              "UnlockClears",
+              "Seconds",
+              "Costs",
+              "Rewards"
+            ],
+            "properties": {
+              "Id": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              "Title": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              "RequiredRecipe": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              "Business": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              "UnlockClears": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000000
+              },
+              "Seconds": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000000
+              },
+              "Costs": {
+                "type": "array",
+                "maxItems": 1000,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "ItemId",
+                    "Quantity"
+                  ],
+                  "properties": {
+                    "ItemId": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 160
+                    },
+                    "Quantity": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1000000000
+                    }
+                  }
+                }
+              },
+              "Rewards": {
+                "type": "array",
+                "maxItems": 1000,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "ItemId",
+                    "Quantity"
+                  ],
+                  "properties": {
+                    "ItemId": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 160
+                    },
+                    "Quantity": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1000000000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Research": {
+          "type": "array",
+          "maxItems": 1000,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "Id",
+              "Title",
+              "Tree",
+              "Prerequisite",
+              "Bonus",
+              "UnlockClears",
+              "Seconds",
+              "BonusBp",
+              "Costs"
+            ],
+            "properties": {
+              "Id": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              "Title": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              "Tree": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              "Prerequisite": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              "Bonus": {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              "UnlockClears": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000000
+              },
+              "Seconds": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000000
+              },
+              "BonusBp": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000000
+              },
+              "Costs": {
+                "type": "array",
+                "maxItems": 1000,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "ItemId",
+                    "Quantity"
+                  ],
+                  "properties": {
+                    "ItemId": {
+                      "type": "string",
+                      "minLength": 0,
+                      "maxLength": 160
+                    },
+                    "Quantity": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1000000000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },

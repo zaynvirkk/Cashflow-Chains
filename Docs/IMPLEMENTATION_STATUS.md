@@ -1,5 +1,7 @@
 # Cashflow Chains implementation status
 
+> Historical V5 summary. The complete CC2 handoff now governs, including its expanded progression, offers, paid/earned acquisition and LiveOps. See [CC2 release status](CC2/RELEASE_STATUS.md) for current implementation and acceptance; do not use the old monetization restrictions or test counts below as current claims.
+
 21 October 2026. Visual revision 5 production candidate; final local replay is in progress. Black Bag is on hold. The original package remains byte-preserved in Docs/SourcePackage.
 
 Implemented: 72 free puzzles plus 12 optional Harbor and 20 optional Finance puzzles, eight districts, 32 buildings, 16 combos evaluated from actual deliveries/sales, eight collectible sets, eight earnable blueprint slots plus four optional purchased slots, 15 offline commissions, 30 achievements and six earned palettes. All 104 certified reference layouts and all 16 combo conditions pass domain checks. Original campaign identities/scoring and legacy saves are preserved.

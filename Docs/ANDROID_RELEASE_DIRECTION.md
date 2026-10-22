@@ -1,5 +1,7 @@
 # Cashflow Chains: active release direction
 
+> Historical V5 summary. The complete CC2 handoff now governs, including its expanded progression, offers, paid/earned acquisition and LiveOps. See [CC2 release status](CC2/RELEASE_STATUS.md) for current implementation and acceptance; do not use the old monetization restrictions or test counts below as current claims.
+
 21 October 2026. Explicit operator instructions supersede the initial two-game package and earlier prototype direction.
 
 - Work only on Cashflow Chains. Black Bag is on hold; preserve its unfinished work.

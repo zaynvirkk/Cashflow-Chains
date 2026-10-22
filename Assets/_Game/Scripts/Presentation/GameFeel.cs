@@ -46,8 +46,8 @@ namespace LocalGame {
   public long Target;float age;TMPro.TextMeshProUGUI label;void Start(){label=GetComponent<TMPro.TextMeshProUGUI>();}void Update(){if(!label)return;age+=Time.unscaledDeltaTime;float t=(Studio.Profile?.ReducedMotion??false)?1:Mathf.Clamp01(age/.42f);label.text=((long)(Target*(1-Math.Pow(1-t,3)))).ToString("N0");if(t>=1)enabled=false;}
  }
  public sealed class LivingArt:MonoBehaviour {
-  public float Phase;public bool Hero;Vector3 original,position;float birth;void Start(){original=transform.localScale;position=transform.localPosition;birth=Time.unscaledTime;}
-  void Update(){if(Studio.Profile?.ReducedMotion??false){transform.localScale=original;transform.localRotation=Quaternion.identity;return;}float t=Time.unscaledTime;float entry=Mathf.Min(1,(t-birth)*6);float breathe=Hero?.014f:.006f;float pulse=Mathf.Sin(entry*Mathf.PI)*.11f*(1-entry);transform.localScale=original*(1+breathe*Mathf.Sin(t*1.5f+Phase)+pulse);if(Hero)transform.localPosition=position+Vector3.up*(4*Mathf.Sin(t*1.2f+Phase));if(Hero)transform.localRotation=Quaternion.Euler(0,0,.7f*Mathf.Sin(t*.55f+Phase));}
+  public float Phase;public bool Hero;Vector3 original,position;float birth,landed=-100;public void Land(){landed=Time.unscaledTime;}void Start(){original=transform.localScale;position=transform.localPosition;birth=Time.unscaledTime;}
+  void Update(){if(Studio.Profile?.ReducedMotion??false){transform.localScale=original;transform.localRotation=Quaternion.identity;return;}float t=Time.unscaledTime;float entry=Mathf.Min(1,(t-birth)*6);float breathe=Hero?.014f:.006f;float pulse=Hero?Mathf.Sin(entry*Mathf.PI)*.11f*(1-entry):0;float drop=Mathf.Clamp01((t-landed)/.28f);float bounce=Mathf.Sin(drop*Mathf.PI*2.3f)*Mathf.Exp(-drop*4)*.15f;transform.localScale=Vector3.Scale(original*(1+breathe*Mathf.Sin(t*1.5f+Phase)+pulse),new Vector3(1-bounce*.45f,1+bounce,1));if(Hero)transform.localPosition=position+Vector3.up*(4*Mathf.Sin(t*1.2f+Phase));if(Hero)transform.localRotation=Quaternion.Euler(0,0,.7f*Mathf.Sin(t*.55f+Phase));}
  }
  public sealed class GameFeel:MaskableGraphic {
   struct Fleck {public Vector2 P,V;public Color C;public float Age,Life,Size,Angle,Spin;public int Shape;}
@@ -65,9 +65,9 @@ namespace LocalGame {
   static void Glow(VertexHelper vh,Vector2 p,float radius,Color c){int n=vh.currentVertCount;vh.AddVert(p,c,Vector2.zero);var edge=c;edge.a=0;for(int i=0;i<9;i++){float a=i*Mathf.PI/4;vh.AddVert(p+new Vector2(Mathf.Cos(a),Mathf.Sin(a))*radius*3,edge,Vector2.zero);}for(int i=0;i<8;i++)vh.AddTriangle(n,n+i+1,n+i+2);CraftedPanel.Diamond(vh,p,radius*.45f,c);}
  }
  public sealed class RouteRibbon:MaskableGraphic {
-  public Vector2 A,B;public Color Tint;public bool Active=true;float clock;
+  public Vector2 A,B;public Vector2 AuthoredA,AuthoredB;public bool UsesAuthored;public int Kind=-1;public Color Tint;public bool Active=true;float clock;
   void Update(){if(!(Studio.Profile?.ReducedMotion??false)){clock+=Time.unscaledDeltaTime;SetVerticesDirty();}}
-  protected override void OnPopulateMesh(VertexHelper vh){vh.Clear();Color shade=Tint;shade.a=.24f;CraftedPanel.Line(vh,A,B,15,shade);shade.a=.8f;CraftedPanel.Line(vh,A,B,2.2f,shade);if(!Active)return;for(int i=0;i<3;i++){float t=Mathf.Repeat(clock*.44f+i/3f,1);var p=Vector2.Lerp(A,B,t);CraftedPanel.Diamond(vh,p,4.5f,Tint);}}
+  protected override void OnPopulateMesh(VertexHelper vh){vh.Clear();if(UsesAuthored&&FlatUI.Stage){A=FlatUI.Stage.Point(AuthoredA.x,AuthoredA.y);B=FlatUI.Stage.Point(AuthoredB.x,AuthoredB.y);}Color shade=Tint;shade.a=.24f;CraftedPanel.Line(vh,A,B,15,shade);shade.a=.8f;CraftedPanel.Line(vh,A,B,2.2f,shade);if(!Active)return;for(int i=0;i<3;i++){float t=Mathf.Repeat(clock*.44f+i/3f,1);var p=Vector2.Lerp(A,B,t);if(Kind>=0)ResourceToken.Draw(vh,p,7,Kind);else CraftedPanel.Diamond(vh,p,4.5f,Tint);}}
  }
  public static class WorldArt {
   static readonly Dictionary<string,Sprite> sprites=new Dictionary<string,Sprite>();
@@ -79,6 +79,6 @@ namespace LocalGame {
    if(velvet&&Studio.Sprite("V3/case-rim")){var rim=Studio.Image(root,"V3/case-rim",x-24,y-24,w+48,h+48);rim.GetComponent<UnityEngine.UI.Image>().type=UnityEngine.UI.Image.Type.Sliced;return;}if(!velvet)return;var outside=Studio.Box(root,"World frame",x-12,y-12,w+24,h+24,FlatUI.Hex(velvet?"#140D0C":"#142E32"));outside.GetComponentInChildren<CraftedPanel>().BorderOnly=true;
    if(velvet){for(int i=0;i<2;i++){Studio.Box(root,"Brass clasp",x+w*(i==0?.16f:.78f),y-18,27,20,FlatUI.Hex("#C7974C"));Studio.Box(root,"Brass clasp",x+w*(i==0?.16f:.78f),y+h-3,27,20,FlatUI.Hex("#C7974C"));}Studio.Box(root,"Leather handle",x+w*.35f,y+h+2,w*.3f,22,FlatUI.Hex("#20110D"));}
   }
-  public static void Link(RectTransform root,float ax,float ay,float bx,float by,Color c){var r=FlatUI.Rect(root,"Living route",0,0,720,1280);var line=r.gameObject.AddComponent<RouteRibbon>();line.raycastTarget=false;line.A=FlatUI.Stage?FlatUI.Stage.Point(ax,ay):new Vector2(ax-360,640-ay);line.B=FlatUI.Stage?FlatUI.Stage.Point(bx,by):new Vector2(bx-360,640-by);line.Tint=c;}
+  public static void Link(RectTransform root,float ax,float ay,float bx,float by,Color c,int kind=-1){var r=FlatUI.Rect(root,"Living route",0,0,720,1280);var line=r.gameObject.AddComponent<RouteRibbon>();line.raycastTarget=false;line.A=FlatUI.Stage?FlatUI.Stage.Point(ax,ay):new Vector2(ax-360,640-ay);line.B=FlatUI.Stage?FlatUI.Stage.Point(bx,by):new Vector2(bx-360,640-by);line.Tint=c;line.Kind=kind;line.UsesAuthored=true;line.AuthoredA=new Vector2(ax,ay);line.AuthoredB=new Vector2(bx,by);}
  }
 }

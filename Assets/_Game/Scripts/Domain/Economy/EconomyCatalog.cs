@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
+using CashflowChains.Empire;
 
 namespace CashflowChains.Economy {
  [Serializable] public sealed class ItemDefinition {
@@ -29,7 +31,7 @@ namespace CashflowChains.Economy {
   public ItemDefinition[] Items; public SourceDefinition[] Sources; public ExchangeDefinition[] Exchanges;
   public UpgradeDefinition[] Upgrades; public BusinessDefinition[] Businesses;
   public int[] StarFragments; public int[] FirstCash,FirstWood;
-  public string[] EnabledFeatures;
+  public string[] EnabledFeatures;public OperationsCatalog Operations;
   public ItemDefinition Item(string id)=>Items.FirstOrDefault(x=>x.Id==id)??throw new ArgumentException("Unknown item: "+id);
   public BusinessDefinition Business(string id)=>Businesses.FirstOrDefault(x=>x.Id==id)??throw new ArgumentException("Unknown business: "+id);
   public UpgradeDefinition Upgrade(int level)=>Upgrades.FirstOrDefault(x=>x.Level==level)??throw new ArgumentException("Unauthored upgrade tier");
@@ -46,9 +48,10 @@ namespace CashflowChains.Economy {
    if(StarFragments==null||!StarFragments.SequenceEqual(new[]{10,10,25,55,110,220})||FirstCash==null||FirstWood==null||FirstCash.Length!=3||FirstWood.Length!=3||FirstCash.Any(x=>x<0)||FirstWood.Any(x=>x<0)||EnabledFeatures==null)throw new ArgumentException("Invalid onboarding");
    if(Exchanges==null)throw new ArgumentException("Missing exchanges");
    foreach(var e in Exchanges){Item(e.Input);Item(e.Output);if(e.Cost<1||e.Quantity<1||e.Cost>1000000000||e.Quantity>1000000000)throw new ArgumentException("Invalid exchange");}
-   // A positive-product cycle permits repeatable money creation. Relaxation from a super-source catches every connected component.
-   var ids=Items.Select(x=>x.Id).ToArray();var distances=new double[ids.Length];
-   for(int iteration=0;iteration<ids.Length;iteration++){bool changed=false;foreach(var e in Exchanges){int a=Array.IndexOf(ids,e.Input),b=Array.IndexOf(ids,e.Output);double next=distances[a]-Math.Log((double)e.Quantity/e.Cost);if(next<distances[b]-1e-10){distances[b]=next;changed=true;if(iteration==ids.Length-1)throw new ArgumentException("Positive exchange cycle");}}if(!changed)break;}
+   if(Operations==null)throw new ArgumentException("Missing operations catalog");Operations.Validate(this);
+   // Exact rational relaxation: even a profitable cycle smaller than floating-point precision is rejected.
+   var ids=Items.Select(x=>x.Id).ToArray();var numerators=ids.Select(_=>BigInteger.One).ToArray();var denominators=ids.Select(_=>BigInteger.One).ToArray();
+   for(int iteration=0;iteration<ids.Length;iteration++){bool changed=false;foreach(var e in Exchanges){int a=Array.IndexOf(ids,e.Input),b=Array.IndexOf(ids,e.Output);BigInteger num=numerators[a]*e.Quantity,den=denominators[a]*e.Cost;if(num*denominators[b]>numerators[b]*den){var gcd=BigInteger.GreatestCommonDivisor(num,den);numerators[b]=num/gcd;denominators[b]=den/gcd;changed=true;if(iteration==ids.Length-1)throw new ArgumentException("Positive exchange cycle");}}if(!changed)break;}
   }
  }
  public static class EconomyMath {

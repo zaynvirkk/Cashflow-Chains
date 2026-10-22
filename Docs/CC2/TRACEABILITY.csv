@@ -22,8 +22,8 @@ CC2-020,03 Empire,Production/storage/offline cap,IN_PROGRESS,Assets/_Game/Script
 CC2-021,03 Empire,Manager skill and assignment,NOT_STARTED,,,,
 CC2-022,03 Empire,Manager recruitment and XP,NOT_STARTED,,,,
 CC2-023,03 Empire,Equipment mastery and salvage,NOT_STARTED,,,,
-CC2-024,03 Empire,Research trees with caps,NOT_STARTED,,,,
-CC2-025,03 Empire,Timed renewable dispatch contracts,NOT_STARTED,,,,
+CC2-024,03 Empire,Research trees with caps,IN_PROGRESS,Assets/_Game/Scripts/Domain/Empire/DispatchResearch.cs; Presentation/EmpireOperationsUI.cs,CC2OperationsTests,,Thirty nodes across three trees; native replay in progress; server client not connected
+CC2-025,03 Empire,Timed renewable dispatch contracts,IN_PROGRESS,Assets/_Game/Scripts/Domain/Empire/DispatchResearch.cs; Presentation/EmpireOperationsUI.cs,CC2OperationsTests; Backend/tests/test_authority.py,,Fifteen renewable verified templates and speedups; native replay in progress
 CC2-026,04 Rewards,Direct deterministic rewards,IN_PROGRESS,Assets/_Game/Scripts/Domain/Economy/RoundRewardPolicy.cs,CC2EconomyTests; CC2EmpireTests,,First-clear cash/material/chest inventory grants; chest opening remains later phase
 CC2-027,04 Rewards,Earned chests and tiered loot pools,NOT_STARTED,,,,
 CC2-028,04 Rewards,Paid chance containers with odds disclosure,NOT_STARTED,,,,
@@ -89,13 +89,13 @@ CC2-087,09 Retention,Real verified scoreboards,NOT_STARTED,,,,
 CC2-088,09 Retention,Visible social identity rewards,NOT_STARTED,,,,
 CC2-089,10 Onboarding,No forced purchase during initial puzzle,NOT_STARTED,,,,
 CC2-090,10 Onboarding,First real earned result chest,NOT_STARTED,,,,
-CC2-091,10 Onboarding,First permanent construction and contract,NOT_STARTED,,,,
+CC2-091,10 Onboarding,First permanent construction and contract,IN_PROGRESS,Assets/_Game/Scripts/Presentation/EmpireSandboxUI.cs; EmpireOperationsUI.cs,Tools/cc2_empire_playtest.py; Tools/cc2_operations_playtest.py,,Third real result now offers first business; construction continues into next puzzle; real timer replay pending
 CC2-092,10 Onboarding,Trigger-based manager unlock,NOT_STARTED,,,,
 CC2-093,10 Onboarding,Merchant and recruitment unlock gates,NOT_STARTED,,,,
 CC2-094,10 Onboarding,Progression not tied to invented Day 1 schedules,NOT_STARTED,,,,
 CC2-095,10 Onboarding,Returner flow and optional account recovery,NOT_STARTED,,,,
 CC2-096,11 Screens,Main Board/Forecast/Activate/Result,IN_PROGRESS,Assets/_Game/Scripts/Presentation/MobileGameApp.cs,Tools/cc2_empire_playtest.py,Artifacts/CC2/EmpireVerified/05-portrait-empire.png,Actual multi-resource first-clear receipt in development sandbox
-CC2-097,11 Screens,Empire/Business/Construction/Research,IN_PROGRESS,Assets/_Game/Scripts/Presentation/EmpireSandboxUI.cs,Tools/cc2_empire_playtest.py,Artifacts/CC2/EmpireVerified/05-portrait-empire.png,Business/construction/production screens implemented; research remains P04
+CC2-097,11 Screens,Empire/Business/Construction/Research,IN_PROGRESS,Assets/_Game/Scripts/Presentation/EmpireSandboxUI.cs,Tools/cc2_empire_playtest.py,Artifacts/CC2/EmpireVerified/05-portrait-empire.png,Business/construction/production plus research/dispatch implemented in local sandbox; native current-source replay pending
 CC2-098,11 Screens,Manager/Recruitment/Equipment,NOT_STARTED,,,,
 CC2-099,11 Screens,Chest/Merchant/Inventory/SourceFinder,NOT_STARTED,,,,
 CC2-100,11 Screens,Events/Pass/VIP/Daily,NOT_STARTED,,,,
@@ -104,9 +104,9 @@ CC2-102,11 Screens,Collections/Combos/Achievements,NOT_STARTED,,,,
 CC2-103,11 Screens,Leagues/Alliances/Group projects,NOT_STARTED,,,,
 CC2-104,11 Screens,Settings/Offline/Error/Privacy/Accessibility,NOT_STARTED,,,,
 CC2-105,11 Screens,Locked/loading/empty/owned states for all screens,NOT_STARTED,,,,
-CC2-106,12 Feel,Tap scale/release sound/haptic,NOT_STARTED,,,,
+CC2-106,12 Feel,Tap scale/release sound/haptic,IN_PROGRESS,Assets/_Game/Scripts/Presentation/StudioUI.cs,Tools/cc2_navigation_playtest.py,,Artwork presses at0.96 while hit rectangle remains fixed; native edge replay pending
 CC2-107,12 Feel,Drag lift/legal snap/invalid return,NOT_STARTED,,,,
-CC2-108,12 Feel,Rotations/connection paths reflect true solver,NOT_STARTED,,,,
+CC2-108,12 Feel,Rotations/connection paths reflect true solver,IN_PROGRESS,Assets/_Game/Scripts/Presentation/TradingClarityUI.cs; GameFeel.cs,CityInsightTests; Tools/first-session-playtest.py,,Resident/crate/power route symbols; resize projection corrected; fresh first-session passes
 CC2-109,12 Feel,Eight-beat dynamic activation and combo payoff,NOT_STARTED,,,,
 CC2-110,12 Feel,Chest/manager rarity truthful visual reveals,NOT_STARTED,,,,
 CC2-111,12 Feel,Upgrade/collection/VIP reward animations,NOT_STARTED,,,,
@@ -145,3 +145,4 @@ CC2-143,17 Launch,Balance and human playtest report,NOT_STARTED,,,,
 CC2-144,17 Launch,Store policy/privacy review and operator approval,NOT_STARTED,,,,
 CC2-145,17 Launch,Post-launch monitoring and support runbook,NOT_STARTED,,,,
 CC2-020a,03 Empire,Initial capped production with genuine real-time native claim,DONE_VERIFIED,Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs,CC2EmpireTests; Tools/cc2_empire_playtest.py,Artifacts/CC2/EmpireVerified/14-real-production-collected.png,Local development sandbox only; no cloud or paid ownership claim
+CC2-096a,11 Screens,Explain residents/supplies/trading plan; reconcile displayed reward wallet,IN_PROGRESS,Presentation/TradingClarityUI.cs; MobileGameApp.cs; Domain/VerifiedLayouts.cs,104 EditMode; Tools/first-session-playtest.py,,Operator quality correction; direct-to-board first launch and actual saved plans; human comprehension remains unmeasured

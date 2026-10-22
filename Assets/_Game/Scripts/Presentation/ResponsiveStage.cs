@@ -13,7 +13,7 @@ namespace LocalGame {
   void Update(){var k=Keyboard.current;if(k!=null&&k.f11Key.wasPressedThisFrame){if(Screen.fullScreen)Screen.SetResolution(1280,720,FullScreenMode.Windowed);else Screen.SetResolution(Display.main.systemWidth,Display.main.systemHeight,FullScreenMode.FullScreenWindow);}}
   void LateUpdate(){if(!rect)rect=(RectTransform)transform;var size=rect.rect.size;if(size==previous&&previousView==View)return;previous=size;previousView=View;foreach(var e in GetComponentsInChildren<StageElement>(true))e.Apply();foreach(var t in GetComponentsInChildren<StageText>(true))t.Apply();}
   public Rect BoardArea {
-   get{float sourceY=Studio.Velvet?260:310,sourceH=Studio.Velvet?690:644;if(Wide){float scale=Mathf.Min((Width-610)/644,(Height-(Studio.Velvet?215:70))/sourceH);scale=Mathf.Max(.35f,scale);return new Rect((Width-644*scale)/2,(Height-sourceH*scale)/2+(Studio.Velvet?65:0),644*scale,sourceH*scale);}float top=224,lower=Height-430;float side=Mathf.Min(Width-48,lower-top);side=Mathf.Max(260,side);return new Rect((Width-side)/2,top+Mathf.Max(0,(lower-top-side)/2),side,side);}
+   get{float sourceY=Studio.Velvet?260:310,sourceH=Studio.Velvet?690:644;if(Wide){float scale=Mathf.Min((Width-610)/644,(Height-(Studio.Velvet?215:70))/sourceH);scale=Mathf.Max(.35f,scale);return new Rect((Width-644*scale)/2,(Height-sourceH*scale)/2+(Studio.Velvet?65:0),644*scale,sourceH*scale);}float top=248,lower=Height-430;float side=Mathf.Min(Width-48,lower-top);side=Mathf.Max(260,side);return new Rect((Width-side)/2,top+Mathf.Max(0,(lower-top-side)/2),side,side);}
 
   }
   public Rect OnBoard(Rect r){var b=BoardArea;float sourceY=Studio.Velvet?260:310;float s=b.width/644;return new Rect(b.x+(r.x-38)*s,b.y+(r.y-sourceY)*s,r.width*s,r.height*s);}
@@ -36,10 +36,10 @@ namespace LocalGame {
      if(r.y>=60&&r.y<135&&name=="Text")return new Rect(330,53,260,45);
      if(r.x==588&&r.y==38)return new Rect(624,18,72,72);
      if(r.y==142)return new Rect(r.x>400?404:32,106,r.x>400?280:362,32);
-     if(name=="Goal")return new Rect(24,148,672,66);
+     if(name=="Goal")return new Rect(24,148,672,90);
      if(name=="Inspector")return new Rect(24,Height-354,558,128);
      if(r.y==974&&r.x>500)return new Rect(592,Height-354,104,128);
-     if(r.y==1094)return new Rect(30,Height-421,660,56);
+     if(r.y==1094)return new Rect(30,Height-421,660,68);
      if(r.y==1152){if(r.x>450)return new Rect(72,Height-208,576,96);int i=r.x<100?0:r.x<250?1:2;return new Rect(24+i*168,Height-88,158,66);}
      if(name=="City desk")return new Rect(528,Height-88,168,66);
     }else{

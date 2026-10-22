@@ -1,0 +1,8 @@
+{
+  "status": "FAILED_INTERRUPTED",
+  "time_utc": "2026-10-22 19:52:45",
+  "cause": "systemd-oomd killed the terminal process group after sustained memory pressure;71 processes. Android IL2CPP/native replay did not finish.",
+  "mitigation": "One Unity job; user resource scope MemoryMax6GiB/CPU200%,test scope5GiB;IL2CPP jobs2/Bee jobs2;asset import worker1. Do not run emulator alongside native compile.",
+  "failed_local_test_retry": "First bounded test reached its5GiB limit with default importer processes; scope stopped locally. Retrying with explicit desiredWorkerCount1 and standbyWorkerCount1.",
+  "acceptance": "No Android or production wait pass inferred from the interrupted runs."
+}

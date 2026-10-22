@@ -1,32 +1,36 @@
-# Cashflow Chains
+# Cashflow Chains 2.0
 
-A colorful, offline city-chain puzzle for Android. Connect customers and supplies to businesses, turn delivery arrows, and watch a useful layout turn into cash.
+An Android-first economic puzzle inside a persistent city progression game. Black Bag is on hold.
 
-This private repository contains the ongoing **Android / Google Play production expansion**. The 72-city core remains free. The operator has requested the optional monetization model in the supplied master specification: starter, gems, draft rerolls, extra blueprints, cosmetic skins and tested scenario packs. Black Bag is a separate project and is on hold. See [the current work packages](Docs/EXPANSION_AND_COMMERCIAL_PLAN.md).
+The governing direction is the [complete CC2 handoff](Docs/CC2/CASHFLOW_CHAINS_2_MASTER_REVAMP_SPEC.md), [tracker](Docs/CC2/CC2_IMPLEMENTATION_TRACKER.csv), [system graph](Docs/CC2/CC2_SYSTEM_GRAPH.mmd) and [execution directive](Docs/CC2/CODEX_START_HERE.md). The older fixed store is a preserved baseline, not the completed monetization design. [Release status](Docs/CC2/RELEASE_STATUS.md) records what works and what remains.
+
+The commercial goal is interconnected progression: legitimate chains feed owned businesses, rewards and recurring objectives; contextual acquisition routes and optional purchases serve those goals. Managers, unified chests/recruitment, merchants, offers, VIP, cards, events, passes and production billing remain tracked work. No retention or revenue outcome has been demonstrated.
 
 ## Run locally
 
-For a separately labelled all-content developer preview, use `./PlayContentQA.sh`; see [its limits](Docs/CONTENT_QA.md). The regular game never fabricates purchases.
+- `./PlayEmpireSandbox.sh`: current CC2 development player, isolated save under Builds/EmpireSandbox/LocalEmpire. Actual local puzzle rewards, construction, production and developing dispatch/research. Explicit local sandbox label; no cloud or purchases.
+- `./Play.sh`: regular certified-puzzle companion. Existing saves and baseline entitlements remain separate. It ignores sandbox activation flags.
+- `./PlayContentQA.sh`: separately labelled content fixture. It is not a normal progression or payment test.
 
-On Linux, build with Unity 6000.3.26f1 and run `./Play.sh`. The laptop player fills the screen; F11 switches to a window. Android uses portrait touch controls and adapts to the safe area.
+Unity 6000.3.26f1. Run one Editor/build at a time; scripts bound CPU workers after an earlier laptop crash. F11 switches the Linux companion between full screen and a window. Android uses portrait touch controls and safe areas.
 
-Drag existing buildings or drag an available building from the tray. Tap a building to see its role, rotate its delivery arrows, and use Undo freely. Forecasts explain real consequences. Activate the chain to resolve eight deterministic beats and record your best result.
+## Understand a connection
+
+The board is a neighborhood plan. Homes represent residents; their path arrows lead to neighboring shop entrances. Cafés need customers and supplies to make sales. The opening café starts with 14 supplies; the next lesson introduces farm deliveries. Moving a piece edits the plan and does not charge the player rent. Rounds measure eight trading steps; round sales value and saved rewards are separate. An owned residential property in the permanent empire earns rental income separately.
+
+Drag, or select then tap a destination. Rotate changes route direction. Undo and forecast are free. Standard puzzle results ignore purchased empire power.
 
 ## Build and verify
 
 ```bash
-DISPLAY=:1 ./Tools/test.sh
-DISPLAY=:1 ./Tools/build.sh linux
-DISPLAY=:1 ./Tools/build.sh android
-python3 Tools/playtest.py --display :1
-python3 Tools/campaign-playtest.py --display :1
-python3 Tools/android-playtest.py
+./Tools/test.sh
+./Tools/build.sh linux
+./Tools/build.sh empire-sandbox
+./Tools/build.sh android
+python3 Tools/cc2_content_validate.py
+python3 Tools/cc2_economy_sim.py
 ```
 
-Run one Unity process at a time. The build scripts bound CPU workers after an earlier laptop memory incident. Builds, caches, private signing files and local review saves are not source dependencies.
+The 104 reference layouts and deterministic eight-step resolver are retained. The latest domain suite passes 104 tests; fresh UI/Android acceptance is tracked separately. Native scripts use real input and isolated saves, never purchase grants or edited clocks. The preliminary 180-day simulator rejects the five-tier progression for content exhaustion and excess Cash; this is not a commercially approved economy.
 
-The expanded domain contains 32 buildings, 72 free puzzles plus 32 optional expansion puzzles across eight districts, integer accounting, deterministic event logs, conservation checks and compatible atomic schema-2 saves. The first three starts teach connection, rotation and combining them. Outcomes depend on the layout; feedback never grants or changes money.
-
-[Current release direction](Docs/ANDROID_RELEASE_DIRECTION.md) · [Project state](STATE.md) · [Engineering evidence](Docs/MOBILE_ACCEPTANCE.md) · [Art provenance](Docs/ASSET_PROVENANCE.md)
-
-**Work in progress:** this checkpoint includes new content, presentation and billing integration that are still being compiled and replayed. The expansion domain suite passes 62 tests, including every one of the 104 reference solutions and all 16 combo conditions. This is not a final release signoff. Historical packages and screenshots are not proof for changed source. Play Console signing/account steps, public listing/privacy details and any required external closed test are separate from local engineering verification. No store submission has occurred.
+Main and archive/pre-cc2-revision5 preserve baseline3ac5b62. Current work is on feature/cashflow-chains-2-economy. Builds, raw replays, private signing material and caches are local artifacts. No Play submission, hosting deployment, paid transaction or external account creation has occurred.

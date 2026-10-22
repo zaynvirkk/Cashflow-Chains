@@ -30,13 +30,15 @@ def tap(x,y):shell('input tap '+str(point(x,y)[0])+' '+str(point(x,y)[1]));actio
 def drag(x,y,tx,ty):shell('input swipe '+' '.join(str(round(v)) for v in [*point(x,y),*point(tx,ty)])+' 450');actions.append({'drag':[x,y,tx,ty]});time.sleep(.5)
 def back():shell('input keyevent 4');actions.append({'key':'Android Back'});time.sleep(.7)
 def launch():
- shell('am force-stop '+package);arguments='-capture-dir '+remote+' -save-dir '+remote+'/Saves';shell('am start -n '+activity+' --es unity '+shlex.quote(arguments));wait('title');time.sleep(2)
+ shell('am force-stop '+package);arguments='-capture-dir '+remote+' -save-dir '+remote+'/Saves';shell('am start -n '+activity+' --es unity '+shlex.quote(arguments));wait();time.sleep(2)
  shell('uiautomator dump '+remote+'/system-ui.xml');tree=ET.fromstring(shell('cat '+remote+'/system-ui.xml'))
  if any(n.get('resource-id')=='android:id/immersive_cling_title' for n in tree.iter('node')):
   node=next(n for n in tree.iter('node') if n.get('resource-id')=='android:id/ok');x1,y1,x2,y2=map(int,re.findall(r'\d+',node.get('bounds')));shell('input tap '+str((x1+x2)//2)+' '+str((y1+y2)//2));actions.append({'system':'Dismissed Android full-screen help'});time.sleep(2)
 print(command('install','--no-incremental','-r',apk,timeout=180));activity=shell('cmd package resolve-activity --brief '+package).splitlines()[-1];assert '/' in activity,activity
 try:
- launch();first=capture('01-title');scale,top=detect_layout(first);tap(360,1060);wait('board');capture('02-first-case')
+ launch();first=capture('01-opening');scale,top=detect_layout(first)
+ if state()['Screen']=='title':tap(360,1060)
+ wait('board');capture('02-first-case')
  if not cc:
   # First shader/material presentation can trail the domain probe on ARM translation.
   # Require the actual wine-coloured Take control before delivering the first drag.
