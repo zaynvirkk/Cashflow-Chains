@@ -1,9 +1,9 @@
 # Product context
 
-Cashflow Chains is a free offline city puzzle for Android / Google Play first. Linux is the laptop testing companion. The user explicitly put Black Bag on hold and deferred monetization until after testing.
+Cashflow Chains2.0 is a short-session economic puzzle inside a persistent empire game, Android/Google Play first with Linux companion testing. The22October operator handoff in Docs/CC2 is governing. Black Bag is on hold.
 
-Players connect customers, supplies and energy to businesses, rotate delivery arrows, forecast their result and activate an eight-beat chain. Layout choices must have legible consequences. All 72 levels, 24 buildings and earned progression remain playable without ads, accounts, purchases or servers. Cash and coins are fictional game values with no cash redemption.
+Preserve104 certified challenges, deterministic eight-beat solver,72 free puzzles, purchased expansion ownership, free forecast/Undo, valid saves and the illustrated living city. Certified puzzle scoring excludes purchased power. New empire operations connect real chain outcomes to business development, capped production, managers, renewable contracts, research, rewards, events and optional acceleration/capacity/personalization.
 
-The operator rejected application-like UI and requested a recognizable illustrated world, satisfying taps and drags, particles, sound and active scenery. The supplied Cashflow reference sets the current bright miniature-city direction. Learn from the identity and craft of the named 2D inspirations without copying assets, characters or logos.
+Paid inventory, random acquisition, merchant refresh, event scoring and durable account progression require authoritative service transactions. Offline puzzles remain playable. Never promote a simulator or local sandbox as real payment or multiplayer evidence. Product numbers are balance hypotheses; no retention/revenue is established.
 
-Source: https://github.com/zaynvirkk/Cashflow-Chains . Developer/contact for release documents: Zayn Virk, zaynvirkk@gmail.com. A new local upload key is authorized; private signing material stays ignored. Play submission, public privacy hosting, accounts and tester recruitment require separate operator action. No commercial success or human enjoyment is established by automated tests.
+Repo: https://github.com/zaynvirkk/Cashflow-Chains . Public developer/contact: Zayn Virk,zaynvirkk@gmail.com. Local upload key authorized and ignored. Hosting/account setup, public policy approval, real sandbox payments, human testing and publishing remain separate external actions.

@@ -1,5 +1,8 @@
 # Codex Instructions for This Unity Game
 
+## Governing CC2 direction
+The operator accepted `Docs/CC2/CASHFLOW_CHAINS_2_MASTER_REVAMP_SPEC.md` on22October2026. Follow its P00–P17 gated program and `Docs/CC2/CC2_IMPLEMENTATION_TRACKER.csv`. Conflicting older product restrictions are superseded by `Docs/Decisions/2026-10-21-CC2-Commercial-Rebuild.md`; retain puzzle invariants, legitimate ownership, accessibility and transaction security. Preserve baseline branch and do not publish/spend/create accounts without authorization. The original constraints below remain historical where explicitly superseded.
+
 ## Sources of truth
 Read these documents before editing gameplay: `Docs/01_CASHFLOW_CHAINS_MASTER_SPEC.md`, `Docs/SHARED_TECH_MONETIZATION_LAUNCH.md`, `Docs/RELEASE_AND_TEST_MATRIX.md`. The user-approved game master specification determines mechanics. If a proposal conflicts with it, record a blocking issue and request review rather than silently change the game's identity.
 

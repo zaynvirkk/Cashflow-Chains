@@ -1,3 +1,5 @@
+> Governing update: CC2 master in Docs/CC2 and the22October supersession decision override incompatible product rules below. Historical specification is retained.
+
 # SHARED TECHNICAL, MONETIZATION AND LAUNCH SPECIFICATION
 Version 1.0 | 20 Oct 2026 | Applies to CASHFLOW CHAINS and BLACK BAG
 
