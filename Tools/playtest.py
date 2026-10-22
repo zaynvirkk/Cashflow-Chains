@@ -10,6 +10,7 @@ actions=[];proc=None;window=None;movie=None
 
 def xd(*v):return subprocess.check_output(['xdotool',*map(str,v)],env=env,text=True,stderr=subprocess.DEVNULL,timeout=10).strip()
 def activate():
+ if xd('getactivewindow')==window:return
  try:xd('windowactivate','--sync',window)
  except (subprocess.CalledProcessError,subprocess.TimeoutExpired):xd('windowfocus',window)
  xd('windowraise',window)
@@ -23,6 +24,8 @@ def wait_state(name=None):
   time.sleep(.15)
  raise AssertionError('State not reached: '+str(name))
 def click(x,y):activate();xd('mousemove','--window',window,*local_point(out,x,y),'mousedown','1');time.sleep(.08);xd('mouseup','1');actions.append({'click':[x,y]});time.sleep(.25)
+def named(name,index=0):
+ time.sleep(.2);items=[e for e in json.loads((out/'ui-layout.json').read_text())['Elements'] if e['Kind']=='button' and e['Name']==name];assert items,name;r=items[index]['Pixels'];activate();xd('mousemove','--window',window,round(r['x']+r['width']/2),round(r['y']+r['height']/2),'mousedown','1');time.sleep(.12);xd('mouseup','1');actions.append({'button':name});time.sleep(.4)
 def key(name):activate();xd('keydown',name);time.sleep(.08);xd('keyup',name);actions.append({'key':name});time.sleep(.25)
 def drag(x,y,tx,ty):
  activate();ax,ay=local_point(out,x,y);bx,by=local_point(out,tx,ty)
@@ -81,9 +84,9 @@ try:
  if cc:
   click(360,608);wait_state('library');cap('13-almanac');click(620,1140);cap('14-almanac-page2');click(620,1140);cap('26-almanac-page3');click(620,1140);cap('27-almanac-page4');desk()
   click(360,710);wait_state('blueprints');cap('15-blueprints');click(120,416);assert state()['Save']['Blueprints'][0]['Challenge']==1;click(270,416);wait_state('board');desk()
-  click(360,812);wait_state('contracts');cap('16-contracts');wallet=state()['Save']['Profile']['Credits'];click(600,320);wait_state('board');assert state()['Save']['Profile']['Credits']==wallet;desk()
-  click(360,404);wait_state('map');click(140,602);wait_state('board');drag(602,712,441,712);key('space');key('space');time.sleep(1);wait_state('result');desk()
-  click(360,812);wait_state('contracts');click(600,320);assert len(state()['Save']['Contracts'])==1;route_started=time.monotonic();cap('17-contract-active');click(360,1195);wait_state('achievements');cap('18-achievements');desk()
+  click(360,812);wait_state('contracts');cap('16-contracts');wallet=state()['Save']['Profile']['Credits'];named('SEND');wait_state('board');assert state()['Save']['Profile']['Credits']==wallet;desk()
+  click(360,404);wait_state('hub');click(200,410);wait_state('map');click(140,602);wait_state('board');drag(602,712,441,712);key('space');key('space');time.sleep(1);wait_state('result');desk()
+  click(360,812);wait_state('contracts');named('SEND');assert len(state()['Save']['Contracts'])==1;route_started=time.monotonic();cap('17-contract-active');click(360,1195);wait_state('achievements');cap('18-achievements');desk()
   click(360,914);wait_state('themes');cap('19-palettes');desk()
  else:
   click(360,608);wait_state('gallery');cap('13-gallery');click(530,1120);cap('14-gallery-watch');desk()
@@ -103,7 +106,7 @@ try:
  saved=state()['Save']['Profile'];stop();shutil.copyfile(out/'actual-mix.wav',out/'actual-mix-first.wav');shutil.copyfile(out/'text-overflows.json',out/'text-overflows-first.json');shutil.copyfile(out/'performance.json',out/'performance-first.json');start();click(360,1060);time.sleep(.5);assert state()['Save']['Profile']['Stars']==saved['Stars'];assert state()['Save']['Profile']['Collection']==saved['Collection'];cap('10-cold-resume')
  if cc:
   while time.monotonic()-route_started<62:time.sleep(.25)
-  desk();click(360,812);wait_state('contracts');click(600,320);assert state()['Save']['Contracts'][0]['Claimed'];assert state()['Save']['Profile']['Credits']==700;cap('24-contract-returned');desk();key('Escape')
+  desk();click(360,812);wait_state('contracts');named('COLLECT');assert state()['Save']['Contracts'][0]['Claimed'];assert state()['Save']['Profile']['Credits']==700;cap('24-contract-returned');desk();key('Escape')
  # explicit in-product reset only affects this isolated review save directory
  desk();click(360,1016);wait_state('settings');click(360,1125);click(360,938);cap('11-reset-confirmation');click(360,1070);wait_state('title');assert not any(state()['Save']['Profile']['Stars']);assert list((out/'Saves').glob('*.archived-*'));cap('12-fresh-after-archive');time.sleep(27);stop()
  issues=json.loads((out/'text-overflows-first.json').read_text())['Issues']+json.loads((out/'text-overflows.json').read_text())['Issues'];assert not issues,issues

@@ -6,6 +6,8 @@ This private repository contains the ongoing **Android / Google Play production 
 
 ## Run locally
 
+For a separately labelled all-content developer preview, use `./PlayContentQA.sh`; see [its limits](Docs/CONTENT_QA.md). The regular game never fabricates purchases.
+
 On Linux, build with Unity 6000.3.26f1 and run `./Play.sh`. The laptop player fills the screen; F11 switches to a window. Android uses portrait touch controls and adapts to the safe area.
 
 Drag existing buildings or drag an available building from the tray. Tap a building to see its role, rotate its delivery arrows, and use Undo freely. Forecasts explain real consequences. Activate the chain to resolve eight deterministic beats and record your best result.
@@ -27,4 +29,4 @@ The expanded domain contains 32 buildings, 72 free puzzles plus 32 optional expa
 
 [Current release direction](Docs/ANDROID_RELEASE_DIRECTION.md) · [Project state](STATE.md) · [Engineering evidence](Docs/MOBILE_ACCEPTANCE.md) · [Art provenance](Docs/ASSET_PROVENANCE.md)
 
-**Work in progress:** this checkpoint includes new content, presentation and billing integration that are still being compiled and replayed. The last accepted expansion domain run passed 59 tests, including every one of the 104 reference solutions and all 16 combo conditions. This is not a final release signoff. Historical packages and screenshots are not proof for changed source. Play Console signing/account steps, public listing/privacy details and any required external closed test are separate from local engineering verification. No store submission has occurred.
+**Work in progress:** this checkpoint includes new content, presentation and billing integration that are still being compiled and replayed. The expansion domain suite passes 62 tests, including every one of the 104 reference solutions and all 16 combo conditions. This is not a final release signoff. Historical packages and screenshots are not proof for changed source. Play Console signing/account steps, public listing/privacy details and any required external closed test are separate from local engineering verification. No store submission has occurred.

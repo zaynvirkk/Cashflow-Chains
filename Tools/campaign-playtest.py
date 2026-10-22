@@ -59,7 +59,9 @@ try:
  for _ in range(150):
   try:window=xd('search','--onlyvisible','--pid',proc.pid).splitlines()[-1];xd('windowraise',window);xd('windowfocus',window);wait('title');break
   except subprocess.CalledProcessError:time.sleep(.2)
- assert window;activate();time.sleep(1);click(360,1060);wait('board')
+ assert window;activate();
+ if opt.display==':1':xd('windowmove',window,2100,45)
+ time.sleep(1);click(360,1060);wait('board')
  for level in range(len(results),len(solutions)):
   target=solutions[level]
   s=wait('board');assert s['Save']['Profile']['Selected']==level

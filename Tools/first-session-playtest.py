@@ -22,6 +22,7 @@ def focus():
 def click(x,y):focus();xd('mousemove','--window',window,*local_point(out,x,y),'mousedown','1');time.sleep(.08);xd('mouseup','1');time.sleep(.2);actions.append(['click',x,y])
 def key(k):focus();xd('keydown',k);time.sleep(.08);xd('keyup',k);time.sleep(.16)
 def cap(label):
+ if 'result' in label or 'lessons-complete' in label:time.sleep(.65)
  before=set(out.glob('cashflow-*.png'));key('F12');time.sleep(.3);files=set(out.glob('cashflow-*.png'))-before;assert files;shutil.copyfile(next(iter(files)),out/(label+'.png'))
 def drag(x,y,tx,ty,label=None):
  focus();a=local_point(out,x,y);b=local_point(out,tx,ty);xd('mousemove','--window',window,*a,'mousedown','1');time.sleep(.12)

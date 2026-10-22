@@ -1,19 +1,16 @@
-# Local edition traceability
+# Production traceability
 
-The later operator instruction supersedes the initial kickoff stop. Rows distinguish implemented local behavior from the broader master-spec release gates. See MOBILE_ACCEPTANCE.md for exact source-bound reports.
+The operator authorizes Cashflow production work; Black Bag is on hold. Exact current source/binary-bound evidence belongs in MOBILE_ACCEPTANCE.md and Artifacts/latest-* successful markers.
 
-| Package | Scope | Status |
+| Scope | Implemented behavior | Acceptance boundary |
 |---|---|---|
-| CC-P00 | Pinned project, reproducible scene, headless build/test, atomic save | PASS local; Linux and ARM64 APK |
-| CC-P01 | Native drag/tap/rotate/preview; domain-authoritative actions | PASS native and emulator touch |
-| CC-P02 | Deterministic rules, score/economy and randomized invariant tests | PASS 39 tests, including 10k cases |
-| CC-P03 | Painted art, material controls, particles, motion and stereo audio | Visual revision 2 implemented; actual captures, movies and mix checked; human preference unknown |
-| CC-P04 | Playable opening and free progression | Implemented; novice comprehension and 15-minute human study unknown |
-| CC-P05 | Full catalogs, six locations and normalized 72-case campaign | PASS 72 visible-input three-star witnesses; original seeds unchanged |
-| CC-P06 | Offline progression, earned loadouts/blueprints/contracts, saves | Implemented; domain and earned UI tests; source generators/witness exporter retained |
-| CC-P07 | Responsive native text, saved sound/motion/contrast controls | PASS tested sizes and zero overflow; English only, physical accessibility unknown |
-| CC-P08 | IAP v5 validated adapter and optional service boundary | Code implemented, checkout unavailable; real transactions and analytics service not accepted |
-| CC-P09 | Device/language/closed-test/commercial acceptance | Emulator local PASS; physical phones, localization expansion, human study and finance UNKNOWN |
-| CC-P10 | Deliverable build and store release | Local ZIP/APK PASS; store signing/AAB/publication/Steam not completed |
+| CC-P00/P02 | Reproducible Unity project; deterministic rules, conservation, atomic saves and migrations | 62 EditMode cases; two 10,000-board suites |
+| CC-P01/P03 | Native drag/tap/rotate, living traffic/buildings, motion, typography, original art/audio | Actual player replay and captures required; human taste is unknown |
+| CC-P04/P05 | Three teaching cities, 72 free puzzles, 12 Harbor +20 Finance,32 buildings,eight districts | All104 certified three-star domain references; genuine native72-city replay is separate |
+| CC-P06 | 16 actual-flow combos,eight collections,blueprints,commissions,achievements,palettes | Domain checks and earned-save UI replay; development fixture is explicitly labelled |
+| CC-P07 | Responsive portrait/wide controls,saved motion/contrast/audio | Tested sizes and overflow checks; English only,physical accessibility unverified |
+| C12/S08/S09 | Nine optional products,verified grant-save-confirm,restore/history,meaningful draft rerolls | Real prices only; platform purchase/refund/restore matrix remains external |
+| CC-P10 | Upload key,signed ARM64 APK/AAB,API36 and16KB binary audit | Local packaging; Play submission and approval not performed |
+| Release matrix | Laptop and API36/16KB emulator tests | Physical phones,human comprehension,retention and revenue remain unknown |
 
-Master/shared/release specifications remain preserved. SourcePackage seed files are structurally verified, not silently reclassified as balanced production content. Local store fixtures and winning solvers do not prove purchases or human outcomes.
+No original seed has been silently reclassified as balanced production evidence. Paid or progression fixtures prove deterministic behavior only. See COMMERCIAL_IMPLEMENTATION.md and CONTENT_QA.md.

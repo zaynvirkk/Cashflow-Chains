@@ -106,8 +106,9 @@ namespace LocalGame {
    }
    if(View=="map"){
     if(name.StartsWith("district"))return new Rect(40,238,w*.26f,h-333);
+    if(r.y>=546&&r.y<1050&&r.width==150){int i=Mathf.RoundToInt((r.y-546)/100)*4+Mathf.RoundToInt((r.x-38)/164);float left=w*.31f,cw=(w*.65f-52)/4,ch=(h-330)/5;return new Rect(left+i%4*(cw+16),236+i/4*ch,cw,ch-10);}
     if(r.y>=546&&r.y<1050&&r.width==204){int i=Mathf.RoundToInt((r.y-546)/126)*3+Mathf.RoundToInt((r.x-38)/220);float left=w*.31f,cw=(w*.65f-52)/4;return new Rect(left+i%4*(cw+16),236+i/4*125,cw,112);}
-    if(r.y==1090)return new Rect(40+(r.x>300?260:0),h-77,240,52);
+    if(r.y==1090)return new Rect(40+(r.x>300?170:0),h-77,160,52);
     if(r.y==1201)return new Rect(w*.5f,h-76,w*.46f,52);
    }
    if((View=="menu"||View=="settings"||View=="map")&&r.y<240){if(r.x==588)return new Rect(w-90,28,58,58);return new Rect(44,r.y*.85f,r.width/720*(w-120),r.height);}

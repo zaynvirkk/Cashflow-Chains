@@ -64,6 +64,13 @@ public static class BuildProject
         if(r.summary.result!=BuildResult.Succeeded)throw new Exception("Android bundle build failed");
     }
 
+    public static void ContentQA()
+    {
+        CreateScene();CampaignProof.Export();Directory.CreateDirectory("Builds/ContentQA");
+        try{PlayerSettings.productName="Cashflow Chains (Content QA)";var r=BuildPipeline.BuildPlayer(new[]{ScenePath},"Builds/ContentQA/CashflowChains-QA.x86_64",BuildTarget.StandaloneLinux64,BuildOptions.Development);if(r.summary.result!=BuildResult.Succeeded)throw new Exception("Content QA build failed");}
+        finally{PlayerSettings.productName="Cashflow Chains";AssetDatabase.SaveAssets();}
+    }
+
     public static void StoreIcon()
     {
         // CPU texture export also works with the CLI's Null graphics device.

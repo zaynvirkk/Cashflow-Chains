@@ -6,6 +6,7 @@ namespace CashflowChains.Domain {
   public int Index;public string Title,District,Brief,Modifier;public int Multiplier;public Board Solution,Start;public long Par,Target;
  }
  public static class Campaign {
+  public static int DistrictOf(int level){if(level<0||level>=104)throw new ArgumentException("Invalid city");return level>=84?7:level/12;}
   public static readonly string[] Districts={"Little Beginnings","Garden Quarter","The Working City","Glass & Gold","Harbour Lights","The Living Metropolis","Harbor Stories","Finance After Dark"};
   static readonly string[] Titles={"First light","A morning ritual","Farm to table","Corner economy","Second shift","Through the depot","The long connection","House of plenty","After hours","A finer taste","Three little businesses","An electric city"};
   static readonly string[] Modifiers={"Opening day","Morning trade","Local suppliers","Busy streets","Night shift","Long deliveries","Freight connection","City festival","Dinner crowd","Luxury season","Diverse economy","Clean power"};

@@ -2,7 +2,7 @@
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 platform="${1:-linux}"
-case "$platform" in linux) method=Linux; target=StandaloneLinux64;; android) method=Android; target=Android;; bundle) method=AndroidBundle; target=Android;; *) echo 'Use linux, android or bundle' >&2; exit 2;; esac
+case "$platform" in content-qa) method=ContentQA; target=StandaloneLinux64;; linux) method=Linux; target=StandaloneLinux64;; android) method=Android; target=Android;; bundle) method=AndroidBundle; target=Android;; *) echo 'Use linux, content-qa, android or bundle' >&2; exit 2;; esac
 cd "$root"
 mkdir -p Artifacts/Logs
 trap 'python3 "$root/Tools/sanitize-logs.py" "$root/Artifacts/Logs/$platform-release-build.log"' EXIT
