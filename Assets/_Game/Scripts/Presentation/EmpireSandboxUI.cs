@@ -9,25 +9,25 @@ using UnityEngine;
 
 namespace CashflowChains.Presentation {
  public sealed partial class MobileGameApp {
-  bool empireSandbox,empireWritable=true;EmpireEngine empire;BalanceConfig empireConfig;AtomicSave empireDisk;int empirePage;long empireCashReward,empireWoodReward,empireChestReward;
+  bool empireMode=true,empireSandbox,empireWritable=true;EmpireEngine empire;BalanceConfig empireConfig;AtomicSave empireDisk;int empirePage;long empireCashReward,empireWoodReward,empireChestReward;
   long EmpireNow=>DateTimeOffset.UtcNow.ToUnixTimeSeconds();
   void InitializeEmpireSandbox(string directory){
-   if(!empireSandbox)return;empireConfig=JsonUtility.FromJson<BalanceConfig>(Resources.Load<TextAsset>("CC2/balance-v1").text);empireConfig.Validate();empireDisk=new AtomicSave(Path.Combine(directory,"cc2-local-empire-v3.json"));
+   if(!empireMode)return;empireConfig=JsonUtility.FromJson<BalanceConfig>(Resources.Load<TextAsset>("CC2/balance-v1").text);empireConfig.Validate();empireDisk=new AtomicSave(Path.Combine(directory,"cc2-local-empire-v3.json"));
    var account=empireDisk.Read<EmpireAccount>(a=>a.Validate(empireConfig),out string recovery);empireWritable=!recovery.StartsWith("Save unreadable");
    account=account??new EmpireAccount{Economy=new EconomyState{AccountId="sandbox-"+Guid.NewGuid().ToString("N")}};
    if(data.Goal!=null){try{data.Goal.Validate(empireConfig);}catch(ArgumentException){data.Goal=null;}}
    empire=new EmpireEngine(empireConfig,account,a=>{if(!empireWritable)return false;try{empireDisk.Write(a);return true;}catch(Exception){empireWritable=false;return false;}});
-   var banner=FlatUI.Panel(root.parent,"Empire sandbox watermark",0,1252,720,28,new Color(.015f,.03f,.06f,.97f));var canvas=banner.gameObject.AddComponent<Canvas>();canvas.overrideSorting=true;canvas.sortingOrder=200;Studio.Label(banner,"CC2 LOCAL EMPIRE SANDBOX · NO CLOUD OR PURCHASES",0,0,720,1280,12,Color.white,TextAlignmentOptions.Center).raycastTarget=false;banner.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;
+   if(empireSandbox){var banner=FlatUI.Panel(root.parent,"Empire sandbox watermark",0,1252,720,28,new Color(.015f,.03f,.06f,.97f));var canvas=banner.gameObject.AddComponent<Canvas>();canvas.overrideSorting=true;canvas.sortingOrder=200;Studio.Label(banner,"CC2 LOCAL EMPIRE SANDBOX · NO CLOUD OR PURCHASES",0,0,720,1280,12,Color.white,TextAlignmentOptions.Center).raycastTarget=false;banner.GetComponent<UnityEngine.UI.Image>().raycastTarget=false;}
   }
-  void RecordEmpireRound(){empireCashReward=empireWoodReward=empireChestReward=0;if(!empireSandbox||run.Stars(result.Credits)<1)return;try{var before=empire.Snapshot.Economy;empire.RecordCertified(run.Mission.Index,run.Board,EmpireNow);var after=empire.Snapshot.Economy;empireCashReward=after.Amount("CASH")-before.Amount("CASH");empireWoodReward=after.Amount("WOOD")-before.Amount("WOOD");empireChestReward=after.Amount("CHEST:bronze")-before.Amount("CHEST:bronze");}catch(Exception e){message="Empire reward preserved for retry: "+e.Message;}WriteEmpireProbe();}
+  void RecordEmpireRound(){empireCashReward=empireWoodReward=empireChestReward=0;if(!empireMode||run.Stars(result.Credits)<1)return;try{var before=empire.Snapshot.Economy;empire.RecordCertified(run.Mission.Index,run.Board,EmpireNow);var after=empire.Snapshot.Economy;empireCashReward=after.Amount("CASH")-before.Amount("CASH");empireWoodReward=after.Amount("WOOD")-before.Amount("WOOD");empireChestReward=after.Amount("CHEST:bronze")-before.Amount("CHEST:bronze");}catch(Exception e){message="Empire reward preserved for retry: "+e.Message;}WriteEmpireProbe();}
   string EmpireRewardText=>empireCashReward>0?"+"+empireCashReward+" CASH · +"+empireWoodReward+" WOOD"+(empireChestReward>0?" · SUPPLY CHEST EARNED":""):"FIRST-CLEAR REWARD ALREADY SAVED";
-  void WriteEmpireProbe(){string dir=FlatUI.Arg("-capture-dir");if(!empireSandbox||empire==null||dir==null)return;Directory.CreateDirectory(dir);File.WriteAllText(Path.Combine(dir,"empire-state.json"),JsonUtility.ToJson(empire.Snapshot,true));}
+  void WriteEmpireProbe(){string dir=FlatUI.Arg("-capture-dir");if(!empireMode||empire==null||dir==null)return;Directory.CreateDirectory(dir);File.WriteAllText(Path.Combine(dir,"empire-state.json"),JsonUtility.ToJson(empire.Snapshot,true));}
   void EmpireAction(Action action,Action refresh=null){bool failed=false;try{action();sound.Cue("cash");message="";}catch(Exception e){sound.Cue("deny");message=e.Message;failed=true;}WriteEmpireProbe();Action next=refresh??EmpireScreen;next();if(failed){var m=Studio.Modal(root,"NOT READY YET",next);Studio.Label(m,message,44,300,632,600,31,Studio.Text,TextAlignmentOptions.Center);Studio.Button(m,"BACK TO MY CITY",44,1090,632,135,next,true);}}
   string EmpireDuration(long seconds)=>seconds<=0?"READY":seconds<60?seconds+"s":seconds<3600?(seconds/60)+"m "+(seconds%60)+"s":(seconds/3600)+"h "+(seconds%3600/60)+"m";
   string EmpireCost(UpgradeDefinition upgrade)=>string.Join(" · ",upgrade.Costs.Select(x=>x.Quantity+" "+x.ItemId));
   void ContinueEmpirePuzzle(){if(run.Finished&&run.Stars(run.Preview().Credits)>0&&data.Profile.Selected<71&&data.Profile.CanSelect(data.Profile.Selected+1))StartLevel(data.Profile.Selected+1);else Board();}
   void EmpireScreen(){
-   if(!empireSandbox)return;Base("empire");var a=empire.Snapshot;long now=EmpireNow;int clears=a.Economy.Receipts.Count(x=>x.CommandId.StartsWith("certified-first-clear:"));
+   if(!empireMode)return;Base("empire");var a=empire.Snapshot;long now=EmpireNow;int clears=a.Economy.Receipts.Count(x=>x.CommandId.StartsWith("certified-first-clear:"));
    Studio.Header(root,"YOUR CHAINS BUILD SOMETHING LASTING","My permanent city",a.Economy.Amount("CASH").ToString("N0")+" CASH  ·  "+a.Businesses.Count(x=>x.Level>0)+" BUSINESSES",ContinueEmpirePuzzle);
    DrawDevelopmentGoal();
    for(int i=0;i<6;i++){

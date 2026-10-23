@@ -1,5 +1,9 @@
 # Cashflow Chains current state
 
+23October2026. Active feature branch: feature/cashflow-chains-2-economy. Operator has superseded level-first presentation with one persistent city. Current unshipped rebuild and exact limits: [PERSISTENT_CITY_PROGRESS](Docs/CC2/PERSISTENT_CITY_PROGRESS.md).148 Unity cases pass; final native/regular/Android and refreshed API acceptance are pending. New paid commerce is inactive. Black Bag remains on hold. Original handoffs and old proofs/entitlements remain preserved. No publication,spend,real payment or human/commercial result.
+
+## Previous checkpoint
+
 23 October2026. The complete Game Bible governs the CC2 rebuild. Black Bag is on hold;the game is not store-ready.
 
 Repository: https://github.com/zaynvirkk/Cashflow-Chains. Main/archive preserve3ac5b62. Active branch: feature/cashflow-chains-2-economy. Source import751a915 preserves all six new handoff artifacts and expands the active tracker to157 rows without resetting original progress. See Docs/GameBible/SOURCE_REVIEW.md and Docs/CC2/RELEASE_STATUS.md.

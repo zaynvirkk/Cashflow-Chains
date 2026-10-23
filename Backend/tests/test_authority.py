@@ -148,3 +148,35 @@ def test_dispatch_rejects_unverified_layout_and_wrong_speedup_currency(service):
  for level in range(3):win(c,h,level)
  built=command(c,h,'build',businessId='home').json()['state']['Construction'][0];clock[0]=built['FinishAt'];command(c,h,'finish',projectId=built['Id']);bad=board(0);bad['Nodes'][1]['InitialGoods']=64;before=snapshot(c,h)['state'];assert command(c,h,'dispatch',template='route-1',board=bad).status_code==409;assert snapshot(c,h)['state']==before
  sent=command(c,h,'dispatch',template='route-1',board=board(0)).json()['state']['Dispatches'][0];assert command(c,h,'speedup',projectId=sent['Id'],sourceItem='GEMS',minutes=1).status_code==409
+
+
+def test_permanent_city_has_finite_demand_real_bills_and_no_early_settlement(service):
+ c,h,clock,_,_=service
+ assert c.get('/v1/city/forecast').status_code==401
+ assert c.get('/v1/city/forecast',headers=h).status_code==409
+ assert command(c,h,'city-open').status_code==200
+ assert amount(snapshot(c,h)['state'],'CASH')==200
+ assert command(c,h,'city-open').status_code==200
+ assert amount(snapshot(c,h)['state'],'CASH')==200
+ assert command(c,h,'city-build',businessId='cafe',x=2,y=1).status_code==200
+ project=snapshot(c,h)['state']['City']['Jobs'][0]
+ assert command(c,h,'city-finish',projectId=project['Id']).status_code==409
+ clock[0]=project['FinishAt']
+ assert command(c,h,'city-finish',projectId=project['Id']).status_code==200
+ before=snapshot(c,h)
+ forecast=c.get('/v1/city/forecast',headers=h).json()
+ assert forecast['Population']==12 and forecast['CoffeeDemand']==6
+ assert 0<forecast['CoffeeServed']<=6
+ assert forecast['Net']==forecast['Revenue']-forecast['Bills']-forecast['ImportBills']-forecast['Tax']
+ assert snapshot(c,h)==before
+ assert command(c,h,'city-start-day').status_code==200
+ frozen=c.get('/v1/city/forecast?current=true',headers=h).json()
+ assert command(c,h,'city-settle-day',day=1).status_code==409
+ assert command(c,h,'city-price',propertyId=2,priceBasisPoints=12500).status_code==200
+ assert c.get('/v1/city/forecast?current=true',headers=h).json()==frozen
+ clock[0]=snapshot(c,h)['state']['City']['Trading']['FinishAt']
+ settled=command(c,h,'city-settle-day',day=1);assert settled.status_code==200,settled.text
+ after=snapshot(c,h);assert after['state']['City']['Day']==2
+ assert amount(after['state'],'CASH')==amount(before['state'],'CASH')+frozen['Net']
+ assert command(c,h,'city-settle-day',day=1).status_code==200
+ assert snapshot(c,h)==after

@@ -15,11 +15,11 @@ def compact(value):return json.dumps(value,separators=(',',':'),sort_keys=True)
 def digest(value):return hashlib.sha256(value.encode()).hexdigest()
 class Strict(BaseModel):model_config=ConfigDict(extra='forbid',strict=True)
 class Node(Strict):
- Id:int=Field(ge=1,le=1000000);X:int=Field(ge=0,le=6);Y:int=Field(ge=0,le=6);Rotation:int=Field(ge=0,le=3);Kind:str=Field(min_length=1,max_length=40);InitialGoods:int=Field(default=0,ge=0,le=64);InitialEnergy:int=Field(default=0,ge=0,le=64)
+ Id:int=Field(ge=1,le=1000000);X:int=Field(ge=0,le=6);Y:int=Field(ge=0,le=6);Rotation:int=Field(ge=0,le=3);Kind:str=Field(min_length=1,max_length=40);InitialGoods:int=Field(default=0,ge=0,le=64);InitialEnergy:int=Field(default=0,ge=0,le=64);TargetId:int=Field(default=0,ge=0,le=1000000)
 class Board(Strict):
- Width:int=Field(ge=1,le=7);Height:int=Field(ge=1,le=7);Budget:int=Field(ge=0,le=1000000);Challenge:int=Field(ge=0,le=103);ImportQuota:int=Field(default=0,ge=0,le=64);ImportCost:int=Field(default=0,ge=0,le=10);DraftRoll:int=Field(default=0,ge=0,le=0);DraftMode:Literal[False]=False;DraftOperations:list[str]=Field(default_factory=list,max_length=0);Blocked:int=Field(default=0,ge=0,le=2**49-1);Nodes:list[Node]=Field(max_length=49)
+ RulesVersion:int=Field(default=0,ge=0,le=1);Width:int=Field(ge=1,le=7);Height:int=Field(ge=1,le=7);Budget:int=Field(ge=0,le=1000000);Challenge:int=Field(ge=0,le=103);ImportQuota:int=Field(default=0,ge=0,le=64);ImportCost:int=Field(default=0,ge=0,le=10);DraftRoll:int=Field(default=0,ge=0,le=0);DraftMode:Literal[False]=False;DraftOperations:list[str]=Field(default_factory=list,max_length=0);Blocked:int=Field(default=0,ge=0,le=2**49-1);Nodes:list[Node]=Field(max_length=49)
 class Command(Strict):
- requestId:str=Field(min_length=16,max_length=100,pattern=r'^[A-Za-z0-9_-]+$');expectedVersion:int=Field(ge=0);kind:Literal['build','finish','collect','dispatch','dispatch-claim','research-start','research-finish','speedup'];businessId:str|None=Field(default=None,max_length=40);projectId:str|None=Field(default=None,max_length=160);template:str|None=Field(default=None,max_length=80);nodeId:str|None=Field(default=None,max_length=80);sourceItem:str|None=Field(default=None,max_length=80);minutes:int=Field(default=0,ge=0,le=1000000);board:Board|None=None
+ requestId:str=Field(min_length=16,max_length=100,pattern=r'^[A-Za-z0-9_-]+$');expectedVersion:int=Field(ge=0);kind:Literal['build','finish','collect','dispatch','dispatch-claim','research-start','research-finish','speedup','city-open','city-build','city-finish','city-upgrade','city-move','city-price','city-expand','city-start-day','city-settle-day','city-rename','city-toggle','city-grid','city-finance','city-repay','city-hire','city-advertise','city-materials','city-agreement'];businessId:str|None=Field(default=None,max_length=40);projectId:str|None=Field(default=None,max_length=160);template:str|None=Field(default=None,max_length=80);nodeId:str|None=Field(default=None,max_length=80);sourceItem:str|None=Field(default=None,max_length=80);minutes:int=Field(default=0,ge=0,le=1000000);board:Board|None=None;propertyId:int=Field(default=0,ge=0,le=100000);x:int=Field(default=0,ge=0,le=15);y:int=Field(default=0,ge=0,le=15);day:int=Field(default=0,ge=0,le=1000000);priceBasisPoints:int=Field(default=10000,ge=8000,le=12500);east:bool=True;open:bool=True;cityName:str=Field(default="",max_length=28);staff:int=Field(default=0,ge=0,le=30);budget:int=Field(default=0,ge=0,le=1000);quantity:int=Field(default=0,ge=0,le=20);amount:int=Field(default=0,ge=0,le=1000000);loanId:str=Field(default="",max_length=100);itemId:str=Field(default="",max_length=80);sponsorship:bool=False
 class RoundClaim(Strict):
  requestId:str=Field(min_length=16,max_length=100,pattern=r'^[A-Za-z0-9_-]+$');expectedVersion:int=Field(ge=0);challengeId:str=Field(min_length=16,max_length=100);board:Board
 class Refresh(Strict):refreshToken:str=Field(min_length=32,max_length=200)
@@ -124,14 +124,20 @@ def create_app(database:Path,clock=time.time):
     if not ticket or ticket['expires']<now() or ticket['content_hash']!=content_hash:raise HTTPException(409,'Challenge expired or invalid')
     if body.board.Challenge!=ticket['level']:raise HTTPException(409,'Challenge proof mismatch')
     command.update(Level=ticket['level'],Board=body.board.model_dump())
-   else:command.update(BusinessId=body.businessId,ProjectId=body.projectId,Template=body.template,NodeId=body.nodeId,SourceItem=body.sourceItem,Minutes=body.minutes,Board=body.board.model_dump() if body.board else None)
+   else:command.update(BusinessId=body.businessId,ProjectId=body.projectId,Template=body.template,NodeId=body.nodeId,Minutes=body.minutes,Board=body.board.model_dump() if body.board else None,PropertyId=body.propertyId,X=body.x,Y=body.y,CityDay=body.day,PriceBasisPoints=body.priceBasisPoints,East=body.east,Open=body.open,CityName=body.cityName,Staff=body.staff,Budget=body.budget,Quantity=body.quantity,Amount=body.amount,LoanId=body.loanId,SourceItem=body.itemId if body.kind=="city-materials" else body.sourceItem,Sponsorship=body.sponsorship)
    try:state=domain.apply(command)
    except (ValueError,TimeoutError):raise HTTPException(409,'Command rejected; no resources changed')
    version=state['Economy']['Revision'];response={'version':version,'serverTime':now(),'state':state};db.execute('UPDATE accounts SET state=?,version=? WHERE id=?',(compact(state),version,account));db.execute('INSERT INTO requests VALUES(?,?,?,?)',(account,body.requestId,request_hash,compact(response)))
-   if kind=='round':db.execute('INSERT INTO puzzle_plans VALUES(?,?,?) ON CONFLICT(account,level) DO UPDATE SET board=excluded.board',(account,body.board.Challenge,compact(body.board.model_dump())))
+   if kind=='round':db.execute('INSERT INTO puzzle_plans VALUES(?,?,?) ON CONFLICT(account,level) DO UPDATE SET board=excluded.board',(account,body.board.Challenge,compact(body.board.model_dump(exclude_unset=True))))
    return response
  @app.post('/v1/puzzle/verify-and-claim')
  def claim(body:RoundClaim,authorization:str|None=Header(default=None)):return execute(body,'round',authorization)
+ @app.get('/v1/city/forecast')
+ def city_forecast(current:bool=False,authorization:str|None=Header(default=None)):
+  with connect() as db:
+   account=identity(db,authorization);state=json.loads(db.execute('SELECT state FROM accounts WHERE id=?',(account,)).fetchone()['state'])
+  try:return domain.apply({'AccountId':account,'State':state,'Command':'city-current-day' if current else 'city-forecast','TrustedNow':now()})
+  except ValueError:raise HTTPException(409,'Open your permanent city first')
  @app.post('/v1/economy/command')
  def command(body:Command,authorization:str|None=Header(default=None)):return execute(body,body.kind,authorization)
  @app.post('/v1/iap/validate-and-fulfill')

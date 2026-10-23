@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using CashflowChains.Economy;
+namespace CashflowChains.City {
+ [Serializable] public sealed class CityProperty {
+  public int Id,X,Y,Level,PendingX=-1,PendingY=-1,PriceBasisPoints=10000,Staff=-1,MarketingBudget;public string Kind;public bool Open=true;
+  public CityProperty Copy()=>(CityProperty)MemberwiseClone();
+ }
+ [Serializable] public sealed class CityBuildingJob {
+  public string Id;public int PropertyId,TargetLevel,Seconds;public long StartedAt,FinishAt;
+  public CityBuildingJob Copy()=>(CityBuildingJob)MemberwiseClone();
+ }
+ [Serializable] public sealed class CityOperatingPlan {
+  public long Payables;public int Day,GridTier=1;public CityLoan[] Loans=new CityLoan[0];public string Partner="",Sponsor="";public int PartnerEndsDay,SponsorEndsDay;public long StartAt,FinishAt,CashAvailable;public CityProperty[] Properties;public ItemAmount[] Inventory;
+  public string Fingerprint()=>CurrencyLedger.Hash(Day+"|"+Payables+"|"+GridTier+"|"+StartAt+"|"+FinishAt+"|"+CashAvailable+"|"+string.Join(";",Properties.OrderBy(p=>p.Id).Select(p=>p.Id+","+p.Kind+","+p.X+","+p.Y+","+p.Level+","+p.PriceBasisPoints+","+p.Open+","+p.Staff+","+p.MarketingBudget))+"|"+Partner+":"+PartnerEndsDay+":"+Sponsor+":"+SponsorEndsDay+"|"+string.Join(";",Loans.Select(l=>l.Id+":"+l.Remaining+":"+l.Installment+":"+l.Arrears))+"|"+string.Join(";",Inventory.OrderBy(i=>i.ItemId,StringComparer.Ordinal).Select(i=>i.ItemId+","+i.Quantity)));
+  public CityOperatingPlan Copy()=>new CityOperatingPlan{Payables=Payables,Day=Day,GridTier=GridTier,Loans=Loans.Select(l=>l.Copy()).ToArray(),Partner=Partner,Sponsor=Sponsor,PartnerEndsDay=PartnerEndsDay,SponsorEndsDay=SponsorEndsDay,StartAt=StartAt,FinishAt=FinishAt,CashAvailable=CashAvailable,Properties=Properties.Select(p=>p.Copy()).ToArray(),Inventory=Inventory.Select(i=>new ItemAmount(i.ItemId,i.Quantity)).ToArray()};
+ }
+ [Serializable] public sealed class CityState {
+  public int Schema=1,Width=4,Height=4,Day=1,NextPropertyId=2,GridTier=1;public string Name="Newhaven";
+  public List<CityLoan> Loans=new List<CityLoan>();public string Partner="",Sponsor="";public int PartnerEndsDay,SponsorEndsDay;
+  public long LastClosedAt;
+  public long Payables,LastDayRevenue,LastDayBills,LastDayNet,LifetimeRevenue;public CityOperatingPlan Trading;
+  public List<CityProperty> Properties=new List<CityProperty>();public List<CityBuildingJob> Jobs=new List<CityBuildingJob>();
+  public CityState Copy()=>new CityState{Schema=Schema,Width=Width,Height=Height,Day=Day,NextPropertyId=NextPropertyId,GridTier=GridTier,Name=Name,Loans=Loans.Select(l=>l.Copy()).ToList(),Partner=Partner,Sponsor=Sponsor,PartnerEndsDay=PartnerEndsDay,SponsorEndsDay=SponsorEndsDay,Payables=Payables,LastClosedAt=LastClosedAt,LastDayRevenue=LastDayRevenue,LastDayBills=LastDayBills,LastDayNet=LastDayNet,LifetimeRevenue=LifetimeRevenue,Trading=Trading?.Copy(),Properties=Properties.Select(p=>p.Copy()).ToList(),Jobs=Jobs.Select(j=>j.Copy()).ToList()};
+  public int BuilderSlots=>1+(Properties.Any(p=>p.Kind=="construction_company"&&p.Level>=2)?1:0);
+  public int Population(CityCatalog c)=>CityPopulation.Residents(c,Properties,GridTier);
+  public void Validate(BalanceConfig config,EconomyState economy){var c=config.City??throw new ArgumentException("City catalog missing");if(Trading!=null&&Trading.Day==0&&Trading.StartAt==0&&Trading.FinishAt==0&&(Trading.Properties==null||Trading.Properties.Length==0)&&(Trading.Inventory==null||Trading.Inventory.Length==0))Trading=null;if(Trading==null&&economy.Receipts.Any(r=>r.CommandId=="city-day-start:"+Day))throw new ArgumentException("Pending trading plan missing");if(Schema!=1||Width<4||Height<4||Width>c.MaxSize||Height>c.MaxSize||Day<1||Day>1000000||NextPropertyId<2||GridTier<1||GridTier>5||string.IsNullOrWhiteSpace(Name)||Name.Length>28||Payables<0||LastDayRevenue<0||LastDayBills<0||LifetimeRevenue<0||Properties==null||Jobs==null||Properties.Any(p=>p==null)||Jobs.Any(j=>j==null)||Properties.Select(p=>p.Id).Distinct().Count()!=Properties.Count||Properties.Select(p=>p.X+":"+p.Y).Distinct().Count()!=Properties.Count||Jobs.Count>BuilderSlots||Jobs.Select(j=>j.PropertyId).Distinct().Count()!=Jobs.Count)throw new ArgumentException("Invalid permanent city");var nextPlots=Properties.Select(p=>(p.PendingX>=0?p.PendingX:p.X)+":"+(p.PendingY>=0?p.PendingY:p.Y)).ToArray();if(nextPlots.Distinct().Count()!=nextPlots.Length)throw new ArgumentException("Pending plots overlap");foreach(var p in Properties){c.Business(p.Kind);if(p.Id<1||p.Id>=NextPropertyId||p.Level<0||p.Level>5||p.X<0||p.X>=Width||p.Y<0||p.Y>=Height||p.Staff< -1||p.Staff>c.Business(p.Kind).MaxStaff||p.MarketingBudget!=0&&p.MarketingBudget!=5&&p.MarketingBudget!=15||p.PendingX>=Width||p.PendingY>=Height||p.PendingX< -1||p.PendingY< -1||(p.PendingX<0)!=(p.PendingY<0)||p.PriceBasisPoints!=8000&&p.PriceBasisPoints!=10000&&p.PriceBasisPoints!=12500)throw new ArgumentException("Invalid city property");}if(Loans==null||Loans.Any(l=>l==null)||Loans.Select(l=>l.Id).Distinct().Count()!=Loans.Count)throw new ArgumentException("Invalid financing");foreach(var loan in Loans)loan.Validate(economy);foreach(var j in Jobs){var p=Properties.Find(x=>x.Id==j.PropertyId);if(p==null||j.TargetLevel!=p.Level+1||j.StartedAt<1||j.StartedAt>economy.LastTrustedAt||j.Seconds<1||j.FinishAt-j.StartedAt!=j.Seconds||!economy.Receipts.Any(r=>r.CommandId==j.Id))throw new ArgumentException("Invalid city builder");}if(Trading!=null){if(Trading.Day!=Day||Trading.GridTier<1||Trading.GridTier>5||Trading.StartAt<1||Trading.StartAt>economy.LastTrustedAt||Trading.FinishAt-Trading.StartAt!=c.DaySeconds(Day)||Trading.CashAvailable<0||Trading.Properties==null||Trading.Inventory==null||Trading.Properties.Any(p=>p==null||p.Level<1||p.Level>5))throw new ArgumentException("Invalid trading plan");var receipt=economy.Receipts.Find(r=>r.CommandId=="city-day-start:"+Day);if(receipt==null||receipt.Fingerprint!=CurrencyLedger.Hash(receipt.ConfigRevision+"|city-trading|open-day|"+Day+"|"+Trading.Fingerprint()))throw new ArgumentException("Trading plan changed");var report=CityDayModel.Forecast(c,Trading);foreach(var hold in report.Resources){long held=Math.Max(0,hold.Consumed+hold.Exported+hold.Spilled-hold.Produced-hold.Imported);if(economy.Amount(hold.ItemId)<held)throw new ArgumentException("Trading inputs are reserved");}}}
+ }
+ [Serializable] public sealed class CityResourceResult {public string ItemId;public long Initial,Produced,Imported,Consumed,Exported,Spilled,Closing;}
+ [Serializable] public sealed class CityBusinessResult {public int PropertyId,Customers;public string Kind;public long Revenue,Bills,Tax,Imports,DeliveryWork,DeliveryBills;public int PotentialCustomers,Employees,Advertising;public long Net=>Revenue-Bills-Tax-Imports;}
+ [Serializable] public sealed class CityFlow {public int Source,Target,Count,Minute,TravelMinutes;public string Kind;}
+ [Serializable] public sealed class CityDayResult {
+  public int Day,Population,HousingCapacity,Jobs,Visitors,PowerDemand,PowerAvailable,PowerBasisPoints,CoffeeDemand,CoffeeServed,CompetitorCustomers;
+  public string Season;public long Revenue,Bills,ImportBills,Tax,ExportRevenue,LoanDue,PayablesDue,SponsorshipRevenue;public long OperatingNet=>Revenue-Bills-ImportBills-Tax;public long Net=>OperatingNet-LoanDue-PayablesDue;
+  public List<CityResourceResult> Resources=new List<CityResourceResult>();public List<CityBusinessResult> Businesses=new List<CityBusinessResult>();public List<CityFlow> Flows=new List<CityFlow>();
+ }
+}

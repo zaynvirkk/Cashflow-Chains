@@ -1,0 +1,18 @@
+# One persistent city is the primary game
+
+The operator's23October follow-up supersedes isolated-level progression as the primary CC2 experience. Preserve old certified puzzles,proofs,entitlements and earned balances for compatibility; do not present them as a succession of new cities in the primary experience. The new city is permanent,named and expanded on its own map. No skip or fast-forward action. Early operations last seconds; later operations take longer while the player can plan/build/manage other streams.
+
+The following are connected economic requirements,not menu names:
+
+* Homes represent residential blocks with a finite population. Households pay rent,consume a bounded daily budget and create distinct coffee,food/shopping,dining and entertainment demand. A resident does not buy endless coffee each simulation beat.
+* Cafés exchange real beans/cups and operating capacity for coffee served to actual eligible visits. Display customers/stock/service outbound and cash inbound,plus gross revenue,inputs,wages/utilities,taxes and net. Shops cannot receive free stock from unrelated farms or mint sales without demand.
+* Farms produce authored raw materials; processors transform authored inputs; warehouses hold bounded stock; logistics move it. Imports fill actual shortages at published costs and transport times. Exports consume genuine surplus with finite demand and fees.
+* Utility capacity,power purchases and local generation affect cost and operational reliability. Government levies published taxes/permits. Competitors take a disclosed share of finite demand according to price/access. Seasonal forecasts change specific yields,costs or visitor demand through published rules. No fabricated live countdown or random profit multiplier.
+* Ports,hotels,airports and attractions support later supply/tourism streams through actual capacity,inputs,fees and visitor demand. They unlock progressively; they are not extra buttons before the economy supports them.
+* Land expansion attaches new usable plots to the same city. Pan/zoom shows the whole city without altering coordinates,ownership,finances or saved placements. Building upgrades and retained layouts express personal choices.
+
+All currency/inventory effects pass through the validated command ledger with atomic city projections. Snapshot the trading plan at the start of an operating day; edits affect the next day and the UI says so. Day settlement consumes inputs,pays actual bills and grants only supported external revenue once. Shortfalls become explicit payables,never a silently negative wallet. Daily demand,storage,offline time and trade caps are modeled; payout animation cannot award currency.
+
+Commercial mapping: a useful second project -> optional extra builder; repeated freight saturation -> fleet capacity; actual storage saturation -> warehouse capacity; a chosen expansion/development -> appropriate resource acquisition; verified research -> efficiency/specialization; owned city -> cosmetics; recurring ordinary economic activity -> event/free-and-paid reward tracks. Earned activities and free/wait alternatives remain visible. No first-three-action upsell or unsolicited repeated popup. Paid routes require real platform metadata and verified fulfillment; absent dependencies are not simulated. Prices and tuning remain hypotheses. No claim of retention,addiction or profit without players.
+
+Implement and verify complete causal slices,then expand the data-driven economic catalog. The prior full Bible and technical ledger/security/accessibility requirements remain in force except where this explicit direction supersedes them. Do not call a subset the completed final simulation.

@@ -9,7 +9,7 @@ namespace LocalGame {
  }
  public sealed class ResponsiveStage:MonoBehaviour {
   public string View="title";RectTransform rect;Vector2 previous;string previousView;public bool Wide=>Width>Height;public float Width=>Mathf.Max(1,((RectTransform)transform).rect.width);public float Height=>Mathf.Max(1,((RectTransform)transform).rect.height);
-  public float FontScale=>Wide&&View!="board"&&View!="title"&&View!="menu"&&View!="settings"&&View!="map"&&View!="hub"?Mathf.Clamp(Height/1280f,.5f,1):1;
+  public float FontScale=>Wide&&View!="board"&&View!="title"&&View!="city-world"&&View!="menu"&&View!="settings"&&View!="map"&&View!="hub"?Mathf.Clamp(Height/1280f,.5f,1):1;
   void Update(){var k=Keyboard.current;if(k!=null&&k.f11Key.wasPressedThisFrame){if(Screen.fullScreen)Screen.SetResolution(1280,720,FullScreenMode.Windowed);else Screen.SetResolution(Display.main.systemWidth,Display.main.systemHeight,FullScreenMode.FullScreenWindow);}}
   void LateUpdate(){if(!rect)rect=(RectTransform)transform;var size=rect.rect.size;if(size==previous&&previousView==View)return;previous=size;previousView=View;foreach(var e in GetComponentsInChildren<StageElement>(true))e.Apply();foreach(var t in GetComponentsInChildren<StageText>(true))t.Apply();}
   public Rect BoardArea {
@@ -18,7 +18,7 @@ namespace LocalGame {
   }
   public Rect OnBoard(Rect r){var b=BoardArea;float sourceY=Studio.Velvet?260:310;float s=b.width/644;return new Rect(b.x+(r.x-38)*s,b.y+(r.y-sourceY)*s,r.width*s,r.height*s);}
   public Vector2 Point(float x,float y,bool board=true){if(View=="title"&&x>=80&&y>=400&&y<770){var title=Layout("Title connection",new Rect(x,y,0,0));return new Vector2(title.x-Width/2,Height/2-title.y);}if(board&&View=="board"){var r=OnBoard(new Rect(x,y,0,0));return new Vector2(r.x-Width/2,Height/2-r.y);}return new Vector2(x/720*Width-Width/2,Height/2-y/1280*Height);}
-  public Rect Layout(string name,Rect r){float w=Width,h=Height,extra=h-1280;bool board=View=="board";if(board&&Wide&&name=="City wallet")return new Rect(28,386,252,24);
+  public Rect Layout(string name,Rect r){float w=Width,h=Height,extra=h-1280;bool board=View=="board";if(View=="city-world"&&name=="Permanent city map")return Wide?new Rect(310,20,w-620,h-40):new Rect(18,195,w-36,h-460);if(View=="city-world"&&Wide){if(name=="CITY DESK")return new Rect(24,h-198,262,76);if(r.x==34&&r.y==28)return new Rect(28,30,252,90);if(r.y==94)return new Rect(28,145,252,52);if(r.y==99)return new Rect(28,222,252,40);if(r.y==146)return new Rect(28,296,252,95);if(name=="City identity backing")return new Rect(14,12,282,h-24);if(name=="City day forecast")return new Rect(w-296,20,282,h-130);if(r.y==1202)return r.x<100?new Rect(24,h-104,262,76):new Rect(w-286,h-104,262,76);if(r.y==934)return new Rect(330+(r.x-34),h-88,r.width,r.height);if(r.y<200)return new Rect(28,r.y*1.45f,252,r.height*1.1f);}if(board&&Wide&&name=="City wallet")return new Rect(28,386,252,24);
    if(name=="Title wordmark")return Wide?new Rect(52,45,w*.42f,245):new Rect(38,60,644,270);
    if(name=="Living route"||name=="Scrim")return new Rect(0,0,w,h);
    if(name=="Reading shade")return Wide?(board?new Rect(0,0,292,h):View=="title"?new Rect(0,0,w*.48f,h):new Rect(0,0,w,210)):new Rect(0,0,w,260*Mathf.Min(1,h/1280));

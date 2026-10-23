@@ -53,14 +53,14 @@ namespace CashflowChains.Domain
     }
     [Serializable] public sealed class Node
     {
-        public int Id,X,Y,Rotation,InitialGoods,InitialEnergy; public string Kind;
+        public int Id,X,Y,Rotation,InitialGoods,InitialEnergy,TargetId; public string Kind;
         public Node(){} public Node(int id,string kind,int x,int y,int rotation=0){Id=id;Kind=kind;X=x;Y=y;Rotation=rotation;}
-        public Node Copy()=>new Node(Id,Kind,X,Y,Rotation){InitialGoods=InitialGoods,InitialEnergy=InitialEnergy};
+        public Node Copy()=>new Node(Id,Kind,X,Y,Rotation){InitialGoods=InitialGoods,InitialEnergy=InitialEnergy,TargetId=TargetId};
     }
     [Serializable] public sealed class Board
     {
-        public int Width=4,Height=4,Budget=300,Challenge,ImportQuota,ImportCost,DraftRoll;public bool DraftMode;public List<string> DraftOperations=new List<string>(); public ulong Blocked; public List<Node> Nodes=new List<Node>();
-        public Board Copy()=>new Board{Width=Width,Height=Height,Budget=Budget,Challenge=Challenge,ImportQuota=ImportQuota,ImportCost=ImportCost,DraftMode=DraftMode,DraftRoll=DraftRoll,DraftOperations=new List<string>(DraftOperations??new List<string>()),Blocked=Blocked,Nodes=Nodes.Select(x=>x.Copy()).ToList()};
+        public int Width=4,Height=4,Budget=300,Challenge,ImportQuota,ImportCost,DraftRoll,RulesVersion;public bool DraftMode;public List<string> DraftOperations=new List<string>(); public ulong Blocked; public List<Node> Nodes=new List<Node>();
+        public Board Copy()=>new Board{Width=Width,Height=Height,Budget=Budget,Challenge=Challenge,RulesVersion=RulesVersion,ImportQuota=ImportQuota,ImportCost=ImportCost,DraftMode=DraftMode,DraftRoll=DraftRoll,DraftOperations=new List<string>(DraftOperations??new List<string>()),Blocked=Blocked,Nodes=Nodes.Select(x=>x.Copy()).ToList()};
         public static Board Tutorial(int index)
         {
             var b=new Board{Challenge=index,Width=index==2?5:4,Height=index==2?5:4,Budget=index==2?500:300};
@@ -70,29 +70,32 @@ namespace CashflowChains.Domain
         }
         public bool Move(int id,int x,int y)
         {var n=Nodes.FirstOrDefault(z=>z.Id==id);if(n==null||x<0||y<0||x>=Width||y>=Height||(Blocked&(1UL<<(y*Width+x)))!=0||Nodes.Any(z=>z.Id!=id&&z.X==x&&z.Y==y))return false;n.X=x;n.Y=y;return true;}
-        public string Fingerprint()=>Width+"x"+Height+":"+Challenge+":"+Budget+":"+ImportQuota+":"+ImportCost+":"+string.Join(";",Nodes.OrderBy(x=>x.Id).Select(n=>$"{n.Id},{n.Kind},{n.X},{n.Y},{n.Rotation},{n.InitialGoods},{n.InitialEnergy}"));
+        public string Fingerprint()=>(RulesVersion==1?"v1:"+string.Join(",",Nodes.OrderBy(n=>n.Id).Select(n=>n.Id+"="+n.TargetId))+":":"")+Width+"x"+Height+":"+Challenge+":"+Budget+":"+ImportQuota+":"+ImportCost+":"+string.Join(";",Nodes.OrderBy(x=>x.Id).Select(n=>$"{n.Id},{n.Kind},{n.X},{n.Y},{n.Rotation},{n.InitialGoods},{n.InitialEnergy}"));
         public void Validate()
         {
             if(DraftOperations==null)DraftOperations=new List<string>();
             if(DraftOperations.Count!=DraftRoll||DraftOperations.Count>100||DraftOperations.Any(string.IsNullOrEmpty)||DraftOperations.Any(s=>s.Length>100)||DraftOperations.Distinct().Count()!=DraftOperations.Count)throw new ArgumentException("Invalid draft history");
+            if(RulesVersion<0||RulesVersion>1)throw new ArgumentException("Unknown city rule version");
             if(Width<1||Height<1||Width>7||Height>7||Nodes==null||Nodes.Count>Width*Height||Budget<0||Budget>1000000||Challenge<0||Challenge>103||ImportQuota<0||ImportQuota>64||ImportCost<0||ImportCost>10||DraftRoll<0||DraftRoll>100)throw new ArgumentException("Invalid board");
             var ids=new HashSet<int>();var cells=new HashSet<int>();
             foreach(var n in Nodes)
             {
                 if(n==null||n.Id<1||!ids.Add(n.Id)||n.X<0||n.Y<0||n.X>=Width||n.Y>=Height||!cells.Add(n.Y*Width+n.X)||(Blocked&(1UL<<(n.Y*Width+n.X)))!=0||n.Rotation<0||n.Rotation>3||n.InitialGoods<0||n.InitialGoods>64||n.InitialEnergy<0||n.InitialEnergy>64)throw new ArgumentException("Invalid node");
                 Pieces.Get(n.Kind);
+                if(n.TargetId<0||RulesVersion==0&&n.TargetId!=0||n.TargetId!=0&&!RoadRouting.CanDeliver(n,Nodes.FirstOrDefault(t=>t.Id==n.TargetId)))throw new ArgumentException("Invalid delivery destination");
             }
             if(Nodes.Sum(n=>Pieces.Get(n.Kind).Price)>Budget)throw new ArgumentException("Board exceeds budget");
         }
     }
     public sealed class FlowEvent
     {
-        public int Beat,Source,Target,Kind,Count;public long Credits;public string Reason;
-        public override string ToString()=>$"{Beat}:{Source}>{Target}:{Kind}:{Count}:{Credits}:{Reason}";
+        public int Beat,Source,Target,Kind,Count,TravelSteps,ArrivalBeat;public long Credits;public string Reason;
+        public override string ToString()=>$"{Beat}:{Source}>{Target}:{Kind}:{Count}:{Credits}:{Reason}"+(TravelSteps>0?$":{TravelSteps}:{ArrivalBeat}":"");
     }
     public sealed class RoundResult
     {
         public int Beats=8; public long Credits;
+        public readonly long[] InTransit=new long[3];
         public readonly long[] Initial=new long[3],Generated=new long[3],Consumed=new long[3],Spilled=new long[3],Remaining=new long[3];
         public readonly List<FlowEvent> Events=new List<FlowEvent>();
         public bool Conserved()=>Enumerable.Range(0,3).All(k=>Initial[k]+Generated[k]==Consumed[k]+Spilled[k]+Remaining[k]);
@@ -104,6 +107,7 @@ namespace CashflowChains.Domain
         public static RoundResult Run(Board board,int roundBasisPoints=10000)
         {
             board.Validate();if(roundBasisPoints<0||roundBasisPoints>80000)throw new ArgumentOutOfRangeException(nameof(roundBasisPoints));
+            if(board.RulesVersion==1)return TravelResolver.Run(board,roundBasisPoints);
             var nodes=board.Nodes.OrderBy(n=>n.Id).ToArray();int len=nodes.Length;
             var r=new RoundResult();var stock=new int[len,3];var outgoing=new int[len,3];var inbox=new int[len,3];var farmStarted=new bool[len];
             var sourceCarry=new int[len];int imported=0;
