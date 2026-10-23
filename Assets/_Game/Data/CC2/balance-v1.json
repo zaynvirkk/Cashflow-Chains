@@ -1,6 +1,6 @@
 {
   "Schema": 1,
-  "Revision": 4,
+  "Revision": 6,
   "OfflineCapSeconds": 28800,
   "ProductionBonusCapBp": 10000,
   "TimeReductionCapBp": 5000,
@@ -2726,7 +2726,7 @@
     ]
   },
   "City": {
-    "Revision": 1,
+    "Revision": 3,
     "StarterCash": 200,
     "InitialSize": 4,
     "MaxSize": 12,
@@ -2745,7 +2745,7 @@
         "BuildSeconds": 30,
         "UnlockPopulation": 0,
         "UnlockDay": 1,
-        "Population": 12,
+        "Population": 4,
         "Rent": 24,
         "FixedBills": 6,
         "Power": 1,
@@ -2777,9 +2777,9 @@
         "UnlockDay": 1,
         "Population": 0,
         "Rent": 0,
-        "FixedBills": 10,
-        "Power": 2,
-        "Sales": 12,
+        "FixedBills": 4,
+        "Power": 1,
+        "Sales": 4,
         "Price": 12,
         "Storage": 0,
         "Tourists": 0,
@@ -2797,9 +2797,9 @@
         ],
         "Outputs": [],
         "Art": "cafe",
-        "BaseStaff": 2,
+        "BaseStaff": 1,
         "MaxStaff": 6,
-        "DailyWage": 4,
+        "DailyWage": 2,
         "BuildMaterials": [
           {
             "ItemId": "WOOD",

@@ -150,6 +150,13 @@ def test_dispatch_rejects_unverified_layout_and_wrong_speedup_currency(service):
  sent=command(c,h,'dispatch',template='route-1',board=board(0)).json()['state']['Dispatches'][0];assert command(c,h,'speedup',projectId=sent['Id'],sourceItem='GEMS',minutes=1).status_code==409
 
 
+def found_home(c,h,clock):
+ assert command(c,h,'city-build',businessId='home',x=1,y=1).status_code==200
+ job=snapshot(c,h)['state']['City']['Jobs'][0];clock[0]=job['FinishAt']
+ assert command(c,h,'city-finish',projectId=job['Id']).status_code==200
+ assert amount(snapshot(c,h)['state'],'CASH')==120
+
+
 def test_permanent_city_has_finite_demand_real_bills_and_no_early_settlement(service):
  c,h,clock,_,_=service
  assert c.get('/v1/city/forecast').status_code==401
@@ -158,6 +165,7 @@ def test_permanent_city_has_finite_demand_real_bills_and_no_early_settlement(ser
  assert amount(snapshot(c,h)['state'],'CASH')==200
  assert command(c,h,'city-open').status_code==200
  assert amount(snapshot(c,h)['state'],'CASH')==200
+ found_home(c,h,clock)
  assert command(c,h,'city-build',businessId='cafe',x=2,y=1).status_code==200
  project=snapshot(c,h)['state']['City']['Jobs'][0]
  assert command(c,h,'city-finish',projectId=project['Id']).status_code==409
@@ -165,8 +173,8 @@ def test_permanent_city_has_finite_demand_real_bills_and_no_early_settlement(ser
  assert command(c,h,'city-finish',projectId=project['Id']).status_code==200
  before=snapshot(c,h)
  forecast=c.get('/v1/city/forecast',headers=h).json()
- assert forecast['Population']==12 and forecast['CoffeeDemand']==6
- assert 0<forecast['CoffeeServed']<=6
+ assert forecast['Population']==4 and forecast['Adults']==2 and forecast['Children']==2 and forecast['CoffeeDemand']==2
+ assert 0<forecast['CoffeeServed']<=2
  assert forecast['Net']==forecast['Revenue']-forecast['Bills']-forecast['ImportBills']-forecast['Tax']
  assert snapshot(c,h)==before
  assert command(c,h,'city-start-day').status_code==200
@@ -185,6 +193,7 @@ def test_permanent_city_has_finite_demand_real_bills_and_no_early_settlement(ser
 def test_city_clock_and_investment_quote_use_authoritative_time_and_actual_materials(service):
  c,h,clock,_,_=service
  assert command(c,h,'city-open').status_code==200
+ found_home(c,h,clock)
  before=snapshot(c,h);q=c.get('/v1/city/investment?kind=cafe&x=2&y=1',headers=h).json()
  assert q['Affordable'] and q['BuilderAvailable']
  assert {x['ItemId']:x['Quantity'] for x in q['Costs']}=={'CASH':100,'WOOD':4}
@@ -193,7 +202,7 @@ def test_city_clock_and_investment_quote_use_authoritative_time_and_actual_mater
  clock[0]+=8
  assert command(c,h,'city-advance').status_code==200
  a=snapshot(c,h);assert a['state']['City']['Day']==2
- assert amount(a['state'],'CASH')==137
+ assert amount(a['state'],'CASH')==42
  assert command(c,h,'city-advance').status_code==200
  assert snapshot(c,h)==a
  assert c.get('/v1/city/investment?kind=not-a-business',headers=h).status_code==409
@@ -202,6 +211,7 @@ def test_city_clock_and_investment_quote_use_authoritative_time_and_actual_mater
 
 def test_financing_repayment_and_material_orders_are_server_ledger_transactions(service):
  c,h,clock,_,_=service;assert command(c,h,'city-open').status_code==200
+ found_home(c,h,clock)
  assert command(c,h,'city-build',businessId='cafe',x=2,y=1).status_code==200
  clock[0]+=30;assert command(c,h,'city-advance').status_code==200
  assert snapshot(c,h)['state']['City']['Day']>=4
@@ -216,3 +226,19 @@ def test_financing_repayment_and_material_orders_are_server_ledger_transactions(
  assert snapshot(c,h)==before
  assert command(c,h,'city-materials',itemId='WOOD',quantity=2).status_code==200
  assert amount(snapshot(c,h)['state'],'CASH')==cash+44
+
+
+def test_one_home_census_and_vacancies_are_server_derived_not_client_claims(service):
+ c,h,clock,_,_=service
+ assert command(c,h,'city-open').status_code==200
+ empty=c.get('/v1/city/forecast',headers=h).json();assert empty['Population']==0 and empty['HousingCapacity']==0
+ assert not snapshot(c,h)['state']['City']['Properties']
+ found_home(c,h,clock)
+ before=snapshot(c,h)
+ census=c.get('/v1/city/forecast',headers=h).json()
+ assert (census['Households'],census['Population'],census['Adults'],census['Children'])==(1,4,2,2)
+ assert census['CoffeeDemand']==2 and census['HousingCapacity']==4
+ assert snapshot(c,h)==before
+ body={'requestId':'forged-household-count','expectedVersion':before['version'],'kind':'city-open','population':12}
+ assert c.post('/v1/economy/command',headers=h,json=body).status_code==422
+ assert snapshot(c,h)==before

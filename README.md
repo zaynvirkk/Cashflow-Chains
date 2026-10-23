@@ -10,6 +10,7 @@ The commercial goal is interconnected progression: legitimate chains feed owned 
 
 ## Run locally
 
+- `./PlayNewCity.sh`: try the new empty-city opening with its own ordinary persistent save; existing cities are preserved.
 - `./Play.sh`: regular permanent-city player. Your named city, owned plots, buildings, obligations and operating days persist on this device.
 - `./PlayEmpireSandbox.sh`: separately built developer player with an isolated save and visible local-sandbox label. Rebuild with `Tools/build.sh empire-sandbox` before using it after source changes.
 - `./PlayContentQA.sh`: separately labelled historical puzzle content fixture; it is not a normal progression or payment test.
@@ -18,7 +19,7 @@ Unity 6000.3.26f1. Run one Editor/build at a time; scripts bound CPU workers aft
 
 ## Understand your city
 
-Homes are rental properties you own. They provide housing for residents, whose number is bounded by jobs and infrastructure. Each resident contributes a finite daily need for coffee, groceries and other services. A café competes for those customers and needs actual beans, cups, staff and power. A farther address increases travel time and freight costs; it does not make a nearby-only connection mandatory.
+You begin with empty land and zero residents. Homes are rental properties you build and own. Actual households vary in size,age,retirement,budget and preferences;capacity is not occupancy. Only occupied dwellings pay rent. Children create no coffee demand;workers must be18–64. Adult preferences and household budgets limit purchases;gender is identity,not a wage or price multiplier. A café competes for those customers and needs actual beans, cups, staff and power. A farther address increases travel time and freight costs; it does not make a nearby-only connection mandatory.
 
 Coffee/service flows travel out; customer payments travel in. Forecasts show sales and rent less operating bills, imported supplies, tax and debt payments. Advertising competes for existing demand and costs money even when it fails. Farms and factories produce physical stock rather than magical income. Warehouses, utilities, ports and hotels have distinct capacities and running costs. Expand owned land, move properties, set prices, hire employees and compare investments while the city operates.
 
@@ -37,6 +38,6 @@ python3 Tools/cc2_content_validate.py
 python3 Tools/cc2_economy_sim.py
 ```
 
-The 104 reference layouts and deterministic eight-step resolver are retained. The current Unity suite passes 153 tests; native and Android acceptance are recorded separately in [persistent-city progress](Docs/CC2/PERSISTENT_CITY_PROGRESS.md). Native scripts use real input and isolated saves, never purchase grants or edited clocks. The preliminary 180-day simulator rejects the five-tier progression for content exhaustion and excess Cash; this is not a commercially approved economy.
+The 104 reference layouts and deterministic eight-step resolver are retained. The current Unity suite passes175 tests; native and Android acceptance are recorded separately in [persistent-city progress](Docs/CC2/PERSISTENT_CITY_PROGRESS.md). Native scripts use real input and isolated saves, never purchase grants or edited clocks. The preliminary 180-day simulator rejects the five-tier progression for content exhaustion and excess Cash; this is not a commercially approved economy.
 
 Main and archive/pre-cc2-revision5 preserve baseline3ac5b62. Current work is on feature/cashflow-chains-2-economy. Builds, raw replays, private signing material and caches are local artifacts. No Play submission, hosting deployment, paid transaction or external account creation has occurred.

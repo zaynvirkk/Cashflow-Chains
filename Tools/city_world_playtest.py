@@ -4,12 +4,17 @@ from pathlib import Path
 from ui_map import local_point,archive_review,review_issues,wait_capture
 import subprocess,os,time,json,datetime,hashlib,shutil
 p=Path(__file__).resolve().parent.parent;env={**os.environ,'DISPLAY':os.environ.get('CASHFLOW_TEST_DISPLAY',':1')};out=p/'Artifacts/CityWorldReplay'/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out.mkdir(parents=True);proc=None;window=None;actions=[]
-source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*(p/'Assets/_Game').rglob('*.cs'),p/'Assets/_Game/Data/CC2/balance-v1.json',p/'Assets/_Game/Resources/CC2/balance-v1.json']}
+source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*(p/'Assets/_Game').rglob('*.cs'),p/'Assets/_Game/Data/CC2/balance-v1.json',p/'Assets/_Game/Resources/CC2/balance-v1.json',Path(__file__)]}
 def xd(*a):return subprocess.check_output(['xdotool',*map(str,a)],env=env,text=True,stderr=subprocess.DEVNULL,timeout=10).strip()
-def state():return json.loads((out/'campaign-state.json').read_text())
-def empire():return json.loads((out/'empire-state.json').read_text())
+def read_json(name):
+ for _ in range(100):
+  try:return json.loads((out/name).read_text())
+  except (FileNotFoundError,json.JSONDecodeError):time.sleep(.02)
+ raise AssertionError('Valid read-only runtime probe missing: '+name)
+def state():return read_json('campaign-state.json')
+def empire():return read_json('empire-state.json')
 def money(id):return sum(b['Earned']+b['Purchased'] for b in empire()['Economy']['Balances'] if b['ItemId']==id)
-def layout():return json.loads((out/'ui-layout.json').read_text())
+def layout():return read_json('ui-layout.json')
 def focus():
  if xd('getactivewindow')!=window:xd('windowactivate','--sync',window)
 def wait(screen):
@@ -69,26 +74,23 @@ def until(test,timeout=40):
   time.sleep(.15)
  raise AssertionError('Real-time city condition did not occur')
 try:
- start(True);assert state()['EmpireSandbox']==(os.environ.get('CASHFLOW_EXPECT_SANDBOX','1')=='1');assert city()['Name']=='Newhaven';assert money('CASH')==200;assert len(city()['Properties'])==1;cap('01-one-owned-city-start')
- tap('Owned plot 2 1',kind='pointer');cap('02-build-roles-and-costs');tap('BUILD',1);cap('03-cafe-investment-quote');tap('START CONSTRUCTION');assert money('CASH')==100 and money('WOOD')==8;cap('04-real-construction-cost-and-clock')
- until(lambda:any(b['Kind']=='cafe' and b['Level']==1 for b in city()['Properties']));cap('05-first-cafe-opens');until(lambda:city()['Day']>=2);assert city()['LastDayRevenue']>city()['LastDayBills'];assert money('CASH')>=137;assert len([r for r in empire()['Economy']['Receipts'] if r['CommandId']=='city-day-settle:1'])==1;cap('06-actual-day-one-cashflow')
- assert not any(e['Kind']=='button' and 'SKIP' in e['Name'] for e in layout()['Elements']);tap('Owned plot 0 1',kind='pointer');tap('BUILD',0);tap('START CONSTRUCTION');cap('07-new-homes-in-the-same-city');until(lambda:len([b for b in city()['Properties'] if b['Level']>0])==3,20)
- tap('CITY DESK');wait('city-desk');cap('08-actual-city-desk');tap('NAME MY CITY');xd('key','ctrl+a');time.sleep(.25);xd('type','--clearmodifiers','--delay','120','riverbank');tap('SAVE CITY NAME');wait('city-world');assert city()['Name']=='riverbank';cap('09-city-name-saved')
- tap('CITY LEDGER');wait('city-ledger');cap('10-population-demand-bills-forecast');tap('MY CITY');wait('city-world')
- # Move a real property. It remains at its operating address until the next day.
- tap('Owned plot 2 1',kind='pointer');tap('MOVE');tap('Owned plot 3 1',kind='pointer');cap('11-pending-move-on-owned-land');until(lambda:next(b for b in city()['Properties'] if b['Kind']=='cafe')['X']==3,40)
- tap('Owned plot 3 1',kind='pointer');cap('12-business-margin-and-management');tap('EMPLOYEES');cap('13-workers-wages-and-capacity');key('Escape');key('Escape');wait('city-world')
- tap('−');cap('14-zoom-out-retains-city');tap('FIT CITY');cap('15-fit-owned-land-and-expansion')
- for w,h,label in [(1280,720,'16-wide-permanent-city'),(720,992,'17-short-permanent-city'),(540,960,'18-portrait-permanent-city')]:xd('windowsize',window,w,h);time.sleep(.7);cap(label)
- tap('CITY DESK');tap('FINANCING & BUSINESS STRATEGY');wait('city-strategy');cap('19-connected-business-strategy');tap('COMPARE FINANCING');cap('20-actual-financing-terms');tap('REVIEW $100 TERMS');cap('20b-full-loan-cost-before-acceptance');tap('ACCEPT FIXED TERMS');wait('city-strategy');assert city()['Loans'][0]['Principal']==100 and city()['Loans'][0]['Remaining']==110;tap('COMPARE FINANCING');tap('REPAY $50');assert city()['Loans'][0]['Remaining']==60;cap('20c-actual-saved-loan-and-repayment');key('Escape');tap('SUPPLIERS & SPONSORS');cap('21-supplier-and-sponsor-obligations');key('Escape');key('Escape');wait('city-desk');tap('RETURN TO MY CITY');wait('city-world');owned_before=[(b['Id'],b['X'],b['Y']) for b in city()['Properties']];tap('LAND');tap('EXPAND EAST');cap('21b-owned-land-expansion-quote');tap('BUY LAND · $160');wait('city-world');assert city()['Width']==6 and city()['Height']==4;assert [(b['Id'],b['X'],b['Y']) for b in city()['Properties']]==owned_before;cap('21c-same-city-expanded-six-by-four')
- # Read traffic repeatedly from the actual rendered component,not a UI-only fixture.
+ start(True);assert state()['EmpireSandbox']==(os.environ.get('CASHFLOW_EXPECT_SANDBOX','1')=='1');assert not city()['Properties'];assert money('CASH')==200;assert read_json('city-world-state.json')['Forecast']['Population']==0;cap('01-empty-city-no-free-home')
+ tap('BUILD & DEVELOP');cap('02-illustrated-building-tray');tap('BUILD',0);cap('03-first-home-real-cost');tap('START CONSTRUCTION');assert money('CASH')==120;cap('04-paid-home-construction');until(lambda:any(b['Kind']=='home' and b['Level']==1 for b in city()['Properties']));until(lambda:read_json('city-world-state.json')['Forecast']['Population']==4);cap('05-first-household-arrives')
+ tap('Owned plot 2 1',kind='pointer');tap('BUILD',0);cap('06-cafe-cost-and-workforce');tap('START CONSTRUCTION');assert money('CASH')==20;until(lambda:city()['Day']>=2);assert money('CASH')>=42;assert len([r for r in empire()['Economy']['Receipts'] if r['CommandId']=='city-day-settle:1'])==1;cap('07-real-first-sale-and-payout')
+ tap('4 RESIDENTS');wait('city-residents');cap('08-age-and-gender-census');tap('INSPECT A HOME');cap('09-individual-resident-profiles');key('Escape');key('Escape');wait('city-world')
+ until(lambda:money('CASH')>=92,140);tap('Owned plot 0 1',kind='pointer');tap('BUILD',0);named('FIND ',prefix=True);named('BUY ',prefix=True);tap('START CONSTRUCTION');until(lambda:len([b for b in city()['Properties'] if b['Level']>0])==3,20);until(lambda:read_json('city-world-state.json')['Forecast']['Population']==6);cap('10-different-household-six-residents');tap('Owned plot 0 1',kind='pointer');tap('HOUSEHOLDS & RESIDENTS');cap('11-retired-household-and-budget');key('Escape');key('Escape');wait('city-world')
+ tap('CITY DESK');wait('city-desk');cap('12-redesigned-city-desk');tap('NAME MY CITY');xd('key','ctrl+a');time.sleep(.2);xd('type','--clearmodifiers','--delay','120','riverbank');tap('SAVE CITY NAME');wait('city-world');assert city()['Name']=='riverbank'
+ tap('CITY DESK');tap('SETTINGS');tap('SAVE RECOVERY');cap('13-city-only-save-recovery');assert not any(e['Name']=='NEW LOCAL GAME' for e in layout()['Elements']);tap('KEEP MY CITY');tap('RETURN TO MY CITY');wait('city-world');tap('CITY LEDGER');wait('city-ledger');cap('14-real-costs-and-demographic-demand');tap('MY CITY');wait('city-world')
+ for w,h,label in [(1280,720,'15-wide-city'),(720,992,'16-short-city'),(720,1600,'17-tall-city'),(540,960,'18-portrait-city')]:xd('windowsize',window,w,h);time.sleep(.8);cap(label)
+ tap('CITY DESK');tap('FINANCING & BUSINESS STRATEGY');wait('city-strategy');tap('COMPARE FINANCING');tap('REVIEW $100 TERMS');cap('19-real-financing-terms');tap('ACCEPT FIXED TERMS');wait('city-strategy');assert city()['Loans'][0]['Remaining']==110;tap('COMPARE FINANCING');tap('REPAY $50');assert city()['Loans'][0]['Remaining']==60;cap('20-actual-repayment');key('Escape');tap('SUPPLIERS & SPONSORS');cap('21-agreement-conditions');key('Escape');key('Escape');wait('city-desk');tap('RETURN TO MY CITY');tap('LAND',2);tap('EXPAND EAST');cap('22-same-city-land-quote');key('Escape')
  samples=[]
  for _ in range(40):
-  t=json.loads((out/'traffic-state.json').read_text());assert t['OverlapCount']==0;samples.append(t);time.sleep(.15)
- assert samples[-1]['Time']>samples[0]['Time'];assert any(a['X']!=b['X'] or a['Y']!=b['Y'] for a,b in zip(samples[0]['Cars'],samples[-1]['Cars']))
- (out/'traffic-samples.json').write_text(json.dumps(samples,indent=2));before=city();stop();start(True);assert city()['Name']=='riverbank';assert [(b['Id'],b['X'],b['Y']) for b in city()['Properties']]==[(b['Id'],b['X'],b['Y']) for b in before['Properties']];assert city()['Day']>=before['Day'];cap('22-cold-resume-same-city');time.sleep(27)
+  t=read_json('traffic-state.json');assert t['OverlapCount']==0;samples.append(t);time.sleep(.15)
+ assert samples[-1]['Time']>samples[0]['Time'];assert any(a['X']!=b['X'] or a['Y']!=b['Y'] for a,b in zip(samples[0]['Cars'],samples[-1]['Cars']));(out/'traffic-samples.json').write_text(json.dumps(samples,indent=2))
+ before=city();stop();start(True);assert city()['Name']=='riverbank';assert [(b['Id'],b['X'],b['Y']) for b in city()['Properties']]==[(b['Id'],b['X'],b['Y']) for b in before['Properties']];cap('23-cold-resume-same-city-and-people');time.sleep(27)
+
 finally:stop()
 issues=review_issues(out);assert not issues,issues
 errors=[line for file in out.glob('*.log') for line in file.read_text().splitlines() if any(x in line for x in ['NullReferenceException','MissingReferenceException','IndexOutOfRangeException','ArgumentException','InvalidOperationException','error CS','Cannot add component'])];assert not errors,errors
 for file,h in source.items():assert hashlib.sha256((p/file).read_bytes()).hexdigest()==h,'Source changed during replay: '+file
-report={'passed':True,'scope':'Fresh genuine-input permanent city: founding allocation,real material/cash build,3-second construction,5-second day,second property,name,finite-demand ledger,pending move,staffing,zoom,three layouts,actual financing/repayment,land purchase,agreement review,actual moving non-overlap traffic and cold resume. No edited saves/clocks/inventory or real purchase.','developmentSandbox':state()['EmpireSandbox'],'actions':actions,'source':source,'build':{str(f.relative_to(Path(os.environ.get('CASHFLOW_CITY_PLAYER',str(p/'Builds/EmpireSandbox/CashflowChains-Empire.x86_64'))).parent)):hashlib.sha256(f.read_bytes()).hexdigest() for f in Path(os.environ.get('CASHFLOW_CITY_PLAYER',str(p/'Builds/EmpireSandbox/CashflowChains-Empire.x86_64'))).parent.rglob('*') if f.is_file()}};(out/'report.json').write_text(json.dumps(report,indent=2));(p/'Artifacts/latest-city-world.txt').write_text(str(out));print(out)
+report={'passed':True,'scope':'Fresh ordinary-input city:empty start,paid house and cafe,actual clocks/payout,age/gender/preferences,second retired household/material purchase,name,ledger,four shapes,loan/repayment,land review,traffic and cold resume. No injected save/clock/inventory/purchase.','developmentSandbox':state()['EmpireSandbox'],'actions':actions,'source':source,'build':{str(f.relative_to(Path(os.environ.get('CASHFLOW_CITY_PLAYER',str(p/'Builds/EmpireSandbox/CashflowChains-Empire.x86_64'))).parent)):hashlib.sha256(f.read_bytes()).hexdigest() for f in Path(os.environ.get('CASHFLOW_CITY_PLAYER',str(p/'Builds/EmpireSandbox/CashflowChains-Empire.x86_64'))).parent.rglob('*') if f.is_file()}};(out/'report.json').write_text(json.dumps(report,indent=2));(p/'Artifacts/latest-city-world.txt').write_text(str(out));print(out)

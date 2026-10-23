@@ -1,0 +1,20 @@
+using System;
+using System.IO;
+using System.Linq;
+using NUnit.Framework;
+using UnityEngine;
+using CashflowChains.City;
+using CashflowChains.Economy;
+using CashflowChains.Empire;
+public sealed class CityHousingTests {
+ BalanceConfig c;
+ [SetUp]public void Setup(){c=JsonUtility.FromJson<BalanceConfig>(File.ReadAllText(Path.Combine(Application.dataPath,"_Game/Data/CC2/balance-v1.json")));c.Validate();}
+ CityOperatingPlan Plan(params CityProperty[] p)=>new CityOperatingPlan{Day=1,StartAt=100,FinishAt=105,CashAvailable=1000,Properties=p,Inventory=new ItemAmount[0]};
+ [Test]public void AHouseContainsOneFourPersonHouseholdNotTwelvePeople(){var p=Plan(new CityProperty{Id=1,Kind="home",Level=1});var r=CityDayModel.Forecast(c.City,p);Assert.AreEqual(4,r.HousingCapacity);Assert.AreEqual(4,r.Population);Assert.AreEqual(1,r.Households);Assert.AreEqual(2,r.Adults);Assert.AreEqual(2,r.Children);Assert.AreEqual(2,r.CoffeeDemand);Assert.AreEqual(24,r.Revenue);}
+ [Test]public void VacantHomesCannotCreatePeopleRentOrCoffeeNeeds(){var p=Plan(Enumerable.Range(1,4).Select(i=>new CityProperty{Id=i,Kind="home",Level=1,X=i}).ToArray());var r=CityDayModel.Forecast(c.City,p);Assert.AreEqual(16,r.HousingCapacity);Assert.AreEqual(4,r.Population);Assert.AreEqual(1,r.Households);Assert.AreEqual(24,r.Revenue);Assert.AreEqual(0,r.Businesses.Single(b=>b.PropertyId==2).Revenue);}
+ [Test]public void HouseholdsCanHaveDifferentSizesAndDemographics(){var p=Plan(new CityProperty{Id=1,Kind="home",Level=1},new CityProperty{Id=2,Kind="home",Level=1,X=1},new CityProperty{Id=3,Kind="cafe",Level=1,X=2,Staff=1});var r=CityDayModel.Forecast(c.City,p);Assert.AreEqual(6,r.Population);Assert.AreEqual(4,r.Adults);Assert.AreEqual(2,r.Children);Assert.LessOrEqual(r.CoffeeDemand,r.Adults);}
+ [Test]public void MoreJobsCannotCreateResidentsWithoutPhysicalHomes(){var p=Plan(new CityProperty{Id=1,Kind="home",Level=1},new CityProperty{Id=2,Kind="cafe",Level=5,Staff=2,X=1});var r=CityDayModel.Forecast(c.City,p);Assert.AreEqual(4,r.Population);Assert.AreEqual(2,r.CoffeeDemand);}
+ [Test]public void HigherCapacityHasExplicitDuplexRowsAndApartmentForms(){Assert.AreEqual(1,CityHousing.Units(1));Assert.AreEqual(2,CityHousing.Units(2));Assert.AreEqual("DUPLEX",CityHousing.Label(2));Assert.AreEqual(3,CityHousing.Units(3));Assert.AreEqual("ROW HOMES",CityHousing.Label(3));Assert.AreEqual("apartment",CityHousing.Art(4));Assert.AreEqual(6,CityHousing.Units(5));}
+ [Test]public void HouseholdAllocationIsDeterministicAndNeverLosesPeopleToFractionalRounding(){var p=Plan(new CityProperty{Id=1,Kind="home",Level=2},new CityProperty{Id=2,Kind="home",Level=1,X=1},new CityProperty{Id=3,Kind="cafe",Level=1,X=2});var first=CityDayModel.Forecast(c.City,p);Array.Reverse(p.Properties);var second=CityDayModel.Forecast(c.City,p);Assert.AreEqual(first.Net,second.Net);Assert.AreEqual(first.Population,first.Businesses.Sum(b=>b.Residents));Assert.AreEqual(first.Population,second.Population);Assert.LessOrEqual(first.Population,first.HousingCapacity);}
+ [Test]public void ACommittedOldTradingDayKeepsItsActualPromiseAndThenUsesHouseholds(){var old=JsonUtility.FromJson<BalanceConfig>(File.ReadAllText(Path.Combine(Application.dataPath,"_Game/Data/CC2/balance-legacy-city-v4.json")));var e=new EmpireEngine(old,new EmpireAccount{Economy=new EconomyState{AccountId="housing-migration"}},_=>true);e.OpenCity(100);e.BuildCity("old-cafe","cafe",2,1,101);e.FinishCityBuild("old-cafe",104);e.StartCityDay(105);var oldResult=e.CurrentCityDay();Assert.AreEqual(12,oldResult.Population);var text=JsonUtility.ToJson(e.Snapshot).Replace("\"HousingRules\":0,","");var loaded=JsonUtility.FromJson<EmpireAccount>(text);loaded.Validate(c);var migrated=new EmpireEngine(c,loaded,_=>true);Assert.AreEqual(oldResult.Net,migrated.CurrentCityDay().Net);long cash=migrated.Snapshot.Economy.Amount("CASH");migrated.SettleCityDay(1,110);Assert.AreEqual(cash+oldResult.Net,migrated.Snapshot.Economy.Amount("CASH"));Assert.AreEqual(4,migrated.ForecastCity().Population);Assert.AreEqual(2,migrated.ForecastCity().CoffeeDemand);Assert.AreEqual(2,migrated.Snapshot.City.Properties.Count);}
+}

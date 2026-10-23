@@ -1,8 +1,23 @@
 {
   "passed": true,
-  "scope": "Fresh genuine-input permanent city: founding allocation,real material/cash build,3-second construction,5-second day,second property,name,finite-demand ledger,pending move,staffing,zoom,three layouts,actual financing/repayment,land purchase,agreement review,actual moving non-overlap traffic and cold resume. No edited saves/clocks/inventory or real purchase.",
+  "scope": "Fresh ordinary-input city:empty start,paid house and cafe,actual clocks/payout,age/gender/preferences,second retired household/material purchase,name,ledger,four shapes,loan/repayment,land review,traffic and cold resume. No injected save/clock/inventory/purchase.",
   "developmentSandbox": false,
   "actions": [
+    [
+      "tap",
+      "BUILD & DEVELOP",
+      0
+    ],
+    [
+      "tap",
+      "BUILD",
+      0
+    ],
+    [
+      "tap",
+      "START CONSTRUCTION",
+      0
+    ],
     [
       "tap",
       "Owned plot 2 1",
@@ -11,11 +26,21 @@
     [
       "tap",
       "BUILD",
-      1
+      0
     ],
     [
       "tap",
       "START CONSTRUCTION",
+      0
+    ],
+    [
+      "tap",
+      "4 RESIDENTS",
+      0
+    ],
+    [
+      "tap",
+      "INSPECT A HOME",
       0
     ],
     [
@@ -29,8 +54,28 @@
       0
     ],
     [
+      "button",
+      "FIND ",
+      0
+    ],
+    [
+      "button",
+      "BUY ",
+      0
+    ],
+    [
       "tap",
       "START CONSTRUCTION",
+      0
+    ],
+    [
+      "tap",
+      "Owned plot 0 1",
+      0
+    ],
+    [
+      "tap",
+      "HOUSEHOLDS & RESIDENTS",
       0
     ],
     [
@@ -50,47 +95,37 @@
     ],
     [
       "tap",
+      "CITY DESK",
+      0
+    ],
+    [
+      "tap",
+      "SETTINGS",
+      0
+    ],
+    [
+      "tap",
+      "SAVE RECOVERY",
+      0
+    ],
+    [
+      "tap",
+      "KEEP MY CITY",
+      0
+    ],
+    [
+      "tap",
+      "RETURN TO MY CITY",
+      0
+    ],
+    [
+      "tap",
       "CITY LEDGER",
       0
     ],
     [
       "tap",
       "MY CITY",
-      0
-    ],
-    [
-      "tap",
-      "Owned plot 2 1",
-      0
-    ],
-    [
-      "tap",
-      "MOVE",
-      0
-    ],
-    [
-      "tap",
-      "Owned plot 3 1",
-      0
-    ],
-    [
-      "tap",
-      "Owned plot 3 1",
-      0
-    ],
-    [
-      "tap",
-      "EMPLOYEES",
-      0
-    ],
-    [
-      "tap",
-      "\u2212",
-      0
-    ],
-    [
-      "tap",
-      "FIT CITY",
       0
     ],
     [
@@ -141,16 +176,11 @@
     [
       "tap",
       "LAND",
-      0
+      2
     ],
     [
       "tap",
       "EXPAND EAST",
-      0
-    ],
-    [
-      "tap",
-      "BUY LAND \u00b7 $160",
       0
     ]
   ],
@@ -166,27 +196,30 @@
     "Assets/_Game/Scripts/Infrastructure/LocalStore.cs": "9eed06d2763270b74dcc102f43bdd438d7b7b9054db8d919a8248be17e4a6738",
     "Assets/_Game/Scripts/Infrastructure/AtomicSave.cs": "2ced7d753823ae3241a97e1750c8916e3b87b5b99102967c4d319a146e74e39d",
     "Assets/_Game/Scripts/Presentation/FlatUI.cs": "2f0d4a6826766628cb7328bba51fcdf56d358c32760c10657e5ab37869ec148a",
-    "Assets/_Game/Scripts/Presentation/PermanentCityUI.cs": "668c800b78fe609e7754ae4f3582146b1da24dbd1b8cd3a766def13eb74cf63f",
-    "Assets/_Game/Scripts/Presentation/StudioUI.cs": "3bcb16308af667d7fd47e19aedfddc6fcff37f71a1aa6397b34ad22baa22ad79",
+    "Assets/_Game/Scripts/Presentation/PermanentCityUI.cs": "ac8ad525a53e46a2c6172815ef42d583594c73684c74deaf6493dc9a67ade4a8",
+    "Assets/_Game/Scripts/Presentation/StudioUI.cs": "1df0a46ce04e47a53e189e3c62f57ad728f054e7280c05233bae58d8c3f8be25",
     "Assets/_Game/Scripts/Presentation/EmpireSandboxUI.cs": "8a50fceff06843230ddb9d06bf49ca71198f474e3dd3a4a65da6cd08b23e9987",
     "Assets/_Game/Scripts/Presentation/CityMapCamera.cs": "ba82613ea0e7a88aafc0a254e2f1988133e3ed52e38d34f4734278bfa2c0b9a2",
-    "Assets/_Game/Scripts/Presentation/ResponsiveStage.cs": "6d8a1bc82de24eb9e39e7ad06c785d93b50fbc3a0db6c5e26329c674ee9eeb4d",
+    "Assets/_Game/Scripts/Presentation/ResponsiveStage.cs": "48908c079ece23a9e3a3af3386b70db60e1f3ed7f84d0909b01409b23f759dd6",
     "Assets/_Game/Scripts/Presentation/TileCaptionLayout.cs": "5cd97b522ef4ae45bce7b21f254b310339fbd4a6c9c00f6392b385e72576da0f",
     "Assets/_Game/Scripts/Presentation/BuildingGlyph.cs": "813c32c7b43bf4bc7c269960da61a8c3aebfe865bf8819fe5576891390a62cce",
     "Assets/_Game/Scripts/Presentation/BuildingLife.cs": "7343b8eec995d9a55e7bb30dcb2865fc0d57b2ced9b87a54ba2f5ee2d344ad50",
     "Assets/_Game/Scripts/Presentation/CityProgressionUI.cs": "bcb1b4ef2de8b6ba2c2e74a36a5195fbb463beda5268573ee42ddd646035674b",
     "Assets/_Game/Scripts/Presentation/GameApp.cs": "ab466d3d421f650c808be3c132dd0bea2b0645d8a0e3a67b33375088c9ece305",
     "Assets/_Game/Scripts/Presentation/EmpireOperationsUI.cs": "b16fa8320096203f3a8f7a5ce1b6e98ccf995701a8c1da32091266d2cf0610f0",
-    "Assets/_Game/Scripts/Presentation/CityStrategyUI.cs": "72227ed0dd4d0e4822d40dfc989a0ac63fc6b2c2c1f7d8a09d90a49d514bf828",
+    "Assets/_Game/Scripts/Presentation/CityStrategyUI.cs": "c8651e79dbe198e0e66d9ce9a24aef3501dff440813e38a0a5115ddedb355102",
+    "Assets/_Game/Scripts/Presentation/CityResidentsUI.cs": "f594dffd6c0486e2d2b46a1aa30453d36363135216c2a7620c3993c917e26cd1",
     "Assets/_Game/Scripts/Presentation/DevelopmentPlanningUI.cs": "94068d09fe254b3d79d7ed70a575461deefc771e27b63c3a1970a8ec49f33785",
     "Assets/_Game/Scripts/Presentation/TravelRoutingUI.cs": "a5b0c77215a9428bcda8b185d52353c11e8261fc74092ffe3b2ef15556fbe2b6",
-    "Assets/_Game/Scripts/Presentation/CityBusinessUI.cs": "f68a492103454b1aea341c9ad260799e1ca651ea374d4565d6b4992cfa7e4702",
+    "Assets/_Game/Scripts/Presentation/CityBusinessUI.cs": "5dfd2d4a2242ea07e6c1cb9bc38030bbb9f26d45abcc8b4a7af5d6da4c70586a",
     "Assets/_Game/Scripts/Presentation/RuntimeReview.cs": "2397752e9663a15aa7c4c5e4742096c05cb060f23384f3ee2e784471a703bbaa",
-    "Assets/_Game/Scripts/Presentation/MobileGameApp.cs": "b90599dcfaae8b6d06da6b69f2d5706eec103b0991e383ba63382dc0da595871",
-    "Assets/_Game/Scripts/Presentation/CityTerrain.cs": "98c77c546245e2c818989aa3914e9d9de2219cd7ceb9fc07ec931f369793d0ec",
-    "Assets/_Game/Scripts/Presentation/PresentationMap.cs": "856b8d1e1a1b89433c5511618203d30fd721d1ed07db5713c2268e1057ccdbc8",
+    "Assets/_Game/Scripts/Presentation/MobileGameApp.cs": "a4a87465f3c3a3bab3f9816e87b4be55d297ceb7a329ac51f5b759889c34eb17",
+    "Assets/_Game/Scripts/Presentation/CityGameSkin.cs": "59c89b53a8ecde520f24da556c3afc4e574b34f22f45b6d4e82fb5727c497169",
+    "Assets/_Game/Scripts/Presentation/CityTerrain.cs": "05eb7525a6201308dca294cb8b3bcfab4e124b733d350631c3cac01ccf7d319b",
+    "Assets/_Game/Scripts/Presentation/PresentationMap.cs": "f1ddfc189dec1f82ba0c59704a9d62d4f2c19b5859dfb45382c8575edad11658",
     "Assets/_Game/Scripts/Presentation/TradingClarityUI.cs": "1b3b194f988fbfaa6a5a7162576c56c2763ff0164a1783a51ad35395f73abbad",
-    "Assets/_Game/Scripts/Presentation/GameFeel.cs": "fb6cf3e8eea76c5487fbadc3e8a903f120b8cfb73f0305def771d3cd741673d3",
+    "Assets/_Game/Scripts/Presentation/GameFeel.cs": "fb5ce8d6d31a3285bbe857f0da1b1cbac2568ea94a9908ddd28359f760af3148",
+    "Assets/_Game/Scripts/Presentation/CityHousingUI.cs": "bbc00657c4df93ba51800189919c657bbb6f8fdd5ce74c299b93e76210c6560d",
     "Assets/_Game/Scripts/Presentation/InteractionFeel.cs": "98ee3c0449c723adfa2ea06af714ff0115a93472cfa72fb87a86def5d1d8c665",
     "Assets/_Game/Scripts/Domain/TravelResolver.cs": "67634d550eed4c1dad2213015ed440f42b818c562c759084d957479621e74e2d",
     "Assets/_Game/Scripts/Domain/VerifiedLayouts.cs": "3d5cdd27541b8bb2efb7c7ed621ca26dbc8960ab84016ea3c4b9bba964c90ed6",
@@ -203,13 +236,16 @@
     "Assets/_Game/Scripts/Domain/CityCollections.cs": "ecc385875054ac99f74388cafe953038b8d6ca315de011b0a7e74c77fb3a1aa8",
     "Assets/_Game/Scripts/Domain/ContentQa.cs": "b29c7b08c793f6b164a14ad22c1d680111b3df9a74b234f381fa88905c0d7720",
     "Assets/_Game/Scripts/Domain/City/CityProjection.cs": "4917fbeeb3d60882ce2d8490a2ca2e9d5be735fb35b3abdc8e23322a39c75d4d",
-    "Assets/_Game/Scripts/Domain/City/CityFinance.cs": "978735b2f904e5f5bc50de3a5f984a790e96c75cc22d732b6c4bbe8640d34c97",
-    "Assets/_Game/Scripts/Domain/City/CityCommands.cs": "b574136c8667aecfaf952cc4ba6764e8747cfda2192acaa0de9a4cdb902ce2e5",
-    "Assets/_Game/Scripts/Domain/City/CityState.cs": "9e72399c0cfd226b46317771761b8ba0f701f3d7bd8b6977d27aa795186e5db0",
-    "Assets/_Game/Scripts/Domain/City/CityCatalog.cs": "a37efe421360bbeccaedcc5ea0cce4a78a0f92c263848cd43ba81618f2823fed",
-    "Assets/_Game/Scripts/Domain/City/CityInvestment.cs": "9aff3f9a366a1fb2737ccb03b61cc95610175cf9b17485ab962d20b891dda2a1",
-    "Assets/_Game/Scripts/Domain/City/CityDayModel.cs": "35aad6dad0c1c0a7727d15cfec8590c1638989941a8732edcb910c7a2fa60a29",
-    "Assets/_Game/Scripts/Domain/City/CityPopulation.cs": "eecdbf54a69fc84a9c3bda7d4ab8149017c8ff52821db7b9bdbe41d004409d6f",
+    "Assets/_Game/Scripts/Domain/City/CityResidents.cs": "3e34e8692d6bc63e30ec3649ca631678887d8a316bfd77a84f6febf255abb121",
+    "Assets/_Game/Scripts/Domain/City/CityFinance.cs": "da2eefee9f1ee8823f2c769d78975e83e6b039952ea0b56ed8fe38a4ee16491b",
+    "Assets/_Game/Scripts/Domain/City/CityCommands.cs": "c97b12fbd8b1bff32dce5eaa2701c8df86b036793a331376eee593ec215d3dcb",
+    "Assets/_Game/Scripts/Domain/City/CityHousing.cs": "068880185e20989dec5de195359e4fb427eb17c4bdfea64c0993c87faa610e1e",
+    "Assets/_Game/Scripts/Domain/City/LegacyCityDayModel.cs": "e86f9f25ce46eb68b8481432e29a6a215e39e1424be1ad6b15246ef5afeb6430",
+    "Assets/_Game/Scripts/Domain/City/CityState.cs": "997e22f57fc3bf22491c5f387dbc43ef9418337808f4f4f7ccf6f8abea212d39",
+    "Assets/_Game/Scripts/Domain/City/CityCatalog.cs": "c0732f3b58575c9bd8d0c8c646ef197041457bc856774ce191c3387add58e556",
+    "Assets/_Game/Scripts/Domain/City/CityInvestment.cs": "dec44ec6bd7abb1d2d5cbc4f9c5e3f82dba1f77586e0fc48e1e65b1e22cf1133",
+    "Assets/_Game/Scripts/Domain/City/CityDayModel.cs": "ca8c89ba18f15d810f31ac1e0597058cf93756f55898d52473da4374a9d81983",
+    "Assets/_Game/Scripts/Domain/City/CityPopulation.cs": "15a8eafbc31d8f53e3849e0e56043c4995c0583c86401994e3cf95854f4b33f3",
     "Assets/_Game/Scripts/Domain/City/CityClock.cs": "0b2e628a23798adc18fc468f03e3a622c6b00e7e551ac3956a59d0f1f03b664f",
     "Assets/_Game/Scripts/Domain/Economy/RoundRewardPolicy.cs": "2abab5fe036bc9c40b369611a03a0bafba85dcff53910dfa29b4ebbf0154d800",
     "Assets/_Game/Scripts/Domain/Economy/CurrencyLedger.cs": "001257a3265c4a499803f490a4bc5213bce90fd0a081eaddec24b8258c3642a8",
@@ -223,22 +259,26 @@
     "Assets/_Game/Tests/EditMode/TrafficSimulationTests.cs": "6c3ce9002a6480979bb0170f716634cd8c0e1ff2a300eb2c1922c5ec4b8dd03e",
     "Assets/_Game/Tests/EditMode/ProductionExpansionTests.cs": "0efe5b85dd7dc3eb4603b515b4f683d851584555e9eb702310951e1b9b1e65cb",
     "Assets/_Game/Tests/EditMode/SaveTests.cs": "b2064891273fe5cd47841d29fddfdd033eb1cff0c415e4c3dea53459ce57583b",
-    "Assets/_Game/Tests/EditMode/CityClockTests.cs": "a7516df2d4b6f4c08de3f26cb77651f56282d0634899d00fe9fc79e1f2cc3d75",
+    "Assets/_Game/Tests/EditMode/CityClockTests.cs": "4a4202040278ad17c1867258cf38c1636dcd75bd68244e3662209344767c2463",
     "Assets/_Game/Tests/EditMode/StoreTests.cs": "6376a1e9755e6e621709a33f7426df1407dbe1f64902bd064a37328d785f1338",
     "Assets/_Game/Tests/EditMode/TravelRulesTests.cs": "808baf95686b85dad709960cd089202930f96ea9059c40342c06201cc38ec5b1",
+    "Assets/_Game/Tests/EditMode/CityHousingTests.cs": "1392cd75121f6b7fe8bd5468891e084ec05ba4fbf022123d02591c7da494f6af",
     "Assets/_Game/Tests/EditMode/DevelopmentPlanningTests.cs": "7b565973a9a40c741d861165dcad3b52524274bc07854a9ec7ad48e7c0a29e66",
+    "Assets/_Game/Tests/EditMode/CityResidentProfilesTests.cs": "e785f35fee7f601448889efe0891223fe0942105084b0ca7212d3a49218f1cf6",
     "Assets/_Game/Tests/EditMode/CC2EconomyTests.cs": "4f8c8995e7a5df6ed065f3e8b0b09158d04bb6641f598c0104c9e2119da056f6",
     "Assets/_Game/Tests/EditMode/CampaignTests.cs": "40a3368a33e3092a1f5283224211e7a463e39b467a475f4dc7a219db75001d04",
-    "Assets/_Game/Tests/EditMode/PermanentCityTests.cs": "cc816b2221ff243c34672cc76e9f4957959ab403b63bf09597c56e969c6fbd47",
+    "Assets/_Game/Tests/EditMode/PermanentCityLayoutTests.cs": "b6004fb47a75b35b18ee4e3db750061652fd4d62745fc38785f5b02b02cbaf00",
+    "Assets/_Game/Tests/EditMode/PermanentCityTests.cs": "f8dce18f6a61d4fa17c10955dee9a85aeaa296709c8cc3c1ec1f70f786b4a7d8",
     "Assets/_Game/Tests/EditMode/CityInsightTests.cs": "ab77b5847bd92da842086f7467997961fcfed48ec0ddd45947c2fbdba3d4bb37",
     "Assets/_Game/Tests/EditMode/CC2OperationsTests.cs": "0900f93575a567154ee36e14ed20736c0d773b562a2ce48132fba383ebf2a21c",
     "Assets/_Game/Tests/EditMode/CoreTests.cs": "e6ce387a6b7372ece77e1292f6d089ed1b135be8faa6e217ad4948494c89f5c0",
-    "Assets/_Game/Tests/EditMode/CityProjectionTests.cs": "1ff70dfc78c4d0a50fa89db63c1fcef840edc6fd8753492081c82be9367aa1f4",
-    "Assets/_Game/Tests/EditMode/CityOperatingIntegrityTests.cs": "c57eca3384e3f00745b2b77056527c32a203a5446c0cafc76e5f198835008bf8",
+    "Assets/_Game/Tests/EditMode/CityProjectionTests.cs": "99b24d5bfaca0383040cb5a27a902b4028f5dbd77ffd5b08bef130a8d1add30e",
+    "Assets/_Game/Tests/EditMode/CityOperatingIntegrityTests.cs": "e130a4b8f5fce61f3e9c9bc3cca912f6dc457f6c61fa5bf3915a49c441921794",
     "Assets/_Game/Tests/EditMode/VerifiedLayoutsTests.cs": "6a76dd1c09346b336772fee6bba8f2205197b0ff9380bfd2400c1f2d3c03e103",
-    "Assets/_Game/Tests/EditMode/CityBusinessDecisionsTests.cs": "a258ba2e1c28c9970d51a96d518f0ec4a7de82c5e37bf58a9e7aaf2878400d49",
-    "Assets/_Game/Data/CC2/balance-v1.json": "91853fe5ab2dc7ca42637eae887f80e8feb559a8400fb4c347e399d8d5a063e4",
-    "Assets/_Game/Resources/CC2/balance-v1.json": "91853fe5ab2dc7ca42637eae887f80e8feb559a8400fb4c347e399d8d5a063e4"
+    "Assets/_Game/Tests/EditMode/CityBusinessDecisionsTests.cs": "4e83b693ba6089dc748569f9885d38f17781fafb15870e948be944d5351a0f1b",
+    "Assets/_Game/Data/CC2/balance-v1.json": "ad610061eb82d380f83923191e52d04a159488c078eb438364ef370bdf824d26",
+    "Assets/_Game/Resources/CC2/balance-v1.json": "ad610061eb82d380f83923191e52d04a159488c078eb438364ef370bdf824d26",
+    "Tools/city_world_playtest.py": "4978d1c5c87337e5df66b8a5072b9ed6708e8535697f93c970e107f9c6c5cf04"
   },
   "build": {
     "CashflowChains.x86_64": "8027f7d1f9ae7dacfc826fb218adcc1ae7464af098a8a59397e7531c0f7ec0bc",
@@ -246,18 +286,18 @@
     "libdecor-cairo.so": "4a2c5bb1399eed40528e5d34049694d6409ec24e60b41f89264d423fa7058a3a",
     "UnityPlayer.so": "13d799be796d210516dca0c78a4cd107439b27ceff7b913e60becf08b2074e9e",
     "CashflowChains_Data/RuntimeInitializeOnLoads.json": "fd55903dfa4241a8d48a76bee6daf4f9324f30733e674630283ae0ccd6d2c6cd",
-    "CashflowChains_Data/boot.config": "2c9f9cef267c1e0a2d9c737904b9684023745e2c7d99ad45a5fe56fb222afc51",
-    "CashflowChains_Data/sharedassets0.assets": "cadec6d10dda7e033cd32039db35ee4010cded5088c12a7c7cd2b775eb1a21a2",
+    "CashflowChains_Data/boot.config": "7db1f0f8680581e8f39237f4c12821d8a3eaaf25d9075ba8cec6d8b2398f85de",
+    "CashflowChains_Data/sharedassets0.assets": "ea2e241b6b81f51e79540007efb9be67cb9800eabbd7dc76e1db5dc1fafa1d35",
     "CashflowChains_Data/sharedassets0.assets.resS": "87a4847eade1de49f6aac782a74b9929acbdb3c0f8b36d7750474215f1880479",
     "CashflowChains_Data/app.info": "b603dd1edbc82f62dff4f9029976ba96044fafc8a9eeaca9361d8cfd5096e31c",
-    "CashflowChains_Data/globalgamemanagers.assets": "eef5bb948c3d046533dbf39b3cc46ae381f79d0019f84b87d5cb0bac2b508f3c",
+    "CashflowChains_Data/globalgamemanagers.assets": "1a25e7d374148d9e0afb49befce30e3479d24d14826f13284b6c7a6549cfafe6",
     "CashflowChains_Data/resources.resource": "04be002c1e46b10dd7b98b7d0bb24f289186674e216e2dd2c8a8e0859b4db6c8",
     "CashflowChains_Data/ScriptingAssemblies.json": "e5e177c5244b2dfa66031d88ff5a0c60401ffd90521f53a655d152ddce6cb2f4",
-    "CashflowChains_Data/level0": "3eb6b9f5419a042e8399397023211e77d1d66e80cfd82fc9f9999e03d453393c",
+    "CashflowChains_Data/level0": "c291212ceffdb41a3fcb3050fb642cb54531347c9b3a11530bcb522dbc06460f",
     "CashflowChains_Data/globalgamemanagers.assets.resS": "f2e891f1a2eca090fd71651b299b57c89b6f16599aee6dd338e290ba791e314b",
     "CashflowChains_Data/resources.assets.resS": "ba85221a7fb5b1ca3206eaad646ab837d366b86ec330ac53869fbe36d57dcb33",
-    "CashflowChains_Data/resources.assets": "6964aff70f5a8a0b844688294e95bfb374565d27033201d7b627a0beba08d809",
-    "CashflowChains_Data/globalgamemanagers": "bc134db9c9b1ead58b7c1f458ae06a89453e1c791ab64e8f699d6ce524d3ae22",
+    "CashflowChains_Data/resources.assets": "75cc1fb2aa581ce4378bb678bfac7f71aa0961ad0d82c7675f3d10096142e3bc",
+    "CashflowChains_Data/globalgamemanagers": "b08a81e0ea04c8794f59e154c89e64dcb7fb7cfd609c5009f4b1dfaee89b6d3c",
     "Cashflow Chains_BurstDebugInformation_DoNotShip/Data/Plugins/lib_burst_generated.txt": "5a81ca50cde28f527adef0f80f34462b76af8d1164bfeec5e2d1ae3b5cb93a4b",
     "CashflowChains_Data/Managed/UnityEngine.UIModule.dll": "9cecb27149bd5f5fd0b4651d1ba4fc8aa282c790cb089e9b0d95402362e3ea3a",
     "CashflowChains_Data/Managed/UnityEngine.TerrainPhysicsModule.dll": "6ef56b3435b9bf614b890fb782b5a6c02aed13b8ac8531b9c7189e3dbd2ef7e2",
@@ -290,7 +330,7 @@
     "CashflowChains_Data/Managed/System.Runtime.Serialization.dll": "ab4b10bf89aa7c44b6796584e9c45c000af4d86ae819cccd9ebafe853eb99b64",
     "CashflowChains_Data/Managed/UnityEngine.ContentLoadModule.dll": "f89b5776e1469b3695bb01b2c0489ce86173ba63b2737e8f55403983a985273a",
     "CashflowChains_Data/Managed/System.dll": "8a1c54a4f651b79c49309d2df2db78852d8b33991beca4f8ecca241449a053dc",
-    "CashflowChains_Data/Managed/CashflowChains.Runtime.dll": "f490bfa4f698102285a3949d8f605096648a10fd11006d6e641a6ca1ccdf3fce",
+    "CashflowChains_Data/Managed/CashflowChains.Runtime.dll": "902d2f673607ef6161dc31b8a1153853df7b7298f6fa11fa3f9ce1d9c8c2c477",
     "CashflowChains_Data/Managed/Unity.Purchasing.Codeless.dll": "c34f108cff95e5e4ac2fd96af8b3d4bdd82500cf50d39c1c5b675e13acd8603b",
     "CashflowChains_Data/Managed/Unity.TextMeshPro.dll": "a25a8b49a9137c770c00a858636014d50a414af6a6fa2af7649b4c4c6ca435cf",
     "CashflowChains_Data/Managed/Unity.Burst.Unsafe.dll": "9d9c1ff52411decbee5d9f0d1cd61ebeaa222077aa77a52101ea3debafae98e2",
@@ -334,7 +374,7 @@
     "CashflowChains_Data/Managed/Unity.Services.Core.Configuration.dll": "f285d5a9a7b030c9f2600e94f6c242f0f2dfd534c6306bfc35ae0f33ecc48d2a",
     "CashflowChains_Data/Managed/UnityEngine.InputModule.dll": "2eaf02022039213b9279f659f4c7556037d837cdbb1fe8a6a5023a0894918c13",
     "CashflowChains_Data/Managed/UnityEngine.VirtualTexturingModule.dll": "a151eba1f8ada5d4024f2340b27409f9bfef5aaf3ebab07f949793e645ec5068",
-    "CashflowChains_Data/Managed/CashflowChains.Domain.dll": "8cda6993877d52c38df1fa6c8f1833211b5a8fffcd9c8b6d79aa93bf154e6379",
+    "CashflowChains_Data/Managed/CashflowChains.Domain.dll": "c8bdf0d27ed99e77daa1e89fb568da6ff9483a6615ea5aaa264d5be32a3f0656",
     "CashflowChains_Data/Managed/System.Net.Http.dll": "6a5d95a55270bfb3ee7897cf968201c8a3a9363323974cc50338845fad221456",
     "CashflowChains_Data/Managed/Newtonsoft.Json.dll": "a56146202232958f46bd6a28b5a7da166aea123ee0d646735a46e5c341dfbf1f",
     "CashflowChains_Data/Managed/mscorlib.dll": "7e85ece08b13c2d73aff07bb49c49c314ff962ff173c3feafffa11b2c34a1239",

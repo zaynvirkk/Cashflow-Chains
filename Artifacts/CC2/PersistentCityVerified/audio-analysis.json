@@ -1,9 +1,22 @@
 {
-  "channels": 2,
-  "sampleRate": 48000,
-  "seconds": 24.618666666666666,
-  "peak": 0.035308837890625,
-  "rms": 0.007995110176761638,
-  "recordedWavSha256": "9e9620ff5dc4a0fd043cdef7e7f618902e67a9c344f92cfd71b5a65ccad0e940",
-  "limit": "Actual player PCM capture; signal presence/headroom does not prove human sound-quality preference."
+  "passed": true,
+  "scope": "Actual native PCM signal checks for both player processes;not subjective audio-quality acceptance.",
+  "captures": [
+    {
+      "file": "Artifacts/CityWorldReplay/20261023T190721Z/session-1-actual-mix.wav",
+      "seconds": 25.002666666666666,
+      "sampleRate": 48000,
+      "peak": 0.078033447265625,
+      "rms": 0.008409499463037496,
+      "sha256": "89a2267aa03c406348cdde5d154d82b5efdaeda7095669439c918f1541b0824f"
+    },
+    {
+      "file": "Artifacts/CityWorldReplay/20261023T190721Z/session-0-actual-mix.wav",
+      "seconds": 25.002666666666666,
+      "sampleRate": 48000,
+      "peak": 0.52105712890625,
+      "rms": 0.01311656536781758,
+      "sha256": "7694a1c2f1590747ba427fa7d87961575121d69f60822a2099f30e8bb5d88331"
+    }
+  ]
 }

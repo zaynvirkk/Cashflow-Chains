@@ -1,3 +1,4 @@
+using System.Linq;
 using System;using System.IO;using System.Collections.Generic;using UnityEngine;using UnityEngine.UI;
 namespace LocalGame {
  public sealed class AuthoredRect:MonoBehaviour {public Rect Design;}
@@ -11,16 +12,16 @@ namespace LocalGame {
   public bool Top;protected override void OnPopulateMesh(VertexHelper vh){vh.Clear();var r=rectTransform.rect;bool wide=FlatUI.Stage&&FlatUI.Stage.Wide;for(int i=0;i<20;i++){float a=i/20f,b=(i+1)/20f;float opacity=(Top?1-a:b)*.72f;var c=new Color(.01f,.018f,.025f,opacity);if(wide&&FlatUI.Stage.View=="board")CraftedPanel.Quad(vh,new Vector2(r.xMin+a*r.width,r.yMin),new Vector2(r.xMin+b*r.width,r.yMin),new Vector2(r.xMin+b*r.width,r.yMax),new Vector2(r.xMin+a*r.width,r.yMax),new Color(c.r,c.g,c.b,(Top?1-a:a)*.8f));else CraftedPanel.Quad(vh,new Vector2(r.xMin,r.yMax-a*r.height),new Vector2(r.xMax,r.yMax-a*r.height),new Vector2(r.xMax,r.yMax-b*r.height),new Vector2(r.xMin,r.yMax-b*r.height),c);}}
  }
  public sealed class CityRoads:MaskableGraphic {
-  public int Columns,Rows;
+  public int Columns,Rows;public int VisibleVehicles=int.MaxValue;
   CashflowChains.Domain.TrafficSimulation traffic;
   sealed class SharedTraffic {public CashflowChains.Domain.TrafficSimulation Model;public float Last;}
   static readonly Dictionary<string,SharedTraffic> shared=new Dictionary<string,SharedTraffic>();
   SharedTraffic current;public double SimulationTime=>traffic?.Time??0;
   [Serializable] sealed class TrafficView {public double Time;public int OverlapCount,Columns,Rows;public float Width,Height;public List<CashflowChains.Domain.StreetCar> Cars;}
   void Update(){var r=rectTransform.rect;if(r.width<Columns*40||r.height<Rows*40)return;string key=Columns+":"+Rows+":"+r.width.ToString("F1")+":"+r.height.ToString("F1");if(current==null||current.Model.Width!=r.width||current.Model.Height!=r.height){if(!shared.TryGetValue(key,out current)){if(shared.Count>32)shared.Clear();current=new SharedTraffic{Model=new CashflowChains.Domain.TrafficSimulation(r.width,r.height,Columns,Rows),Last=Time.unscaledTime};shared[key]=current;}traffic=current.Model;}
-   float now=Time.unscaledTime;if(!(Studio.Profile?.ReducedMotion??false))traffic.Advance(Math.Max(0,Math.Min(.05,now-current.Last)));current.Last=now;SetVerticesDirty();string dir=FlatUI.Arg("-capture-dir");if(dir!=null&&Time.frameCount%6==0){Directory.CreateDirectory(dir);File.WriteAllText(Path.Combine(dir,"traffic-state.json"),JsonUtility.ToJson(new TrafficView{Time=traffic.Time,OverlapCount=traffic.HasOverlap()?1:0,Columns=Columns,Rows=Rows,Width=r.width,Height=r.height,Cars=traffic.Cars}));}}
+   float now=Time.unscaledTime;if(!(Studio.Profile?.ReducedMotion??false))traffic.Advance(Math.Max(0,Math.Min(.05,now-current.Last)));current.Last=now;SetVerticesDirty();string dir=FlatUI.Arg("-capture-dir");if(dir!=null&&Time.frameCount%6==0){Directory.CreateDirectory(dir);File.WriteAllText(Path.Combine(dir,"traffic-state.json"),JsonUtility.ToJson(new TrafficView{Time=traffic.Time,OverlapCount=traffic.HasOverlap()?1:0,Columns=Columns,Rows=Rows,Width=r.width,Height=r.height,Cars=traffic.Cars.Take(VisibleVehicles).ToList()}));}}
   protected override void OnPopulateMesh(VertexHelper vh){vh.Clear();var r=rectTransform.rect;for(int axis=0;axis<2;axis++){int n=axis==0?Columns:Rows;float step=(axis==0?r.width:r.height)/n;for(int lane=1;lane<n;lane++){float k=(axis==0?r.xMin:r.yMin)+lane*step;for(float j=0;j<(axis==0?r.height:r.width);j+=28){Vector2 a=axis==0?new Vector2(k,r.yMin+j):new Vector2(r.xMin+j,k);CraftedPanel.Line(vh,a,a+(axis==0?Vector2.up:Vector2.right)*10,1,new Color(1,.84f,.48f,.35f));}}}
-   if(traffic==null)return;foreach(var car in traffic.Cars){Vector2 p=new Vector2(r.xMin+(float)car.X,r.yMin+(float)car.Y);Color paint=FlatUI.Hex(new[]{"#FF6B71","#55C6F1","#FFCC63","#E4ECE1"}[car.Id%4]);Vector2 d=(car.Axis==0?Vector2.up:Vector2.right)*car.Direction,u=new Vector2(-d.y,d.x);CarBody(vh,p+new Vector2(1,-1.8f),d,u,7.3f,3.4f,new Color(0,0,0,.4f));
+   if(traffic==null)return;foreach(var car in traffic.Cars.Take(VisibleVehicles)){Vector2 p=new Vector2(r.xMin+(float)car.X,r.yMin+(float)car.Y);Color paint=FlatUI.Hex(new[]{"#FF6B71","#55C6F1","#FFCC63","#E4ECE1"}[car.Id%4]);Vector2 d=(car.Axis==0?Vector2.up:Vector2.right)*car.Direction,u=new Vector2(-d.y,d.x);CarBody(vh,p+new Vector2(1,-1.8f),d,u,7.3f,3.4f,new Color(0,0,0,.4f));
     for(int axle=-1;axle<=1;axle+=2)for(int side=-1;side<=1;side+=2)Quad(vh,p+d*axle*3.6f+u*side*3.1f,d,u,1.4f,.6f,FlatUI.Hex("#071823"));
     CarBody(vh,p,d,u,7,3.1f,FlatUI.Hex("#102A40"));CarBody(vh,p,d,u,6.4f,2.8f,paint);
     Quad(vh,p-d*.5f,d,u,2.4f,2.1f,Color.Lerp(paint,Color.white,.2f));

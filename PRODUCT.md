@@ -1,6 +1,8 @@
 # Product context
 
-Cashflow Chains2.0 is a short-session economic puzzle inside a persistent empire game, Android/Google Play first with Linux companion testing. The23October complete Game Bible in `Docs/GameBible/CASHFLOW_CHAINS_FINAL_GAME_BIBLE.md` governs both player experience and implementation. The earlier CC2 handoff remains preserved; the active tracker stays in Docs/CC2. Black Bag is on hold.
+Cashflow Chains2.0 now centers on one persistent,player-built economic city, Android/Google Play first with Linux companion testing. The23October complete Game Bible in `Docs/GameBible/CASHFLOW_CHAINS_FINAL_GAME_BIBLE.md` governs both player experience and implementation. The earlier CC2 handoff remains preserved; the active tracker stays in Docs/CC2. Black Bag is on hold.
+
+The later23October operator instructions supersede replacement puzzle levels:empty land,paid housing,real resident profiles,concurrent operating days and attached expansion. Historical fixed challenges/solver remain compatibility content,not the new primary city loop.
 
 The player should see a cause they understand, improve a plan they chose, own a city with a personal identity, and return to a useful next goal. City naming, earned themes, meaningful placement, franchise specializations, named blueprints and saved goals are product requirements. Contextual commerce follows a demonstrated need and returns to the chosen task; it cannot replace that agency or the free puzzle experience. Pricing and retention remain measured hypotheses.
 

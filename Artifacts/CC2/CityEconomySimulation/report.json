@@ -1,0 +1,269 @@
+{
+  "safetyChecksPassed": true,
+  "economyAccepted": false,
+  "daysPerScenario": 180,
+  "policies": 5,
+  "scope": "Synthetic scenario simulation through actual C# commands with simulated clocks. No native/human/payment evidence. Small fixed policies do not establish optimal strategy,retention,commercial balance or profitability. Positive-margin bot has no lookahead,upgrades,grid expansion or land acquisition;stalling is diagnostic,not proof all investments are exhausted.",
+  "scenarios": [
+    {
+      "policy": "single-cafe",
+      "built": 1,
+      "rejectedProjects": 0,
+      "milestones": [
+        {
+          "closedDay": 1,
+          "cash": 42,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 22,
+          "serializedBytes": 9830
+        },
+        {
+          "closedDay": 7,
+          "cash": 181,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 20,
+          "serializedBytes": 21681
+        },
+        {
+          "closedDay": 30,
+          "cash": 646,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 19,
+          "serializedBytes": 79329
+        },
+        {
+          "closedDay": 90,
+          "cash": 1866,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 19,
+          "serializedBytes": 233797
+        },
+        {
+          "closedDay": 180,
+          "cash": 3688,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 19,
+          "serializedBytes": 466774
+        }
+      ]
+    },
+    {
+      "policy": "premium-price",
+      "built": 1,
+      "rejectedProjects": 0,
+      "milestones": [
+        {
+          "closedDay": 1,
+          "cash": 42,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 22,
+          "serializedBytes": 9858
+        },
+        {
+          "closedDay": 7,
+          "cash": 184,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 23,
+          "serializedBytes": 21634
+        },
+        {
+          "closedDay": 30,
+          "cash": 705,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 22,
+          "serializedBytes": 79199
+        },
+        {
+          "closedDay": 90,
+          "cash": 2075,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 22,
+          "serializedBytes": 234388
+        },
+        {
+          "closedDay": 180,
+          "cash": 4115,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 22,
+          "serializedBytes": 468445
+        }
+      ]
+    },
+    {
+      "policy": "advertising-spend",
+      "built": 1,
+      "rejectedProjects": 0,
+      "milestones": [
+        {
+          "closedDay": 1,
+          "cash": 42,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 22,
+          "serializedBytes": 9914
+        },
+        {
+          "closedDay": 7,
+          "cash": 130,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 14,
+          "serializedBytes": 22147
+        },
+        {
+          "closedDay": 30,
+          "cash": 281,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 4,
+          "serializedBytes": 81309
+        },
+        {
+          "closedDay": 90,
+          "cash": 697,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 4,
+          "serializedBytes": 237937
+        },
+        {
+          "closedDay": 180,
+          "cash": 1305,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 12,
+          "serializedBytes": 474155
+        }
+      ]
+    },
+    {
+      "policy": "hire-without-demand",
+      "built": 1,
+      "rejectedProjects": 0,
+      "milestones": [
+        {
+          "closedDay": 1,
+          "cash": 42,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 22,
+          "serializedBytes": 9942
+        },
+        {
+          "closedDay": 7,
+          "cash": 153,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 18,
+          "serializedBytes": 22553
+        },
+        {
+          "closedDay": 30,
+          "cash": 572,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 17,
+          "serializedBytes": 81273
+        },
+        {
+          "closedDay": 90,
+          "cash": 1672,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 17,
+          "serializedBytes": 238622
+        },
+        {
+          "closedDay": 180,
+          "cash": 3314,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 17,
+          "serializedBytes": 475919
+        }
+      ]
+    },
+    {
+      "policy": "reinvest-positive-margin",
+      "built": 7,
+      "rejectedProjects": 0,
+      "milestones": [
+        {
+          "closedDay": 1,
+          "cash": 42,
+          "population": 4,
+          "properties": 2,
+          "unpaidBills": 0,
+          "nextNet": 22,
+          "serializedBytes": 10012
+        },
+        {
+          "closedDay": 7,
+          "cash": 89,
+          "population": 6,
+          "properties": 3,
+          "unpaidBills": 0,
+          "nextNet": 46,
+          "serializedBytes": 24955
+        },
+        {
+          "closedDay": 30,
+          "cash": 1099,
+          "population": 9,
+          "properties": 5,
+          "unpaidBills": 0,
+          "nextNet": 63,
+          "serializedBytes": 90616
+        },
+        {
+          "closedDay": 90,
+          "cash": 4016,
+          "population": 9,
+          "properties": 8,
+          "unpaidBills": 0,
+          "nextNet": 36,
+          "serializedBytes": 259193
+        },
+        {
+          "closedDay": 180,
+          "cash": 8175,
+          "population": 9,
+          "properties": 8,
+          "unpaidBills": 0,
+          "nextNet": 43,
+          "serializedBytes": 499240
+        }
+      ]
+    }
+  ]
+}
