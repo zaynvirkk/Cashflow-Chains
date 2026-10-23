@@ -100,8 +100,9 @@ def create_app(database:Path,clock=time.time):
  def sources(business_id:str,authorization:str|None=Header(default=None)):
   with connect() as db:
    account=identity(db,authorization);state=json.loads(db.execute('SELECT state FROM accounts WHERE id=?',(account,)).fetchone()['state'])
-   try:return development_sources(config,state,business_id,now())
-   except KeyError:raise HTTPException(404,'Unknown business')
+   if not any(b['Id']==business_id for b in config['Businesses']):raise HTTPException(404,'Unknown business')
+   quote=domain.apply({'AccountId':account,'Command':'development-quote','BusinessId':business_id,'State':state,'TrustedNow':now()})
+   return development_sources(config,state,business_id,now(),quote)
  @app.post('/v1/puzzle/challenge/{level}')
  def challenge(level:int,authorization:str|None=Header(default=None)):
   if not 0<=level<72:raise HTTPException(403,'Expansion ownership is not yet server-verified')

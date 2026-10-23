@@ -36,7 +36,7 @@ try:
  xd('windowfocus','--sync',window);xd('windowmove',window,50 if env['DISPLAY']!=':1' else 2100,45);wait('title');time.sleep(.5)
  click('CONTINUE BUILDING  →');wait('board');xd('key','Escape');wait('menu');click('MY EMPIRE');wait('empire')
  for i in range(25):
-  click('DEVELOP',edge=i%5==0);assert any(e['Name']=='START UPGRADE' for e in layout()['Elements']),('DEVELOP missed',i)
+  click('DEVELOP',edge=i%5==0);assert any(e['Name']=='FIND SOURCES' and e['Priority']>100 for e in layout()['Elements']),('DEVELOP missed',i)
   click('×');wait('empire');click('DISPATCH');wait('empire-dispatch');click('CHOOSE A DELIVERY');wait('dispatch-catalog')
   click('MY ACTIVE DELIVERIES');wait('empire-dispatch');click('MY CITY');wait('empire')
  (out/'report.json').write_text(json.dumps({'passed':True,'cycles':25,'taps':len(actions),'edge_presses':sum(a['edge'] for a in actions),'method':'Native press/release, copied earned saves, no retries or direct callbacks. Edge presses also verify that the real hit rectangle stays fixed during animation.','actions':actions,'source':{str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in (p/'Assets/_Game').rglob('*.cs')}},indent=2))

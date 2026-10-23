@@ -1,676 +1,727 @@
 <?xml version="1.0" encoding="utf-8"?>
-<test-run id="2" testcasecount="104" result="Passed" total="104" passed="104" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:10Z" duration="10.0059825">
-  <test-suite type="TestSuite" id="1000" name="Cashflow Chains" fullname="Cashflow Chains" runstate="Runnable" testcasecount="104" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:10Z" duration="10.005983" total="104" passed="104" failed="0" inconclusive="0" skipped="0" asserts="0">
+<test-run id="2" testcasecount="112" result="Passed" total="112" passed="112" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:51:11Z" duration="13.6905185">
+  <test-suite type="TestSuite" id="1000" name="Cashflow Chains" fullname="Cashflow Chains" runstate="Runnable" testcasecount="112" result="Passed" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:51:11Z" duration="13.690519" total="112" passed="112" failed="0" inconclusive="0" skipped="0" asserts="0">
     <properties>
       <property name="platform" value="EditMode" />
     </properties>
-    <test-suite type="Assembly" id="1119" name="CashflowChains.Tests.dll" fullname="/home/virk/Projects/CashflowChains/Library/ScriptAssemblies/CashflowChains.Tests.dll" runstate="Runnable" testcasecount="104" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:10Z" duration="9.987556" total="104" passed="104" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <test-suite type="Assembly" id="1128" name="CashflowChains.Tests.dll" fullname="/home/virk/Projects/CashflowChains/Library/ScriptAssemblies/CashflowChains.Tests.dll" runstate="Runnable" testcasecount="112" result="Passed" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:51:11Z" duration="13.664502" total="112" passed="112" failed="0" inconclusive="0" skipped="0" asserts="0">
       <properties>
-        <property name="_PID" value="2103316" />
+        <property name="_PID" value="2143064" />
         <property name="_APPDOMAIN" value="Unity Child Domain" />
         <property name="platform" value="EditMode" />
         <property name="EditorOnly" value="True" />
       </properties>
-      <test-suite type="TestFixture" id="1042" name="CampaignTests" fullname="CampaignTests" classname="CampaignTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:00Z" duration="0.443041" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1042" name="CampaignTests" fullname="CampaignTests" classname="CampaignTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:50:58Z" duration="0.622445" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1048" name="All32BuildingRecipesAreNormalized" fullname="CampaignTests.All32BuildingRecipesAreNormalized" methodname="All32BuildingRecipesAreNormalized" classname="CampaignTests" runstate="Runnable" seed="1004571606" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:00Z" duration="0.038027" asserts="0">
+        <test-case id="1048" name="All32BuildingRecipesAreNormalized" fullname="CampaignTests.All32BuildingRecipesAreNormalized" methodname="All32BuildingRecipesAreNormalized" classname="CampaignTests" runstate="Runnable" seed="1323602627" result="Passed" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:50:57Z" duration="0.053946" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1043" name="All72ReferenceNetworksAreFreeLegalAndThreeStar" fullname="CampaignTests.All72ReferenceNetworksAreFreeLegalAndThreeStar" methodname="All72ReferenceNetworksAreFreeLegalAndThreeStar" classname="CampaignTests" runstate="Runnable" seed="991868221" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:00Z" duration="0.098012" asserts="0">
+        <test-case id="1043" name="All72ReferenceNetworksAreFreeLegalAndThreeStar" fullname="CampaignTests.All72ReferenceNetworksAreFreeLegalAndThreeStar" methodname="All72ReferenceNetworksAreFreeLegalAndThreeStar" classname="CampaignTests" runstate="Runnable" seed="1193270749" result="Passed" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:50:57Z" duration="0.107819" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1045" name="BlockedTilesRejectMovementAndPreviewIsPure" fullname="CampaignTests.BlockedTilesRejectMovementAndPreviewIsPure" methodname="BlockedTilesRejectMovementAndPreviewIsPure" classname="CampaignTests" runstate="Runnable" seed="443855851" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:00Z" duration="0.005049" asserts="0">
+        <test-case id="1045" name="BlockedTilesRejectMovementAndPreviewIsPure" fullname="CampaignTests.BlockedTilesRejectMovementAndPreviewIsPure" methodname="BlockedTilesRejectMovementAndPreviewIsPure" classname="CampaignTests" runstate="Runnable" seed="1311659575" result="Passed" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:50:57Z" duration="0.004959" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1046" name="PortCostsAreInTheMoneyLedger" fullname="CampaignTests.PortCostsAreInTheMoneyLedger" methodname="PortCostsAreInTheMoneyLedger" classname="CampaignTests" runstate="Runnable" seed="936152114" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:00Z" duration="0.000986" asserts="0">
+        <test-case id="1046" name="PortCostsAreInTheMoneyLedger" fullname="CampaignTests.PortCostsAreInTheMoneyLedger" methodname="PortCostsAreInTheMoneyLedger" classname="CampaignTests" runstate="Runnable" seed="1592844358" result="Passed" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:50:57Z" duration="0.001037" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1047" name="ProfileRejectsForgedCurrencyAndMalformedStars" fullname="CampaignTests.ProfileRejectsForgedCurrencyAndMalformedStars" methodname="ProfileRejectsForgedCurrencyAndMalformedStars" classname="CampaignTests" runstate="Runnable" seed="616434223" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:00Z" duration="0.013724" asserts="0">
+        <test-case id="1047" name="ProfileRejectsForgedCurrencyAndMalformedStars" fullname="CampaignTests.ProfileRejectsForgedCurrencyAndMalformedStars" methodname="ProfileRejectsForgedCurrencyAndMalformedStars" classname="CampaignTests" runstate="Runnable" seed="509760674" result="Passed" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:50:57Z" duration="0.014163" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1044" name="RewardReplaysNeverFarmCredits" fullname="CampaignTests.RewardReplaysNeverFarmCredits" methodname="RewardReplaysNeverFarmCredits" classname="CampaignTests" runstate="Runnable" seed="1616192444" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:00Z" duration="0.255015" asserts="0">
+        <test-case id="1044" name="RewardReplaysNeverFarmCredits" fullname="CampaignTests.RewardReplaysNeverFarmCredits" methodname="RewardReplaysNeverFarmCredits" classname="CampaignTests" runstate="Runnable" seed="1430367205" result="Passed" start-time="2026-10-23 04:50:57Z" end-time="2026-10-23 04:50:58Z" duration="0.397651" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1001" name="CC2EconomyTests" fullname="CC2EconomyTests" classname="CC2EconomyTests" runstate="Runnable" testcasecount="20" result="Passed" start-time="2026-10-22 23:37:00Z" end-time="2026-10-22 23:37:01Z" duration="0.714909" total="20" passed="20" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1001" name="CC2EconomyTests" fullname="CC2EconomyTests" classname="CC2EconomyTests" runstate="Runnable" testcasecount="20" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.506053" total="20" passed="20" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1007" name="AtomicMultiItemFailureNeverChangesAnyBalance" fullname="CC2EconomyTests.AtomicMultiItemFailureNeverChangesAnyBalance" methodname="AtomicMultiItemFailureNeverChangesAnyBalance" classname="CC2EconomyTests" runstate="Runnable" seed="382112010" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.050878" asserts="0">
+        <test-case id="1007" name="AtomicMultiItemFailureNeverChangesAnyBalance" fullname="CC2EconomyTests.AtomicMultiItemFailureNeverChangesAnyBalance" methodname="AtomicMultiItemFailureNeverChangesAnyBalance" classname="CC2EconomyTests" runstate="Runnable" seed="1043968365" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.059532" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1012" name="BalanceOverflowAndCapFailureRollBackWholeCommand" fullname="CC2EconomyTests.BalanceOverflowAndCapFailureRollBackWholeCommand" methodname="BalanceOverflowAndCapFailureRollBackWholeCommand" classname="CC2EconomyTests" runstate="Runnable" seed="1188063125" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.007985" asserts="0">
+        <test-case id="1012" name="BalanceOverflowAndCapFailureRollBackWholeCommand" fullname="CC2EconomyTests.BalanceOverflowAndCapFailureRollBackWholeCommand" methodname="BalanceOverflowAndCapFailureRollBackWholeCommand" classname="CC2EconomyTests" runstate="Runnable" seed="1462078939" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.007090" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1002" name="ConfigDefinesFiniteCapsAndHasNoPositiveExchangeCycle" fullname="CC2EconomyTests.ConfigDefinesFiniteCapsAndHasNoPositiveExchangeCycle" methodname="ConfigDefinesFiniteCapsAndHasNoPositiveExchangeCycle" classname="CC2EconomyTests" runstate="Runnable" seed="187689561" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.016737" asserts="0">
+        <test-case id="1002" name="ConfigDefinesFiniteCapsAndHasNoPositiveExchangeCycle" fullname="CC2EconomyTests.ConfigDefinesFiniteCapsAndHasNoPositiveExchangeCycle" methodname="ConfigDefinesFiniteCapsAndHasNoPositiveExchangeCycle" classname="CC2EconomyTests" runstate="Runnable" seed="398037553" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.015244" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1008" name="DurableFailureAndRedeliveryApplyExactlyOnce" fullname="CC2EconomyTests.DurableFailureAndRedeliveryApplyExactlyOnce" methodname="DurableFailureAndRedeliveryApplyExactlyOnce" classname="CC2EconomyTests" runstate="Runnable" seed="131043231" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.018287" asserts="0">
+        <test-case id="1008" name="DurableFailureAndRedeliveryApplyExactlyOnce" fullname="CC2EconomyTests.DurableFailureAndRedeliveryApplyExactlyOnce" methodname="DurableFailureAndRedeliveryApplyExactlyOnce" classname="CC2EconomyTests" runstate="Runnable" seed="2037872102" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.011676" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1009" name="EarnedGemsAreSpentFirstAndPurchasedNeverSilentlyExpire" fullname="CC2EconomyTests.EarnedGemsAreSpentFirstAndPurchasedNeverSilentlyExpire" methodname="EarnedGemsAreSpentFirstAndPurchasedNeverSilentlyExpire" classname="CC2EconomyTests" runstate="Runnable" seed="1321720087" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.004745" asserts="0">
+        <test-case id="1009" name="EarnedGemsAreSpentFirstAndPurchasedNeverSilentlyExpire" fullname="CC2EconomyTests.EarnedGemsAreSpentFirstAndPurchasedNeverSilentlyExpire" methodname="EarnedGemsAreSpentFirstAndPurchasedNeverSilentlyExpire" classname="CC2EconomyTests" runstate="Runnable" seed="1652616238" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.007674" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1003" name="EvenTinyPositiveRationalExchangeCyclesAreRejected" fullname="CC2EconomyTests.EvenTinyPositiveRationalExchangeCyclesAreRejected" methodname="EvenTinyPositiveRationalExchangeCyclesAreRejected" classname="CC2EconomyTests" runstate="Runnable" seed="87578590" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.008522" asserts="0">
+        <test-case id="1003" name="EvenTinyPositiveRationalExchangeCyclesAreRejected" fullname="CC2EconomyTests.EvenTinyPositiveRationalExchangeCyclesAreRejected" methodname="EvenTinyPositiveRationalExchangeCyclesAreRejected" classname="CC2EconomyTests" runstate="Runnable" seed="1749521707" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.013188" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1017" name="EveryOriginalCertifiedScoreIsUnchangedByCC2RewardPolicy" fullname="CC2EconomyTests.EveryOriginalCertifiedScoreIsUnchangedByCC2RewardPolicy" methodname="EveryOriginalCertifiedScoreIsUnchangedByCC2RewardPolicy" classname="CC2EconomyTests" runstate="Runnable" seed="885805545" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.249668" asserts="0">
+        <test-case id="1017" name="EveryOriginalCertifiedScoreIsUnchangedByCC2RewardPolicy" fullname="CC2EconomyTests.EveryOriginalCertifiedScoreIsUnchangedByCC2RewardPolicy" methodname="EveryOriginalCertifiedScoreIsUnchangedByCC2RewardPolicy" classname="CC2EconomyTests" runstate="Runnable" seed="799236422" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.276103" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1020" name="ForgedBoardEndowmentsAndFailureNeverGrantRewards" fullname="CC2EconomyTests.ForgedBoardEndowmentsAndFailureNeverGrantRewards" methodname="ForgedBoardEndowmentsAndFailureNeverGrantRewards" classname="CC2EconomyTests" runstate="Runnable" seed="1713567287" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.007128" asserts="0">
+        <test-case id="1020" name="ForgedBoardEndowmentsAndFailureNeverGrantRewards" fullname="CC2EconomyTests.ForgedBoardEndowmentsAndFailureNeverGrantRewards" methodname="ForgedBoardEndowmentsAndFailureNeverGrantRewards" classname="CC2EconomyTests" runstate="Runnable" seed="693466523" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.009056" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1004" name="IdempotentRetrySurvivesCatalogRevisionWithoutChangingOriginalGrant" fullname="CC2EconomyTests.IdempotentRetrySurvivesCatalogRevisionWithoutChangingOriginalGrant" methodname="IdempotentRetrySurvivesCatalogRevisionWithoutChangingOriginalGrant" classname="CC2EconomyTests" runstate="Runnable" seed="1257646710" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.012574" asserts="0">
+        <test-case id="1004" name="IdempotentRetrySurvivesCatalogRevisionWithoutChangingOriginalGrant" fullname="CC2EconomyTests.IdempotentRetrySurvivesCatalogRevisionWithoutChangingOriginalGrant" methodname="IdempotentRetrySurvivesCatalogRevisionWithoutChangingOriginalGrant" classname="CC2EconomyTests" runstate="Runnable" seed="985287121" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.008046" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1015" name="InvalidOldBalancesDoNotBecomeValidNewImports" fullname="CC2EconomyTests.InvalidOldBalancesDoNotBecomeValidNewImports" methodname="InvalidOldBalancesDoNotBecomeValidNewImports" classname="CC2EconomyTests" runstate="Runnable" seed="1266119982" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.006353" asserts="0">
+        <test-case id="1015" name="InvalidOldBalancesDoNotBecomeValidNewImports" fullname="CC2EconomyTests.InvalidOldBalancesDoNotBecomeValidNewImports" methodname="InvalidOldBalancesDoNotBecomeValidNewImports" classname="CC2EconomyTests" runstate="Runnable" seed="99917065" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.006301" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1011" name="LedgerRejectsChangedWalletMissingRowsAndClockRollback" fullname="CC2EconomyTests.LedgerRejectsChangedWalletMissingRowsAndClockRollback" methodname="LedgerRejectsChangedWalletMissingRowsAndClockRollback" classname="CC2EconomyTests" runstate="Runnable" seed="541072456" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.008232" asserts="0">
+        <test-case id="1011" name="LedgerRejectsChangedWalletMissingRowsAndClockRollback" fullname="CC2EconomyTests.LedgerRejectsChangedWalletMissingRowsAndClockRollback" methodname="LedgerRejectsChangedWalletMissingRowsAndClockRollback" classname="CC2EconomyTests" runstate="Runnable" seed="167940715" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.007720" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1014" name="LegacyPlanPreservesPaidOwnershipProgressAndBlueprintsWithoutGrantingVerifiedMoney" fullname="CC2EconomyTests.LegacyPlanPreservesPaidOwnershipProgressAndBlueprintsWithoutGrantingVerifiedMoney" methodname="LegacyPlanPreservesPaidOwnershipProgressAndBlueprintsWithoutGrantingVerifiedMoney" classname="CC2EconomyTests" runstate="Runnable" seed="759482591" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.021377" asserts="0">
+        <test-case id="1014" name="LegacyPlanPreservesPaidOwnershipProgressAndBlueprintsWithoutGrantingVerifiedMoney" fullname="CC2EconomyTests.LegacyPlanPreservesPaidOwnershipProgressAndBlueprintsWithoutGrantingVerifiedMoney" methodname="LegacyPlanPreservesPaidOwnershipProgressAndBlueprintsWithoutGrantingVerifiedMoney" classname="CC2EconomyTests" runstate="Runnable" seed="416977823" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.017606" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1019" name="LockedOrUnverifiedExpansionRewardsAreRejected" fullname="CC2EconomyTests.LockedOrUnverifiedExpansionRewardsAreRejected" methodname="LockedOrUnverifiedExpansionRewardsAreRejected" classname="CC2EconomyTests" runstate="Runnable" seed="135292634" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.007135" asserts="0">
+        <test-case id="1019" name="LockedOrUnverifiedExpansionRewardsAreRejected" fullname="CC2EconomyTests.LockedOrUnverifiedExpansionRewardsAreRejected" methodname="LockedOrUnverifiedExpansionRewardsAreRejected" classname="CC2EconomyTests" runstate="Runnable" seed="1114905086" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.007566" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1005" name="MissingSustainableFreeSourceRejectsCatalog" fullname="CC2EconomyTests.MissingSustainableFreeSourceRejectsCatalog" methodname="MissingSustainableFreeSourceRejectsCatalog" classname="CC2EconomyTests" runstate="Runnable" seed="1217426540" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.006228" asserts="0">
+        <test-case id="1005" name="MissingSustainableFreeSourceRejectsCatalog" fullname="CC2EconomyTests.MissingSustainableFreeSourceRejectsCatalog" methodname="MissingSustainableFreeSourceRejectsCatalog" classname="CC2EconomyTests" runstate="Runnable" seed="1814718043" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.006380" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1018" name="OneSuccessfulLevelCannotFarmCashThroughAnotherRoundOrLayout" fullname="CC2EconomyTests.OneSuccessfulLevelCannotFarmCashThroughAnotherRoundOrLayout" methodname="OneSuccessfulLevelCannotFarmCashThroughAnotherRoundOrLayout" classname="CC2EconomyTests" runstate="Runnable" seed="181110551" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.011345" asserts="0">
+        <test-case id="1018" name="OneSuccessfulLevelCannotFarmCashThroughAnotherRoundOrLayout" fullname="CC2EconomyTests.OneSuccessfulLevelCannotFarmCashThroughAnotherRoundOrLayout" methodname="OneSuccessfulLevelCannotFarmCashThroughAnotherRoundOrLayout" classname="CC2EconomyTests" runstate="Runnable" seed="1637932522" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.006893" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1006" name="PurchasedGemsCannotExpireAndRoundScoreCannotBeAnItem" fullname="CC2EconomyTests.PurchasedGemsCannotExpireAndRoundScoreCannotBeAnItem" methodname="PurchasedGemsCannotExpireAndRoundScoreCannotBeAnItem" classname="CC2EconomyTests" runstate="Runnable" seed="432831380" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.006563" asserts="0">
+        <test-case id="1006" name="PurchasedGemsCannotExpireAndRoundScoreCannotBeAnItem" fullname="CC2EconomyTests.PurchasedGemsCannotExpireAndRoundScoreCannotBeAnItem" methodname="PurchasedGemsCannotExpireAndRoundScoreCannotBeAnItem" classname="CC2EconomyTests" runstate="Runnable" seed="1916802386" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.005552" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1013" name="SnapshotAndPersistenceCallbacksCannotMutateLiveBalances" fullname="CC2EconomyTests.SnapshotAndPersistenceCallbacksCannotMutateLiveBalances" methodname="SnapshotAndPersistenceCallbacksCannotMutateLiveBalances" classname="CC2EconomyTests" runstate="Runnable" seed="317235197" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.013028" asserts="0">
+        <test-case id="1013" name="SnapshotAndPersistenceCallbacksCannotMutateLiveBalances" fullname="CC2EconomyTests.SnapshotAndPersistenceCallbacksCannotMutateLiveBalances" methodname="SnapshotAndPersistenceCallbacksCannotMutateLiveBalances" classname="CC2EconomyTests" runstate="Runnable" seed="860651301" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.005961" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1016" name="SourceFinderNeverAdvertisesDisabledOrLockedRoutes" fullname="CC2EconomyTests.SourceFinderNeverAdvertisesDisabledOrLockedRoutes" methodname="SourceFinderNeverAdvertisesDisabledOrLockedRoutes" classname="CC2EconomyTests" runstate="Runnable" seed="559829204" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.015832" asserts="0">
+        <test-case id="1016" name="SourceFinderNeverAdvertisesDisabledOrLockedRoutes" fullname="CC2EconomyTests.SourceFinderNeverAdvertisesDisabledOrLockedRoutes" methodname="SourceFinderNeverAdvertisesDisabledOrLockedRoutes" classname="CC2EconomyTests" runstate="Runnable" seed="1213060487" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.009033" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1021" name="StackingAndTimeReductionHaveBoundedIntegerResults" fullname="CC2EconomyTests.StackingAndTimeReductionHaveBoundedIntegerResults" methodname="StackingAndTimeReductionHaveBoundedIntegerResults" classname="CC2EconomyTests" runstate="Runnable" seed="1224865338" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.011950" asserts="0">
+        <test-case id="1021" name="StackingAndTimeReductionHaveBoundedIntegerResults" fullname="CC2EconomyTests.StackingAndTimeReductionHaveBoundedIntegerResults" methodname="StackingAndTimeReductionHaveBoundedIntegerResults" classname="CC2EconomyTests" runstate="Runnable" seed="395192876" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.005253" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1010" name="UnverifiedImportedPremiumCannotBeSpent" fullname="CC2EconomyTests.UnverifiedImportedPremiumCannotBeSpent" methodname="UnverifiedImportedPremiumCannotBeSpent" classname="CC2EconomyTests" runstate="Runnable" seed="699589763" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.007029" asserts="0">
+        <test-case id="1010" name="UnverifiedImportedPremiumCannotBeSpent" fullname="CC2EconomyTests.UnverifiedImportedPremiumCannotBeSpent" methodname="UnverifiedImportedPremiumCannotBeSpent" classname="CC2EconomyTests" runstate="Runnable" seed="1532080035" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:58Z" duration="0.005948" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1022" name="CC2EmpireTests" fullname="CC2EmpireTests" classname="CC2EmpireTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:02Z" duration="0.600880" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1022" name="CC2EmpireTests" fullname="CC2EmpireTests" classname="CC2EmpireTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-23 04:50:58Z" end-time="2026-10-23 04:50:59Z" duration="0.590919" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1025" name="CappedProductionCannotBeClaimedTwiceOrCompoundThroughClockChanges" fullname="CC2EmpireTests.CappedProductionCannotBeClaimedTwiceOrCompoundThroughClockChanges" methodname="CappedProductionCannotBeClaimedTwiceOrCompoundThroughClockChanges" classname="CC2EmpireTests" runstate="Runnable" seed="205851866" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.079116" asserts="0">
+        <test-case id="1025" name="CappedProductionCannotBeClaimedTwiceOrCompoundThroughClockChanges" fullname="CC2EmpireTests.CappedProductionCannotBeClaimedTwiceOrCompoundThroughClockChanges" methodname="CappedProductionCannotBeClaimedTwiceOrCompoundThroughClockChanges" classname="CC2EmpireTests" runstate="Runnable" seed="865259974" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.058940" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1024" name="ConstructionTimerBoundaryAndReplayAreExact" fullname="CC2EmpireTests.ConstructionTimerBoundaryAndReplayAreExact" methodname="ConstructionTimerBoundaryAndReplayAreExact" classname="CC2EmpireTests" runstate="Runnable" seed="1977984496" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.030739" asserts="0">
+        <test-case id="1024" name="ConstructionTimerBoundaryAndReplayAreExact" fullname="CC2EmpireTests.ConstructionTimerBoundaryAndReplayAreExact" methodname="ConstructionTimerBoundaryAndReplayAreExact" classname="CC2EmpireTests" runstate="Runnable" seed="1384750553" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.019895" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1027" name="FailedSaveRollsBackCostProjectAndEventTogether" fullname="CC2EmpireTests.FailedSaveRollsBackCostProjectAndEventTogether" methodname="FailedSaveRollsBackCostProjectAndEventTogether" classname="CC2EmpireTests" runstate="Runnable" seed="171798722" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:01Z" duration="0.026348" asserts="0">
+        <test-case id="1027" name="FailedSaveRollsBackCostProjectAndEventTogether" fullname="CC2EmpireTests.FailedSaveRollsBackCostProjectAndEventTogether" methodname="FailedSaveRollsBackCostProjectAndEventTogether" classname="CC2EmpireTests" runstate="Runnable" seed="1680793784" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.017005" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1026" name="FrequentCollectionsKeepFractionalProductionWithoutCreatingExtraUnits" fullname="CC2EmpireTests.FrequentCollectionsKeepFractionalProductionWithoutCreatingExtraUnits" methodname="FrequentCollectionsKeepFractionalProductionWithoutCreatingExtraUnits" classname="CC2EmpireTests" runstate="Runnable" seed="776976256" result="Passed" start-time="2026-10-22 23:37:01Z" end-time="2026-10-22 23:37:02Z" duration="0.318852" asserts="0">
+        <test-case id="1026" name="FrequentCollectionsKeepFractionalProductionWithoutCreatingExtraUnits" fullname="CC2EmpireTests.FrequentCollectionsKeepFractionalProductionWithoutCreatingExtraUnits" methodname="FrequentCollectionsKeepFractionalProductionWithoutCreatingExtraUnits" classname="CC2EmpireTests" runstate="Runnable" seed="1337177299" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.133419" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1028" name="RepeatedRoundHasOneEconomicEventAndNoDuplicateRewards" fullname="CC2EmpireTests.RepeatedRoundHasOneEconomicEventAndNoDuplicateRewards" methodname="RepeatedRoundHasOneEconomicEventAndNoDuplicateRewards" classname="CC2EmpireTests" runstate="Runnable" seed="73715804" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.056942" asserts="0">
+        <test-case id="1028" name="RepeatedRoundHasOneEconomicEventAndNoDuplicateRewards" fullname="CC2EmpireTests.RepeatedRoundHasOneEconomicEventAndNoDuplicateRewards" methodname="RepeatedRoundHasOneEconomicEventAndNoDuplicateRewards" classname="CC2EmpireTests" runstate="Runnable" seed="549077314" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.014680" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1030" name="SerializedEmpireCanRestoreAndValidateWithoutChangingOriginalPuzzleScoring" fullname="CC2EmpireTests.SerializedEmpireCanRestoreAndValidateWithoutChangingOriginalPuzzleScoring" methodname="SerializedEmpireCanRestoreAndValidateWithoutChangingOriginalPuzzleScoring" classname="CC2EmpireTests" runstate="Runnable" seed="331921737" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.016341" asserts="0">
+        <test-case id="1030" name="SerializedEmpireCanRestoreAndValidateWithoutChangingOriginalPuzzleScoring" fullname="CC2EmpireTests.SerializedEmpireCanRestoreAndValidateWithoutChangingOriginalPuzzleScoring" methodname="SerializedEmpireCanRestoreAndValidateWithoutChangingOriginalPuzzleScoring" classname="CC2EmpireTests" runstate="Runnable" seed="2047909040" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.015576" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1023" name="ThreeRealChainsFundTheFirstBusinessAndBuilderNeverStopsPuzzlePlay" fullname="CC2EmpireTests.ThreeRealChainsFundTheFirstBusinessAndBuilderNeverStopsPuzzlePlay" methodname="ThreeRealChainsFundTheFirstBusinessAndBuilderNeverStopsPuzzlePlay" classname="CC2EmpireTests" runstate="Runnable" seed="792038990" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.018942" asserts="0">
+        <test-case id="1023" name="ThreeRealChainsFundTheFirstBusinessAndBuilderNeverStopsPuzzlePlay" fullname="CC2EmpireTests.ThreeRealChainsFundTheFirstBusinessAndBuilderNeverStopsPuzzlePlay" methodname="ThreeRealChainsFundTheFirstBusinessAndBuilderNeverStopsPuzzlePlay" classname="CC2EmpireTests" runstate="Runnable" seed="1657065850" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.019020" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1029" name="UpgradeCompletionDoesNotAccrueTwoOfflineWindows" fullname="CC2EmpireTests.UpgradeCompletionDoesNotAccrueTwoOfflineWindows" methodname="UpgradeCompletionDoesNotAccrueTwoOfflineWindows" classname="CC2EmpireTests" runstate="Runnable" seed="378905256" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.046051" asserts="0">
+        <test-case id="1029" name="UpgradeCompletionDoesNotAccrueTwoOfflineWindows" fullname="CC2EmpireTests.UpgradeCompletionDoesNotAccrueTwoOfflineWindows" methodname="UpgradeCompletionDoesNotAccrueTwoOfflineWindows" classname="CC2EmpireTests" runstate="Runnable" seed="2105320915" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.053744" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1031" name="CC2OperationsTests" fullname="CC2OperationsTests" classname="CC2OperationsTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.631372" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1031" name="CC2OperationsTests" fullname="CC2OperationsTests" classname="CC2OperationsTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:51:00Z" duration="1.046683" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1035" name="ActiveCapacityAndDailyRewardReservationAreFiniteAndResetOnServerDay" fullname="CC2OperationsTests.ActiveCapacityAndDailyRewardReservationAreFiniteAndResetOnServerDay" methodname="ActiveCapacityAndDailyRewardReservationAreFiniteAndResetOnServerDay" classname="CC2OperationsTests" runstate="Runnable" seed="109047034" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.133240" asserts="0">
+        <test-case id="1035" name="ActiveCapacityAndDailyRewardReservationAreFiniteAndResetOnServerDay" fullname="CC2OperationsTests.ActiveCapacityAndDailyRewardReservationAreFiniteAndResetOnServerDay" methodname="ActiveCapacityAndDailyRewardReservationAreFiniteAndResetOnServerDay" classname="CC2OperationsTests" runstate="Runnable" seed="983912881" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.203616" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1032" name="CatalogContainsThirtyResearchNodesAndFifteenRealDispatchTemplates" fullname="CC2OperationsTests.CatalogContainsThirtyResearchNodesAndFifteenRealDispatchTemplates" methodname="CatalogContainsThirtyResearchNodesAndFifteenRealDispatchTemplates" classname="CC2OperationsTests" runstate="Runnable" seed="1866216914" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.003614" asserts="0">
+        <test-case id="1032" name="CatalogContainsThirtyResearchNodesAndFifteenRealDispatchTemplates" fullname="CC2OperationsTests.CatalogContainsThirtyResearchNodesAndFifteenRealDispatchTemplates" methodname="CatalogContainsThirtyResearchNodesAndFifteenRealDispatchTemplates" classname="CC2OperationsTests" runstate="Runnable" seed="1428845807" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.005403" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1037" name="CompletedResearchProducesAnActualCappedBenefitWithoutRetroactiveOutput" fullname="CC2OperationsTests.CompletedResearchProducesAnActualCappedBenefitWithoutRetroactiveOutput" methodname="CompletedResearchProducesAnActualCappedBenefitWithoutRetroactiveOutput" classname="CC2OperationsTests" runstate="Runnable" seed="398306306" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.113068" asserts="0">
+        <test-case id="1037" name="CompletedResearchProducesAnActualCappedBenefitWithoutRetroactiveOutput" fullname="CC2OperationsTests.CompletedResearchProducesAnActualCappedBenefitWithoutRetroactiveOutput" methodname="CompletedResearchProducesAnActualCappedBenefitWithoutRetroactiveOutput" classname="CC2OperationsTests" runstate="Runnable" seed="1878279737" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.081484" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1040" name="FailedResearchSaveRollsBackAllCostsQueueAndEvent" fullname="CC2OperationsTests.FailedResearchSaveRollsBackAllCostsQueueAndEvent" methodname="FailedResearchSaveRollsBackAllCostsQueueAndEvent" classname="CC2OperationsTests" runstate="Runnable" seed="35359715" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.115478" asserts="0">
+        <test-case id="1040" name="FailedResearchSaveRollsBackAllCostsQueueAndEvent" fullname="CC2OperationsTests.FailedResearchSaveRollsBackAllCostsQueueAndEvent" methodname="FailedResearchSaveRollsBackAllCostsQueueAndEvent" classname="CC2OperationsTests" runstate="Runnable" seed="517296326" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.092936" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1033" name="RenewableDispatchUsesRealProofCostsAndExactlyOncePredeterminedRewards" fullname="CC2OperationsTests.RenewableDispatchUsesRealProofCostsAndExactlyOncePredeterminedRewards" methodname="RenewableDispatchUsesRealProofCostsAndExactlyOncePredeterminedRewards" classname="CC2OperationsTests" runstate="Runnable" seed="553880267" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.073485" asserts="0">
+        <test-case id="1033" name="RenewableDispatchUsesRealProofCostsAndExactlyOncePredeterminedRewards" fullname="CC2OperationsTests.RenewableDispatchUsesRealProofCostsAndExactlyOncePredeterminedRewards" methodname="RenewableDispatchUsesRealProofCostsAndExactlyOncePredeterminedRewards" classname="CC2OperationsTests" runstate="Runnable" seed="1617576277" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.070951" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1036" name="ResearchNeedsRealReturnedContractsAndRemainsIndependentOfBuilder" fullname="CC2OperationsTests.ResearchNeedsRealReturnedContractsAndRemainsIndependentOfBuilder" methodname="ResearchNeedsRealReturnedContractsAndRemainsIndependentOfBuilder" classname="CC2OperationsTests" runstate="Runnable" seed="815094675" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.059784" asserts="0">
+        <test-case id="1036" name="ResearchNeedsRealReturnedContractsAndRemainsIndependentOfBuilder" fullname="CC2OperationsTests.ResearchNeedsRealReturnedContractsAndRemainsIndependentOfBuilder" methodname="ResearchNeedsRealReturnedContractsAndRemainsIndependentOfBuilder" classname="CC2OperationsTests" runstate="Runnable" seed="6448481" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:50:59Z" duration="0.116193" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1038" name="SpecializedSpeedupsCannotSpendOtherCurrenciesAndAreNeverReversed" fullname="CC2OperationsTests.SpecializedSpeedupsCannotSpendOtherCurrenciesAndAreNeverReversed" methodname="SpecializedSpeedupsCannotSpendOtherCurrenciesAndAreNeverReversed" classname="CC2OperationsTests" runstate="Runnable" seed="1249345597" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.041722" asserts="0">
+        <test-case id="1038" name="SpecializedSpeedupsCannotSpendOtherCurrenciesAndAreNeverReversed" fullname="CC2OperationsTests.SpecializedSpeedupsCannotSpendOtherCurrenciesAndAreNeverReversed" methodname="SpecializedSpeedupsCannotSpendOtherCurrenciesAndAreNeverReversed" classname="CC2OperationsTests" runstate="Runnable" seed="1389180321" result="Passed" start-time="2026-10-23 04:50:59Z" end-time="2026-10-23 04:51:00Z" duration="0.267300" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1039" name="SpeedupCannotWasteItemsOnAlreadyReadyOrMissingProject" fullname="CC2OperationsTests.SpeedupCannotWasteItemsOnAlreadyReadyOrMissingProject" methodname="SpeedupCannotWasteItemsOnAlreadyReadyOrMissingProject" classname="CC2OperationsTests" runstate="Runnable" seed="842791097" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.024932" asserts="0">
+        <test-case id="1039" name="SpeedupCannotWasteItemsOnAlreadyReadyOrMissingProject" fullname="CC2OperationsTests.SpeedupCannotWasteItemsOnAlreadyReadyOrMissingProject" methodname="SpeedupCannotWasteItemsOnAlreadyReadyOrMissingProject" classname="CC2OperationsTests" runstate="Runnable" seed="282305712" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.087802" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1041" name="TamperedDispatchRewardOrTimerCannotRestore" fullname="CC2OperationsTests.TamperedDispatchRewardOrTimerCannotRestore" methodname="TamperedDispatchRewardOrTimerCannotRestore" classname="CC2OperationsTests" runstate="Runnable" seed="2048859334" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.024854" asserts="0">
+        <test-case id="1041" name="TamperedDispatchRewardOrTimerCannotRestore" fullname="CC2OperationsTests.TamperedDispatchRewardOrTimerCannotRestore" methodname="TamperedDispatchRewardOrTimerCannotRestore" classname="CC2OperationsTests" runstate="Runnable" seed="1334863761" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.054260" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1034" name="UnprovenOrUncontributingRoutesCannotStart" fullname="CC2OperationsTests.UnprovenOrUncontributingRoutesCannotStart" methodname="UnprovenOrUncontributingRoutesCannotStart" classname="CC2OperationsTests" runstate="Runnable" seed="1611925654" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.029149" asserts="0">
+        <test-case id="1034" name="UnprovenOrUncontributingRoutesCannotStart" fullname="CC2OperationsTests.UnprovenOrUncontributingRoutesCannotStart" methodname="UnprovenOrUncontributingRoutesCannotStart" classname="CC2OperationsTests" runstate="Runnable" seed="1605440083" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.056951" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1063" name="CityInsightTests" fullname="CityInsightTests" classname="CityInsightTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.014645" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1063" name="CityInsightTests" fullname="CityInsightTests" classname="CityInsightTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.171945" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1067" name="BreakingConnectionExplainsLossAndUndoRestoresActualCash" fullname="CityInsightTests.BreakingConnectionExplainsLossAndUndoRestoresActualCash" methodname="BreakingConnectionExplainsLossAndUndoRestoresActualCash" classname="CityInsightTests" runstate="Runnable" seed="282714457" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.004478" asserts="0">
+        <test-case id="1067" name="BreakingConnectionExplainsLossAndUndoRestoresActualCash" fullname="CityInsightTests.BreakingConnectionExplainsLossAndUndoRestoresActualCash" methodname="BreakingConnectionExplainsLossAndUndoRestoresActualCash" classname="CityInsightTests" runstate="Runnable" seed="1411213398" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.007671" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1066" name="CustomerConnectionDoesNotClaimProfitWhenSuppliesAreMissing" fullname="CityInsightTests.CustomerConnectionDoesNotClaimProfitWhenSuppliesAreMissing" methodname="CustomerConnectionDoesNotClaimProfitWhenSuppliesAreMissing" classname="CityInsightTests" runstate="Runnable" seed="329774996" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.002055" asserts="0">
+        <test-case id="1066" name="CustomerConnectionDoesNotClaimProfitWhenSuppliesAreMissing" fullname="CityInsightTests.CustomerConnectionDoesNotClaimProfitWhenSuppliesAreMissing" methodname="CustomerConnectionDoesNotClaimProfitWhenSuppliesAreMissing" classname="CityInsightTests" runstate="Runnable" seed="1795519381" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.003923" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1068" name="DifferentLegalLayoutsCanEarnTheSameScore" fullname="CityInsightTests.DifferentLegalLayoutsCanEarnTheSameScore" methodname="DifferentLegalLayoutsCanEarnTheSameScore" classname="CityInsightTests" runstate="Runnable" seed="330860279" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.003813" asserts="0">
+        <test-case id="1068" name="DifferentLegalLayoutsCanEarnTheSameScore" fullname="CityInsightTests.DifferentLegalLayoutsCanEarnTheSameScore" methodname="DifferentLegalLayoutsCanEarnTheSameScore" classname="CityInsightTests" runstate="Runnable" seed="242392423" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.007185" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1065" name="FeedbackExplainsActualImprovementAndDoesNotMutateBoards" fullname="CityInsightTests.FeedbackExplainsActualImprovementAndDoesNotMutateBoards" methodname="FeedbackExplainsActualImprovementAndDoesNotMutateBoards" classname="CityInsightTests" runstate="Runnable" seed="2120250440" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000797" asserts="0">
+        <test-case id="1065" name="FeedbackExplainsActualImprovementAndDoesNotMutateBoards" fullname="CityInsightTests.FeedbackExplainsActualImprovementAndDoesNotMutateBoards" methodname="FeedbackExplainsActualImprovementAndDoesNotMutateBoards" classname="CityInsightTests" runstate="Runnable" seed="202876338" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.001728" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1064" name="FirstThreeCitiesTeachOneConnectionThenRotationThenCombineThem" fullname="CityInsightTests.FirstThreeCitiesTeachOneConnectionThenRotationThenCombineThem" methodname="FirstThreeCitiesTeachOneConnectionThenRotationThenCombineThem" classname="CityInsightTests" runstate="Runnable" seed="63809746" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.001253" asserts="0">
+        <test-case id="1064" name="FirstThreeCitiesTeachOneConnectionThenRotationThenCombineThem" fullname="CityInsightTests.FirstThreeCitiesTeachOneConnectionThenRotationThenCombineThem" methodname="FirstThreeCitiesTeachOneConnectionThenRotationThenCombineThem" classname="CityInsightTests" runstate="Runnable" seed="248571176" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.001667" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1049" name="ContractTests" fullname="ContractTests" classname="ContractTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.043657" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1049" name="ContractTests" fullname="ContractTests" classname="ContractTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.085978" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1051" name="DailyUsesUtcCalendarAndCertified72Pool" fullname="ContractTests.DailyUsesUtcCalendarAndCertified72Pool" methodname="DailyUsesUtcCalendarAndCertified72Pool" classname="ContractTests" runstate="Runnable" seed="1343668520" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.035950" asserts="0">
+        <test-case id="1051" name="DailyUsesUtcCalendarAndCertified72Pool" fullname="ContractTests.DailyUsesUtcCalendarAndCertified72Pool" methodname="DailyUsesUtcCalendarAndCertified72Pool" classname="ContractTests" runstate="Runnable" seed="473815479" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.074897" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1050" name="OfflineContractReturnsExactlyOnceAndClockRollbackCannotCollect" fullname="ContractTests.OfflineContractReturnsExactlyOnceAndClockRollbackCannotCollect" methodname="OfflineContractReturnsExactlyOnceAndClockRollbackCannotCollect" classname="ContractTests" runstate="Runnable" seed="1993235" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.006363" asserts="0">
+        <test-case id="1050" name="OfflineContractReturnsExactlyOnceAndClockRollbackCannotCollect" fullname="ContractTests.OfflineContractReturnsExactlyOnceAndClockRollbackCannotCollect" methodname="OfflineContractReturnsExactlyOnceAndClockRollbackCannotCollect" classname="ContractTests" runstate="Runnable" seed="1610259718" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.008887" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1069" name="CoreTests" fullname="CoreTests" classname="CoreTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:06Z" duration="3.208329" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1069" name="CoreTests" fullname="CoreTests" classname="CoreTests" runstate="Runnable" testcasecount="15" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:04Z" duration="3.289141" total="15" passed="15" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1075" name="BanksApplyOnceEvenWhenSeveralTouchOutlet" fullname="CoreTests.BanksApplyOnceEvenWhenSeveralTouchOutlet" methodname="BanksApplyOnceEvenWhenSeveralTouchOutlet" classname="CoreTests" runstate="Runnable" seed="1431823270" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000945" asserts="0">
+        <test-case id="1075" name="BanksApplyOnceEvenWhenSeveralTouchOutlet" fullname="CoreTests.BanksApplyOnceEvenWhenSeveralTouchOutlet" methodname="BanksApplyOnceEvenWhenSeveralTouchOutlet" classname="CoreTests" runstate="Runnable" seed="324260168" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.001658" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1070" name="EveryLaboratoryBoardHasAFreeLegalWitness" fullname="CoreTests.EveryLaboratoryBoardHasAFreeLegalWitness" methodname="EveryLaboratoryBoardHasAFreeLegalWitness" classname="CoreTests" runstate="Runnable" seed="1015381989" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000961" asserts="0">
+        <test-case id="1070" name="EveryLaboratoryBoardHasAFreeLegalWitness" fullname="CoreTests.EveryLaboratoryBoardHasAFreeLegalWitness" methodname="EveryLaboratoryBoardHasAFreeLegalWitness" classname="CoreTests" runstate="Runnable" seed="1717323862" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.001627" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1080" name="ExactlyOnceActivationAndFirstClearReward" fullname="CoreTests.ExactlyOnceActivationAndFirstClearReward" methodname="ExactlyOnceActivationAndFirstClearReward" classname="CoreTests" runstate="Runnable" seed="721435000" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.002136" asserts="0">
+        <test-case id="1080" name="ExactlyOnceActivationAndFirstClearReward" fullname="CoreTests.ExactlyOnceActivationAndFirstClearReward" methodname="ExactlyOnceActivationAndFirstClearReward" classname="CoreTests" runstate="Runnable" seed="1476632405" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.003769" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1083" name="FactoryConversionRecordsBothConsumptionAndProduction" fullname="CoreTests.FactoryConversionRecordsBothConsumptionAndProduction" methodname="FactoryConversionRecordsBothConsumptionAndProduction" classname="CoreTests" runstate="Runnable" seed="1478822130" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000466" asserts="0">
+        <test-case id="1083" name="FactoryConversionRecordsBothConsumptionAndProduction" fullname="CoreTests.FactoryConversionRecordsBothConsumptionAndProduction" methodname="FactoryConversionRecordsBothConsumptionAndProduction" classname="CoreTests" runstate="Runnable" seed="789504700" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.000760" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1074" name="InvalidMoveAndPreviewNeverMutateBoard" fullname="CoreTests.InvalidMoveAndPreviewNeverMutateBoard" methodname="InvalidMoveAndPreviewNeverMutateBoard" classname="CoreTests" runstate="Runnable" seed="1373357066" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000334" asserts="0">
+        <test-case id="1074" name="InvalidMoveAndPreviewNeverMutateBoard" fullname="CoreTests.InvalidMoveAndPreviewNeverMutateBoard" methodname="InvalidMoveAndPreviewNeverMutateBoard" classname="CoreTests" runstate="Runnable" seed="1991177420" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.000548" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1072" name="MissingGoodsMeansNoSales" fullname="CoreTests.MissingGoodsMeansNoSales" methodname="MissingGoodsMeansNoSales" classname="CoreTests" runstate="Runnable" seed="2039547739" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000297" asserts="0">
+        <test-case id="1072" name="MissingGoodsMeansNoSales" fullname="CoreTests.MissingGoodsMeansNoSales" methodname="MissingGoodsMeansNoSales" classname="CoreTests" runstate="Runnable" seed="1397992586" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.000484" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1079" name="OneBankOnlyAmplifiesOneOutlet" fullname="CoreTests.OneBankOnlyAmplifiesOneOutlet" methodname="OneBankOnlyAmplifiesOneOutlet" classname="CoreTests" runstate="Runnable" seed="837682448" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000864" asserts="0">
+        <test-case id="1079" name="OneBankOnlyAmplifiesOneOutlet" fullname="CoreTests.OneBankOnlyAmplifiesOneOutlet" methodname="OneBankOnlyAmplifiesOneOutlet" classname="CoreTests" runstate="Runnable" seed="1561931928" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.001415" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1082" name="RejectInvalidDefinitionsBudgetsAndMultipliers" fullname="CoreTests.RejectInvalidDefinitionsBudgetsAndMultipliers" methodname="RejectInvalidDefinitionsBudgetsAndMultipliers" classname="CoreTests" runstate="Runnable" seed="1714976606" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.001927" asserts="0">
+        <test-case id="1082" name="RejectInvalidDefinitionsBudgetsAndMultipliers" fullname="CoreTests.RejectInvalidDefinitionsBudgetsAndMultipliers" methodname="RejectInvalidDefinitionsBudgetsAndMultipliers" classname="CoreTests" runstate="Runnable" seed="54807609" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.003364" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1081" name="ResumeRestoresBoardAndRewardIdentity" fullname="CoreTests.ResumeRestoresBoardAndRewardIdentity" methodname="ResumeRestoresBoardAndRewardIdentity" classname="CoreTests" runstate="Runnable" seed="396006780" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.002099" asserts="0">
+        <test-case id="1081" name="ResumeRestoresBoardAndRewardIdentity" fullname="CoreTests.ResumeRestoresBoardAndRewardIdentity" methodname="ResumeRestoresBoardAndRewardIdentity" classname="CoreTests" runstate="Runnable" seed="1534338133" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.003720" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1073" name="RotationImmediatelyBreaksPathAndUndoRestoresIt" fullname="CoreTests.RotationImmediatelyBreaksPathAndUndoRestoresIt" methodname="RotationImmediatelyBreaksPathAndUndoRestoresIt" classname="CoreTests" runstate="Runnable" seed="1011038533" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000872" asserts="0">
+        <test-case id="1073" name="RotationImmediatelyBreaksPathAndUndoRestoresIt" fullname="CoreTests.RotationImmediatelyBreaksPathAndUndoRestoresIt" methodname="RotationImmediatelyBreaksPathAndUndoRestoresIt" classname="CoreTests" runstate="Runnable" seed="1723871661" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.001247" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1078" name="StableNodeIdentitySurvivesContainerOrderChanges" fullname="CoreTests.StableNodeIdentitySurvivesContainerOrderChanges" methodname="StableNodeIdentitySurvivesContainerOrderChanges" classname="CoreTests" runstate="Runnable" seed="430634662" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000577" asserts="0">
+        <test-case id="1078" name="StableNodeIdentitySurvivesContainerOrderChanges" fullname="CoreTests.StableNodeIdentitySurvivesContainerOrderChanges" methodname="StableNodeIdentitySurvivesContainerOrderChanges" classname="CoreTests" runstate="Runnable" seed="1180282637" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.000731" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1077" name="StockTraversesARealFourNodeCycleWithoutMultiplication" fullname="CoreTests.StockTraversesARealFourNodeCycleWithoutMultiplication" methodname="StockTraversesARealFourNodeCycleWithoutMultiplication" classname="CoreTests" runstate="Runnable" seed="1646376388" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:02Z" duration="0.000873" asserts="0">
+        <test-case id="1077" name="StockTraversesARealFourNodeCycleWithoutMultiplication" fullname="CoreTests.StockTraversesARealFourNodeCycleWithoutMultiplication" methodname="StockTraversesARealFourNodeCycleWithoutMultiplication" classname="CoreTests" runstate="Runnable" seed="867016936" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:00Z" duration="0.001480" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1084" name="TenThousandSeededBoardsConserveAndReplay" fullname="CoreTests.TenThousandSeededBoardsConserveAndReplay" methodname="TenThousandSeededBoardsConserveAndReplay" classname="CoreTests" runstate="Runnable" seed="1535241431" result="Passed" start-time="2026-10-22 23:37:02Z" end-time="2026-10-22 23:37:06Z" duration="3.190449" asserts="0">
+        <test-case id="1084" name="TenThousandSeededBoardsConserveAndReplay" fullname="CoreTests.TenThousandSeededBoardsConserveAndReplay" methodname="TenThousandSeededBoardsConserveAndReplay" classname="CoreTests" runstate="Runnable" seed="45986027" result="Passed" start-time="2026-10-23 04:51:00Z" end-time="2026-10-23 04:51:04Z" duration="3.259217" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1071" name="TutorialHasVisibleFiniteSuppliesAndExactSevenSalesBeats" fullname="CoreTests.TutorialHasVisibleFiniteSuppliesAndExactSevenSalesBeats" methodname="TutorialHasVisibleFiniteSuppliesAndExactSevenSalesBeats" classname="CoreTests" runstate="Runnable" seed="1708974422" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.000656" asserts="0">
+        <test-case id="1071" name="TutorialHasVisibleFiniteSuppliesAndExactSevenSalesBeats" fullname="CoreTests.TutorialHasVisibleFiniteSuppliesAndExactSevenSalesBeats" methodname="TutorialHasVisibleFiniteSuppliesAndExactSevenSalesBeats" classname="CoreTests" runstate="Runnable" seed="1688947853" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.001212" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1076" name="WarehouseCannotCreateGoodsInCycle" fullname="CoreTests.WarehouseCannotCreateGoodsInCycle" methodname="WarehouseCannotCreateGoodsInCycle" classname="CoreTests" runstate="Runnable" seed="1816733011" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.000687" asserts="0">
+        <test-case id="1076" name="WarehouseCannotCreateGoodsInCycle" fullname="CoreTests.WarehouseCannotCreateGoodsInCycle" methodname="WarehouseCannotCreateGoodsInCycle" classname="CoreTests" runstate="Runnable" seed="1198952541" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.001667" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1056" name="DraftBudgetTests" fullname="DraftBudgetTests" classname="DraftBudgetTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.085789" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1085" name="DevelopmentPlanningTests" fullname="DevelopmentPlanningTests" classname="DevelopmentPlanningTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.144092" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1057" name="BuildAndReturnCycleNeverCreatesBudgetOrCityCredits" fullname="DraftBudgetTests.BuildAndReturnCycleNeverCreatesBudgetOrCityCredits" methodname="BuildAndReturnCycleNeverCreatesBudgetOrCityCredits" classname="DraftBudgetTests" runstate="Runnable" seed="1956575922" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.078060" asserts="0">
+        <test-case id="1086" name="AffordableDevelopmentRecommendsTheActualUpgradeAndDoesNotSpendAnything" fullname="DevelopmentPlanningTests.AffordableDevelopmentRecommendsTheActualUpgradeAndDoesNotSpendAnything" methodname="AffordableDevelopmentRecommendsTheActualUpgradeAndDoesNotSpendAnything" classname="DevelopmentPlanningTests" runstate="Runnable" seed="1811663739" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.026431" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1059" name="EmptyEditableLayoutIsValidAndCannotEarnMoney" fullname="DraftBudgetTests.EmptyEditableLayoutIsValidAndCannotEarnMoney" methodname="EmptyEditableLayoutIsValidAndCannotEarnMoney" classname="DraftBudgetTests" runstate="Runnable" seed="774991886" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.001267" asserts="0">
+        <test-case id="1091" name="AGoalCompletesOnlyAfterActualConstructionAndSurvivesSerialization" fullname="DevelopmentPlanningTests.AGoalCompletesOnlyAfterActualConstructionAndSurvivesSerialization" methodname="AGoalCompletesOnlyAfterActualConstructionAndSurvivesSerialization" classname="DevelopmentPlanningTests" runstate="Runnable" seed="1891614110" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.019275" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1058" name="PlacementValidatesBudgetStocksRosterAndFreeUndo" fullname="DraftBudgetTests.PlacementValidatesBudgetStocksRosterAndFreeUndo" methodname="PlacementValidatesBudgetStocksRosterAndFreeUndo" classname="DraftBudgetTests" runstate="Runnable" seed="1134655408" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.002099" asserts="0">
+        <test-case id="1088" name="AShortageReportsOwnedRequiredAndMissingForEveryMaterial" fullname="DevelopmentPlanningTests.AShortageReportsOwnedRequiredAndMissingForEveryMaterial" methodname="AShortageReportsOwnedRequiredAndMissingForEveryMaterial" classname="DevelopmentPlanningTests" runstate="Runnable" seed="1594302294" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.018535" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1090" name="ChoosingAndChangingAGoalDoesNotChangeAnyEconomicState" fullname="DevelopmentPlanningTests.ChoosingAndChangingAGoalDoesNotChangeAnyEconomicState" methodname="ChoosingAndChangingAGoalDoesNotChangeAnyEconomicState" classname="DevelopmentPlanningTests" runstate="Runnable" seed="867679401" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.016327" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1093" name="DisplayedRateUsesTheSameCappedFormulaAsRealAccrual" fullname="DevelopmentPlanningTests.DisplayedRateUsesTheSameCappedFormulaAsRealAccrual" methodname="DisplayedRateUsesTheSameCappedFormulaAsRealAccrual" classname="DevelopmentPlanningTests" runstate="Runnable" seed="1990704263" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.007761" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1089" name="EditingAQuoteCannotModifyTheRealCostOrGrantResources" fullname="DevelopmentPlanningTests.EditingAQuoteCannotModifyTheRealCostOrGrantResources" methodname="EditingAQuoteCannotModifyTheRealCostOrGrantResources" classname="DevelopmentPlanningTests" runstate="Runnable" seed="1226962259" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.016394" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1087" name="LockedAndBusyProjectsExplainTheirRealGate" fullname="DevelopmentPlanningTests.LockedAndBusyProjectsExplainTheirRealGate" methodname="LockedAndBusyProjectsExplainTheirRealGate" classname="DevelopmentPlanningTests" runstate="Runnable" seed="1653807803" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.015477" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1092" name="UnknownOrUnauthoredGoalsAreRejected" fullname="DevelopmentPlanningTests.UnknownOrUnauthoredGoalsAreRejected" methodname="UnknownOrUnauthoredGoalsAreRejected" classname="DevelopmentPlanningTests" runstate="Runnable" seed="2121901975" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.005883" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1085" name="ProductionExpansionTests" fullname="ProductionExpansionTests" classname="ProductionExpansionTests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:10Z" duration="3.939753" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1056" name="DraftBudgetTests" fullname="DraftBudgetTests" classname="DraftBudgetTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.082298" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1089" name="AllDocumentedProductsHaveExactlyOnceFulfillment" fullname="ProductionExpansionTests.AllDocumentedProductsHaveExactlyOnceFulfillment" methodname="AllDocumentedProductsHaveExactlyOnceFulfillment" classname="ProductionExpansionTests" runstate="Runnable" seed="1405923639" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.001126" asserts="0">
+        <test-case id="1057" name="BuildAndReturnCycleNeverCreatesBudgetOrCityCredits" fullname="DraftBudgetTests.BuildAndReturnCycleNeverCreatesBudgetOrCityCredits" methodname="BuildAndReturnCycleNeverCreatesBudgetOrCityCredits" classname="DraftBudgetTests" runstate="Runnable" seed="877893905" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.075056" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1096" name="CollectionRewardIsClaimedOnceAndNeverCreatesStars" fullname="ProductionExpansionTests.CollectionRewardIsClaimedOnceAndNeverCreatesStars" methodname="CollectionRewardIsClaimedOnceAndNeverCreatesStars" classname="ProductionExpansionTests" runstate="Runnable" seed="1967927180" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.008537" asserts="0">
+        <test-case id="1059" name="EmptyEditableLayoutIsValidAndCannotEarnMoney" fullname="DraftBudgetTests.EmptyEditableLayoutIsValidAndCannotEarnMoney" methodname="EmptyEditableLayoutIsValidAndCannotEarnMoney" classname="DraftBudgetTests" runstate="Runnable" seed="1246584882" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.001485" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1099" name="CorruptPurchaseEntryFailsValidationWithoutNullDereference" fullname="ProductionExpansionTests.CorruptPurchaseEntryFailsValidationWithoutNullDereference" methodname="CorruptPurchaseEntryFailsValidationWithoutNullDereference" classname="ProductionExpansionTests" runstate="Runnable" seed="1106365332" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.000985" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1101" name="DeferredAndCanceledCallbacksNeverGrantPremiumContent" fullname="ProductionExpansionTests.DeferredAndCanceledCallbacksNeverGrantPremiumContent" methodname="DeferredAndCanceledCallbacksNeverGrantPremiumContent" classname="ProductionExpansionTests" runstate="Runnable" seed="594761714" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.005327" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1103" name="DeveloperContentFixtureHasNoPurchasesOrConsumableGrants" fullname="ProductionExpansionTests.DeveloperContentFixtureHasNoPurchasesOrConsumableGrants" methodname="DeveloperContentFixtureHasNoPurchasesOrConsumableGrants" classname="ProductionExpansionTests" runstate="Runnable" seed="65934446" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.108847" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1090" name="EntitlementReconciliationKeepsUncertainOfflineOwnership" fullname="ProductionExpansionTests.EntitlementReconciliationKeepsUncertainOfflineOwnership" methodname="EntitlementReconciliationKeepsUncertainOfflineOwnership" classname="ProductionExpansionTests" runstate="Runnable" seed="624677304" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.001218" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1102" name="EveryCityMapsToItsActualDistrictIncludingLastFinanceCities" fullname="ProductionExpansionTests.EveryCityMapsToItsActualDistrictIncludingLastFinanceCities" methodname="EveryCityMapsToItsActualDistrictIncludingLastFinanceCities" classname="ProductionExpansionTests" runstate="Runnable" seed="1564595676" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.018650" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1087" name="EveryExpansionReferenceIsLegalConservedAndThreeStar" fullname="ProductionExpansionTests.EveryExpansionReferenceIsLegalConservedAndThreeStar" methodname="EveryExpansionReferenceIsLegalConservedAndThreeStar" classname="ProductionExpansionTests" runstate="Runnable" seed="879107943" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.025299" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1091" name="ForgedPremiumBalanceAndUnknownProductsAreRejected" fullname="ProductionExpansionTests.ForgedPremiumBalanceAndUnknownProductsAreRejected" methodname="ForgedPremiumBalanceAndUnknownProductsAreRejected" classname="ProductionExpansionTests" runstate="Runnable" seed="1510707482" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.000859" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1086" name="Legacy72CityProgressMigratesWithoutLosingAnything" fullname="ProductionExpansionTests.Legacy72CityProgressMigratesWithoutLosingAnything" methodname="Legacy72CityProgressMigratesWithoutLosingAnything" classname="ProductionExpansionTests" runstate="Runnable" seed="2057752155" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.000956" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1098" name="LegacyStarterBoardsExpandWithoutChangingLayoutOrScore" fullname="ProductionExpansionTests.LegacyStarterBoardsExpandWithoutChangingLayoutOrScore" methodname="LegacyStarterBoardsExpandWithoutChangingLayoutOrScore" classname="ProductionExpansionTests" runstate="Runnable" seed="1658922477" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.004676" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1095" name="OptionalDraftHasFreeRerollThenExplicitPremiumCostAndCannotUndoIt" fullname="ProductionExpansionTests.OptionalDraftHasFreeRerollThenExplicitPremiumCostAndCannotUndoIt" methodname="OptionalDraftHasFreeRerollThenExplicitPremiumCostAndCannotUndoIt" classname="ProductionExpansionTests" runstate="Runnable" seed="1598632728" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.010902" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1094" name="PaidDeliveryRollsBackUntilDurableSaveAndRedeliveryIsIdempotent" fullname="ProductionExpansionTests.PaidDeliveryRollsBackUntilDurableSaveAndRedeliveryIsIdempotent" methodname="PaidDeliveryRollsBackUntilDurableSaveAndRedeliveryIsIdempotent" classname="ProductionExpansionTests" runstate="Runnable" seed="868951080" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.001745" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1097" name="PurchasedSlotsDoNotPreventEarningAllEightFreeSlots" fullname="ProductionExpansionTests.PurchasedSlotsDoNotPreventEarningAllEightFreeSlots" methodname="PurchasedSlotsDoNotPreventEarningAllEightFreeSlots" classname="ProductionExpansionTests" runstate="Runnable" seed="1512265261" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.002804" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1092" name="SuccessfulLayoutsRecordActualContributorsAndDiscoveries" fullname="ProductionExpansionTests.SuccessfulLayoutsRecordActualContributorsAndDiscoveries" methodname="SuccessfulLayoutsRecordActualContributorsAndDiscoveries" classname="ProductionExpansionTests" runstate="Runnable" seed="2110518753" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:06Z" duration="0.001381" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1100" name="TenThousandAllBuildingBoardsConserveAndHaveExactMoneyLedger" fullname="ProductionExpansionTests.TenThousandAllBuildingBoardsConserveAndHaveExactMoneyLedger" methodname="TenThousandAllBuildingBoardsConserveAndHaveExactMoneyLedger" classname="ProductionExpansionTests" runstate="Runnable" seed="1868147217" result="Passed" start-time="2026-10-22 23:37:06Z" end-time="2026-10-22 23:37:10Z" duration="3.735836" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1093" name="UnconnectedDecorationsDoNotCreateFlowCombos" fullname="ProductionExpansionTests.UnconnectedDecorationsDoNotCreateFlowCombos" methodname="UnconnectedDecorationsDoNotCreateFlowCombos" classname="ProductionExpansionTests" runstate="Runnable" seed="2049769258" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.001276" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1088" name="UnownedExpansionsNeverBlockTheFreeCampaign" fullname="ProductionExpansionTests.UnownedExpansionsNeverBlockTheFreeCampaign" methodname="UnownedExpansionsNeverBlockTheFreeCampaign" classname="ProductionExpansionTests" runstate="Runnable" seed="2000710191" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.000532" asserts="0">
+        <test-case id="1058" name="PlacementValidatesBudgetStocksRosterAndFreeUndo" fullname="DraftBudgetTests.PlacementValidatesBudgetStocksRosterAndFreeUndo" methodname="PlacementValidatesBudgetStocksRosterAndFreeUndo" classname="DraftBudgetTests" runstate="Runnable" seed="2022966542" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.002229" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1052" name="ProductionRoutingTests" fullname="ProductionRoutingTests" classname="ProductionRoutingTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.070870" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1094" name="ProductionExpansionTests" fullname="ProductionExpansionTests" classname="ProductionExpansionTests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:10Z" duration="6.673211" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1055" name="All16ComboDefinitionsCanActuallyBeDemonstrated" fullname="ProductionRoutingTests.All16ComboDefinitionsCanActuallyBeDemonstrated" methodname="All16ComboDefinitionsCanActuallyBeDemonstrated" classname="ProductionRoutingTests" runstate="Runnable" seed="1284709322" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.049318" asserts="0">
+        <test-case id="1098" name="AllDocumentedProductsHaveExactlyOnceFulfillment" fullname="ProductionExpansionTests.AllDocumentedProductsHaveExactlyOnceFulfillment" methodname="AllDocumentedProductsHaveExactlyOnceFulfillment" classname="ProductionExpansionTests" runstate="Runnable" seed="354962781" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.001191" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1053" name="EveryBuildingAppearsInTheFreeCampaign" fullname="ProductionRoutingTests.EveryBuildingAppearsInTheFreeCampaign" methodname="EveryBuildingAppearsInTheFreeCampaign" classname="ProductionRoutingTests" runstate="Runnable" seed="1085757587" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.013699" asserts="0">
+        <test-case id="1105" name="CollectionRewardIsClaimedOnceAndNeverCreatesStars" fullname="ProductionExpansionTests.CollectionRewardIsClaimedOnceAndNeverCreatesStars" methodname="CollectionRewardIsClaimedOnceAndNeverCreatesStars" classname="ProductionExpansionTests" runstate="Runnable" seed="1896796058" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.009973" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1054" name="FactoryForkFeedsBothLegalCashOutlets" fullname="ProductionRoutingTests.FactoryForkFeedsBothLegalCashOutlets" methodname="FactoryForkFeedsBothLegalCashOutlets" classname="ProductionRoutingTests" runstate="Runnable" seed="496895096" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.001329" asserts="0">
+        <test-case id="1108" name="CorruptPurchaseEntryFailsValidationWithoutNullDereference" fullname="ProductionExpansionTests.CorruptPurchaseEntryFailsValidationWithoutNullDereference" methodname="CorruptPurchaseEntryFailsValidationWithoutNullDereference" classname="ProductionExpansionTests" runstate="Runnable" seed="1606000628" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.001029" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1110" name="DeferredAndCanceledCallbacksNeverGrantPremiumContent" fullname="ProductionExpansionTests.DeferredAndCanceledCallbacksNeverGrantPremiumContent" methodname="DeferredAndCanceledCallbacksNeverGrantPremiumContent" classname="ProductionExpansionTests" runstate="Runnable" seed="1849203498" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.004485" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1112" name="DeveloperContentFixtureHasNoPurchasesOrConsumableGrants" fullname="ProductionExpansionTests.DeveloperContentFixtureHasNoPurchasesOrConsumableGrants" methodname="DeveloperContentFixtureHasNoPurchasesOrConsumableGrants" classname="ProductionExpansionTests" runstate="Runnable" seed="1241606201" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.225418" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1099" name="EntitlementReconciliationKeepsUncertainOfflineOwnership" fullname="ProductionExpansionTests.EntitlementReconciliationKeepsUncertainOfflineOwnership" methodname="EntitlementReconciliationKeepsUncertainOfflineOwnership" classname="ProductionExpansionTests" runstate="Runnable" seed="981476838" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.002081" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1111" name="EveryCityMapsToItsActualDistrictIncludingLastFinanceCities" fullname="ProductionExpansionTests.EveryCityMapsToItsActualDistrictIncludingLastFinanceCities" methodname="EveryCityMapsToItsActualDistrictIncludingLastFinanceCities" classname="ProductionExpansionTests" runstate="Runnable" seed="616567332" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.039421" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1096" name="EveryExpansionReferenceIsLegalConservedAndThreeStar" fullname="ProductionExpansionTests.EveryExpansionReferenceIsLegalConservedAndThreeStar" methodname="EveryExpansionReferenceIsLegalConservedAndThreeStar" classname="ProductionExpansionTests" runstate="Runnable" seed="1367060160" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.039167" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1100" name="ForgedPremiumBalanceAndUnknownProductsAreRejected" fullname="ProductionExpansionTests.ForgedPremiumBalanceAndUnknownProductsAreRejected" methodname="ForgedPremiumBalanceAndUnknownProductsAreRejected" classname="ProductionExpansionTests" runstate="Runnable" seed="628663692" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.001051" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1095" name="Legacy72CityProgressMigratesWithoutLosingAnything" fullname="ProductionExpansionTests.Legacy72CityProgressMigratesWithoutLosingAnything" methodname="Legacy72CityProgressMigratesWithoutLosingAnything" classname="ProductionExpansionTests" runstate="Runnable" seed="2058111033" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.001308" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1107" name="LegacyStarterBoardsExpandWithoutChangingLayoutOrScore" fullname="ProductionExpansionTests.LegacyStarterBoardsExpandWithoutChangingLayoutOrScore" methodname="LegacyStarterBoardsExpandWithoutChangingLayoutOrScore" classname="ProductionExpansionTests" runstate="Runnable" seed="1609593522" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.007541" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1104" name="OptionalDraftHasFreeRerollThenExplicitPremiumCostAndCannotUndoIt" fullname="ProductionExpansionTests.OptionalDraftHasFreeRerollThenExplicitPremiumCostAndCannotUndoIt" methodname="OptionalDraftHasFreeRerollThenExplicitPremiumCostAndCannotUndoIt" classname="ProductionExpansionTests" runstate="Runnable" seed="154240751" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.014821" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1103" name="PaidDeliveryRollsBackUntilDurableSaveAndRedeliveryIsIdempotent" fullname="ProductionExpansionTests.PaidDeliveryRollsBackUntilDurableSaveAndRedeliveryIsIdempotent" methodname="PaidDeliveryRollsBackUntilDurableSaveAndRedeliveryIsIdempotent" classname="ProductionExpansionTests" runstate="Runnable" seed="115776672" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.002308" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1106" name="PurchasedSlotsDoNotPreventEarningAllEightFreeSlots" fullname="ProductionExpansionTests.PurchasedSlotsDoNotPreventEarningAllEightFreeSlots" methodname="PurchasedSlotsDoNotPreventEarningAllEightFreeSlots" classname="ProductionExpansionTests" runstate="Runnable" seed="1698484521" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.003202" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1101" name="SuccessfulLayoutsRecordActualContributorsAndDiscoveries" fullname="ProductionExpansionTests.SuccessfulLayoutsRecordActualContributorsAndDiscoveries" methodname="SuccessfulLayoutsRecordActualContributorsAndDiscoveries" classname="ProductionExpansionTests" runstate="Runnable" seed="1805174184" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:04Z" duration="0.001945" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1109" name="TenThousandAllBuildingBoardsConserveAndHaveExactMoneyLedger" fullname="ProductionExpansionTests.TenThousandAllBuildingBoardsConserveAndHaveExactMoneyLedger" methodname="TenThousandAllBuildingBoardsConserveAndHaveExactMoneyLedger" classname="ProductionExpansionTests" runstate="Runnable" seed="1575196143" result="Passed" start-time="2026-10-23 04:51:04Z" end-time="2026-10-23 04:51:10Z" duration="6.306208" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1102" name="UnconnectedDecorationsDoNotCreateFlowCombos" fullname="ProductionExpansionTests.UnconnectedDecorationsDoNotCreateFlowCombos" methodname="UnconnectedDecorationsDoNotCreateFlowCombos" classname="ProductionExpansionTests" runstate="Runnable" seed="1035951008" result="Passed" start-time="2026-10-23 04:51:10Z" end-time="2026-10-23 04:51:10Z" duration="0.001398" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1097" name="UnownedExpansionsNeverBlockTheFreeCampaign" fullname="ProductionExpansionTests.UnownedExpansionsNeverBlockTheFreeCampaign" methodname="UnownedExpansionsNeverBlockTheFreeCampaign" classname="ProductionExpansionTests" runstate="Runnable" seed="1609351741" result="Passed" start-time="2026-10-23 04:51:10Z" end-time="2026-10-23 04:51:10Z" duration="0.000553" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1104" name="SaveTests" fullname="SaveTests" classname="SaveTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.085619" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1052" name="ProductionRoutingTests" fullname="ProductionRoutingTests" classname="ProductionRoutingTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-23 04:51:10Z" end-time="2026-10-23 04:51:11Z" duration="0.259039" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1106" name="AtomicRoundTripAndBackupRecovery" fullname="SaveTests.AtomicRoundTripAndBackupRecovery" methodname="AtomicRoundTripAndBackupRecovery" classname="SaveTests" runstate="Runnable" seed="1083384483" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.027945" asserts="0">
+        <test-case id="1055" name="All16ComboDefinitionsCanActuallyBeDemonstrated" fullname="ProductionRoutingTests.All16ComboDefinitionsCanActuallyBeDemonstrated" methodname="All16ComboDefinitionsCanActuallyBeDemonstrated" classname="ProductionRoutingTests" runstate="Runnable" seed="182410653" result="Passed" start-time="2026-10-23 04:51:10Z" end-time="2026-10-23 04:51:11Z" duration="0.135087" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1105" name="FreshSaveIsAbsentWithoutError" fullname="SaveTests.FreshSaveIsAbsentWithoutError" methodname="FreshSaveIsAbsentWithoutError" classname="SaveTests" runstate="Runnable" seed="393450654" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.004180" asserts="0">
+        <test-case id="1053" name="EveryBuildingAppearsInTheFreeCampaign" fullname="ProductionRoutingTests.EveryBuildingAppearsInTheFreeCampaign" methodname="EveryBuildingAppearsInTheFreeCampaign" classname="ProductionRoutingTests" runstate="Runnable" seed="647277945" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.098382" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1110" name="FullGameJsonRoundTripRetainsLedgerAndResolvedBoard" fullname="SaveTests.FullGameJsonRoundTripRetainsLedgerAndResolvedBoard" methodname="FullGameJsonRoundTripRetainsLedgerAndResolvedBoard" classname="SaveTests" runstate="Runnable" seed="2132193992" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.009312" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1107" name="InvalidDomainStateRejectedDespiteValidChecksum" fullname="SaveTests.InvalidDomainStateRejectedDespiteValidChecksum" methodname="InvalidDomainStateRejectedDespiteValidChecksum" classname="SaveTests" runstate="Runnable" seed="1779443528" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.007830" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1108" name="NoSilentResetWhenBothCopiesCorrupt" fullname="SaveTests.NoSilentResetWhenBothCopiesCorrupt" methodname="NoSilentResetWhenBothCopiesCorrupt" classname="SaveTests" runstate="Runnable" seed="270921402" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.010470" asserts="0">
-          <properties>
-            <property name="retryIteration" value="0" />
-            <property name="repeatIteration" value="0" />
-          </properties>
-        </test-case>
-        <test-case id="1109" name="RecoveryWritePreservesLastKnownGoodBackup" fullname="SaveTests.RecoveryWritePreservesLastKnownGoodBackup" methodname="RecoveryWritePreservesLastKnownGoodBackup" classname="SaveTests" runstate="Runnable" seed="789417495" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.021891" asserts="0">
+        <test-case id="1054" name="FactoryForkFeedsBothLegalCashOutlets" fullname="ProductionRoutingTests.FactoryForkFeedsBothLegalCashOutlets" methodname="FactoryForkFeedsBothLegalCashOutlets" classname="ProductionRoutingTests" runstate="Runnable" seed="1399178063" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.001965" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1060" name="SoftPurchaseTests" fullname="SoftPurchaseTests" classname="SoftPurchaseTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.008221" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1113" name="SaveTests" fullname="SaveTests" classname="SaveTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.079813" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1061" name="BlueprintSlotsSpendOnlyEarnedCityCreditsAndNeverOverdraw" fullname="SoftPurchaseTests.BlueprintSlotsSpendOnlyEarnedCityCreditsAndNeverOverdraw" methodname="BlueprintSlotsSpendOnlyEarnedCityCreditsAndNeverOverdraw" classname="SoftPurchaseTests" runstate="Runnable" seed="33159563" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.001017" asserts="0">
+        <test-case id="1115" name="AtomicRoundTripAndBackupRecovery" fullname="SaveTests.AtomicRoundTripAndBackupRecovery" methodname="AtomicRoundTripAndBackupRecovery" classname="SaveTests" runstate="Runnable" seed="421191617" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.029119" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1062" name="EarnedStylePurchaseIsIdempotentAndDoesNotChangePuzzleRewards" fullname="SoftPurchaseTests.EarnedStylePurchaseIsIdempotentAndDoesNotChangePuzzleRewards" methodname="EarnedStylePurchaseIsIdempotentAndDoesNotChangePuzzleRewards" classname="SoftPurchaseTests" runstate="Runnable" seed="2079561997" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.004722" asserts="0">
+        <test-case id="1114" name="FreshSaveIsAbsentWithoutError" fullname="SaveTests.FreshSaveIsAbsentWithoutError" methodname="FreshSaveIsAbsentWithoutError" classname="SaveTests" runstate="Runnable" seed="1427697535" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.001633" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1119" name="FullGameJsonRoundTripRetainsLedgerAndResolvedBoard" fullname="SaveTests.FullGameJsonRoundTripRetainsLedgerAndResolvedBoard" methodname="FullGameJsonRoundTripRetainsLedgerAndResolvedBoard" classname="SaveTests" runstate="Runnable" seed="55797025" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.008226" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1116" name="InvalidDomainStateRejectedDespiteValidChecksum" fullname="SaveTests.InvalidDomainStateRejectedDespiteValidChecksum" methodname="InvalidDomainStateRejectedDespiteValidChecksum" classname="SaveTests" runstate="Runnable" seed="1757890591" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.006474" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1117" name="NoSilentResetWhenBothCopiesCorrupt" fullname="SaveTests.NoSilentResetWhenBothCopiesCorrupt" methodname="NoSilentResetWhenBothCopiesCorrupt" classname="SaveTests" runstate="Runnable" seed="626388014" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.012604" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1118" name="RecoveryWritePreservesLastKnownGoodBackup" fullname="SaveTests.RecoveryWritePreservesLastKnownGoodBackup" methodname="RecoveryWritePreservesLastKnownGoodBackup" classname="SaveTests" runstate="Runnable" seed="1179425729" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.016344" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1111" name="StoreTests" fullname="StoreTests" classname="StoreTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.059309" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1060" name="SoftPurchaseTests" fullname="SoftPurchaseTests" classname="SoftPurchaseTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.008775" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1112" name="MissingRealStoreConfigFailsClosedWithoutPricesOrGrants" fullname="StoreTests.MissingRealStoreConfigFailsClosedWithoutPricesOrGrants" methodname="MissingRealStoreConfigFailsClosedWithoutPricesOrGrants" classname="StoreTests" runstate="Runnable" seed="11952064" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.054885" asserts="0">
+        <test-case id="1061" name="BlueprintSlotsSpendOnlyEarnedCityCreditsAndNeverOverdraw" fullname="SoftPurchaseTests.BlueprintSlotsSpendOnlyEarnedCityCreditsAndNeverOverdraw" methodname="BlueprintSlotsSpendOnlyEarnedCityCreditsAndNeverOverdraw" classname="SoftPurchaseTests" runstate="Runnable" seed="1690104970" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.003113" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1113" name="PureDomainCosmeticDeliveryIsIdempotentFixtureOnly" fullname="StoreTests.PureDomainCosmeticDeliveryIsIdempotentFixtureOnly" methodname="PureDomainCosmeticDeliveryIsIdempotentFixtureOnly" classname="StoreTests" runstate="Runnable" seed="1256004405" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.001362" asserts="0">
+        <test-case id="1062" name="EarnedStylePurchaseIsIdempotentAndDoesNotChangePuzzleRewards" fullname="SoftPurchaseTests.EarnedStylePurchaseIsIdempotentAndDoesNotChangePuzzleRewards" methodname="EarnedStylePurchaseIsIdempotentAndDoesNotChangePuzzleRewards" classname="SoftPurchaseTests" runstate="Runnable" seed="2138908165" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.003172" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
       </test-suite>
-      <test-suite type="TestFixture" id="1114" name="VerifiedLayoutsTests" fullname="VerifiedLayoutsTests" classname="VerifiedLayoutsTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.068600" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestFixture" id="1120" name="StoreTests" fullname="StoreTests" classname="StoreTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.062061" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-case id="1118" name="AReplayReplacesOnlyItsOwnPlanAndCannotForgeABetterRecordedResult" fullname="VerifiedLayoutsTests.AReplayReplacesOnlyItsOwnPlanAndCannotForgeABetterRecordedResult" methodname="AReplayReplacesOnlyItsOwnPlanAndCannotForgeABetterRecordedResult" classname="VerifiedLayoutsTests" runstate="Runnable" seed="394916325" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.005964" asserts="0">
+        <test-case id="1121" name="MissingRealStoreConfigFailsClosedWithoutPricesOrGrants" fullname="StoreTests.MissingRealStoreConfigFailsClosedWithoutPricesOrGrants" methodname="MissingRealStoreConfigFailsClosedWithoutPricesOrGrants" classname="StoreTests" runstate="Runnable" seed="1070416304" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.058173" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1115" name="SavedWinningPlanSurvivesMovingToAnUnsolvedNextCity" fullname="VerifiedLayoutsTests.SavedWinningPlanSurvivesMovingToAnUnsolvedNextCity" methodname="SavedWinningPlanSurvivesMovingToAnUnsolvedNextCity" classname="VerifiedLayoutsTests" runstate="Runnable" seed="1846051146" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.048814" asserts="0">
+        <test-case id="1122" name="PureDomainCosmeticDeliveryIsIdempotentFixtureOnly" fullname="StoreTests.PureDomainCosmeticDeliveryIsIdempotentFixtureOnly" methodname="PureDomainCosmeticDeliveryIsIdempotentFixtureOnly" classname="StoreTests" runstate="Runnable" seed="2040261195" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.001744" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1117" name="SavingAndReturningAPlanCannotAlterItOrAwardCurrency" fullname="VerifiedLayoutsTests.SavingAndReturningAPlanCannotAlterItOrAwardCurrency" methodname="SavingAndReturningAPlanCannotAlterItOrAwardCurrency" classname="VerifiedLayoutsTests" runstate="Runnable" seed="777024256" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.005984" asserts="0">
+      </test-suite>
+      <test-suite type="TestFixture" id="1123" name="VerifiedLayoutsTests" fullname="VerifiedLayoutsTests" classname="VerifiedLayoutsTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.030593" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1127" name="AReplayReplacesOnlyItsOwnPlanAndCannotForgeABetterRecordedResult" fullname="VerifiedLayoutsTests.AReplayReplacesOnlyItsOwnPlanAndCannotForgeABetterRecordedResult" methodname="AReplayReplacesOnlyItsOwnPlanAndCannotForgeABetterRecordedResult" classname="VerifiedLayoutsTests" runstate="Runnable" seed="1851299592" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.016150" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />
           </properties>
         </test-case>
-        <test-case id="1116" name="UnwonOrNonProducingPlansAreRejectedWithoutReplacingExistingPlan" fullname="VerifiedLayoutsTests.UnwonOrNonProducingPlansAreRejectedWithoutReplacingExistingPlan" methodname="UnwonOrNonProducingPlansAreRejectedWithoutReplacingExistingPlan" classname="VerifiedLayoutsTests" runstate="Runnable" seed="2002831879" result="Passed" start-time="2026-10-22 23:37:10Z" end-time="2026-10-22 23:37:10Z" duration="0.005350" asserts="0">
+        <test-case id="1124" name="SavedWinningPlanSurvivesMovingToAnUnsolvedNextCity" fullname="VerifiedLayoutsTests.SavedWinningPlanSurvivesMovingToAnUnsolvedNextCity" methodname="SavedWinningPlanSurvivesMovingToAnUnsolvedNextCity" classname="VerifiedLayoutsTests" runstate="Runnable" seed="9010119" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.005011" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1126" name="SavingAndReturningAPlanCannotAlterItOrAwardCurrency" fullname="VerifiedLayoutsTests.SavingAndReturningAPlanCannotAlterItOrAwardCurrency" methodname="SavingAndReturningAPlanCannotAlterItOrAwardCurrency" classname="VerifiedLayoutsTests" runstate="Runnable" seed="1585158415" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.002702" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1125" name="UnwonOrNonProducingPlansAreRejectedWithoutReplacingExistingPlan" fullname="VerifiedLayoutsTests.UnwonOrNonProducingPlansAreRejectedWithoutReplacingExistingPlan" methodname="UnwonOrNonProducingPlansAreRejectedWithoutReplacingExistingPlan" classname="VerifiedLayoutsTests" runstate="Runnable" seed="440747078" result="Passed" start-time="2026-10-23 04:51:11Z" end-time="2026-10-23 04:51:11Z" duration="0.003515" asserts="0">
           <properties>
             <property name="retryIteration" value="0" />
             <property name="repeatIteration" value="0" />

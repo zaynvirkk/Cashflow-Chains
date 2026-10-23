@@ -4,23 +4,17 @@ This never grants items, changes eligibility, or substitutes for domain commands
 Paid routes are absent until their real fulfillment capability is available.
 """
 
-def development_sources(config, state, business_id, at):
+def development_sources(config, state, business_id, at, quote):
     definition = next((b for b in config['Businesses'] if b['Id'] == business_id), None)
     if definition is None:
         raise KeyError(business_id)
     clears = {int(r['CommandId'].split(':')[1]) for r in state['Economy']['Receipts']
               if r['CommandId'].startswith('certified-first-clear:')}
-    balances = {b['ItemId']: b['Earned'] + b['Purchased'] for b in state['Economy']['Balances']}
-    owned = next((b for b in state['Businesses'] if b['Id'] == business_id), None)
-    level = owned['Level'] if owned else 0
-    upgrade = next((u for u in config['Upgrades'] if u['Level'] == level + 1), None)
-    locked = len(clears) < definition['UnlockClears']
-    occupied = len(state['Construction']) >= state['Builders']
     requirements = []
-    if upgrade:
-        for cost in upgrade['Costs']:
-            item, quantity = cost['ItemId'], cost['Quantity']
-            missing = max(0, quantity - balances.get(item, 0))
+    if quote['nextLevel'] is not None:
+        for cost in quote['requirements']:
+            item, quantity = cost['itemId'], cost['required']
+            missing = cost['missing']
             routes = []
             if missing:
                 if item in ('CASH', 'WOOD') and len(clears) < 72:
@@ -52,11 +46,8 @@ def development_sources(config, state, business_id, at):
                                    'requiresSavedContributingRecipe': dispatch['RequiredRecipe'],
                                    'explanation': 'A completed qualifying plan and the listed dispatch fee are required.'})
             requirements.append({'itemId': item, 'required': quantity,
-                                 'owned': balances.get(item, 0), 'missing': missing,
+                                 'owned': cost['owned'], 'missing': missing,
                                  'sources': routes})
-    affordable = bool(upgrade) and all(r['missing'] == 0 for r in requirements)
-    action = 'unlock' if locked else 'tier-limit' if upgrade is None else 'builder-busy' if occupied else 'upgrade' if affordable else 'find-resources'
-    return {'businessId': business_id, 'level': level, 'nextLevel': upgrade['Level'] if upgrade else None,
-            'primaryAction': action, 'affordable': affordable, 'requirements': requirements,
+    return {**quote, 'requirements': requirements,
             'paidRoutes': [], 'paidCommerceEnabled': False,
-            'note': 'Read-only guidance; the domain revalidates every development command.'}
+            'note': 'Costs,shortages,rates and action come from the shared C# domain. Source definitions are advisory; every development command is revalidated.'}

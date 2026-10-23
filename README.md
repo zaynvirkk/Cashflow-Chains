@@ -10,7 +10,7 @@ The commercial goal is interconnected progression: legitimate chains feed owned 
 
 ## Run locally
 
-- `./PlayEmpireSandbox.sh`: current CC2 development player, isolated save under Builds/EmpireSandbox/LocalEmpire. Actual local puzzle rewards, construction, production and developing dispatch/research. Explicit local sandbox label; no cloud or purchases.
+- `./PlayEmpireSandbox.sh`: current CC2 development player, isolated save under Builds/EmpireSandbox/LocalEmpire. Actual local puzzle rewards,construction,production,dispatch/research and saved personal development plans with real material sources. Explicit local sandbox label; no cloud or purchases.
 - `./Play.sh`: regular certified-puzzle companion. Existing saves and baseline entitlements remain separate. It ignores sandbox activation flags.
 - `./PlayContentQA.sh`: separately labelled content fixture. It is not a normal progression or payment test.
 

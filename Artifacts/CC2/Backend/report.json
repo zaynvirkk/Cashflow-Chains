@@ -1,21 +1,21 @@
 {
   "passed": true,
-  "verifiedAt": "2026-10-23T04:17:37.861620+00:00",
-  "scope": "Local authenticated/durable API tests on development and independently published .NET10 hosts; no deployed service or real billing. Includes all72 free campaign proofs,all15 exact dispatch returns and route gates matched to actual authored plans.",
+  "verifiedAt": "2026-10-23T04:54:18.929189+00:00",
+  "scope": "Local authenticated durable API tests on development .NET6 and independently published .NET10; same C# readonly development quotes, all72 free proofs and15 actual route returns. No deployed service,client sync or real billing.",
   "tests": 19,
   "supported_runtime_tests": 19,
   "dotnet_sdk": "10.0.402",
   "catalogRevision": 3,
   "reports": [
-    "tests.xml",
-    "net10-tests.xml"
+    "development-tests.xml",
+    "development-dotnet10-tests.xml"
   ],
   "source": {
-    "Backend/cc2/acquisition.py": "3bc8e8f3b369165018ace3be6f898f617648a85d44b4d0b3ce669595489b517a",
-    "Backend/cc2/app.py": "2c4111f6b26c4e7f1d30d94cd7faebc961d1ff31f6d283507cfc38fc2f15067e",
+    "Backend/cc2/acquisition.py": "e6cd625a9a5fb7266c4969b1afdc7ef6c304b68f9a485bd50ba53c8fbd58165d",
+    "Backend/cc2/app.py": "e8c5c490d14ad66af7078bb9748cb3d863e22018cc0bf2ca4f3089cb4cbff426",
     "Backend/cc2/domain.py": "ed498c4fe0e298c4e32f25a016fd75fa65f62a6a1568366082aa71abf44f0b38",
     "Backend/cc2/start.py": "399a442d53d07cf49134f6f63bcab1b402dfc14b53a14089f6aaab2642d3e495",
-    "Backend/tests/test_authority.py": "211d43b6f48c0fd7280a56a017b41d15de0a36b2069101368d34c5d8d1833b46",
+    "Backend/tests/test_authority.py": "00d7c3392e27d64425f71eecd6d68c4b9dafe5c545fe5a479b1c7a80e50d106f",
     "Assets/_Game/Scripts/Domain/VerifiedLayouts.cs": "3d5cdd27541b8bb2efb7c7ed621ca26dbc8960ab84016ea3c4b9bba964c90ed6",
     "Assets/_Game/Scripts/Domain/Campaign.cs": "a115ee011843c0a1bafc0a06fdefd609796f8eabe3095796b5de2540584b98fc",
     "Assets/_Game/Scripts/Domain/CommerceCatalog.cs": "68e50d0913bd7b266e21b92cc2d1a52370c7a75c7b8ee2136dc28be0d479efc1",
@@ -33,12 +33,13 @@
     "Assets/_Game/Scripts/Domain/Economy/LegacyMigration.cs": "3df7c8cf4fa4427bfd0e4111216252d992b9ea7751acde6926c1a261d1942e55",
     "Assets/_Game/Scripts/Domain/Empire/DispatchResearch.cs": "2ec6f39f51b5390958225ad22988cf3b04ed222da2adaf2bcc285ea317f1ff53",
     "Assets/_Game/Scripts/Domain/Empire/OperationsCatalog.cs": "9b4803ce63ac30ad9446a222c8ffc05f3d4352972b4537915f8cdf47dc6d44e9",
-    "Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs": "54d1ed822520a79fc2e216f107a2ae33c6402a3090c4af6a7a73ec389863c929",
+    "Assets/_Game/Scripts/Domain/Empire/DevelopmentPlanning.cs": "291db1e42e45a34ff985737347b7a82dc4aa08b53297a5dedf0b7a049524167c",
+    "Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs": "0e7612d1db3734e761369c8c4c409b54da1bccc4a5e235feb8fbb2ff8c8a21bd",
     "Tools/CC2/Simulation.cs": "f3706238a0444c74a2acb4830ec26da0f889dbe73cf428ec546d2fa3912d8ded",
     "Tools/CC2/Stress.cs": "ef858484961c6451430e71f6af83a0096aa1b4b2359b36311a0b3c29581f89d7",
     "Tools/CC2/Program.cs": "1fe735aaf6be906e11558c9ae2f2a24b11e06498232887f5da929dc8a71f335a",
-    "Tools/CC2/ServerBridge.cs": "0200e5bc548d88db870df4c164f173dd00b2da129b9c27319a34ccc44f384d30",
-    "Backend/DomainService/CC2Tools.csproj": "0f2c997b30486ecc9a078489fd0075f7708eb22aa22f04bf136555c62eb2bdb6",
+    "Tools/CC2/ServerBridge.cs": "00971ce3e25a87f27d4104c4ea4a1d5585c745e908c1cd6d20567b57afc6019d",
     "Assets/_Game/Data/CC2/balance-v1.json": "d39edcabaa17bb7d605613713117b6e8ab2cf7c42506645e7dcc9f631fadd5ac"
-  }
+  },
+  "publishedDomainSha256": "d65e2d18028cf58a9c4b345d4164615ac1456efac1976d82068b6cd963497555"
 }

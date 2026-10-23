@@ -28,8 +28,9 @@ namespace CashflowChains.Empire {
  }
  public sealed class ProductionQuote {public string ItemId;public long Amount,Carry,Elapsed;}
  public static class ProductionPolicy {
+  public static long ScaledHourly(BalanceConfig config,string businessId,int level,int productionBp=0){if(level<0||level>config.Upgrades.Length||productionBp<0)throw new ArgumentException("Invalid production tier or bonus");var def=config.Business(businessId);return level==0?0:checked(def.BaseHourly*(10000L+Math.Min((level-1)*800+productionBp,config.ProductionBonusCapBp)));}
   public static ProductionQuote Quote(BalanceConfig config,OwnedBusiness b,long now,int productionBp=0,int storageBp=0){
-   if(now<b.ProducedAt)throw new ArgumentException("Clock moved backwards");var def=config.Business(b.Id);long elapsed=Math.Min(config.OfflineCapSeconds,now-b.ProducedAt);long rate=b.Level==0?0:def.BaseHourly;long numerator=checked(rate*elapsed*(10000L+Math.Min(Math.Max(0,b.Level-1)*800+productionBp,config.ProductionBonusCapBp))+b.Carry);long storage=EconomyMath.WithBonus(def.Storage,storageBp,10000);long amount=Math.Min(storage,numerator/36000000);
+   if(now<b.ProducedAt)throw new ArgumentException("Clock moved backwards");var def=config.Business(b.Id);long elapsed=Math.Min(config.OfflineCapSeconds,now-b.ProducedAt);long numerator=checked(ScaledHourly(config,b.Id,b.Level,productionBp)*elapsed+b.Carry);long storage=EconomyMath.WithBonus(def.Storage,storageBp,10000);long amount=Math.Min(storage,numerator/36000000);
    return new ProductionQuote{ItemId=def.Output,Amount=amount,Carry=amount==storage?0:numerator%36000000,Elapsed=elapsed};
   }
  }

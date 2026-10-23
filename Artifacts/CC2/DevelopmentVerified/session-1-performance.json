@@ -1,0 +1,10 @@
+{
+    "Width": 540,
+    "Height": 960,
+    "Frames": 1750,
+    "AudioSampleRate": 48000,
+    "MedianMs": 16.667112350463868,
+    "P95Ms": 16.933835983276368,
+    "MaxMs": 242.86326599121095,
+    "AllocatedBytes": 99284749
+}

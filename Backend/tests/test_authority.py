@@ -10,7 +10,10 @@ ROOT=Path(__file__).resolve().parents[2]
 def service(tmp_path):
  clock=[1800000000];path=tmp_path/'state.sqlite';app=create_app(path,clock=lambda:clock[0]);client=TestClient(app);guest=client.post('/v1/auth/guest').json();headers={'Authorization':'Bearer '+guest['accessToken']};return client,headers,clock,path,guest
 
-def board(level):return json.loads((ROOT/'Artifacts/Campaign/witnesses.jsonl').read_text().splitlines()[level])
+# Freeze complete fixtures once: Unity may regenerate its export during a build.
+REFERENCE_PLANS=(ROOT/'Artifacts/Campaign/witnesses.jsonl').read_text().splitlines()
+assert len(REFERENCE_PLANS)==104, 'Generate the complete reference campaign before testing'
+def board(level):return json.loads(REFERENCE_PLANS[level])
 def snapshot(c,h):return c.get('/v1/account/snapshot',headers=h).json()
 def amount(state,item):return sum(b['Earned']+b['Purchased'] for b in state['Economy']['Balances'] if b['ItemId']==item)
 def win(c,h,level):
@@ -33,7 +36,7 @@ def test_verified_plans_are_account_bound_and_survive_restart(service):
 def test_acquisition_uses_authoritative_balances_and_promotes_affordable_upgrade(service):
  c,h,_,_,_=service;assert c.get('/v1/development/home/sources').status_code==401
  for level in range(3):win(c,h,level)
- before=snapshot(c,h);r=c.get('/v1/development/home/sources',headers=h);assert r.status_code==200;r=r.json();assert r['primaryAction']=='upgrade';assert all(x['missing']==0 and not x['sources'] for x in r['requirements']);assert not r['paidRoutes'];assert snapshot(c,h)==before
+ before=snapshot(c,h);r=c.get('/v1/development/home/sources',headers=h);assert r.status_code==200;r=r.json();assert r['primaryAction']=='upgrade';assert r['beforeHourly']==0 and r['afterHourly']==8 and r['seconds']==30;assert all(x['missing']==0 and not x['sources'] for x in r['requirements']);assert not r['paidRoutes'];assert snapshot(c,h)==before
  assert c.get('/v1/development/unknown/sources',headers=h).status_code==404
 
 def test_source_finder_lists_real_free_routes_without_future_gacha_or_fake_prices(service):
