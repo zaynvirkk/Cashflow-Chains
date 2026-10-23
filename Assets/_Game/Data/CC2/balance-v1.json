@@ -1,6 +1,6 @@
 {
   "Schema": 1,
-  "Revision": 2,
+  "Revision": 3,
   "OfflineCapSeconds": 28800,
   "ProductionBonusCapBp": 10000,
   "TimeReductionCapBp": 5000,
@@ -1175,7 +1175,7 @@
   ],
   "EnabledFeatures": [],
   "Operations": {
-    "Revision": 1,
+    "Revision": 2,
     "DailyDispatchStarts": 12,
     "SecondFreeDispatchClears": 12,
     "ResearchUnlockClears": 6,
@@ -1350,7 +1350,7 @@
         "Title": "Power appointment",
         "RequiredRecipe": "power",
         "Business": "power",
-        "UnlockClears": 15,
+        "UnlockClears": 29,
         "Seconds": 180,
         "Costs": [
           {
@@ -1670,7 +1670,7 @@
         "Title": "Harbor appointment",
         "RequiredRecipe": "port",
         "Business": "farm",
-        "UnlockClears": 39,
+        "UnlockClears": 54,
         "Seconds": 14400,
         "Costs": [
           {

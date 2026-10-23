@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace LocalGame {
  public sealed class ResponsiveCanvas:MonoBehaviour {
   public CanvasScaler Scaler;int width,height;
-  void Update(){if(width==Screen.width&&height==Screen.height)return;width=Screen.width;height=Screen.height;bool wide=width>height;Scaler.referenceResolution=wide?new Vector2(1280,720):new Vector2(720,1280);Scaler.matchWidthOrHeight=wide?1:0;}
+  void Update(){if(width==Screen.width&&height==Screen.height)return;width=Screen.width;height=Screen.height;bool wide=width>height;Scaler.referenceResolution=wide?new Vector2(1280,720):new Vector2(720,1280);Scaler.matchWidthOrHeight=wide&&width/(float)height>=1280f/720f?1:0;}
  }
  public sealed class ResponsiveStage:MonoBehaviour {
   public string View="title";RectTransform rect;Vector2 previous;string previousView;public bool Wide=>Width>Height;public float Width=>Mathf.Max(1,((RectTransform)transform).rect.width);public float Height=>Mathf.Max(1,((RectTransform)transform).rect.height);
@@ -13,7 +13,7 @@ namespace LocalGame {
   void Update(){var k=Keyboard.current;if(k!=null&&k.f11Key.wasPressedThisFrame){if(Screen.fullScreen)Screen.SetResolution(1280,720,FullScreenMode.Windowed);else Screen.SetResolution(Display.main.systemWidth,Display.main.systemHeight,FullScreenMode.FullScreenWindow);}}
   void LateUpdate(){if(!rect)rect=(RectTransform)transform;var size=rect.rect.size;if(size==previous&&previousView==View)return;previous=size;previousView=View;foreach(var e in GetComponentsInChildren<StageElement>(true))e.Apply();foreach(var t in GetComponentsInChildren<StageText>(true))t.Apply();}
   public Rect BoardArea {
-   get{float sourceY=Studio.Velvet?260:310,sourceH=Studio.Velvet?690:644;if(Wide){float scale=Mathf.Min((Width-610)/644,(Height-(Studio.Velvet?215:70))/sourceH);scale=Mathf.Max(.35f,scale);return new Rect((Width-644*scale)/2,(Height-sourceH*scale)/2+(Studio.Velvet?65:0),644*scale,sourceH*scale);}float top=248,lower=Height-430;float side=Mathf.Min(Width-48,lower-top);side=Mathf.Max(260,side);return new Rect((Width-side)/2,top+Mathf.Max(0,(lower-top-side)/2),side,side);}
+   get{float sourceY=Studio.Velvet?260:310,sourceH=Studio.Velvet?690:644;if(Wide){float scale=Mathf.Min((Width-610)/644,(Height-(Studio.Velvet?215:70))/sourceH);scale=Mathf.Max(.35f,scale);return new Rect((Width-644*scale)/2,(Height-sourceH*scale)/2+(Studio.Velvet?65:0),644*scale,sourceH*scale);}float top=248,lower=Height-(!Studio.Velvet&&Height<1120?240:430);float side=Mathf.Min(Width-48,lower-top);side=Mathf.Max(260,side);return new Rect((Width-side)/2,top+Mathf.Max(0,(lower-top-side)/2),side,side);}
 
   }
   public Rect OnBoard(Rect r){var b=BoardArea;float sourceY=Studio.Velvet?260:310;float s=b.width/644;return new Rect(b.x+(r.x-38)*s,b.y+(r.y-sourceY)*s,r.width*s,r.height*s);}
@@ -23,7 +23,7 @@ namespace LocalGame {
    if(name=="Living route"||name=="Scrim")return new Rect(0,0,w,h);
    if(name=="Reading shade")return Wide?(board?new Rect(0,0,292,h):View=="title"?new Rect(0,0,w*.48f,h):new Rect(0,0,w,210)):new Rect(0,0,w,260*Mathf.Min(1,h/1280));
    if(name=="Control shade")return Wide?(board?new Rect(w-292,0,292,h):new Rect(0,h-175,w,175)):new Rect(0,966+extra,w,314);
-   if(board&&name=="Ledger backing")return Wide?new Rect(16,103,276,Height-207):Studio.Velvet?new Rect(24,Height-428,672,116):new Rect(24,2,672,134);
+   if(board&&name=="Ledger backing")return Wide?new Rect(16,103,276,Height-207):Studio.Velvet?new Rect(24,Height-428,672,116):new Rect(24,2,672,144);
    if(board&&!Wide){
     if(name=="City grid"||name=="Velvet case"||name=="World frame"||name.EndsWith("case-rim")||name=="Flow")return OnBoard(r);
     if(name=="Case lid"){var b=BoardArea;return new Rect(b.x-18,b.y-165,b.width+36,170);}
@@ -35,8 +35,14 @@ namespace LocalGame {
      if(r.y<40&&name=="Text")return new Rect(330,18,260,30);
      if(r.y>=60&&r.y<135&&name=="Text")return new Rect(330,53,260,45);
      if(r.x==588&&r.y==38)return new Rect(624,18,72,72);
-     if(r.y==142)return new Rect(r.x>400?404:32,106,r.x>400?280:362,32);
-     if(name=="Goal")return new Rect(24,148,672,90);
+     if(name=="City wallet")return new Rect(338,112,146,28);
+     if(r.y==142)return new Rect(r.x>400?492:32,112,r.x>400?192:294,28);
+     if(name=="Goal")return new Rect(24,154,672,84);
+     if(Height<1120){
+      if(r.y==974&&r.x>500)return new Rect(528,Height-72,168,60);
+      if(r.y==1094)return new Rect(30,Height-224,660,54);
+      if(r.y==1152){if(r.x>450)return new Rect(72,Height-166,576,76);int i=r.x<100?0:r.x<250?1:2;return new Rect(24+i*168,Height-72,158,60);}
+     }
      if(name=="Inspector")return new Rect(24,Height-354,558,128);
      if(r.y==974&&r.x>500)return new Rect(592,Height-354,104,128);
      if(r.y==1094)return new Rect(30,Height-421,660,68);
@@ -116,7 +122,7 @@ namespace LocalGame {
   }
  }
  public sealed class StageElement:MonoBehaviour {
-  public ResponsiveStage Stage;public Rect Design;public void Apply(){if(!Stage)return;var r=(RectTransform)transform;var b=Stage.Layout(gameObject.name,Design);r.anchorMin=new Vector2(b.x/Stage.Width,1-(b.y+b.height)/Stage.Height);r.anchorMax=new Vector2((b.x+b.width)/Stage.Width,1-b.y/Stage.Height);r.offsetMin=r.offsetMax=Vector2.zero;}
+  public ResponsiveStage Stage;public Rect Design;public void Apply(){if(!Stage)return;if(Stage.View=="board"&&!Studio.Velvet&&(gameObject.name=="Inspector"||gameObject.name=="City desk")){bool visible=Stage.Wide||Stage.Height>=1120;if(gameObject.activeSelf!=visible)gameObject.SetActive(visible);}var r=(RectTransform)transform;var b=Stage.Layout(gameObject.name,Design);r.anchorMin=new Vector2(b.x/Stage.Width,1-(b.y+b.height)/Stage.Height);r.anchorMax=new Vector2((b.x+b.width)/Stage.Width,1-b.y/Stage.Height);r.offsetMin=r.offsetMax=Vector2.zero;}
  }
  public sealed class StageText:MonoBehaviour {
   public ResponsiveStage Stage;public float Size;public void Apply(){if(!Stage)return;var t=GetComponent<TMPro.TextMeshProUGUI>();float s=Stage.FontScale;if(Stage.Wide){for(Transform p=transform.parent;p!=null;p=p.parent)if(p.name=="Dialog"){s=Mathf.Min(Stage.Height-60,700)/1030f;break;}}t.fontSize=Size*s;t.fontSizeMax=Size*s;t.fontSizeMin=Size*s*.85f;}

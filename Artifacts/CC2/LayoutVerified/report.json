@@ -1,0 +1,117 @@
+{
+  "passed": true,
+  "method": "Actual native pointer controls, window resizing and F11, screenshots plus read-only presented-control geometry. No state edits.",
+  "checks": [
+    {
+      "view": "wide-board",
+      "pixels": [
+        1280,
+        720
+      ],
+      "buttons": 10,
+      "square_cells": true,
+      "controls_inside_screen": true,
+      "buttons_do_not_overlap": true
+    },
+    {
+      "view": "portrait-board",
+      "pixels": [
+        540,
+        960
+      ],
+      "buttons": 10,
+      "square_cells": true,
+      "controls_inside_screen": true,
+      "buttons_do_not_overlap": true
+    },
+    {
+      "view": "short-board",
+      "pixels": [
+        720,
+        992
+      ],
+      "buttons": 6,
+      "square_cells": true,
+      "controls_inside_screen": true,
+      "buttons_do_not_overlap": true
+    },
+    {
+      "view": "fullscreen-board",
+      "pixels": [
+        1280,
+        1080
+      ],
+      "buttons": 10,
+      "square_cells": true,
+      "controls_inside_screen": true,
+      "buttons_do_not_overlap": true
+    },
+    {
+      "view": "window-restored",
+      "pixels": [
+        1280,
+        720
+      ],
+      "buttons": 10,
+      "square_cells": true,
+      "controls_inside_screen": true,
+      "buttons_do_not_overlap": true
+    }
+  ],
+  "source": {
+    "Assets/_Game/Editor/AssetImport.cs": "c7d9ab648a2d33cb3642052ebdf405bfc66530d2889be91077267d2549c515ad",
+    "Assets/_Game/Editor/BuildProject.cs": "f7cdb094ecdb74b7049c36662a9a76420f1e2259c58007ce1d63bdb920cf58ac",
+    "Assets/_Game/Editor/BillingPackages.cs": "4e246628ca5732236a9f6a1c41d31563b155ca65db3fb8457d9a1ef53ea48046",
+    "Assets/_Game/Editor/IapInstaller.cs": "687afce4a5f92146f7d3bd38ae43bbcae19ec277bbd6775129d15699d28b49ba",
+    "Assets/_Game/Editor/AndroidPermissions.cs": "700b05642f0f37a18cb61533f54a8bdafe61c85b15ec6479340112d7a20e65ff",
+    "Assets/_Game/Editor/FreeReleasePackages.cs": "ae87f88a5ca42b01b3297ac251b6f4755992e0ec0b7e20e97082619a3a24265b",
+    "Assets/_Game/Editor/CampaignProof.cs": "4eaec889ff66a7bc510133a9588a983fb8715d02231a1ee5bff181d52b76b027",
+    "Assets/_Game/Scripts/Infrastructure/PurchaseDelivery.cs": "0c8999d917a08f77f254d5f3dead555d04f4e4ceb17e10ce533544cdefa55196",
+    "Assets/_Game/Scripts/Infrastructure/LocalStore.cs": "9eed06d2763270b74dcc102f43bdd438d7b7b9054db8d919a8248be17e4a6738",
+    "Assets/_Game/Scripts/Infrastructure/AtomicSave.cs": "2ced7d753823ae3241a97e1750c8916e3b87b5b99102967c4d319a146e74e39d",
+    "Assets/_Game/Scripts/Presentation/FlatUI.cs": "2f0d4a6826766628cb7328bba51fcdf56d358c32760c10657e5ab37869ec148a",
+    "Assets/_Game/Scripts/Presentation/StudioUI.cs": "3bcb16308af667d7fd47e19aedfddc6fcff37f71a1aa6397b34ad22baa22ad79",
+    "Assets/_Game/Scripts/Presentation/EmpireSandboxUI.cs": "5fa9f3bc9e2e19d4158ad626fe334745aa9a8a47f3f9f57d06b0fd3ce6ff8a4e",
+    "Assets/_Game/Scripts/Presentation/ResponsiveStage.cs": "9f04f85c4f8d5ab5b18569652660e8bc2a187ae82cafc909bec85b2fa2269a5b",
+    "Assets/_Game/Scripts/Presentation/TileCaptionLayout.cs": "5cd97b522ef4ae45bce7b21f254b310339fbd4a6c9c00f6392b385e72576da0f",
+    "Assets/_Game/Scripts/Presentation/BuildingGlyph.cs": "813c32c7b43bf4bc7c269960da61a8c3aebfe865bf8819fe5576891390a62cce",
+    "Assets/_Game/Scripts/Presentation/BuildingLife.cs": "7343b8eec995d9a55e7bb30dcb2865fc0d57b2ced9b87a54ba2f5ee2d344ad50",
+    "Assets/_Game/Scripts/Presentation/CityProgressionUI.cs": "f4aa7273bd87e9bce8308730c83e62b1850344f1081b886a7f4f54eb789d62a5",
+    "Assets/_Game/Scripts/Presentation/GameApp.cs": "ab466d3d421f650c808be3c132dd0bea2b0645d8a0e3a67b33375088c9ece305",
+    "Assets/_Game/Scripts/Presentation/EmpireOperationsUI.cs": "a29279ed43301b91cec4d2b0247fefeed54e1abebf524f43dd0acd11e3a171b0",
+    "Assets/_Game/Scripts/Presentation/RuntimeReview.cs": "2397752e9663a15aa7c4c5e4742096c05cb060f23384f3ee2e784471a703bbaa",
+    "Assets/_Game/Scripts/Presentation/MobileGameApp.cs": "9b1d86d7ca6470f1e81e6837f3e0b2a40715840189e86021f34aa99db0d72a16",
+    "Assets/_Game/Scripts/Presentation/PresentationMap.cs": "c4778e09993617466044fd0d9c44896576348ae995fa6bfafcb38c2d429fa253",
+    "Assets/_Game/Scripts/Presentation/TradingClarityUI.cs": "8cd6cbd77942c23a66bb6dfd5154f4a5c1510a3f208690cbc5422672ebaec369",
+    "Assets/_Game/Scripts/Presentation/GameFeel.cs": "fb6cf3e8eea76c5487fbadc3e8a903f120b8cfb73f0305def771d3cd741673d3",
+    "Assets/_Game/Scripts/Presentation/InteractionFeel.cs": "98ee3c0449c723adfa2ea06af714ff0115a93472cfa72fb87a86def5d1d8c665",
+    "Assets/_Game/Scripts/Domain/VerifiedLayouts.cs": "3d5cdd27541b8bb2efb7c7ed621ca26dbc8960ab84016ea3c4b9bba964c90ed6",
+    "Assets/_Game/Scripts/Domain/Campaign.cs": "a115ee011843c0a1bafc0a06fdefd609796f8eabe3095796b5de2540584b98fc",
+    "Assets/_Game/Scripts/Domain/CommerceCatalog.cs": "68e50d0913bd7b266e21b92cc2d1a52370c7a75c7b8ee2136dc28be0d479efc1",
+    "Assets/_Game/Scripts/Domain/Cashflow.cs": "040f7e2d9673df5927a1c2e8ec8567d722f150ad0557e7df909aae526f299bf6",
+    "Assets/_Game/Scripts/Domain/Daily.cs": "f38605b8561258dc39c9607940d781a18fd1731d66640370b1479bb69f40f203",
+    "Assets/_Game/Scripts/Domain/ExpansionCampaign.cs": "2db0a27b124dc8b976dfca0fb7fb75da229fbcb2d22d6dbd08da1428e1ed064f",
+    "Assets/_Game/Scripts/Domain/Contracts.cs": "0bf89403fad1fda454813063d9f80e26fbc9731c33705bc0d2f46dd9bfb06a5f",
+    "Assets/_Game/Scripts/Domain/Profile.cs": "b4f81a6e7879f17b6f14056dc4f298c7724ce0e019b6e262c7e604a85f9522f0",
+    "Assets/_Game/Scripts/Domain/CityInsight.cs": "9902907548f1bb0aeba54b476a80a2b3314c12fb4dd8e859c37c89ecb203ee29",
+    "Assets/_Game/Scripts/Domain/CityCollections.cs": "ecc385875054ac99f74388cafe953038b8d6ca315de011b0a7e74c77fb3a1aa8",
+    "Assets/_Game/Scripts/Domain/ContentQa.cs": "b29c7b08c793f6b164a14ad22c1d680111b3df9a74b234f381fa88905c0d7720",
+    "Assets/_Game/Scripts/Domain/Economy/RoundRewardPolicy.cs": "2abab5fe036bc9c40b369611a03a0bafba85dcff53910dfa29b4ebbf0154d800",
+    "Assets/_Game/Scripts/Domain/Economy/CurrencyLedger.cs": "001257a3265c4a499803f490a4bc5213bce90fd0a081eaddec24b8258c3642a8",
+    "Assets/_Game/Scripts/Domain/Economy/EconomyCatalog.cs": "02a0c17756a7d6d4f7b8981f5a409ee0efd772c0ebee0a8dc734eca41603aa20",
+    "Assets/_Game/Scripts/Domain/Economy/LegacyMigration.cs": "3df7c8cf4fa4427bfd0e4111216252d992b9ea7751acde6926c1a261d1942e55",
+    "Assets/_Game/Scripts/Domain/Empire/DispatchResearch.cs": "2ec6f39f51b5390958225ad22988cf3b04ed222da2adaf2bcc285ea317f1ff53",
+    "Assets/_Game/Scripts/Domain/Empire/OperationsCatalog.cs": "9b4803ce63ac30ad9446a222c8ffc05f3d4352972b4537915f8cdf47dc6d44e9",
+    "Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs": "54d1ed822520a79fc2e216f107a2ae33c6402a3090c4af6a7a73ec389863c929",
+    "Assets/_Game/Tests/EditMode/CC2EmpireTests.cs": "d2129039402a07824cdec30b94c363adfcdc4fe97bbf2728530887acf1744b38",
+    "Assets/_Game/Tests/EditMode/ProductionExpansionTests.cs": "0efe5b85dd7dc3eb4603b515b4f683d851584555e9eb702310951e1b9b1e65cb",
+    "Assets/_Game/Tests/EditMode/SaveTests.cs": "b2064891273fe5cd47841d29fddfdd033eb1cff0c415e4c3dea53459ce57583b",
+    "Assets/_Game/Tests/EditMode/StoreTests.cs": "6376a1e9755e6e621709a33f7426df1407dbe1f64902bd064a37328d785f1338",
+    "Assets/_Game/Tests/EditMode/CC2EconomyTests.cs": "4f8c8995e7a5df6ed065f3e8b0b09158d04bb6641f598c0104c9e2119da056f6",
+    "Assets/_Game/Tests/EditMode/CampaignTests.cs": "40a3368a33e3092a1f5283224211e7a463e39b467a475f4dc7a219db75001d04",
+    "Assets/_Game/Tests/EditMode/CityInsightTests.cs": "ab77b5847bd92da842086f7467997961fcfed48ec0ddd45947c2fbdba3d4bb37",
+    "Assets/_Game/Tests/EditMode/CC2OperationsTests.cs": "0900f93575a567154ee36e14ed20736c0d773b562a2ce48132fba383ebf2a21c",
+    "Assets/_Game/Tests/EditMode/CoreTests.cs": "e6ce387a6b7372ece77e1292f6d089ed1b135be8faa6e217ad4948494c89f5c0",
+    "Assets/_Game/Tests/EditMode/VerifiedLayoutsTests.cs": "6a76dd1c09346b336772fee6bba8f2205197b0ff9380bfd2400c1f2d3c03e103"
+  }
+}

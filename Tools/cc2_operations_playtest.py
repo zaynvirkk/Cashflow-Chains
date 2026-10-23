@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Genuine native first-session -> construction -> production replay in the labelled CC2 development sandbox."""
 from pathlib import Path
-from ui_map import local_point,archive_review,review_issues
+from ui_map import local_point,archive_review,review_issues,wait_capture
 import subprocess,os,time,json,datetime,hashlib,shutil
 p=Path(__file__).resolve().parent.parent;env={**os.environ,'DISPLAY':os.environ.get('CASHFLOW_TEST_DISPLAY',':1')};out=p/'Artifacts/CC2/OperationsReplay'/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out.mkdir(parents=True);proc=None;window=None;actions=[]
 earned=Path((p/'Artifacts/latest-cc2-empire.txt').read_text().strip());assert json.loads((earned/'report.json').read_text())['passed'];shutil.copytree(earned/'Saves',out/'Saves')
-source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in (p/'Assets/_Game').rglob('*.cs')}
+source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*(p/'Assets/_Game').rglob('*.cs'),p/'Assets/_Game/Data/CC2/balance-v1.json',p/'Assets/_Game/Resources/CC2/balance-v1.json']}
 def xd(*a):return subprocess.check_output(['xdotool',*map(str,a)],env=env,text=True,stderr=subprocess.DEVNULL,timeout=10).strip()
 def state():return json.loads((out/'campaign-state.json').read_text())
 def empire():return json.loads((out/'empire-state.json').read_text())
@@ -38,7 +38,7 @@ def named(name,index=0,prefix=False):
  time.sleep(.15);items=[e for e in layout()['Elements'] if e['Kind']=='button' and (e['Name'].startswith(name) if prefix else e['Name']==name)];assert items,(name,[e['Name'] for e in layout()['Elements'] if e['Kind']=='button']);priority=max(e['Priority'] for e in items);items=[e for e in items if e['Priority']==priority];r=items[index]['Pixels'];click(round(r['x']+r['width']/2),round(r['y']+r['height']/2));actions.append(['button',name,index])
 def key(k):focus();xd('keydown',k);time.sleep(.1);xd('keyup',k);time.sleep(.3)
 def cap(label):
- time.sleep(.65);before=set(out.glob('cashflow-*.png'));key('F12');time.sleep(.3);files=set(out.glob('cashflow-*.png'))-before;assert files;shutil.copyfile(next(iter(files)),out/(label+'.png'))
+ time.sleep(.65);before=set(out.glob('cashflow-*.png'));key('F12');shutil.copyfile(wait_capture(out,before),out/(label+'.png'))
 def desk():
  for _ in range(6):
   if state()['Screen']=='menu':return
@@ -60,12 +60,12 @@ def solve(level):
   choose(wanted['Id']);rotation=next(n['Rotation'] for n in state()['Save']['Board']['Nodes'] if n['Id']==wanted['Id'])
   for _ in range((wanted['Rotation']-rotation)%4):named('ROTATE')
 try:
- start(True);assert state()['EmpireSandbox'];named('CONTINUE BUILDING  →');wait('board');my_empire();named('BOARD');wait('board');before=money('CASH');key('space');wait('result');assert money('CASH')==before;cap('01-legacy-empire-replay-does-not-regrant')
+ start(True);assert state()['EmpireSandbox'];named('CONTINUE BUILDING  →');wait('board');my_empire();named('BOARD');wait('board');before=money('CASH');key('space');wait('result');assert money('CASH')==before;cap('01-existing-plan-does-not-regrant')
  for level in range(3,6):
   click(*point(360,990));wait('board');assert state()['Save']['Profile']['Selected']==level;solve(level);key('space');wait('result');assert state()['Save']['Profile']['Stars'][level]==3
  cap('02-six-genuine-city-wins');my_empire();named('RESEARCH');wait('empire-research');cap('03-research-needs-real-dispatches');named('GO TO MY DELIVERY ROUTES');wait('empire-dispatch')
  for number in range(3):
-  named('CHOOSE A DELIVERY');wait('dispatch-catalog');named('DETAILS',0);cap('04-guaranteed-route-offer-'+str(number+1));named('SEND THIS VERIFIED CHAIN');wait('empire-dispatch');assert len([d for d in empire()['Dispatches'] if not d['Claimed']])==1;job=empire()['Dispatches'][-1];named('VIEW RETURN');cap('05-real-dispatch-timer-'+str(number+1));print('Waiting for genuine dispatch',number+1,'until',job['FinishAt'],flush=True)
+  named('CHOOSE A DELIVERY');wait('dispatch-catalog');named('DETAILS',0);cap('04-guaranteed-route-offer-'+str(number+1));named('START DELIVERY');wait('empire-dispatch');assert len([d for d in empire()['Dispatches'] if not d['Claimed']])==1;job=empire()['Dispatches'][-1];named('VIEW RETURN');cap('05-real-dispatch-timer-'+str(number+1));print('Waiting for genuine dispatch',number+1,'until',job['FinishAt'],flush=True)
   while time.time()<job['FinishAt']+1:time.sleep(.3)
   named('COLLECT THIS RETURN');wait('empire-dispatch');assert len([d for d in empire()['Dispatches'] if d['Claimed']])==number+1;cap('06-real-return-'+str(number+1))
  assert money('RECRUIT_TICKET')==1 and money('RESEARCH_DOCS')==3 and money('CONSTRUCTION_SPEEDUP_MIN')==3;named('RESEARCH');wait('empire-research');cap('07-thirty-node-research-entry');named('DETAILS',0);cap('08-actual-research-cost');named('START RESEARCH');wait('empire-research');research=empire()['ResearchQueue'][0];named('VIEW');cap('09-real-research-timer');print('Waiting for genuine research until',research['FinishAt'],flush=True)
@@ -80,4 +80,4 @@ finally:stop()
 issues=review_issues(out);assert not issues,issues
 errors=[line for file in out.glob('*.log') for line in file.read_text().splitlines() if any(x in line for x in ['NullReferenceException','MissingReferenceException','IndexOutOfRangeException','ArgumentException','error CS'])];assert not errors,errors
 for file,h in source.items():assert hashlib.sha256((p/file).read_bytes()).hexdigest()==h,'Source changed during replay: '+file
-report={'passed':True,'scope':'Genuine native input from byte-for-byte copied earned P03 saves. Three more real city wins,three real60-second dispatches,one real60-second research,earned speedup consumption,level2 business and cold resume. No edited clocks/saves,cloud or payment simulation.','production_rejects_sandbox':True,'actions':actions,'source':source,'build':{str(f.relative_to(p/'Builds/EmpireSandbox')):hashlib.sha256(f.read_bytes()).hexdigest() for f in (p/'Builds/EmpireSandbox').rglob('*') if f.is_file()}};(out/'report.json').write_text(json.dumps(report,indent=2));(p/'Artifacts/latest-cc2-operations.txt').write_text(str(out));print(out)
+report={'passed':True,'scope':'Genuine native input from byte-for-byte copied earned P03 saves. Three more real city wins,three real60-second dispatches,one real60-second research,earned speedup consumption,level2 business and cold resume. No edited clocks/saves,cloud or payment simulation.','actions':actions,'source':source,'build':{str(f.relative_to(p/'Builds/EmpireSandbox')):hashlib.sha256(f.read_bytes()).hexdigest() for f in (p/'Builds/EmpireSandbox').rglob('*') if f.is_file()}};(out/'report.json').write_text(json.dumps(report,indent=2));(p/'Artifacts/latest-cc2-operations.txt').write_text(str(out));print(out)

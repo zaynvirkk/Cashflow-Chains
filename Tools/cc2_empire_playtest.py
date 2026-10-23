@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Genuine native first-session -> construction -> production replay in the labelled CC2 development sandbox."""
 from pathlib import Path
-from ui_map import local_point,archive_review,review_issues
+from ui_map import local_point,archive_review,review_issues,wait_capture
 import subprocess,os,time,json,datetime,hashlib,shutil
 p=Path(__file__).resolve().parent.parent;env={**os.environ,'DISPLAY':os.environ.get('CASHFLOW_TEST_DISPLAY',':1')};out=p/'Artifacts/CC2/EmpireReplay'/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out.mkdir(parents=True);proc=None;window=None;actions=[]
-source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in (p/'Assets/_Game').rglob('*.cs')}
+source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*(p/'Assets/_Game').rglob('*.cs'),p/'Assets/_Game/Data/CC2/balance-v1.json',p/'Assets/_Game/Resources/CC2/balance-v1.json']}
 def xd(*a):return subprocess.check_output(['xdotool',*map(str,a)],env=env,text=True,stderr=subprocess.DEVNULL,timeout=10).strip()
 def state():return json.loads((out/'campaign-state.json').read_text())
 def empire():return json.loads((out/'empire-state.json').read_text())
@@ -38,7 +38,7 @@ def named(name,index=0,prefix=False):
  time.sleep(.15);items=[e for e in layout()['Elements'] if e['Kind']=='button' and (e['Name'].startswith(name) if prefix else e['Name']==name)];assert items,(name,[e['Name'] for e in layout()['Elements'] if e['Kind']=='button']);priority=max(e['Priority'] for e in items);items=[e for e in items if e['Priority']==priority];r=items[index]['Pixels'];click(round(r['x']+r['width']/2),round(r['y']+r['height']/2));actions.append(['button',name,index])
 def key(k):focus();xd('keydown',k);time.sleep(.1);xd('keyup',k);time.sleep(.3)
 def cap(label):
- time.sleep(.65);before=set(out.glob('cashflow-*.png'));key('F12');time.sleep(.3);files=set(out.glob('cashflow-*.png'))-before;assert files;shutil.copyfile(next(iter(files)),out/(label+'.png'))
+ time.sleep(.65);before=set(out.glob('cashflow-*.png'));key('F12');shutil.copyfile(wait_capture(out,before),out/(label+'.png'))
 def desk():
  for _ in range(6):
   if state()['Screen']=='menu':return
@@ -74,7 +74,7 @@ try:
  # Construction does not block the next free puzzle. An unsuccessful layout earns no resources.
  before=money('CASH');key('space');wait('result');assert money('CASH')==before;cap('09-replay-cannot-farm');my_empire();named('BUILDER',prefix=True)
  while time.time()<project['FinishAt']+1:time.sleep(.25)
- cap('10-project-ready');named('COMPLETE CONSTRUCTION');wait('empire');assert empire()['Businesses'][0]['Level']==1 and not empire()['Construction'];cap('11-business-completed');named('DISPATCH');wait('empire-dispatch');named('CHOOSE A DELIVERY');wait('dispatch-catalog');named('DETAILS',0);assert any(e['Name']=='SEND THIS VERIFIED CHAIN' for e in layout()['Elements']),'Completed city plan lost after moving to the next puzzle';cap('11b-saved-successful-plan-still-dispatches');named('×');named('MY ACTIVE DELIVERIES');named('MY CITY');wait('empire')
+ cap('10-project-ready');named('COMPLETE CONSTRUCTION');wait('empire');assert empire()['Businesses'][0]['Level']==1 and not empire()['Construction'];cap('11-business-completed');named('DISPATCH');wait('empire-dispatch');named('CHOOSE A DELIVERY');wait('dispatch-catalog');named('DETAILS',0);assert any(e['Name']=='START DELIVERY' for e in layout()['Elements']),'Completed city plan lost after moving to the next puzzle';cap('11b-saved-successful-plan-still-dispatches');named('×');named('MY ACTIVE DELIVERIES');named('MY CITY');wait('empire')
  # Cold restart preserves the actual funded project/business and all receipts.
  saved=empire();stop();start(True);named('CONTINUE BUILDING  →');wait('board');my_empire();assert empire()['Economy']['Revision']==saved['Economy']['Revision'];assert empire()['Businesses'][0]['Level']==1;cap('12-cold-resume-business')
  # Real wall-clock accumulation; do not patch clocks, config, saves or inventory.

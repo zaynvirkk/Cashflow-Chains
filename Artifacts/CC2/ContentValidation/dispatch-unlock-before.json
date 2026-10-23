@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "configSha256": "af473eb2172b754bb91042ed928a00d03b198abba6820247394d9e5daaa27521",
+  "basis": "Actual authenticated free-campaign and dispatch acceptance bindings from .NET10 API test. Gates should not precede the first authored contributing plan.",
+  "findings": [
+    {
+      "route": "route-5",
+      "advertisedClears": 15,
+      "firstAuthoredPlanClears": 29
+    },
+    {
+      "route": "route-13",
+      "advertisedClears": 39,
+      "firstAuthoredPlanClears": 54
+    }
+  ]
+}

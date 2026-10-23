@@ -42,6 +42,50 @@ def test_source_finder_lists_real_free_routes_without_future_gacha_or_fake_price
  built=command(c,h,'build',businessId='home');assert built.status_code==200;assert c.get('/v1/development/home/sources',headers=h).json()['primaryAction']=='builder-busy';clock[0]+=30;assert command(c,h,'finish',projectId=built.json()['state']['Construction'][0]['Id']).status_code==200
  before=snapshot(c,h);r=c.get('/v1/development/home/sources',headers=h).json();assert r['primaryAction']=='find-resources';steel=next(x for x in r['requirements'] if x['itemId']=='STEEL');assert steel['missing']==5;routes=steel['sources'];assert any(x['kind']=='dispatch' and x['templateId']=='route-1' and x['unlocked'] for x in routes);assert any(x['kind']=='production' and not x['available'] for x in routes);assert not r['paidCommerceEnabled'];assert snapshot(c,h)==before
 
+def test_every_dispatch_template_has_a_free_verified_plan_and_exact_return(service, record_property):
+ """Replay all free cities and every route; no inventory injection or paid unlock."""
+ c,h,clock,_,guest=service
+ config=json.loads((ROOT/'Assets/_Game/Data/CC2/balance-v1.json').read_text())
+ plans=[board(level) for level in range(72)]
+ for level in range(72):
+  clock[0]+=4  # Test service clock: respect the challenge request window.
+  win(c,h,level)
+ built=command(c,h,'build',businessId='home');assert built.status_code==200
+ clock[0]+=30;assert command(c,h,'finish',projectId=built.json()['state']['Construction'][0]['Id']).status_code==200
+ bindings={}
+ for definition in config['Operations']['Dispatches']:
+  current=snapshot(c,h)['state']
+  if sum(d['StartedAt']//86400==clock[0]//86400 for d in current['Dispatches'])>=config['Operations']['DailyDispatchStarts']:
+   clock[0]=(clock[0]//86400+1)*86400
+  renewed=c.post('/v1/auth/refresh',json={'refreshToken':guest['refreshToken']});assert renewed.status_code==200
+  guest=renewed.json();h={'Authorization':'Bearer '+guest['accessToken']}
+  for plan in plans:
+   if not any(n['Kind']==definition['RequiredRecipe'] for n in plan['Nodes']):continue
+   before=snapshot(c,h)
+   started=command(c,h,'dispatch',template=definition['Id'],board=plan)
+   if started.status_code==409:
+    assert snapshot(c,h)==before
+    continue
+   assert started.status_code==200,started.text
+   break
+  else:pytest.fail('No freely earned contributing plan for '+definition['Id'])
+  bindings[definition['Id']]=plan['Challenge']
+  dispatched=started.json()['state'];job=dispatched['Dispatches'][-1]
+  for cost in definition['Costs']:
+   assert amount(dispatched,cost['ItemId'])==amount(before['state'],cost['ItemId'])-cost['Quantity']
+  assert job['FinishAt']-job['StartedAt']==definition['Seconds']
+  clock[0]=job['FinishAt']
+  renewed=c.post('/v1/auth/refresh',json={'refreshToken':guest['refreshToken']});assert renewed.status_code==200
+  guest=renewed.json();h={'Authorization':'Bearer '+guest['accessToken']}
+  returned=command(c,h,'dispatch-claim',projectId=job['Id']);assert returned.status_code==200,returned.text
+  for reward in definition['Rewards']:
+   assert amount(returned.json()['state'],reward['ItemId'])==amount(dispatched,reward['ItemId'])+reward['Quantity']
+  assert all(b['Purchased']==0 for b in returned.json()['state']['Economy']['Balances'])
+ record_property('free_plan_bindings',json.dumps(bindings,sort_keys=True))
+ late=[{'route':d['Id'],'advertisedClears':d['UnlockClears'],'firstAuthoredPlanClears':bindings[d['Id']]+1}
+       for d in config['Operations']['Dispatches'] if bindings[d['Id']]>=d['UnlockClears']]
+ assert not late, 'Route appears before its authored teaching plan: '+json.dumps(late)
+
 def test_proof_replay_and_changed_request_payload(service):
  c,h,_,_,_=service;body,r=win(c,h,0);assert amount(r['state'],'CASH')==80;assert c.post('/v1/puzzle/verify-and-claim',headers=h,json=body).json()==r
  body['board']['Nodes'][0]['Rotation']=1;assert c.post('/v1/puzzle/verify-and-claim',headers=h,json=body).status_code==409;assert amount(snapshot(c,h)['state'],'CASH')==80

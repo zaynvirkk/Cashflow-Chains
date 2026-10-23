@@ -4,7 +4,7 @@
 
 An Android-first economic puzzle inside a persistent city progression game. Black Bag is on hold.
 
-The governing direction is the [complete CC2 handoff](Docs/CC2/CASHFLOW_CHAINS_2_MASTER_REVAMP_SPEC.md), [tracker](Docs/CC2/CC2_IMPLEMENTATION_TRACKER.csv), [system graph](Docs/CC2/CC2_SYSTEM_GRAPH.mmd) and [execution directive](Docs/CC2/CODEX_START_HERE.md). The older fixed store is a preserved baseline, not the completed monetization design. [Release status](Docs/CC2/RELEASE_STATUS.md) records what works and what remains.
+The [complete Game Bible](Docs/GameBible/CASHFLOW_CHAINS_FINAL_GAME_BIBLE.md) governs;the earlier [CC2 handoff](Docs/CC2/CASHFLOW_CHAINS_2_MASTER_REVAMP_SPEC.md) remains preserved alongside the [tracker](Docs/CC2/CC2_IMPLEMENTATION_TRACKER.csv), [system graph](Docs/CC2/CC2_SYSTEM_GRAPH.mmd) and [execution directive](Docs/CC2/CODEX_START_HERE.md). The older fixed store is a preserved baseline, not the completed monetization design. [Release status](Docs/CC2/RELEASE_STATUS.md) records what works and what remains.
 
 The commercial goal is interconnected progression: legitimate chains feed owned businesses, rewards and recurring objectives; contextual acquisition routes and optional purchases serve those goals. Managers, unified chests/recruitment, merchants, offers, VIP, cards, events, passes and production billing remain tracked work. No retention or revenue outcome has been demonstrated.
 

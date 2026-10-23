@@ -1,6 +1,15 @@
 """Map authored UI coordinates to actual presented controls, including wide layouts."""
 import json,time
 
+def wait_capture(out,before,timeout=5):
+ """Wait for one requested asynchronous PNG to finish; never repeat input."""
+ deadline=time.monotonic()+timeout
+ while time.monotonic()<deadline:
+  for file in set(out.glob('cashflow-*.png'))-before:
+   if file.read_bytes().endswith(b'IEND\xaeB`\x82'):return file
+  time.sleep(.05)
+ raise AssertionError('The requested native screenshot did not complete')
+
 def archive_review(out):
  """Keep every player's audit before a cold restart overwrites the latest files."""
  import shutil
@@ -11,7 +20,9 @@ def archive_review(out):
 
 def review_issues(out):
  files=list(out.glob('session-*-text-overflows.json'))
- if not files:files=[out/'text-overflows.json']
+ latest=out/'text-overflows.json'
+ if latest.exists():files.append(latest)
+ if not files:raise FileNotFoundError('No runtime readability audit was produced')
  return [issue for file in files for issue in json.loads(file.read_text())['Issues']]
 
 def map_point(layout,x,y,grid=False):

@@ -16,11 +16,9 @@ namespace CashflowChains.Presentation {
   string BuildingOutput(Node n,RoundResult forecast){
    var piece=Pieces.Get(n.Kind);long income=forecast.Events.Where(e=>e.Source==n.Id).Sum(e=>e.Credits);
    if(income>0)return "$"+income.ToString("N0");if(income<0)return income+" COST";
-   if(piece.SourceKind==0)return piece.SourceRate+" VISITS / STEP";
-   if(piece.SourceKind==1)return piece.SourceRate+" GOODS / STEP";
-   if(piece.SourceKind==2)return piece.SourceRate+" POWER / STEP";
+   if(piece.SourceKind>=0)return piece.SourceRate+" / STEP";
    if(n.InitialGoods>0)return n.InitialGoods+" IN STOCK";
-   if(piece.Credits>0)return forecast.Events.Any(e=>e.Target==n.Id&&e.Kind==0)?"NO SUPPLIES":"NO CUSTOMERS";
+   if(piece.Credits>0)return forecast.Events.Any(e=>e.Target==n.Id&&e.Kind==0)?"NO STOCK":"NO VISITS";
    return n.Kind=="bank"?"+25% SALES":n.Kind=="park"?"LOCAL APPEAL":n.Kind=="landmark"?"DIVERSITY":"DELIVERY";
   }
   void DrawOpeningTarget(RoundResult forecast){

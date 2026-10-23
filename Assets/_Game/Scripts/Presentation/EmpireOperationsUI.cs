@@ -10,7 +10,18 @@ using UnityEngine;
 namespace CashflowChains.Presentation {
  public sealed partial class MobileGameApp {
   int dispatchPage,researchTree,researchPage;
-  string ItemName(string id)=>id.StartsWith("BIZ_FRAG:")?Pieces.Get(id.Substring(9)).Label+" FRAGMENTS":id.Replace('_',' ');
+  string ItemName(string id){
+   if(id.StartsWith("BIZ_FRAG:"))return Pieces.Get(id.Substring(9)).Label+" FRAGMENTS";
+   switch(id){
+    case "CONSTRUCTION_SPEEDUP_MIN":return "BUILDER MINUTE";
+    case "RESEARCH_SPEEDUP_MIN":return "RESEARCH MINUTE";
+    case "DISPATCH_SPEEDUP_MIN":return "DELIVERY MINUTE";
+    case "GENERAL_SPEEDUP_MIN":return "FLEXIBLE MINUTE";
+    case "RECRUIT_TICKET":return "RECRUITMENT TICKET";
+    case "RESEARCH_DOCS":return "RESEARCH DOCUMENTS";
+    default:return id.Replace('_',' ');
+   }
+  }
   string BundleText(ItemAmount[] bundle)=>string.Join("\n",bundle.Select(x=>"+"+x.Quantity+" "+ItemName(x.ItemId)));
   string ResearchBenefit(ResearchDefinition n)=>n.BonusBp/100m+"% "+(n.Bonus=="production-bp"?"MORE PRODUCTION":n.Bonus=="storage-bp"?"MORE OUTPUT STORAGE":n.Bonus=="dispatch-time-bp"?"SHORTER DISPATCHES":n.Bonus=="dispatch-yield-bp"?"MORE DISPATCH REWARDS":n.Bonus=="build-time-bp"?"SHORTER CONSTRUCTION":"SHORTER RESEARCH");
   void EmpireDispatch(){
@@ -31,7 +42,7 @@ namespace CashflowChains.Presentation {
   Board DispatchPlan(string recipe){var receipts=empire.Snapshot.Economy.Receipts;var plans=data.CompletedPlans.Select(b=>b.Copy()).ToList();foreach(var d in empire.Snapshot.Dispatches)if(!plans.Any(b=>b.Fingerprint()==d.Layout.Fingerprint()))plans.Add(d.Layout.Copy());if(data.Profile.Stars[run.Board.Challenge]>0&&run.Stars(run.Preview().Credits)>0)plans.Add(run.Board.Copy());return VerifiedLayouts.Find(plans,recipe,level=>receipts.Any(r=>r.CommandId=="certified-first-clear:"+level));}
   void EmpireDispatchOffer(string id){var d=empireConfig.Operations.Dispatch(id);var a=empire.Snapshot;var plan=DispatchPlan(d.RequiredRecipe);int clears=a.Economy.Receipts.Count(x=>x.CommandId.StartsWith("certified-first-clear:"));var m=Studio.Modal(root,d.Title.ToUpperInvariant(),()=>EmpireDispatchCatalog(dispatchPage));Studio.Image(m,d.RequiredRecipe,250,180,220,210);Studio.Label(m,"DISPATCH COST\n"+string.Join(" · ",d.Costs.Select(x=>x.Quantity+" "+ItemName(x.ItemId)))+"\n\nRETURN TIME · "+EmpireDuration(EconomyMath.Duration(d.Seconds,EmpireBenefits.Bonus(empireConfig,a,"dispatch-time-bp"))),44,420,632,210,27,Studio.Text,TextAlignmentOptions.Center);
    var rewards=d.Rewards.Select(x=>new ItemAmount(x.ItemId,EconomyMath.WithBonus(x.Quantity,EmpireBenefits.Bonus(empireConfig,a,"dispatch-yield-bp"),10000))).ToArray();Studio.Label(m,"GUARANTEED RETURN\n"+BundleText(rewards),44,650,632,300,25,Studio.Accent,TextAlignmentOptions.Center,true);Studio.Label(m,clears<d.UnlockClears?"Unlocks at "+d.UnlockClears+" city wins. Current: "+clears:plan==null?"Finish a city with a contributing "+Pieces.Get(d.RequiredRecipe).Label+" to save a delivery plan.":"Uses your saved city "+(plan.Challenge+1)+" plan. Keep editing your next puzzle while this chain works.",44,970,632,100,23,Studio.Text,TextAlignmentOptions.Center);
-   Studio.Button(m,clears<d.UnlockClears||plan==null?"PLAY A CITY TO PREPARE THIS ROUTE":"SEND THIS VERIFIED CHAIN",44,1100,632,120,()=>{if(clears<d.UnlockClears||plan==null){ContinueEmpirePuzzle();return;}EmpireAction(()=>empire.StartDispatch(Guid.NewGuid().ToString("N"),id,plan,EmpireNow),EmpireDispatch);},true);
+   Studio.Button(m,clears<d.UnlockClears||plan==null?"PLAY A CITY TO PREPARE THIS ROUTE":"START DELIVERY",44,1100,632,120,()=>{if(clears<d.UnlockClears||plan==null){ContinueEmpirePuzzle();return;}EmpireAction(()=>empire.StartDispatch(Guid.NewGuid().ToString("N"),id,plan,EmpireNow),EmpireDispatch);},true);
   }
   void EmpireDispatchDetail(string id){var a=empire.Snapshot;var d=a.Dispatches.Find(x=>x.Id==id);if(d==null||d.Claimed){EmpireDispatch();return;}var def=empireConfig.Operations.Dispatch(d.Template);var m=Studio.Modal(root,def.Title.ToUpperInvariant(),EmpireDispatch);Studio.Image(m,def.RequiredRecipe,240,200,240,230);Studio.Label(m,"YOUR COMMITTED RETURN\n"+BundleText(d.Rewards),44,460,632,350,28,Studio.Accent,TextAlignmentOptions.Center,true);var timer=Studio.Label(m,"",44,850,632,90,38,Studio.Text,TextAlignmentOptions.Center,true);var countdown=timer.gameObject.AddComponent<EmpireCountdown>();countdown.FinishAt=d.FinishAt;var claim=Studio.Button(m,"COLLECT THIS RETURN",44,1090,632,135,()=>EmpireAction(()=>empire.ClaimDispatch(id,EmpireNow),EmpireDispatch),true);countdown.FinishButton=claim;
    int minutes=(int)a.Economy.Amount("DISPATCH_SPEEDUP_MIN");if(minutes>0)Studio.Button(m,"USE 1 DISPATCH MINUTE · "+minutes+" OWNED",44,970,632,80,()=>EmpireAction(()=>empire.SpendSpeedup(Guid.NewGuid().ToString("N"),id,"DISPATCH_SPEEDUP_MIN",1,EmpireNow),EmpireDispatch));

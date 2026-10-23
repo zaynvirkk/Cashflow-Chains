@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fresh-player lessons through real native input; snapshots only read production state."""
 from pathlib import Path
-from ui_map import local_point
+from ui_map import local_point,wait_capture
 import subprocess,os,time,json,datetime,hashlib,shutil
 p=Path(__file__).resolve().parent.parent;env={**os.environ,'DISPLAY':os.environ.get('CASHFLOW_TEST_DISPLAY',':1')}
 out=p/'Artifacts/FirstSession'/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out.mkdir(parents=True)
@@ -24,7 +24,7 @@ def click(x,y):
 def key(k):focus();xd('keydown',k);time.sleep(.08);xd('keyup',k);time.sleep(.16)
 def cap(label):
  if 'result' in label or 'lessons-complete' in label:time.sleep(.65)
- before=set(out.glob('cashflow-*.png'));key('F12');time.sleep(.3);files=set(out.glob('cashflow-*.png'))-before;assert files;shutil.copyfile(next(iter(files)),out/(label+'.png'))
+ before=set(out.glob('cashflow-*.png'));key('F12');shutil.copyfile(wait_capture(out,before),out/(label+'.png'))
 def drag(x,y,tx,ty,label=None):
  focus();a=local_point(out,x,y);b=local_point(out,tx,ty);xd('mousemove','--window',window,*a,'mousedown','1');time.sleep(.12)
  for i in range(1,11):xd('mousemove','--window',window,round(a[0]+(b[0]-a[0])*i/10),round(a[1]+(b[1]-a[1])*i/10));time.sleep(.028)
@@ -36,7 +36,9 @@ def pos(x,y):return 38+(x+.5)*161,310+(y+.5)*161
 try:
  for _ in range(180):
   try:
-   window=xd('search','--onlyvisible','--pid',proc.pid).splitlines()[-1];wait('board');break
+   window=xd('search','--onlyvisible','--pid',proc.pid).splitlines()[-1];wait('board')
+   if (out/'ui-layout.json').exists() and json.loads((out/'ui-layout.json').read_text())['Screen']=='board':break
+   time.sleep(.1)
   except subprocess.CalledProcessError:time.sleep(.2)
  focus();xd('windowmove',window,50 if env['DISPLAY']!=':1' else 2100,45);time.sleep(1)
  movie=subprocess.Popen(['ffmpeg','-hide_banner','-loglevel','error','-y','-f','x11grab','-window_id',window,'-framerate','30','-video_size','540x960','-i',env['DISPLAY'],'-t','65','-an','-c:v','libx264','-threads','2','-preset','ultrafast','-crf','23','-pix_fmt','yuv420p',str(out/'first-three-cities.mp4')],stdout=subprocess.DEVNULL,stderr=open(out/'video.log','w'))
