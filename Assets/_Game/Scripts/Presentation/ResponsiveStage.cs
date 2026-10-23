@@ -9,7 +9,7 @@ namespace LocalGame {
  }
  public sealed class ResponsiveStage:MonoBehaviour {
   public string View="title";RectTransform rect;Vector2 previous;string previousView;public bool Wide=>Width>Height;public float Width=>Mathf.Max(1,((RectTransform)transform).rect.width);public float Height=>Mathf.Max(1,((RectTransform)transform).rect.height);
-  public float FontScale=>Wide&&View!="board"&&View!="title"&&View!="city-world"&&View!="menu"&&View!="settings"&&View!="map"&&View!="hub"?Mathf.Clamp(Height/1280f,.5f,1):1;
+  public float FontScale=>Wide&&View!="board"&&View!="title"&&View!="city-world"&&View!="city-desk"&&View!="menu"&&View!="settings"&&View!="map"&&View!="hub"?Mathf.Clamp(Height/1280f,.5f,1):1;
   void Update(){var k=Keyboard.current;if(k!=null&&k.f11Key.wasPressedThisFrame){if(Screen.fullScreen)Screen.SetResolution(1280,720,FullScreenMode.Windowed);else Screen.SetResolution(Display.main.systemWidth,Display.main.systemHeight,FullScreenMode.FullScreenWindow);}}
   void LateUpdate(){if(!rect)rect=(RectTransform)transform;var size=rect.rect.size;if(size==previous&&previousView==View)return;previous=size;previousView=View;foreach(var e in GetComponentsInChildren<StageElement>(true))e.Apply();foreach(var t in GetComponentsInChildren<StageText>(true))t.Apply();}
   public Rect BoardArea {
@@ -18,7 +18,28 @@ namespace LocalGame {
   }
   public Rect OnBoard(Rect r){var b=BoardArea;float sourceY=Studio.Velvet?260:310;float s=b.width/644;return new Rect(b.x+(r.x-38)*s,b.y+(r.y-sourceY)*s,r.width*s,r.height*s);}
   public Vector2 Point(float x,float y,bool board=true){if(View=="title"&&x>=80&&y>=400&&y<770){var title=Layout("Title connection",new Rect(x,y,0,0));return new Vector2(title.x-Width/2,Height/2-title.y);}if(board&&View=="board"){var r=OnBoard(new Rect(x,y,0,0));return new Vector2(r.x-Width/2,Height/2-r.y);}return new Vector2(x/720*Width-Width/2,Height/2-y/1280*Height);}
-  public Rect Layout(string name,Rect r){float w=Width,h=Height,extra=h-1280;bool board=View=="board";if(View=="city-world"&&!Wide){if(name=="City identity backing")return new Rect(18,12,w-36,176);if(name=="Permanent city map")return new Rect(18,204,w-36,h-404);if(name=="City day forecast")return new Rect(18,h-188,w-36,96);if(r.y==1202)return new Rect(r.x,h-78,r.width,78);if(r.y==934)return new Rect(r.x,h-284,r.width,r.height);if(r.y<200)return r;}if(View=="city-world"&&name=="Permanent city map")return Wide?new Rect(310,20,w-620,h-40):new Rect(18,195,w-36,h-460);if(View=="city-world"&&Wide){if(name=="City wordmark")return new Rect(24,16,262,90);if(name=="City name")return new Rect(28,112,252,48);if(name=="CITY DESK")return new Rect(24,h-198,262,76);if(r.x==34&&r.y==28)return new Rect(28,30,252,90);if(r.y==94)return new Rect(28,175,252,52);if(r.y==99)return new Rect(28,244,252,48);if(r.y==146)return new Rect(28,315,252,95);if(name=="City identity backing")return new Rect(14,12,282,h-24);if(name=="City day forecast")return new Rect(w-296,20,282,h-130);if(r.y==1202)return r.x<100?new Rect(24,h-104,262,76):new Rect(w-286,h-104,262,76);if(r.y==934)return new Rect(330+(r.x-34),h-88,r.width,r.height);if(r.y<200)return new Rect(28,r.y*1.45f,252,r.height*1.1f);}if(board&&Wide&&name=="City wallet")return new Rect(28,386,252,24);
+  public Rect Layout(string name,Rect r){float w=Width,h=Height,extra=h-1280;bool board=View=="board";if(View=="city-world"){
+    if(name=="City identity backing")return new Rect(0,0,w,Wide?112:188);
+    if(name=="City wordmark")return Wide?new Rect(22,12,270,92):new Rect(18,8,286,92);
+    if(name=="City name")return Wide?new Rect(314,20,300,42):new Rect(26,106,278,38);
+    if(name=="City cash panel")return Wide?new Rect(w-626,20,230,78):new Rect(322,12,246,78);
+    if(name=="City census")return Wide?new Rect(w-380,20,230,78):new Rect(322,100,246,46);
+    if(name=="CITY DESK")return Wide?new Rect(w-130,20,106,78):new Rect(588,12,112,134);
+    if(name=="City day strip")return Wide?new Rect(314,68,300,38):new Rect(20,152,680,34);
+    if(name=="Permanent city map")return Wide?new Rect(0,120,w,h-248):new Rect(0,196,w,h-496);
+    if(name=="City day forecast")return Wide?new Rect(24,h-114,500,98):new Rect(18,h-212,w-36,100);
+    if(r.y==1202)return Wide?(r.x<100?new Rect(w-526,h-108,210,88):new Rect(w-300,h-114,276,98)):new Rect(r.x,h-96,r.width,80);
+    if(r.y==934){if(Wide){int index=r.x<100?0:r.x<290?1:r.x<380?2:3;return new Rect(22,146+index*82,index==1||index==3?140:76,68);}return new Rect(r.x,h-286,r.width,60);}
+    return r;
+   }if(View=="city-desk"&&Wide){float right=w*.57f,rw=w*.4f;float half=(rw-16)/2;
+    if(name=="Your actual city")return new Rect(24,166,w*.53f-24,h-190);
+    if(name=="‹")return new Rect(w-94,24,70,70);
+    if(r.y==79)return new Rect(28,22,w-150,68);if(r.y==32)return new Rect(28,4,w-150,10);if(r.y==162)return new Rect(30,100,w*.53f,42);
+    if(r.y==570)return new Rect(right,154,rw,58);if(name=="RETURN TO MY CITY")return new Rect(right,230,rw,84);
+    if(name=="PEOPLE")return new Rect(right,336,half,90);if(name=="INSPECT CASHFLOW & BILLS")return new Rect(right+half+16,336,half,90);
+    if(name=="FINANCING & BUSINESS STRATEGY")return new Rect(right,446,half,90);if(name=="SETTINGS")return new Rect(right+half+16,446,half,90);
+    if(name=="NAME MY CITY")return new Rect(right,558,rw,64);if(r.y==1210)return new Rect(right,h-70,rw,50);
+   }if(board&&Wide&&name=="City wallet")return new Rect(28,386,252,24);
    if(name=="Title wordmark")return Wide?new Rect(52,45,w*.42f,245):new Rect(38,60,644,270);
    if(name=="Living route"||name=="Scrim")return new Rect(0,0,w,h);
    if(name=="Reading shade")return Wide?(board?new Rect(0,0,292,h):View=="title"?new Rect(0,0,w*.48f,h):new Rect(0,0,w,210)):new Rect(0,0,w,260*Mathf.Min(1,h/1280));
@@ -131,6 +152,6 @@ namespace LocalGame {
  public sealed class WorldCover:MonoBehaviour {
   public RectTransform Frame;Vector2 shift;float impact;
   public void Kick(){impact=.15f;}
-  void LateUpdate(){var r=(RectTransform)transform;var im=GetComponent<UnityEngine.UI.Image>();var key=Frame.rect.width>Frame.rect.height?"V3/world-wide":"V3/world-portrait";var sprite=Studio.Sprite(key);if(sprite)im.sprite=sprite;if(!im.sprite||!Frame)return;im.color=FlatUI.Stage&&FlatUI.Stage.View.StartsWith("city-")?new Color(.16f,.24f,.22f,1):Color.white;float ratio=im.sprite.rect.width/im.sprite.rect.height;float w=Mathf.Max(Frame.rect.width,Frame.rect.height*ratio)*1.04f,h=w/ratio; r.sizeDelta=new Vector2(w,h);bool quiet=Studio.Profile?.ReducedMotion??false;var p=Pointer.current;Vector2 point=p==null?new Vector2(Screen.width/2,Screen.height/2):p.position.ReadValue();var target=quiet?Vector2.zero:new Vector2((Mathf.Clamp01(point.x/Mathf.Max(1,Screen.width))-.5f)*-8,(Mathf.Clamp01(point.y/Mathf.Max(1,Screen.height))-.5f)*-8);shift=Vector2.Lerp(shift,target,1-Mathf.Exp(-Time.unscaledDeltaTime*4));impact=Mathf.Max(0,impact-Time.unscaledDeltaTime);r.anchoredPosition=shift+(quiet?Vector2.zero:new Vector2(Mathf.Sin(impact*160),Mathf.Cos(impact*133))*impact*18);}
+  void LateUpdate(){var r=(RectTransform)transform;var im=GetComponent<UnityEngine.UI.Image>();bool city=FlatUI.Stage&&FlatUI.Stage.View.StartsWith("city-");var key=city?(Frame.rect.width>Frame.rect.height?"V6/city-landscape":"V6/city-landscape-portrait"):Frame.rect.width>Frame.rect.height?"V3/world-wide":"V3/world-portrait";var sprite=Studio.Sprite(key);if(sprite)im.sprite=sprite;if(!im.sprite||!Frame)return;im.color=city&&FlatUI.Stage.View!="city-world"?new Color(.28f,.4f,.55f,1):city?new Color(.83f,.92f,1,1):Color.white;float ratio=im.sprite.rect.width/im.sprite.rect.height;float w=Mathf.Max(Frame.rect.width,Frame.rect.height*ratio)*1.04f,h=w/ratio; r.sizeDelta=new Vector2(w,h);bool quiet=Studio.Profile?.ReducedMotion??false;var p=Pointer.current;Vector2 point=p==null?new Vector2(Screen.width/2,Screen.height/2):p.position.ReadValue();var target=quiet?Vector2.zero:new Vector2((Mathf.Clamp01(point.x/Mathf.Max(1,Screen.width))-.5f)*-8,(Mathf.Clamp01(point.y/Mathf.Max(1,Screen.height))-.5f)*-8);shift=Vector2.Lerp(shift,target,1-Mathf.Exp(-Time.unscaledDeltaTime*4));impact=Mathf.Max(0,impact-Time.unscaledDeltaTime);r.anchoredPosition=shift+(quiet?Vector2.zero:new Vector2(Mathf.Sin(impact*160),Mathf.Cos(impact*133))*impact*18);}
  }
 }

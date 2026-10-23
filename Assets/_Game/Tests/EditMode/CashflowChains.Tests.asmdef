@@ -2,7 +2,9 @@
   "name": "CashflowChains.Tests",
   "references": [
     "CashflowChains.Domain",
-    "CashflowChains.Runtime"
+    "CashflowChains.Runtime",
+    "Unity.TextMeshPro",
+    "Unity.ugui"
   ],
   "optionalUnityReferences": [
     "TestAssemblies"

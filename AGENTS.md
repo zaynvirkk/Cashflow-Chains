@@ -3,6 +3,12 @@
 ## Governing CC2 direction
 The operator supplied the complete `Docs/GameBible/CASHFLOW_CHAINS_FINAL_GAME_BIBLE.md` on23October2026 as the primary source of truth. Read both normative parts: Part I defines the player experience; Part II T00–T23 defines the economy, engineering and P00–P17 gates. The earlier master remains preserved in Docs/CC2 and its technical requirements remain in force where compatible. Use the active, extended `Docs/CC2/CC2_IMPLEMENTATION_TRACKER.csv`; the original145-row source copy in Docs/GameBible must not reset implementation status. See `Docs/Decisions/2026-10-23-CC2-Commercial-Rebuild.md` and `Docs/GameBible/SOURCE_REVIEW.md`. Retain puzzle invariants, legitimate ownership, accessibility and transaction security. Preserve baseline branch and do not publish/spend/create external accounts without authorization. The original constraints below remain historical where explicitly superseded.
 
+## Current runtime target and world presentation
+
+24October operator steering:Android/Google Play first;verify the mobile runtime only. Do not keep rebuilding or replaying the desktop version. Editor domain/UI tests remain appropriate,but actual interaction/readability/performance acceptance must come from the Android app. Preserve older desktop artifacts as historical evidence.
+
+Public streets must continue through the surrounding world rather than terminate in a rectangular owned-board frame. Owned parcels and construction remain bounded by actual purchased land. Camera zoom must have visible,enforced bounds and restore them correctly. First-build guidance belongs in a compact guide/highlight,not large BUILD HOME text painted inside a plot. Preserve real city state,household counts,costs and ledger outcomes during presentation changes.
+
 ## Sources of truth
 Read these documents before editing gameplay: `Docs/01_CASHFLOW_CHAINS_MASTER_SPEC.md`, `Docs/SHARED_TECH_MONETIZATION_LAUNCH.md`, `Docs/RELEASE_AND_TEST_MATRIX.md`. The user-approved game master specification determines mechanics. If a proposal conflicts with it, record a blocking issue and request review rather than silently change the game's identity.
 

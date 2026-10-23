@@ -1,0 +1,11 @@
+# Android city-world presentation
+
+The operator rejected the flat teal/Bungee/Barlow UI and later required Android-only runtime testing,continuous roads,enforced zoom limits and removal of the BUILD HOME plot text. This supersedes the earlier laptop-first verification workflow;older desktop proofs remain historical.
+
+The replacement uses original building/wordmark art,LilitaOne display lettering,Nunito Sans600/800 information type,blue shaded controls,gold commitments and green real Cash feedback. Original generated wide/portrait empty woodland scenes frame the city;they contain no fake businesses or residents. Fonts retain their original OFL attribution,also distributed as a raw StreamingAssets notice. A font-material cache is keyed by the actual font asset identity so two weights cannot reuse the wrong glyph atlas.
+
+Public streets are a world layer under the HUD. Their geometry follows the city camera and continues past owned parcels through the visible surrounding world. Parcel interaction remains clipped to the actual owned city viewport;buying land still uses real costs and domain commands. Duplicate lane-mark rendering is disabled for the permanent city. Crossing signals are limited to the intersections modeled by the existing ambient traffic simulation;decorative streets do not invent economic shipments.
+
+The camera has a1.6 maximum scale and a fit-relative minimum with a0.3floor,so the largest supported city remains viewable. MIN/MAX labels disable further zoom at the bounds;fit,pan,viewport changes and cold restart retain valid camera state. The first suggested plot receives restrained gold corner brackets;the compact guide and actual build drawer explain the action. No instruction is painted over its grass.
+
+178 Editor cases cover the current domain,household/finance invariants,material/atlas isolation and bounded zoom/whole-city fit. Android touch/visual/audio/cold-resume acceptance is being refreshed against the matching signed APK/AAB. Old native screenshots or an older signed package must not be relabelled as current mobile proof. Production commerce,LiveOps/account integration and human retention/revenue acceptance remain separate unfinished work.

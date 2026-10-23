@@ -8,7 +8,7 @@ apk=p/'Builds/Release/CashflowChains-1.0.0.apk'
 out=p/'Artifacts/AndroidCity'/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out.mkdir(parents=True)
 remote='/sdcard/Android/data/'+pkg+'/files/CityReview-'+out.name
 actions=[];audit=[];process_logs=[];audio=[]
-source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*(p/'Assets/_Game').rglob('*.cs'),p/'Assets/_Game/Data/CC2/balance-v1.json',p/'Assets/_Game/Resources/CC2/balance-v1.json',Path(__file__)]}
+source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*(p/'Assets/_Game').rglob('*.cs'),p/'Assets/_Game/Data/CC2/balance-v1.json',p/'Assets/_Game/Resources/CC2/balance-v1.json',*[f for folder in ['Art/V6','Fonts/V6'] for f in (p/'Assets/_Game/Resources'/folder).rglob('*') if f.is_file()],Path(__file__)]}
 def cmd(*args,timeout=60):return subprocess.check_output([adb,*map(str,args)],text=True,stderr=subprocess.STDOUT,timeout=timeout).strip()
 def shell(s):return cmd('shell','-n',s)
 def read(name):
@@ -57,7 +57,7 @@ def capture(name):
 def launch():
  shell('am force-stop '+pkg)
  # Clear derived capture files only;keep Saves untouched so a cold run cannot reuse an older process audit/audio.
- shell('rm -f '+ ' '.join(remote+'/'+name for name in ['campaign-state.json','empire-state.json','ui-layout.json','text-overflows.json','performance.json','traffic-state.json','actual-mix.wav']))
+ shell('rm -f '+ ' '.join(remote+'/'+name for name in ['campaign-state.json','empire-state.json','ui-layout.json','text-overflows.json','performance.json','traffic-state.json','city-world-state.json','actual-mix.wav']))
  shell('am start -n '+activity+' --es unity '+shlex.quote('-capture-dir '+remote+' -save-dir '+remote+'/Saves'))
  until(lambda:state()['Screen']=='city-world');time.sleep(2)
  shell('uiautomator dump '+remote+'/system-ui.xml');tree=ET.fromstring(shell('cat '+remote+'/system-ui.xml'))
@@ -71,9 +71,22 @@ try:
  tap('Owned plot 2 1',kind='pointer');tap('BUILD',0);capture('02-materials-and-operating-comparison');tap('START CONSTRUCTION');until(lambda:any(b['Kind']=='cafe' and b['Level']==1 for b in city()['Properties']));until(lambda:city()['Day']>=2)
  assert len([r for r in read('empire-state.json')['Economy']['Receipts'] if r['CommandId']=='city-day-settle:1'])==1
  assert city()['LastDayRevenue']>city()['LastDayBills'];capture('03-real-cafe-trading');assert not any('SKIP' in e['Name'] for e in layout()['Elements'] if e['Kind']=='button')
- tap('4 RESIDENTS');capture('03b-real-resident-demographics');tap('INSPECT A HOME');capture('03c-individual-resident-profiles');back();back()
+ recording=subprocess.Popen([adb,'shell','-n','screenrecord --time-limit 20 --size 720x1280 --bit-rate 3000000 '+remote+'/real-city-motion.mp4'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+ tap('City census');capture('03b-real-resident-demographics');tap('INSPECT A HOME');capture('03c-individual-resident-profiles');back();back()
+ recording.wait(timeout=35);cmd('pull',remote+'/real-city-motion.mp4',out/'real-city-motion.mp4')
  until(lambda:sum(b['Earned']+b['Purchased'] for b in read('empire-state.json')['Economy']['Balances'] if b['ItemId']=='CASH')>=92,160)
  tap('Owned plot 0 1',kind='pointer');tap('BUILD',0);tap_prefix('FIND ');tap_prefix('BUY ');tap('START CONSTRUCTION');until(lambda:len([b for b in city()['Properties'] if b['Level']>0])==3);until(lambda:read('city-world-state.json')['Forecast']['Population']==6);capture('04-second-different-household')
+
+ # Real touches must reach both limits without changing ownership or creating grants.
+ for _ in range(8):tap('+')
+ until(lambda:abs(read('city-world-state.json')['Zoom']-read('city-world-state.json')['MaximumZoom'])<.001 and any(e['Name']=='+' and e['DisplayText']=='MAX' and not e['Interactable'] for e in layout()['Elements']))
+ assert next(e for e in layout()['Elements'] if e['Name']=='+')['DisplayText']=='MAX'
+ assert not next(e for e in layout()['Elements'] if e['Name']=='+')['Interactable']
+ capture('04b-real-maximum-zoom')
+ for _ in range(12):tap('−')
+ until(lambda:abs(read('city-world-state.json')['Zoom']-read('city-world-state.json')['MinimumZoom'])<.001 and any(e['Name']=='−' and e['DisplayText']=='MIN' for e in layout()['Elements']))
+ assert next(e for e in layout()['Elements'] if e['Name']=='−')['DisplayText']=='MIN'
+ capture('04c-real-minimum-zoom-and-continuous-roads');tap('FIT CITY')
  tap('CITY LEDGER');until(lambda:state()['Screen']=='city-ledger');capture('05-real-population-bills-and-demand');tap('MY CITY');tap('−');capture('06-zoom-out');tap('FIT CITY')
  tap('CITY DESK');until(lambda:state()['Screen']=='city-desk');capture('07-owned-city-desk');tap('SETTINGS');tap('SAVE RECOVERY');capture('07b-safe-city-recovery');assert not any(e['Name'] in ('NEW LOCAL GAME','ARCHIVE & START OVER') for e in layout()['Elements']);tap('KEEP MY CITY');tap('FINANCING & BUSINESS STRATEGY');tap('COMPARE FINANCING');tap('REVIEW $100 TERMS');capture('08-financing-terms');back();back();back();until(lambda:state()['Screen']=='city-desk');tap('RETURN TO MY CITY')
  for size,name in [('720x1280','09-compact-mobile'),('720x1600','10-tall-mobile')]:
@@ -82,7 +95,9 @@ try:
  # Actual touch pan on the map. No domain placement changes may result.
  owned=[(b['Id'],b['X'],b['Y']) for b in city()['Properties']];elements=layout()['Elements'];rect=next(e['Pixels'] for e in elements if e['Name']=='Owned plot 1 1' and e['Kind']=='pointer');x=round(rect['x']+rect['width']/2);y=round(rect['y']+rect['height']/2)
  shell(f'input touchscreen swipe {x} {y} {x+80} {y+100} 500');actions.append({'pan':[x,y,x+80,y+100]});assert [(b['Id'],b['X'],b['Y']) for b in city()['Properties']]==owned;capture('11-actual-touch-pan')
- tap('FIT CITY');before=city();capture('12-before-offline-resume');flush_audit();preserve_process_log();shell('input keyevent 3');shell('cmd connectivity airplane-mode enable');launch();assert [(b['Id'],b['X'],b['Y']) for b in city()['Properties']]==owned;assert city()['Day']>=before['Day'];capture('13-offline-cold-resume')
+ tap('FIT CITY')
+ for _ in range(8):tap('+')
+ before=city();capture('12-before-offline-resume');flush_audit();preserve_process_log();shell('input keyevent 3');shell('cmd connectivity airplane-mode enable');launch();assert [(b['Id'],b['X'],b['Y']) for b in city()['Properties']]==owned;assert city()['Day']>=before['Day'];until(lambda:next(e for e in layout()['Elements'] if e['Name']=='+')['DisplayText']=='MAX');capture('13-offline-cold-resume')
  # Preserve the Android edge-Back journey separately from KEYCODE_BACK.
  mode=shell('cmd overlay list');assert '[x] com.android.internal.systemui.navbar.gestural' in mode
  dims=layout();w,h=dims['Width'],dims['Height'];shell(f'input touchscreen swipe {w//2} {h-2} {w//2} {h-250} 180');time.sleep(.2)
@@ -92,9 +107,9 @@ try:
  flush_audit()
  issues=[v for a in audit for v in a['Issues']];assert not issues,issues
  (out/'meminfo.txt').write_text(shell('dumpsys meminfo '+pkg));preserve_process_log();log='\n'.join(process_logs);(out/'logcat.txt').write_text(log)
- errors=[line for line in log.splitlines() if re.search(r'FATAL EXCEPTION|Fatal signal|NullReferenceException|MissingMethodException|DllNotFoundException',line)];assert not errors,errors
+ errors=[line for line in log.splitlines() if re.search(r'FATAL EXCEPTION|Fatal signal|NullReferenceException|MissingReferenceException|MissingMethodException|DllNotFoundException|InvalidOperationException|IndexOutOfRangeException|ArgumentException',line)];assert not errors,errors
  for f,h in source.items():assert hashlib.sha256((p/f).read_bytes()).hexdigest()==h,'Source changed during Android replay: '+f
- report={'passed':True,'scope':'Actual ARM64 emulator touch: same-city construction/materials,real trading,second property,finite demand/costs,financing review,zoom/pan,compact/tall layouts,offline cold resume and actual system edge-Back gesture. No edited save/clock/grant/purchase.','api':shell('getprop ro.build.version.sdk'),'page_size':int(shell('getconf PAGE_SIZE')),'abi':shell('getprop ro.product.cpu.abilist'),'apk_sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'source':source,'actions':actions,'textIssues':issues,'runtimeErrors':errors,'audioSignalChecks':audio}
+ report={'passed':True,'scope':'Actual touch of the ARM64 APK through emulator native translation: same-city construction/materials,real trading,second property,finite demand/costs,financing review,bounded zoom/MAX-MIN restoration,continuous public streets,compact/tall layouts,offline cold resume and actual system edge-Back gesture. No edited save/clock/grant/purchase.','api':shell('getprop ro.build.version.sdk'),'page_size':int(shell('getconf PAGE_SIZE')),'abi':shell('getprop ro.product.cpu.abilist'),'emulatorPrimaryAbi':shell('getprop ro.product.cpu.abi'),'nativeBridge':shell('getprop ro.dalvik.vm.native.bridge'),'apk_sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'source':source,'actions':actions,'textIssues':issues,'runtimeErrors':errors,'audioSignalChecks':audio}
  (out/'report.json').write_text(json.dumps(report,indent=2));(p/'Artifacts/latest-android-city.txt').write_text(str(out));print(out)
 finally:
  shell('wm size reset');shell('cmd connectivity airplane-mode disable');shell('input keyevent 3')

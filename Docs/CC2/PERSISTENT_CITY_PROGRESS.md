@@ -1,4 +1,6 @@
-# Persistent-city rebuild — in progress
+> Latest24October steering:verify Android only. Current world-presentation source and pending mobile acceptance supersede the desktop verification paragraphs below. See Decisions/2026-10-24-Android-World-Presentation.md.178 Editor cases now pass;new ARM64 package/touch confirmation is in progress. The b944602 UI was rejected and replaced with new scenery/type/controls;public roads now continue beyond parcels,zoom is visibly bounded,and first-build instructions no longer sit inside the plot. The earlier desktop records below are historical after these changes.
+
+# Persistent-city rebuild — Android work in progress
 
 24October2026. The operator’s one-city,empty-start and demographic instructions supersede replacement puzzles and the old default-home population multiplier. Original handoffs and the entire Game Bible remain preserved. Main/archive retain3ac5b62;work is on feature/cashflow-chains-2-economy. Black Bag is on hold. This is a playable implementation checkpoint,not a completed commercial game.
 

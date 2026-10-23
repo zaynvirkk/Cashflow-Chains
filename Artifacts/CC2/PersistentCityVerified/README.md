@@ -1,3 +1,5 @@
+> Historical desktop evidence. The operator subsequently requested Android-only testing and continuous-road/zoom/visual changes. This folder is not acceptance for the current mobile source. Current mobile evidence belongs in PersistentCityAndroidVerified.
+
 # Current empty-start city / UI acceptance
 
 Source: Artifacts/CityWorldReplay/20261023T190721Z. Catalog6/city-rules3,ordinary release player,real X11 mouse/keyboard input on isolated display96. No edited saves,clock/inventory grants,sandbox rewards or purchases. Full source and Linux binary hashes are in report.json.
