@@ -1,0 +1,30 @@
+{
+  "importedAt": "2026-10-23T04:04:49.213283+00:00",
+  "sourceDirectory": "/home/virk/Downloads/Games 2.0/Cashflow_Chains_Final_Game_Bible_Handoff",
+  "files": {
+    "CASHFLOW_CHAINS_FINAL_GAME_BIBLE.md": {
+      "sha256": "b40f5b3d570f83de8b138fb463e1d10566c25ea28786861c901fee9992dcdc69",
+      "bytes": 188898
+    },
+    "CASHFLOW_CHAINS_FINAL_GAME_BIBLE.docx": {
+      "sha256": "90bf33138536e552cd3fd96308df4ed68215fa82b5b8fe850b4bb458e28bbe1b",
+      "bytes": 3335202
+    },
+    "CASHFLOW_CHAINS_FINAL_GAME_BIBLE.pdf": {
+      "sha256": "c3c8fed0d6a77f2494d70047f012de1719223f38fefa5d74b3470e5d19a4bf36",
+      "bytes": 1286245
+    },
+    "CC2_IMPLEMENTATION_TRACKER.csv": {
+      "sha256": "1719aa408f83d7138011ac30edeff04f6905fa3f469fbd4d6ea8c3ddb16237f7",
+      "bytes": 10396
+    },
+    "CC2_SYSTEM_GRAPH.mmd": {
+      "sha256": "c40bb828deb7f3b82bf52b89252096392e2b29e0397179c8d8a174bb0fe7d9d3",
+      "bytes": 2278
+    },
+    "CODEX_READ_ME.txt": {
+      "sha256": "6cc88fe3258b9359d9ed1f08806a0ffd05ddf5be036ddea912255ac28fdfc4f7",
+      "bytes": 1248
+    }
+  }
+}

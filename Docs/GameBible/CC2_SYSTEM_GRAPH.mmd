@@ -1,0 +1,100 @@
+flowchart TD
+  subgraph PLAY [Player's actual gameplay]
+    B[Certified Board: solve + 8-beat trace]
+    O[Open-City Operations: owned perks apply]
+    D[Dispatch contracts and research]
+    C[Collect production and collections]
+  end
+  subgraph ACCOUNT [Persistent Account and Economy]
+    E[Typed Domain Event Router]
+    L[(Atomic Server Reward / Spend Ledger)]
+    INV[Canonical Inventory]
+    FR[Business and Manager Fragments]
+    UP[Business Stars + Levels]
+    MG[Managers, Skills, Equipment]
+    RE[Research + Construction]
+    VIP[VIP + Permanent Utilities]
+  end
+  subgraph CHANCE [Reward and Exchange Acquisition]
+    CH[Direct, Random, Choice and Merge Chests]
+    RNG[Server RNG + Pity + Odds Disclosure]
+    REC[Recruitment Banner + Milestones]
+    ME[Merchant Rotating Stock + Paid/Earned Refresh]
+    EX[Earned-currency Specialty Shops]
+    SO[Contextual Source Finder]
+  end
+  subgraph LIVE [Retention and LiveOps]
+    DAY[Daily + Weekly Missions]
+    EVT[Events + Milestones + Rankings]
+    PASS[Free + Premium 28-day Pass]
+    GEN[Age/Gate-Guided Content Generations]
+    ALL[Verified Co-op Projects + Alliances]
+  end
+  subgraph REVENUE [Optional Real Purchase Offers]
+    EL[Eligibility: Unlocks, Ownership, Region, Events, Stock]
+    OF[Starter, Permanent, Packs, Cards, VIP, Choice, Growth Fund]
+    IAP[Unity IAP 5 -> Play Verified Fulfillment]
+  end
+  subgraph TRUST [Cross-cutting Infrastructure]
+    CFG[Versioned Catalog + Remote Config]
+    DATA[Analytics, Live Cohorts and Simulation]
+    SE[(Secure Backend Time, Accounts, Receipts)]
+  end
+
+  B --> E
+  O --> E
+  D --> E
+  C --> E
+  E --> L
+  L --> INV
+  INV --> FR
+  FR --> UP
+  INV --> MG
+  INV --> RE
+  INV --> VIP
+  UP --> O
+  MG --> O
+  RE --> O
+  VIP --> D
+  INV --> SO
+  SO --> CH
+  SO --> ME
+  SO --> EX
+  SO --> OF
+  CH --> RNG
+  REC --> RNG
+  RNG --> L
+  INV --> REC
+  ME --> L
+  EX --> L
+  B --> DAY
+  O --> DAY
+  D --> DAY
+  E --> EVT
+  E --> PASS
+  E --> ALL
+  DAY --> L
+  EVT --> L
+  PASS --> L
+  GEN --> REC
+  GEN --> RE
+  GEN --> EVT
+  EVT --> ME
+  EVT --> OF
+  EL --> OF
+  OF --> IAP
+  IAP --> L
+  INV --> EL
+  VIP --> EL
+  CFG --> EL
+  CFG --> RNG
+  CFG --> GEN
+  CFG --> EVT
+  CFG --> ME
+  L --> DATA
+  E --> DATA
+  OF --> DATA
+  SE --> L
+  SE --> RNG
+  SE --> ME
+  SE --> IAP

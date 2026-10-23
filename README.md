@@ -1,3 +1,5 @@
+> Governing product source: [23October complete Game Bible](Docs/GameBible/CASHFLOW_CHAINS_FINAL_GAME_BIBLE.md), including both player experience and technical specification. [Source reconciliation](Docs/GameBible/SOURCE_REVIEW.md). Active implementation remains in progress.
+
 # Cashflow Chains 2.0
 
 An Android-first economic puzzle inside a persistent city progression game. Black Bag is on hold.

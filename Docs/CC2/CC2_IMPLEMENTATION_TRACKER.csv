@@ -146,3 +146,13 @@ CC2-144,17 Launch,Store policy/privacy review and operator approval,NOT_STARTED,
 CC2-145,17 Launch,Post-launch monitoring and support runbook,NOT_STARTED,,,,
 CC2-020a,03 Empire,Initial capped production with genuine real-time native claim,DONE_VERIFIED,Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs,CC2EmpireTests; Tools/cc2_empire_playtest.py,Artifacts/CC2/EmpireVerified/14-real-production-collected.png,Local development sandbox only; no cloud or paid ownership claim
 CC2-096a,11 Screens,Explain residents/supplies/trading plan; reconcile displayed reward wallet,IN_PROGRESS,Presentation/TradingClarityUI.cs; MobileGameApp.cs; Domain/VerifiedLayouts.cs,104 EditMode; Tools/first-session-playtest.py,,Operator quality correction; direct-to-board first launch and actual saved plans; human comprehension remains unmeasured
+CC2-009a,01 Product,Persist player city name and earned initial identity/theme,NOT_STARTED,,,,Bible I3.1/I5; optional identity after meaningful tutorial progress
+CC2-009b,01 Product,Meaningful permanent city placement and visible authored upgrade evolution,NOT_STARTED,,,,Bible I5/I6 and T12.3; current business cards are not a complete personal city
+CC2-016a,03 Empire,Viable player-selected franchise specializations with real opportunity costs,NOT_STARTED,,,,Bible I5.1; compare actual capabilities and preserve certified rules
+CC2-081a,09 Retention,Visible before/after consequence of the player chosen layout,IN_PROGRESS,Assets/_Game/Scripts/Presentation/TradingClarityUI.cs; Domain/CityInsight.cs,Tools/first-session-playtest.py,,Bible I2/I3; exact forecast exists; full causal onboarding and human comprehension remain open
+CC2-084a,09 Retention,Save personal development goals and surface relevant next activities,NOT_STARTED,,,,Bible I11.1 agency loop; real progress and optional alternate paths
+CC2-082a,09 Retention,Return report explains actual ready work capped output and saved goal,NOT_STARTED,,,,Bible I6.4/I11.3/I14; no invented changed world or urgency
+CC2-079a,08 Offers,No initial-three-puzzle upsell and persisted one/session one/24h early offer budget,NOT_STARTED,,,,Bible I9/I10.5 and T08.5; contextual actions remain available and declines respected
+CC2-072a,08 Offers,Source choice and verified purchase return to exact suspended development task,NOT_STARTED,,,,Bible I14.1; no unrelated store redirect or false fulfillment
+CC2-106a,12 Feel,Independent flash/audio/haptic controls and varied meaningful sound categories,NOT_STARTED,,,,Bible I4.2/T12.3; existing sound/music/reduced-motion controls cover only part
+CC2-095a,10 Onboarding,Correct feature navigation history preserves unfinished board and personal choice,NOT_STARTED,,,,Bible I14.2; every chest source and offer Back path must be validated
