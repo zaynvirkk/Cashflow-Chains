@@ -180,3 +180,39 @@ def test_permanent_city_has_finite_demand_real_bills_and_no_early_settlement(ser
  assert amount(after['state'],'CASH')==amount(before['state'],'CASH')+frozen['Net']
  assert command(c,h,'city-settle-day',day=1).status_code==200
  assert snapshot(c,h)==after
+
+
+def test_city_clock_and_investment_quote_use_authoritative_time_and_actual_materials(service):
+ c,h,clock,_,_=service
+ assert command(c,h,'city-open').status_code==200
+ before=snapshot(c,h);q=c.get('/v1/city/investment?kind=cafe&x=2&y=1',headers=h).json()
+ assert q['Affordable'] and q['BuilderAvailable']
+ assert {x['ItemId']:x['Quantity'] for x in q['Costs']}=={'CASH':100,'WOOD':4}
+ assert snapshot(c,h)==before
+ assert command(c,h,'city-build',businessId='cafe',x=2,y=1).status_code==200
+ clock[0]+=8
+ assert command(c,h,'city-advance').status_code==200
+ a=snapshot(c,h);assert a['state']['City']['Day']==2
+ assert amount(a['state'],'CASH')==137
+ assert command(c,h,'city-advance').status_code==200
+ assert snapshot(c,h)==a
+ assert c.get('/v1/city/investment?kind=not-a-business',headers=h).status_code==409
+ assert command(c,h,'city-materials',itemId='GEMS',quantity=1).status_code==409
+ assert snapshot(c,h)==a
+
+def test_financing_repayment_and_material_orders_are_server_ledger_transactions(service):
+ c,h,clock,_,_=service;assert command(c,h,'city-open').status_code==200
+ assert command(c,h,'city-build',businessId='cafe',x=2,y=1).status_code==200
+ clock[0]+=30;assert command(c,h,'city-advance').status_code==200
+ assert snapshot(c,h)['state']['City']['Day']>=4
+ cash=amount(snapshot(c,h)['state'],'CASH')
+ borrowed=command(c,h,'city-finance',amount=100);assert borrowed.status_code==200,borrowed.text
+ loan=borrowed.json()['state']['City']['Loans'][0];assert loan['Remaining']==110
+ assert amount(snapshot(c,h)['state'],'CASH')==cash+100
+ assert command(c,h,'city-repay',loanId=loan['Id'],amount=50).status_code==200
+ assert snapshot(c,h)['state']['City']['Loans'][0]['Remaining']==60
+ assert amount(snapshot(c,h)['state'],'CASH')==cash+50
+ before=snapshot(c,h);assert command(c,h,'city-repay',loanId=loan['Id'],amount=61).status_code==409
+ assert snapshot(c,h)==before
+ assert command(c,h,'city-materials',itemId='WOOD',quantity=2).status_code==200
+ assert amount(snapshot(c,h)['state'],'CASH')==cash+44

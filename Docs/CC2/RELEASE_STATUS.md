@@ -1,5 +1,16 @@
 # CC2 release status
 
+23October2026. IN_PROGRESS. The complete Game Bible and the subsequent [one-city operator decision](../Decisions/2026-10-23-One-Persistent-City.md) govern. All supplied handoffs remain preserved. The active tracker has167 rows,including145 original requirements. Main/archive retain3ac5b62;work is on feature/cashflow-chains-2-economy. Black Bag is on hold.
+
+The regular player now opens one permanent owned city. Identity,plots,prices,employees,stock,construction,financing and operating days persist together. The current slice has17 business definitions and real daily demand,costs,production,trade,utilities,seasons and limited port/hotel tourism. Pan/zoom and purchased land expand the same retained map. This does not establish the full requested manager,reward,LiveOps or commercial product. See [current implementation and verification](PERSISTENT_CITY_PROGRESS.md) and [commercial dependency map](CITY_COMMERCIAL_INTEGRATION.md).
+
+153 Unity tests pass. The104 legacy certified outcomes remain preserved;the separate travel run checks104 references,10,000 randomized layouts and24,000 non-overlap traffic steps.22 local API cases pass on both the development and independent .NET10 runtimes. The current regular desktop same-city replay passes construction/trading,housing,rename,move,three screen shapes,financing/repayment,owned land expansion and cold restart,with two empty cumulative text audits. Source/binary hashes and selected screens: Artifacts/CC2/PersistentCityVerified. Current Android packaging/touch acceptance is being refreshed. The backend remains local and is not connected to the production Unity player. New real-money commerce remains inactive until authentic account/purchase fulfillment is connected.
+
+Earlier puzzle/development/P03/P04 proofs below remain historical for those slices. They do not replace current city/native/mobile verification. Physical phones,real payments/restores/refunds,privacy review,human comprehension/enjoyment,retention,revenue and public release remain unverified. The preliminary older five-tier economy was rejected for exhaustion/inflation;it is not a balance approval for this newer city. Do not call the complete product store-ready.
+
+## Historical checkpoints
+
+
 23 October2026. IN_PROGRESS. The complete Game Bible in ../GameBible governs both player experience and engineering. Its six supplied artifacts are preserved byte-for-byte; all1615 Markdown lines and the full original technical annex have been reviewed. The active tracker has157 rows,including all145 source requirements. Main/archive preserve baseline3ac5b62; feature/cashflow-chains-2-economy holds current work. Black Bag remains on hold.
 
 112 Unity tests pass,including all104 certified reference outcomes.19 local API tests pass on both the development and independently published .NET10 host. These include all72 free campaign proofs,all15 dispatch returns,exact costs/rewards,account-bound saved plans and authoritative source guidance. Four audit regressions prevent cold restart from hiding earlier clipped text. Eleven negative catalogs fail closed. Catalog revision3 aligns Power/Harbor route gates to their authored teaching plans.

@@ -4,6 +4,8 @@ This is a locally tested, authenticated construction/production/verified-round s
 
 Implemented endpoints: guest session, rotating access/refresh tokens, account snapshot, versioned manifest, account-bound expiring puzzle challenges, server replay/first-clear rewards, construction start/finish, capped production collection, renewable dispatch/claims, research and earned speedups. Verified submitted plans persist atomically with the account transaction and can be recovered by the same authenticated account. Read-only development-source guidance uses authoritative balances; an affordable project promotes development rather than purchasing. New paid routes remain absent until real fulfillment is configured. Unknown grants, client clocks/balances/account IDs, locked challenges and unverified expansions are rejected. Exact request retries return the original result; changed payloads conflict. Missing or invalid Google Play verification returns503 with no currency grant or IAP confirmation.
 
+The persistent-city slice additionally supports charter,retained plots/construction,pricing,hiring,marketing,material orders,land/grid expansion,optional fixed-term finance/repayment and supplier/sponsor commands. `GET /v1/city/forecast` and `GET /v1/city/investment` are read-only and derive from the same C# model. `city-advance` uses the server clock with bounded replay;the client cannot provide a settlement clock.22 cases pass on both the development and independently published .NET10 runtimes;current source bindings are in `Artifacts/CC2/Backend/permanent-city-current-report.json`. The production Unity client remains local;these endpoints are not a claim of completed client synchronization.
+
 Run tests from project root:
 
 ```bash

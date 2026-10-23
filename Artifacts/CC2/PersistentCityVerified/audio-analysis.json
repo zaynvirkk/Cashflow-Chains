@@ -1,0 +1,9 @@
+{
+  "channels": 2,
+  "sampleRate": 48000,
+  "seconds": 24.618666666666666,
+  "peak": 0.035308837890625,
+  "rms": 0.007995110176761638,
+  "recordedWavSha256": "9e9620ff5dc4a0fd043cdef7e7f618902e67a9c344f92cfd71b5a65ccad0e940",
+  "limit": "Actual player PCM capture; signal presence/headroom does not prove human sound-quality preference."
+}
