@@ -1,0 +1,9 @@
+{
+  "scope": "First catalog6 Android build was interrupted by host systemd-oomd;no matching new APK accepted. Retry reduces all compiler jobs from2 to1 and runs without a player/emulator.",
+  "events": [
+    {
+      "utc": "2026-10-23T17:08:36.007487+00:00",
+      "message": "Killed /user.slice/user-1000.slice/user@1000.service/app.slice/run-r25e9eba058a54591bea580f11e17a660.scope due to memory pressure for /user.slice/user-1000.slice/user@1000.service being 72.39% > 50.00% for > 20s with reclaim activity"
+    }
+  ]
+}

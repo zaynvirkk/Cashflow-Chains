@@ -1,0 +1,10 @@
+{
+  "activity": "com.virkgames.cashflowchains/com.virkgames.platform.GameEntryActivity",
+  "ordinarySave": "/sdcard/Android/data/com.virkgames.cashflowchains/files/PlayCity3",
+  "captureMode": false,
+  "sandbox": false,
+  "previousSaves": "Preserved;separate ordinary persistent city selected",
+  "foreground": [
+    "topResumedActivity=ActivityRecord{34902022 u0 com.virkgames.cashflowchains/com.virkgames.platform.GameEntryActivity t26}"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "target_sdk": 36,
+  "min_sdk": 26,
+  "debuggable": false,
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.VIBRATE",
+    "com.android.vending.BILLING",
+    "com.virkgames.cashflowchains.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+    "android.permission.ACCESS_NETWORK_STATE"
+  ],
+  "abis": [
+    "arm64-v8a"
+  ],
+  "native_libraries": [
+    {
+      "file": "lib/arm64-v8a/lib_burst_generated.so",
+      "elf_load_alignment": 16384,
+      "zip_compressed": true,
+      "zip_data_offset": 3128909
+    },
+    {
+      "file": "lib/arm64-v8a/libc++_shared.so",
+      "elf_load_alignment": 16384,
+      "zip_compressed": true,
+      "zip_data_offset": 3298207
+    },
+    {
+      "file": "lib/arm64-v8a/libgame.so",
+      "elf_load_alignment": 16384,
+      "zip_compressed": true,
+      "zip_data_offset": 3704824
+    },
+    {
+      "file": "lib/arm64-v8a/libil2cpp.so",
+      "elf_load_alignment": 16384,
+      "zip_compressed": true,
+      "zip_data_offset": 3761737
+    },
+    {
+      "file": "lib/arm64-v8a/libmain.so",
+      "elf_load_alignment": 16384,
+      "zip_compressed": true,
+      "zip_data_offset": 26407570
+    },
+    {
+      "file": "lib/arm64-v8a/libswappywrapper.so",
+      "elf_load_alignment": 16384,
+      "zip_compressed": true,
+      "zip_data_offset": 26410210
+    },
+    {
+      "file": "lib/arm64-v8a/libunity.so",
+      "elf_load_alignment": 16384,
+      "zip_compressed": true,
+      "zip_data_offset": 26490131
+    }
+  ],
+  "bundle_alignment": "PAGE_ALIGNMENT_16K",
+  "bundletool_version": "1.18.3",
+  "bundletool_sha256": "a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29",
+  "files": {
+    "Builds/Release/CashflowChains-1.0.0.apk": "4b325a43286a1c30ecd546c0ba26749280fb95a556386d7114a1a0886ac9f462",
+    "Builds/Release/CashflowChains-1.0.0.aab": "d256e643b0eb9bfde738ad367ccaef3aeefc7b7d13c84aa11338bce522e79655"
+  },
+  "limits": "Static compatibility checks complement emulator tests; physical ARM64 phone behavior and Play-generated splits require external testing."
+}

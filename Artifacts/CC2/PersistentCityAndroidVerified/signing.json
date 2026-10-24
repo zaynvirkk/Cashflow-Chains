@@ -1,0 +1,14 @@
+{
+  "signed_with": "Local upload key; private key and passwords excluded from Git",
+  "files": {
+    "CashflowChains-1.0.0.apk": {
+      "bytes": 84933892,
+      "sha256": "4b325a43286a1c30ecd546c0ba26749280fb95a556386d7114a1a0886ac9f462"
+    },
+    "CashflowChains-1.0.0.aab": {
+      "bytes": 84660282,
+      "sha256": "d256e643b0eb9bfde738ad367ccaef3aeefc7b7d13c84aa11338bce522e79655"
+    }
+  },
+  "apk_signature": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): true\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: CN=Cashflow Chains upload\nSigner #1 certificate SHA-256 digest: a3b9464d9265e0e50ef551c2186fa33b393e9a6f5296cc0f8232b7aa5bce6047\nSigner #1 certificate SHA-1 digest: 75cd3d8209af5c34110a8f6c43bf3bbfd5492409\nSigner #1 certificate MD5 digest: 1834bad26465acdcfcd20e833c9c6fb7\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 4096\nSigner #1 public key SHA-256 digest: 0f1770cbc381c5cb7ce6fd95f97efef300ad5e9b5f58ea28234aeca4befa5eb5\nSigner #1 public key SHA-1 digest: 16ae88ed605349c36dbc90b9d63f24fb2a566338\nSigner #1 public key MD5 digest: 042511809b46b8a2102297abdfee1086\n"
+}

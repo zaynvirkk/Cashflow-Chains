@@ -10,8 +10,9 @@ The commercial goal is interconnected progression: legitimate chains feed owned 
 
 ## Run locally
 
-- `./PlayNewCity.sh`: try the new empty-city opening with its own ordinary persistent save; existing cities are preserved.
-- `./Play.sh`: regular permanent-city player. Your named city, owned plots, buildings, obligations and operating days persist on this device.
+- Android test APK:`Builds/Release/CashflowChains-1.0.0.apk`. Current verification targets Android only;the visible emulator uses an ordinary separate PlayCity3 save.
+- `./PlayNewCity.sh`: historical desktop companion launcher;older saves are preserved.
+- `./Play.sh`: historical desktop companion;not the current runtime test target. Your named city, owned plots, buildings, obligations and operating days persist on this device.
 - `./PlayEmpireSandbox.sh`: separately built developer player with an isolated save and visible local-sandbox label. Rebuild with `Tools/build.sh empire-sandbox` before using it after source changes.
 - `./PlayContentQA.sh`: separately labelled historical puzzle content fixture; it is not a normal progression or payment test.
 
@@ -38,6 +39,6 @@ python3 Tools/cc2_content_validate.py
 python3 Tools/cc2_economy_sim.py
 ```
 
-The 104 reference layouts and deterministic eight-step resolver are retained. The current Unity suite passes175 tests; native and Android acceptance are recorded separately in [persistent-city progress](Docs/CC2/PERSISTENT_CITY_PROGRESS.md). Native scripts use real input and isolated saves, never purchase grants or edited clocks. The preliminary 180-day simulator rejects the five-tier progression for content exhaustion and excess Cash; this is not a commercially approved economy.
+The 104 reference layouts and deterministic eight-step resolver are retained. The current Unity suite passes178 tests; native and Android acceptance are recorded separately in [persistent-city progress](Docs/CC2/PERSISTENT_CITY_PROGRESS.md). Native scripts use real input and isolated saves, never purchase grants or edited clocks. The preliminary 180-day simulator rejects the five-tier progression for content exhaustion and excess Cash; this is not a commercially approved economy.
 
 Main and archive/pre-cc2-revision5 preserve baseline3ac5b62. Current work is on feature/cashflow-chains-2-economy. Builds, raw replays, private signing material and caches are local artifacts. No Play submission, hosting deployment, paid transaction or external account creation has occurred.

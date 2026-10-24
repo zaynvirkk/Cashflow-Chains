@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "snapshots": 21,
+  "allOverlapCounts": 0,
+  "firstActiveTime": 19.933310317993158,
+  "lastActiveTime": 23.433291339874255,
+  "scope": "Read-only actual Android snapshots throughout the accepted touch replay;not a physical traffic/economy simulation."
+}

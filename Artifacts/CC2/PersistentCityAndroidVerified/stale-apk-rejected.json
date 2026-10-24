@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "case": "Reject prior UI APK after current C#/font/art inputs changed",
+  "command": [
+    "python3",
+    "Tools/package_current_android_bundle.py"
+  ],
+  "exitCode": 1,
+  "reason": "APK predates game inputs;build Android first",
+  "toolSha256": "328a57841361595cdf6515a6a9ba43cb69573194340aa82c669a510d1a6f6268",
+  "staleApkSha256": "0d719d8fd9a325213be11d563a24cef80e1cd83eb8f7ebe1d517338b77048bc1"
+}

@@ -1,0 +1,13 @@
+# Current Android city-world acceptance
+
+24October2026. Source:Artifacts/AndroidCity/20261024T003003Z. The signed ARM64 APK runs through libndk_translation on the x86_64 API36 emulator,with16,384-byte pages and the laptop GPU. This is emulator proof,not a physical ARM64 phone test. Source/font/art hashes and signed APK identity are in report.json.
+
+Passed63 actual actions:empty land/zero residents,paid first home/café,real construction/day payout,age/gender/preferences,second retired household/material purchase,six residents,visible/enforced MIN/MAX zoom,compact/tall phone layouts,city desk/ledger,whole-city save recovery,full financing-term review,touch pan,offline cold restart preserving MAX,and actual Android edge Back. No edited save,clock,inventory,purchase or reward injection. The first edge gesture may reveal immersive system bars;the next actual edge gesture invokes game Back. No JNI or KEYCODE_BACK substitute is used for that case.
+
+All21 screen/process readability audits have no issues;both app-process logs have no matched runtime errors.21 actual traffic snapshots have no overlap and show movement. Both fresh process PCM captures are nonzero/unclipped;real-city-motion.mp4 is a19.94-second actual capture. These checks do not prove human enjoyment,physical haptics,retention or profit. Performance JSON is cumulative emulator/debug-capture timing,not per-screenshot or physical-phone60fps acceptance.
+
+The matching AAB is packaged by offline Gradle from Unity’s successful APK export. All290 game-asset/native-library payload files are byte-identical before signing. bundle-build-provenance.json records the exact inputs/command. Static checks verify target36,min26,ARM64-only,nondebuggable,16KB ELF/ZIP and bundle alignment,valid signatures/bundletool structure and stated permissions. No new SDK/network permission was introduced for the UI/fonts/art.
+
+Fresh178-case Editor suite passes.23 prior local authority cases on .NET6/.NET10 remain applicable to the unchanged domain. Earlier desktop reports are historical after Android-only steering. Failed Android000901Z is retained:clipped strategy/finance passages were repaired,and the edge-gesture driver was corrected to handle immersive bars with a foreground-checked physical gesture sequence. No audit was cleared to manufacture acceptance.
+
+Full production account/purchase fulfillment,manager/reward/merchant/offer/VIP/LiveOps systems,advanced industries,balance,coordinated reset,physical phones and human/commercial acceptance remain open. New monetization is inactive. No Play upload,real payment or revenue outcome is claimed.

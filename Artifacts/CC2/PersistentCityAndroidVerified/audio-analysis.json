@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "scope": "Fresh actual Android PCM from both app processes;nonzero unclipped signal,not a subjective sound/haptic-quality judgment.",
+  "captures": [
+    {
+      "file": "session-0-actual-mix.wav",
+      "seconds": 19.370666666666665,
+      "sampleRate": 24000,
+      "peak": 0.186798095703125,
+      "rms": 0.00844252427255373,
+      "sha256": "a7ae2c4f8739fd204eb9afb3011852c62ec2adb18acf1becc89810f5a828cec4"
+    },
+    {
+      "file": "session-1-actual-mix.wav",
+      "seconds": 21.504,
+      "sampleRate": 24000,
+      "peak": 0.034881591796875,
+      "rms": 0.007756773187543386,
+      "sha256": "44d3f57afd09b061f8d55e77215ed60812c06ad0d397bc452c3fa0fe2bcd6194"
+    }
+  ]
+}

@@ -100,9 +100,17 @@ try:
  before=city();capture('12-before-offline-resume');flush_audit();preserve_process_log();shell('input keyevent 3');shell('cmd connectivity airplane-mode enable');launch();assert [(b['Id'],b['X'],b['Y']) for b in city()['Properties']]==owned;assert city()['Day']>=before['Day'];until(lambda:next(e for e in layout()['Elements'] if e['Name']=='+')['DisplayText']=='MAX');capture('13-offline-cold-resume')
  # Preserve the Android edge-Back journey separately from KEYCODE_BACK.
  mode=shell('cmd overlay list');assert '[x] com.android.internal.systemui.navbar.gestural' in mode
- dims=layout();w,h=dims['Width'],dims['Height'];shell(f'input touchscreen swipe {w//2} {h-2} {w//2} {h-250} 180');time.sleep(.2)
+ dims=layout();w,h=dims['Width'],dims['Height']
+ # Immersive Android can consume the first edge swipe to reveal system bars.
+ # Keep the app foreground and deliver the second edge gesture while bars show.
+ foreground=shell('dumpsys activity activities');assert any(pkg in line for line in foreground.splitlines() if 'topResumedActivity=' in line)
+ for attempt in range(2):
+  shell(f'input touchscreen swipe 2 {h//2} {w//2} {h//2} 350');actions.append({'system':'Actual edge Back','stage':attempt});time.sleep(.25)
+  if state()['Screen']=='city-desk':break
+  assert state()['Screen']=='city-world'
+ until(lambda:state()['Screen']=='city-desk',15)
  nav=shell('dumpsys activity service com.android.systemui/.SystemUIService');(out/'system-navigation.txt').write_text(nav);assert 'backGestureDisabled=false' in nav
- shell(f'input touchscreen swipe 8 {h//2} {w//2} {h//2} 220');until(lambda:state()['Screen']=='city-desk');capture('14-actual-system-back-gesture')
+ capture('14-actual-system-back-gesture')
  # Audit every captured screen, preserving cumulative runtime text issues.
  flush_audit()
  issues=[v for a in audit for v in a['Issues']];assert not issues,issues

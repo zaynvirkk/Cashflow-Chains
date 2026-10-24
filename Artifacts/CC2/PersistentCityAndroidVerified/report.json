@@ -1,0 +1,609 @@
+{
+  "passed": true,
+  "scope": "Actual touch of the ARM64 APK through emulator native translation: same-city construction/materials,real trading,second property,finite demand/costs,financing review,bounded zoom/MAX-MIN restoration,continuous public streets,compact/tall layouts,offline cold resume and actual system edge-Back gesture. No edited save/clock/grant/purchase.",
+  "api": "36",
+  "page_size": 16384,
+  "abi": "x86_64,arm64-v8a",
+  "emulatorPrimaryAbi": "x86_64",
+  "nativeBridge": "libndk_translation.so",
+  "apk_sha256": "4b325a43286a1c30ecd546c0ba26749280fb95a556386d7114a1a0886ac9f462",
+  "source": {
+    "Assets/_Game/Editor/AssetImport.cs": "c7d9ab648a2d33cb3642052ebdf405bfc66530d2889be91077267d2549c515ad",
+    "Assets/_Game/Editor/BuildProject.cs": "f7cdb094ecdb74b7049c36662a9a76420f1e2259c58007ce1d63bdb920cf58ac",
+    "Assets/_Game/Editor/BillingPackages.cs": "4e246628ca5732236a9f6a1c41d31563b155ca65db3fb8457d9a1ef53ea48046",
+    "Assets/_Game/Editor/IapInstaller.cs": "687afce4a5f92146f7d3bd38ae43bbcae19ec277bbd6775129d15699d28b49ba",
+    "Assets/_Game/Editor/AndroidPermissions.cs": "700b05642f0f37a18cb61533f54a8bdafe61c85b15ec6479340112d7a20e65ff",
+    "Assets/_Game/Editor/FreeReleasePackages.cs": "ae87f88a5ca42b01b3297ac251b6f4755992e0ec0b7e20e97082619a3a24265b",
+    "Assets/_Game/Editor/CampaignProof.cs": "4eaec889ff66a7bc510133a9588a983fb8715d02231a1ee5bff181d52b76b027",
+    "Assets/_Game/Scripts/Infrastructure/PurchaseDelivery.cs": "0c8999d917a08f77f254d5f3dead555d04f4e4ceb17e10ce533544cdefa55196",
+    "Assets/_Game/Scripts/Infrastructure/LocalStore.cs": "9eed06d2763270b74dcc102f43bdd438d7b7b9054db8d919a8248be17e4a6738",
+    "Assets/_Game/Scripts/Infrastructure/AtomicSave.cs": "2ced7d753823ae3241a97e1750c8916e3b87b5b99102967c4d319a146e74e39d",
+    "Assets/_Game/Scripts/Presentation/FlatUI.cs": "2f0d4a6826766628cb7328bba51fcdf56d358c32760c10657e5ab37869ec148a",
+    "Assets/_Game/Scripts/Presentation/PermanentCityUI.cs": "c48d180a1f7d8a049ebe4f4edbbf26489ef7ed17d54677e0b7d70eba9b32562b",
+    "Assets/_Game/Scripts/Presentation/StudioUI.cs": "14779bb128f43e2441158277ba37c6514f9c59e62741bd51823d856938d2244f",
+    "Assets/_Game/Scripts/Presentation/EmpireSandboxUI.cs": "8a50fceff06843230ddb9d06bf49ca71198f474e3dd3a4a65da6cd08b23e9987",
+    "Assets/_Game/Scripts/Presentation/CityMapCamera.cs": "40629f65489f1cbac1047d1589d056df7ac4652bf3eea1ad018a626a8dbd743d",
+    "Assets/_Game/Scripts/Presentation/ResponsiveStage.cs": "089327960eb4fd36f7ee095aff3aaaedb2ef09684ed160d716a0b28441b8797a",
+    "Assets/_Game/Scripts/Presentation/TileCaptionLayout.cs": "5cd97b522ef4ae45bce7b21f254b310339fbd4a6c9c00f6392b385e72576da0f",
+    "Assets/_Game/Scripts/Presentation/BuildingGlyph.cs": "813c32c7b43bf4bc7c269960da61a8c3aebfe865bf8819fe5576891390a62cce",
+    "Assets/_Game/Scripts/Presentation/BuildingLife.cs": "7343b8eec995d9a55e7bb30dcb2865fc0d57b2ced9b87a54ba2f5ee2d344ad50",
+    "Assets/_Game/Scripts/Presentation/CityProgressionUI.cs": "bcb1b4ef2de8b6ba2c2e74a36a5195fbb463beda5268573ee42ddd646035674b",
+    "Assets/_Game/Scripts/Presentation/GameApp.cs": "ab466d3d421f650c808be3c132dd0bea2b0645d8a0e3a67b33375088c9ece305",
+    "Assets/_Game/Scripts/Presentation/EmpireOperationsUI.cs": "b16fa8320096203f3a8f7a5ce1b6e98ccf995701a8c1da32091266d2cf0610f0",
+    "Assets/_Game/Scripts/Presentation/CityStrategyUI.cs": "9967a8f710794c95c395a837fc37d3ee1d672949ff4c8d7cea3f8893948f7116",
+    "Assets/_Game/Scripts/Presentation/CityResidentsUI.cs": "675380fa0cf40387c245b37e5cf94c778654ab389153daa782e7800a0ab6133b",
+    "Assets/_Game/Scripts/Presentation/DevelopmentPlanningUI.cs": "94068d09fe254b3d79d7ed70a575461deefc771e27b63c3a1970a8ec49f33785",
+    "Assets/_Game/Scripts/Presentation/TravelRoutingUI.cs": "a5b0c77215a9428bcda8b185d52353c11e8261fc74092ffe3b2ef15556fbe2b6",
+    "Assets/_Game/Scripts/Presentation/CityBusinessUI.cs": "9136533c435e2c44c8a26d28b2a5f4054e03d139cbfcdd70fd613533562024f4",
+    "Assets/_Game/Scripts/Presentation/RuntimeReview.cs": "2397752e9663a15aa7c4c5e4742096c05cb060f23384f3ee2e784471a703bbaa",
+    "Assets/_Game/Scripts/Presentation/MobileGameApp.cs": "a4a87465f3c3a3bab3f9816e87b4be55d297ceb7a329ac51f5b759889c34eb17",
+    "Assets/_Game/Scripts/Presentation/CityGameSkin.cs": "801be4f3ac06d70207db9f278be721ed99acd17b6f85a22e134e197b244e1358",
+    "Assets/_Game/Scripts/Presentation/CityTerrain.cs": "4fc6c77c75dc768049d0befca4122327a8b52e8cdb6e4eb7bded7fd3da88b34f",
+    "Assets/_Game/Scripts/Presentation/PresentationMap.cs": "332eed8b30ea5ce55052dfd86f8cd11e8202601bf76a2216507565e8bff2401e",
+    "Assets/_Game/Scripts/Presentation/TradingClarityUI.cs": "1b3b194f988fbfaa6a5a7162576c56c2763ff0164a1783a51ad35395f73abbad",
+    "Assets/_Game/Scripts/Presentation/GameFeel.cs": "fb5ce8d6d31a3285bbe857f0da1b1cbac2568ea94a9908ddd28359f760af3148",
+    "Assets/_Game/Scripts/Presentation/CityHousingUI.cs": "bbc00657c4df93ba51800189919c657bbb6f8fdd5ce74c299b93e76210c6560d",
+    "Assets/_Game/Scripts/Presentation/InteractionFeel.cs": "98ee3c0449c723adfa2ea06af714ff0115a93472cfa72fb87a86def5d1d8c665",
+    "Assets/_Game/Scripts/Domain/TravelResolver.cs": "67634d550eed4c1dad2213015ed440f42b818c562c759084d957479621e74e2d",
+    "Assets/_Game/Scripts/Domain/VerifiedLayouts.cs": "3d5cdd27541b8bb2efb7c7ed621ca26dbc8960ab84016ea3c4b9bba964c90ed6",
+    "Assets/_Game/Scripts/Domain/Campaign.cs": "1efb0985e36d2db6e0dc1c9ec0446ec111afaf9abeabe112b878dcd5092746e0",
+    "Assets/_Game/Scripts/Domain/CommerceCatalog.cs": "68e50d0913bd7b266e21b92cc2d1a52370c7a75c7b8ee2136dc28be0d479efc1",
+    "Assets/_Game/Scripts/Domain/Cashflow.cs": "04c4c3a153aaabdd9dd530f0459fd6b7401a078cbb6e70a1d1524acd111ae7b1",
+    "Assets/_Game/Scripts/Domain/TrafficSimulation.cs": "41eaef0830197862b5a992ca4f8c7dcf41725fbc2729fa17888c9191125a3c12",
+    "Assets/_Game/Scripts/Domain/Daily.cs": "f38605b8561258dc39c9607940d781a18fd1731d66640370b1479bb69f40f203",
+    "Assets/_Game/Scripts/Domain/ExpansionCampaign.cs": "2db0a27b124dc8b976dfca0fb7fb75da229fbcb2d22d6dbd08da1428e1ed064f",
+    "Assets/_Game/Scripts/Domain/Contracts.cs": "0bf89403fad1fda454813063d9f80e26fbc9731c33705bc0d2f46dd9bfb06a5f",
+    "Assets/_Game/Scripts/Domain/Profile.cs": "b4f81a6e7879f17b6f14056dc4f298c7724ce0e019b6e262c7e604a85f9522f0",
+    "Assets/_Game/Scripts/Domain/CityInsight.cs": "2b87e6cd05872f4868932dab6740ec48834fc53582557d4f070739fd91b650f6",
+    "Assets/_Game/Scripts/Domain/TravelInsight.cs": "0ebc359da2f1fd4bfe791b85840ba514176bcd7f1f0e7ad1cfdc87949256188f",
+    "Assets/_Game/Scripts/Domain/CityCollections.cs": "ecc385875054ac99f74388cafe953038b8d6ca315de011b0a7e74c77fb3a1aa8",
+    "Assets/_Game/Scripts/Domain/ContentQa.cs": "b29c7b08c793f6b164a14ad22c1d680111b3df9a74b234f381fa88905c0d7720",
+    "Assets/_Game/Scripts/Domain/City/CityProjection.cs": "4917fbeeb3d60882ce2d8490a2ca2e9d5be735fb35b3abdc8e23322a39c75d4d",
+    "Assets/_Game/Scripts/Domain/City/CityResidents.cs": "3e34e8692d6bc63e30ec3649ca631678887d8a316bfd77a84f6febf255abb121",
+    "Assets/_Game/Scripts/Domain/City/CityFinance.cs": "da2eefee9f1ee8823f2c769d78975e83e6b039952ea0b56ed8fe38a4ee16491b",
+    "Assets/_Game/Scripts/Domain/City/CityCommands.cs": "c97b12fbd8b1bff32dce5eaa2701c8df86b036793a331376eee593ec215d3dcb",
+    "Assets/_Game/Scripts/Domain/City/CityHousing.cs": "068880185e20989dec5de195359e4fb427eb17c4bdfea64c0993c87faa610e1e",
+    "Assets/_Game/Scripts/Domain/City/LegacyCityDayModel.cs": "e86f9f25ce46eb68b8481432e29a6a215e39e1424be1ad6b15246ef5afeb6430",
+    "Assets/_Game/Scripts/Domain/City/CityState.cs": "997e22f57fc3bf22491c5f387dbc43ef9418337808f4f4f7ccf6f8abea212d39",
+    "Assets/_Game/Scripts/Domain/City/CityCatalog.cs": "c0732f3b58575c9bd8d0c8c646ef197041457bc856774ce191c3387add58e556",
+    "Assets/_Game/Scripts/Domain/City/CityInvestment.cs": "dec44ec6bd7abb1d2d5cbc4f9c5e3f82dba1f77586e0fc48e1e65b1e22cf1133",
+    "Assets/_Game/Scripts/Domain/City/CityDayModel.cs": "ca8c89ba18f15d810f31ac1e0597058cf93756f55898d52473da4374a9d81983",
+    "Assets/_Game/Scripts/Domain/City/CityPopulation.cs": "15a8eafbc31d8f53e3849e0e56043c4995c0583c86401994e3cf95854f4b33f3",
+    "Assets/_Game/Scripts/Domain/City/CityClock.cs": "0b2e628a23798adc18fc468f03e3a622c6b00e7e551ac3956a59d0f1f03b664f",
+    "Assets/_Game/Scripts/Domain/Economy/RoundRewardPolicy.cs": "2abab5fe036bc9c40b369611a03a0bafba85dcff53910dfa29b4ebbf0154d800",
+    "Assets/_Game/Scripts/Domain/Economy/CurrencyLedger.cs": "001257a3265c4a499803f490a4bc5213bce90fd0a081eaddec24b8258c3642a8",
+    "Assets/_Game/Scripts/Domain/Economy/EconomyCatalog.cs": "6b6e8253d6f2f11581ac246e2693b8115e68d7474de9c24328f06f7d16f306d2",
+    "Assets/_Game/Scripts/Domain/Economy/LegacyMigration.cs": "3df7c8cf4fa4427bfd0e4111216252d992b9ea7751acde6926c1a261d1942e55",
+    "Assets/_Game/Scripts/Domain/Empire/DispatchResearch.cs": "2ec6f39f51b5390958225ad22988cf3b04ed222da2adaf2bcc285ea317f1ff53",
+    "Assets/_Game/Scripts/Domain/Empire/OperationsCatalog.cs": "9b4803ce63ac30ad9446a222c8ffc05f3d4352972b4537915f8cdf47dc6d44e9",
+    "Assets/_Game/Scripts/Domain/Empire/DevelopmentPlanning.cs": "291db1e42e45a34ff985737347b7a82dc4aa08b53297a5dedf0b7a049524167c",
+    "Assets/_Game/Scripts/Domain/Empire/EmpireAccount.cs": "be3e6536d2b5f704eea71549bb74525439c79ef43dcd7d8a5db412197c51f755",
+    "Assets/_Game/Tests/EditMode/CC2EmpireTests.cs": "d2129039402a07824cdec30b94c363adfcdc4fe97bbf2728530887acf1744b38",
+    "Assets/_Game/Tests/EditMode/TrafficSimulationTests.cs": "6c3ce9002a6480979bb0170f716634cd8c0e1ff2a300eb2c1922c5ec4b8dd03e",
+    "Assets/_Game/Tests/EditMode/ProductionExpansionTests.cs": "0efe5b85dd7dc3eb4603b515b4f683d851584555e9eb702310951e1b9b1e65cb",
+    "Assets/_Game/Tests/EditMode/SaveTests.cs": "b2064891273fe5cd47841d29fddfdd033eb1cff0c415e4c3dea53459ce57583b",
+    "Assets/_Game/Tests/EditMode/CityClockTests.cs": "4a4202040278ad17c1867258cf38c1636dcd75bd68244e3662209344767c2463",
+    "Assets/_Game/Tests/EditMode/StoreTests.cs": "6376a1e9755e6e621709a33f7426df1407dbe1f64902bd064a37328d785f1338",
+    "Assets/_Game/Tests/EditMode/TravelRulesTests.cs": "808baf95686b85dad709960cd089202930f96ea9059c40342c06201cc38ec5b1",
+    "Assets/_Game/Tests/EditMode/CityHousingTests.cs": "1392cd75121f6b7fe8bd5468891e084ec05ba4fbf022123d02591c7da494f6af",
+    "Assets/_Game/Tests/EditMode/DevelopmentPlanningTests.cs": "7b565973a9a40c741d861165dcad3b52524274bc07854a9ec7ad48e7c0a29e66",
+    "Assets/_Game/Tests/EditMode/CityResidentProfilesTests.cs": "e785f35fee7f601448889efe0891223fe0942105084b0ca7212d3a49218f1cf6",
+    "Assets/_Game/Tests/EditMode/CC2EconomyTests.cs": "4f8c8995e7a5df6ed065f3e8b0b09158d04bb6641f598c0104c9e2119da056f6",
+    "Assets/_Game/Tests/EditMode/CampaignTests.cs": "40a3368a33e3092a1f5283224211e7a463e39b467a475f4dc7a219db75001d04",
+    "Assets/_Game/Tests/EditMode/PermanentCityLayoutTests.cs": "da0bc8a4c340a44964ed8abe224232100625c8e696d874ad3b680e37c0e12957",
+    "Assets/_Game/Tests/EditMode/PermanentCityTests.cs": "f8dce18f6a61d4fa17c10955dee9a85aeaa296709c8cc3c1ec1f70f786b4a7d8",
+    "Assets/_Game/Tests/EditMode/CityInsightTests.cs": "ab77b5847bd92da842086f7467997961fcfed48ec0ddd45947c2fbdba3d4bb37",
+    "Assets/_Game/Tests/EditMode/CC2OperationsTests.cs": "0900f93575a567154ee36e14ed20736c0d773b562a2ce48132fba383ebf2a21c",
+    "Assets/_Game/Tests/EditMode/CoreTests.cs": "e6ce387a6b7372ece77e1292f6d089ed1b135be8faa6e217ad4948494c89f5c0",
+    "Assets/_Game/Tests/EditMode/CityProjectionTests.cs": "99b24d5bfaca0383040cb5a27a902b4028f5dbd77ffd5b08bef130a8d1add30e",
+    "Assets/_Game/Tests/EditMode/CityOperatingIntegrityTests.cs": "e130a4b8f5fce61f3e9c9bc3cca912f6dc457f6c61fa5bf3915a49c441921794",
+    "Assets/_Game/Tests/EditMode/VerifiedLayoutsTests.cs": "6a76dd1c09346b336772fee6bba8f2205197b0ff9380bfd2400c1f2d3c03e103",
+    "Assets/_Game/Tests/EditMode/CityBusinessDecisionsTests.cs": "4e83b693ba6089dc748569f9885d38f17781fafb15870e948be944d5351a0f1b",
+    "Assets/_Game/Data/CC2/balance-v1.json": "ad610061eb82d380f83923191e52d04a159488c078eb438364ef370bdf824d26",
+    "Assets/_Game/Resources/CC2/balance-v1.json": "ad610061eb82d380f83923191e52d04a159488c078eb438364ef370bdf824d26",
+    "Assets/_Game/Resources/Art/V6/city-landscape.png.meta": "835e25787875bf15f439e804418fe2561cef42924318277076b0edd73e99cca3",
+    "Assets/_Game/Resources/Art/V6/city-landscape.png": "bd5164246d98e2dc081f19eb229ba28d6fbe3b7cae5c0718a627fde6f56e2087",
+    "Assets/_Game/Resources/Art/V6/city-landscape-portrait.png": "916bad68812af7c781a1f6e8491dea5753b13239b5f6590cbb340ce2bfa72be9",
+    "Assets/_Game/Resources/Art/V6/city-landscape-portrait.png.meta": "89addab7c7fd01f2f85f4042ed9bc60978d0ad20abe50d73ad0006e13376a20a",
+    "Assets/_Game/Resources/Fonts/V6/CashflowUI-Semibold.ttf": "4221791aedbd72cfdb769cae1ec21536c7eafa45bede336551b3b2f77d12a940",
+    "Assets/_Game/Resources/Fonts/V6/OFL.txt.meta": "646715b1198b6397cc5400a697e65d84f65d4c7eec65569e97013ae81384bca4",
+    "Assets/_Game/Resources/Fonts/V6/CashflowUI-Semibold.ttf.meta": "4ea89cd297921e8e1272baa3bc967fa37d810306e0128233f6dcab9e11bfadc9",
+    "Assets/_Game/Resources/Fonts/V6/CashflowUI-ExtraBold.ttf": "7a23e86859458d7e1c593c1e8665bbc5c991a3cfbb8528e84caff6901544350b",
+    "Assets/_Game/Resources/Fonts/V6/CashflowUI-ExtraBold.ttf.meta": "d3328e0aa417494af2a671e5d8b9df41c156264a141fa65f2f88e8a99362655d",
+    "Assets/_Game/Resources/Fonts/V6/OFL.txt": "efbb0c9e864cef973982d9a17567e6be5c3d1759695574586f3f18c7ecca064b",
+    "Tools/android_city_playtest.py": "22297f6ed46bbbb6160bbecf1ea8fbb0c86d7d7a78db5d6d2b77db4cc545e541"
+  },
+  "actions": [
+    {
+      "tap": "BUILD & DEVELOP",
+      "index": 0,
+      "pixels": [
+        531,
+        1224
+      ]
+    },
+    {
+      "tap": "BUILD",
+      "index": 0,
+      "pixels": [
+        209,
+        627
+      ]
+    },
+    {
+      "tap": "START CONSTRUCTION",
+      "index": 0,
+      "pixels": [
+        360,
+        1143
+      ]
+    },
+    {
+      "tap": "Owned plot 2 1",
+      "index": 0,
+      "pixels": [
+        444,
+        538
+      ]
+    },
+    {
+      "tap": "BUILD",
+      "index": 0,
+      "pixels": [
+        511,
+        627
+      ]
+    },
+    {
+      "tap": "START CONSTRUCTION",
+      "index": 0,
+      "pixels": [
+        360,
+        1143
+      ]
+    },
+    {
+      "tap": "City census",
+      "index": 0,
+      "pixels": [
+        445,
+        191
+      ]
+    },
+    {
+      "tap": "INSPECT A HOME",
+      "index": 0,
+      "pixels": [
+        360,
+        1176
+      ]
+    },
+    {
+      "system": "Android Back"
+    },
+    {
+      "system": "Android Back"
+    },
+    {
+      "tap": "Owned plot 0 1",
+      "index": 0,
+      "pixels": [
+        108,
+        538
+      ]
+    },
+    {
+      "tap": "BUILD",
+      "index": 0,
+      "pixels": [
+        209,
+        627
+      ]
+    },
+    {
+      "tap": "FIND WOOD",
+      "index": 0,
+      "pixels": [
+        360,
+        1143
+      ]
+    },
+    {
+      "tap": "BUY 4 \u00b7 $12",
+      "index": 0,
+      "pixels": [
+        360,
+        1143
+      ]
+    },
+    {
+      "tap": "START CONSTRUCTION",
+      "index": 0,
+      "pixels": [
+        360,
+        1143
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        332,
+        1024
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        332,
+        1024
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        332,
+        1024
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        332,
+        1024
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        332,
+        1024
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        332,
+        1024
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        332,
+        1024
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        332,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "FIT CITY",
+      "index": 0,
+      "pixels": [
+        202,
+        1024
+      ]
+    },
+    {
+      "tap": "CITY LEDGER",
+      "index": 0,
+      "pixels": [
+        188,
+        1224
+      ]
+    },
+    {
+      "tap": "MY CITY",
+      "index": 0,
+      "pixels": [
+        360,
+        1235
+      ]
+    },
+    {
+      "tap": "\u2212",
+      "index": 0,
+      "pixels": [
+        71,
+        1024
+      ]
+    },
+    {
+      "tap": "FIT CITY",
+      "index": 0,
+      "pixels": [
+        202,
+        1024
+      ]
+    },
+    {
+      "tap": "CITY DESK",
+      "index": 0,
+      "pixels": [
+        644,
+        147
+      ]
+    },
+    {
+      "tap": "SETTINGS",
+      "index": 0,
+      "pixels": [
+        524,
+        1024
+      ]
+    },
+    {
+      "tap": "SAVE RECOVERY",
+      "index": 0,
+      "pixels": [
+        360,
+        1137
+      ]
+    },
+    {
+      "tap": "KEEP MY CITY",
+      "index": 0,
+      "pixels": [
+        360,
+        1081
+      ]
+    },
+    {
+      "tap": "FINANCING & BUSINESS STRATEGY",
+      "index": 0,
+      "pixels": [
+        193,
+        1024
+      ]
+    },
+    {
+      "tap": "COMPARE FINANCING",
+      "index": 0,
+      "pixels": [
+        360,
+        397
+      ]
+    },
+    {
+      "tap": "REVIEW $100 TERMS",
+      "index": 0,
+      "pixels": [
+        360,
+        696
+      ]
+    },
+    {
+      "system": "Android Back"
+    },
+    {
+      "system": "Android Back"
+    },
+    {
+      "system": "Android Back"
+    },
+    {
+      "tap": "RETURN TO MY CITY",
+      "index": 0,
+      "pixels": [
+        360,
+        745
+      ]
+    },
+    {
+      "pan": [
+        413,
+        1059,
+        493,
+        1159
+      ]
+    },
+    {
+      "tap": "FIT CITY",
+      "index": 0,
+      "pixels": [
+        302,
+        2016
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        498,
+        2016
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        498,
+        2016
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        498,
+        2016
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        498,
+        2016
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        498,
+        2016
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        498,
+        2016
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        498,
+        2016
+      ]
+    },
+    {
+      "tap": "+",
+      "index": 0,
+      "pixels": [
+        498,
+        2016
+      ]
+    },
+    {
+      "system": "Actual edge Back",
+      "stage": 0
+    },
+    {
+      "system": "Actual edge Back",
+      "stage": 1
+    }
+  ],
+  "textIssues": [],
+  "runtimeErrors": [],
+  "audioSignalChecks": [
+    {
+      "file": "session-0-actual-mix.wav",
+      "seconds": 19.370666666666665,
+      "sampleRate": 24000,
+      "peak": 0.186798095703125,
+      "rms": 0.00844252427255373,
+      "sha256": "a7ae2c4f8739fd204eb9afb3011852c62ec2adb18acf1becc89810f5a828cec4"
+    },
+    {
+      "file": "session-1-actual-mix.wav",
+      "seconds": 21.504,
+      "sampleRate": 24000,
+      "peak": 0.034881591796875,
+      "rms": 0.007756773187543386,
+      "sha256": "44d3f57afd09b061f8d55e77215ed60812c06ad0d397bc452c3fa0fe2bcd6194"
+    }
+  ]
+}
