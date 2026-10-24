@@ -26,6 +26,7 @@ namespace CashflowChains.City {
   public static CityPublicBuilding Building(int id)=>Buildings.FirstOrDefault(b=>b.Id==id);
   public static CityPublicBuilding At(int x,int y)=>Buildings.FirstOrDefault(b=>b.X==x&&b.Y==y);
   public static bool Vacant(int x,int y)=>(x>=Size||y>=Size)||x==7&&(y==6||y==7);
+  public static IEnumerable<(int X,int Y)> Vacancies(CityState city){for(int y=0;y<city.Height;y++)for(int x=0;x<city.Width;x++)if(Vacant(x,y)&&!city.Properties.Any(p=>p.X==x&&p.Y==y||p.PendingX==x&&p.PendingY==y))yield return (x,y);}
   public static IEnumerable<CityPublicBuilding> Available(CityState city)=>Buildings.Where(b=>b.OfferPrice>0&&city.Day>=b.AvailableDay&&!city.Properties.Any(p=>p.X==b.X&&p.Y==b.Y));
   public static CityHouseholdOccupancy[] Households(int day,IEnumerable<CityProperty> owned){var p=(owned??Enumerable.Empty<CityProperty>()).Where(b=>b.Level>0).ToArray();return Buildings.Where(b=>b.Housing&&!p.Any(o=>o.X==b.X&&o.Y==b.Y)).Select(b=>new CityHouseholdOccupancy{PropertyId=b.Id,Units=CityHousing.Units(b.Level),Occupied=CityHousing.Units(b.Level),Families=Enumerable.Range(0,CityHousing.Units(b.Level)).Select(unit=>CityResidents.Household(b.Id,unit,day)).ToArray()}).ToArray();}
  }

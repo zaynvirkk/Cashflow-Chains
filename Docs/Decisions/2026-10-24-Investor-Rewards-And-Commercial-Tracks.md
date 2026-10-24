@@ -11,3 +11,5 @@ Earned bronze chests use the exact disclosed 10,000-basis-point table from the c
 Policy basis checked against primary sources: [Google Play payments and randomized-item disclosure](https://support.google.com/googleplay/android-developer/answer/9858738?hl=en) and [purchase verification/fulfillment](https://developer.android.com/google/play/billing/integrate). These are requirements, not evidence of live commerce or commercial success.
 
 No popups on entry, forced ad, streak penalty, hidden chance, near-miss animation or payment to correct a touch. One discoverable rewards hub links all tracks. Core free city play remains available. No external accounts, purchases, deployment or public release authorized by this change.
+
+Premium-track grants retain Purchased origin, including indirectly purchased chests. The offline earned-chest route rejects a remaining paid container; this is covered by the paid-provenance regression. Acquired expansion exposes all new peripheral addresses and preserves core ownership/population. Instrumentation caches forecasts by actual ledger revision and never changes financial outcomes or weakens text audits.

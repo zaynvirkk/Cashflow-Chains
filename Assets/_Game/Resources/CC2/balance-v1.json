@@ -4145,7 +4145,7 @@
         "Id": "cc2.seasonpass",
         "Title": "City Season Pass",
         "Family": "season",
-        "Description": "Extra rewards at earned tiers in the current 28-day season. One-time purchase for this season; no automatic renewal or automatic XP. Earned rewards remain claimable after the season.",
+        "Description": "Extra rewards at earned tiers in this 28-day season; no renewal. First five profitable days give 10 XP each; acquisition 30, upgrade 20; cap 100 XP per UTC day. Earned tiers unlock retroactively and remain claimable after expiry.",
         "MinimumAssets": 2,
         "Consumable": true,
         "Items": []

@@ -28,6 +28,8 @@ def until(test,timeout=60):
   time.sleep(.3)
  raise AssertionError('Real touch / city condition timed out')
 def tap(name,index=0,kind=None):
+ # Read a new exported layout after camera/modal changes; never tap stale coordinates.
+ prior_frame=layout()['Frame'];until(lambda:layout()['Frame']>=prior_frame+12,15)
  until(lambda:any(e['Name']==name and (kind is None or e['Kind']==kind) for e in layout()['Elements']),15)
  items=[e for e in layout()['Elements'] if e['Name']==name and (kind is None or e['Kind']==kind)]
  assert items,(name,[e['Name'] for e in layout()['Elements']]);priority=max(e['Priority'] for e in items);items=[e for e in items if e['Priority']==priority];r=items[index]['Pixels'];x=round(r['x']+r['width']/2);y=round(r['y']+r['height']/2)
@@ -40,7 +42,7 @@ def preserve_process_log():
  until(lambda:shell('test -f '+remote+'/actual-mix.wav && echo ready || true')=='ready',60)
  name='session-'+str(len(process_logs))+'-actual-mix.wav';cmd('pull',remote+'/actual-mix.wav',out/name)
  with wave.open(str(out/name)) as f:
-  count=f.getnframes();channels=f.getnchannels();rate=f.getframerate();samples=struct.unpack('<'+'h'*(count*channels),f.readframes(count));measurement={'file':name,'seconds':count/rate,'sampleRate':rate,'peak':max(map(abs,samples))/32768,'rms':math.sqrt(sum(x*x for x in samples)/len(samples))/32768,'sha256':hashlib.sha256((out/name).read_bytes()).hexdigest()};assert measurement['rms']>.001 and measurement['peak']<.999,measurement;audio.append(measurement)
+  count=f.getnframes();channels=f.getnchannels();rate=f.getframerate();samples=struct.unpack('<'+'h'*(count*channels),f.readframes(count));measurement={'file':name,'seconds':count/rate,'sampleRate':rate,'peak':max(map(abs,samples))/32768,'rms':math.sqrt(sum(x*x for x in samples)/len(samples))/32768,'sha256':hashlib.sha256((out/name).read_bytes()).hexdigest()};assert measurement['rms']>.001 and .06<measurement['peak']<.999,measurement;audio.append(measurement)
  pid=shell('pidof '+pkg).split()[0];value=cmd('logcat','--pid='+pid,'-d','-t','3500');process_logs.append(value);(out/('session-'+str(len(process_logs))+'-logcat.txt')).write_text(value)
 def flush_audit():
  old=shell('cat '+remote+'/performance.json 2>/dev/null || true')
@@ -59,10 +61,12 @@ def launch():
  # Clear derived capture files only;keep Saves untouched so a cold run cannot reuse an older process audit/audio.
  shell('rm -f '+ ' '.join(remote+'/'+name for name in ['campaign-state.json','empire-state.json','ui-layout.json','text-overflows.json','performance.json','traffic-state.json','city-world-state.json','actual-mix.wav']))
  shell('am start -n '+activity+' --es unity '+shlex.quote('-capture-dir '+remote+' -save-dir '+remote+'/Saves'))
- until(lambda:state()['Screen']=='city-world');time.sleep(2)
+ until(lambda:state()['Screen']=='city-world');until(lambda:shell('test -f '+remote+'/ui-layout.json && echo ready || true')=='ready',30);time.sleep(2)
  shell('uiautomator dump '+remote+'/system-ui.xml');tree=ET.fromstring(shell('cat '+remote+'/system-ui.xml'))
  if any(n.get('resource-id')=='android:id/immersive_cling_title' for n in tree.iter('node')):
   n=next(n for n in tree.iter('node') if n.get('resource-id')=='android:id/ok');x1,y1,x2,y2=map(int,re.findall(r'\d+',n.get('bounds')));shell(f'input tap {(x1+x2)//2} {(y1+y2)//2}');actions.append({'system':'Dismiss Android full-screen help'});time.sleep(1)
+ # Exercise audible real controls during the listener's first26-second recording window. No reward is claimed.
+ tap('Metro rewards');tap('Daily reward 7');back();back();until(lambda:state()['Screen']=='city-world')
 assert cmd('get-serialno').splitlines()[-1].startswith('emulator-'),'This test is isolated to the local emulator'
 print(cmd('install','--no-incremental','-r',apk,timeout=180));activity=shell('cmd package resolve-activity --brief '+pkg).splitlines()[-1]
 try:
@@ -98,6 +102,7 @@ try:
  until(lambda:abs(read('city-world-state.json')['Zoom']-read('city-world-state.json')['MinimumZoom'])<.001 and any(e['Name']=='Metro zoom out' and e['DisplayText']=='MIN' for e in layout()['Elements']))
  assert next(e for e in layout()['Elements'] if e['Name']=='Metro zoom out')['DisplayText']=='MIN'
  capture('04c-real-minimum-zoom-and-growing-access-streets');tap('Metro fit')
+ tap('East land gate');capture('04r-real-expansion-permit');assert any(e['Name']=='BUY LAND · $640' for e in layout()['Elements']);back();tap('Metro fit')
  tap('Metro books');until(lambda:state()['Screen']=='city-ledger');capture('05-real-population-bills-and-demand');tap('MY CITY');tap('Metro zoom out');capture('06-zoom-out');tap('Metro fit')
  tap('Metro assets');until(lambda:state()['Screen']=='city-desk');capture('07-owned-city-desk');tap('SETTINGS');tap('SAVE RECOVERY');capture('07b-safe-city-recovery');assert not any(e['Name'] in ('NEW LOCAL GAME','ARCHIVE & START OVER') for e in layout()['Elements']);tap('KEEP MY CITY');tap('FINANCING & BUSINESS STRATEGY');tap('COMPARE FINANCING');tap('REVIEW $100 TERMS');capture('08-financing-terms');back();back();back();until(lambda:state()['Screen']=='city-desk');tap('RETURN TO MY CITY')
  for size,name in [('720x1280','09-compact-mobile'),('720x1600','10-tall-mobile')]:
@@ -124,11 +129,15 @@ try:
  capture('14-actual-system-back-gesture')
  # Audit every captured screen, preserving cumulative runtime text issues.
  flush_audit()
+ traffic_samples=[json.loads(f.read_text()) for f in out.glob('*-traffic-state.json')]
+ assert traffic_samples and all(v['OverlapCount']==0 for v in traffic_samples), 'Overlapping traffic in captured samples'
+ first,last=traffic_samples[0],traffic_samples[-1]
+ assert any(any(c['Id']==d['Id'] and abs(c['X']-d['X'])+abs(c['Y']-d['Y'])>1 for d in last['Cars']) for c in first['Cars']), 'Static captured traffic'
  issues=[v for a in audit for v in a['Issues']];assert not issues,issues
  (out/'meminfo.txt').write_text(shell('dumpsys meminfo '+pkg));preserve_process_log();log='\n'.join(process_logs);(out/'logcat.txt').write_text(log)
  errors=[line for line in log.splitlines() if re.search(r'FATAL EXCEPTION|Fatal signal|NullReferenceException|MissingReferenceException|MissingMethodException|DllNotFoundException|InvalidOperationException|IndexOutOfRangeException|ArgumentException',line)];assert not errors,errors
  for f,h in source.items():assert hashlib.sha256((p/f).read_bytes()).hexdigest()==h,'Source changed during Android replay: '+f
- report={'passed':True,'scope':'Actual touch of the ARM64 APK through emulator native translation: dense established city with no owned assets or public income,existing-property acquisitions,preserved tenants/population,real private income,visual career/calendar,idempotent daily and investor milestone claims,earned chest odds/opening/history,free and optional premium season tracks,unavailable paid checkout with complete benefit previews,ownership-transfer timing,finite demand/costs,financing review,bounded zoom/MAX-MIN restoration,public and private property-connected access streets,visual business exchange and inspectable real costs,compact/tall layouts,offline cold resume and actual system edge-Back gesture. No edited save/clock/grant/purchase.','api':shell('getprop ro.build.version.sdk'),'page_size':int(shell('getconf PAGE_SIZE')),'abi':shell('getprop ro.product.cpu.abilist'),'emulatorPrimaryAbi':shell('getprop ro.product.cpu.abi'),'nativeBridge':shell('getprop ro.dalvik.vm.native.bridge'),'apk_sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'source':source,'actions':actions,'textIssues':issues,'runtimeErrors':errors,'audioSignalChecks':audio}
+ report={'passed':True,'scope':'Actual touch of the ARM64 APK through emulator native translation: dense established city with no owned assets or public income,existing-property acquisitions,preserved tenants/population,real private income,visual career/calendar,idempotent daily and investor milestone claims,earned chest odds/opening/history,free and optional premium season tracks,unavailable paid checkout with complete benefit previews,ownership-transfer timing,visible edge expansion permit and preserved city,finite demand/costs,financing review,bounded zoom/MAX-MIN restoration,public and private property-connected access streets,visual business exchange and inspectable real costs,compact/tall layouts,offline cold resume and actual system edge-Back gesture. No edited save/clock/grant/purchase.','api':shell('getprop ro.build.version.sdk'),'page_size':int(shell('getconf PAGE_SIZE')),'abi':shell('getprop ro.product.cpu.abilist'),'emulatorPrimaryAbi':shell('getprop ro.product.cpu.abi'),'nativeBridge':shell('getprop ro.dalvik.vm.native.bridge'),'apk_sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'source':source,'actions':actions,'textIssues':issues,'runtimeErrors':errors,'trafficSamples':len(traffic_samples),'trafficOverlapCount':0,'trafficMovementObserved':True,'audioSignalChecks':audio}
  (out/'report.json').write_text(json.dumps(report,indent=2));(p/'Artifacts/latest-android-city.txt').write_text(str(out));print(out)
 finally:
  shell('wm size reset');shell('cmd connectivity airplane-mode disable');shell('input keyevent 3')
