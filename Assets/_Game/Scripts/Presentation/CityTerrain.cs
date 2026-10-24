@@ -1,20 +1,34 @@
+using System.Collections.Generic;
+using CashflowChains.City;
 using LocalGame;
 using UnityEngine;
 using UnityEngine.UI;
 namespace CashflowChains.Presentation {
- // Public streets extend across the world;owned plots are a separate masked layer.
+ // One regional highway; local access grows with actual construction.
  public sealed class CityTerrain:MaskableGraphic {
-  public int Columns,Rows;public float Cell;public CityRoads Traffic;public RectTransform ControlSpace,Viewport;
+  public int Columns,Rows;public float Cell;public CityRoads Traffic;public RectTransform ControlSpace,Viewport;public CityStreets Streets;
   readonly Vector3[] corners=new Vector3[4];Matrix4x4 prior;Vector2 priorSize;
-  void Update(){var matrix=ControlSpace?ControlSpace.localToWorldMatrix:transform.localToWorldMatrix;var size=Viewport?Viewport.rect.size:Vector2.zero;if(!(Studio.Profile?.ReducedMotion??false)||matrix!=prior||size!=priorSize)SetVerticesDirty();prior=matrix;priorSize=size;}
-  bool Junction(float distance,int count){int index=Mathf.RoundToInt(distance/Cell);return index>=0&&index<=count&&Mathf.Abs(distance-index*Cell)<23;}
-  protected override void OnPopulateMesh(VertexHelper vh){vh.Clear();if(Cell<=0||Columns<1||Rows<1)return;var space=ControlSpace?ControlSpace:rectTransform;var r=space.rect;Color asphalt=FlatUI.Hex("#243345"),walk=FlatUI.Hex("#7C8D76"),paint=new Color(1,.87f,.6f,.5f);float left=r.xMin+Cell/2,top=r.yMax-Cell/2;float minX=r.xMin-Cell*4,maxX=r.xMax+Cell*4,minY=r.yMin-Cell*4,maxY=r.yMax+Cell*4;
-   if(Viewport){Viewport.GetWorldCorners(corners);minX=minY=float.MaxValue;maxX=maxY=float.MinValue;foreach(var corner in corners){var p=space.InverseTransformPoint(corner);minX=Mathf.Min(minX,p.x);maxX=Mathf.Max(maxX,p.x);minY=Mathf.Min(minY,p.y);maxY=Mathf.Max(maxY,p.y);}minX-=Cell;maxX+=Cell;minY-=Cell;maxY+=Cell;}
-   for(int x=0;x<=Columns;x++){float at=left+x*Cell;CraftedPanel.Line(vh,new Vector2(at,minY),new Vector2(at,maxY),28,walk);CraftedPanel.Line(vh,new Vector2(at,minY),new Vector2(at,maxY),25,asphalt);}
-   for(int y=0;y<=Rows;y++){float at=top-y*Cell;CraftedPanel.Line(vh,new Vector2(minX,at),new Vector2(maxX,at),28,walk);CraftedPanel.Line(vh,new Vector2(minX,at),new Vector2(maxX,at),25,asphalt);}
-   for(int x=0;x<=Columns;x++){float at=left+x*Cell;for(float y=Mathf.Floor(minY/28)*28;y<maxY;y+=28)if(!Junction(top-y-4.5f,Rows))CraftedPanel.Line(vh,new Vector2(at,y),new Vector2(at,y+9),1.2f,paint);}
-   for(int y=0;y<=Rows;y++){float at=top-y*Cell;for(float x=Mathf.Floor(minX/28)*28;x<maxX;x+=28)if(!Junction(x+4.5f-left,Columns))CraftedPanel.Line(vh,new Vector2(x,at),new Vector2(x+9,at),1.2f,paint);}
-   for(int x=0;x<=Columns;x++)for(int y=0;y<=Rows;y++){Vector2 p=new Vector2(left+x*Cell,top-y*Cell);for(int side=-1;side<=1;side+=2)for(int stripe=-2;stripe<=2;stripe++){CraftedPanel.Line(vh,p+new Vector2(side*18,stripe*3),p+new Vector2(side*23,stripe*3),1.1f,new Color(.92f,.95f,.88f,.7f));CraftedPanel.Line(vh,p+new Vector2(stripe*3,side*18),p+new Vector2(stripe*3,side*23),1.1f,new Color(.92f,.95f,.88f,.7f));}if(x>0&&x<Columns&&y>0&&y<Rows){double phase=(Traffic?.SimulationTime??0)%9;CraftedPanel.Diamond(vh,p+new Vector2(-18,-18),2.5f,FlatUI.Hex(phase<3.5?"#8BFFC3":"#FF857B"));CraftedPanel.Diamond(vh,p+new Vector2(18,18),2.5f,FlatUI.Hex(phase>=4.5&&phase<8?"#8BFFC3":"#FF857B"));}}
+  void Update(){var matrix=ControlSpace?ControlSpace.localToWorldMatrix:transform.localToWorldMatrix;var size=Viewport?Viewport.rect.size:Vector2.zero;if(matrix!=prior||size!=priorSize)SetVerticesDirty();prior=matrix;priorSize=size;}
+  protected override void OnPopulateMesh(VertexHelper vh){
+   vh.Clear();if(Cell<=0||Columns<1||Rows<1||Streets==null)return;
+   var space=ControlSpace?ControlSpace:rectTransform;var r=space.rect;
+   float left=r.xMin+Cell/2,top=r.yMax-Cell/2,minX=r.xMin-Cell*4,maxX=r.xMax+Cell*4;
+   if(Viewport){Viewport.GetWorldCorners(corners);minX=float.MaxValue;maxX=float.MinValue;foreach(var corner in corners){var p=space.InverseTransformPoint(corner);minX=Mathf.Min(minX,p.x);maxX=Mathf.Max(maxX,p.x);}minX-=Cell;maxX+=Cell;}
+   Vector2 Point(int x,int y)=>new Vector2(left+x*Cell,top-y*Cell);
+   Color asphalt=FlatUI.Hex("#293949"),walk=FlatUI.Hex("#A2A88A"),paint=FlatUI.Hex("#EBD8A0");
+   var edges=Streets.LocalEdges;
+   // Sidewalks first, then all road faces: no seam across joined segments.
+   CraftedPanel.Line(vh,new Vector2(minX,top),new Vector2(maxX,top),34,walk);
+   foreach(var e in edges)CraftedPanel.Line(vh,Point(e.X,e.Y),Point(e.X+e.DX,e.Y+e.DY),28,walk);
+   CraftedPanel.Line(vh,new Vector2(minX,top),new Vector2(maxX,top),30,asphalt);
+   foreach(var e in edges)CraftedPanel.Line(vh,Point(e.X,e.Y),Point(e.X+e.DX,e.Y+e.DY),24,asphalt);
+   for(float x=Mathf.Floor(minX/28)*28;x<maxX;x+=28){bool junction=false;foreach(var e in edges)if(e.Y==0&&Mathf.Abs(x+4.5f-Point(e.X,0).x)<23){junction=true;break;}if(!junction)CraftedPanel.Line(vh,new Vector2(x,top),new Vector2(x+9,top),1.2f,paint);}
+   var nodes=new HashSet<Vector2Int>();
+   foreach(var e in edges){var a=Point(e.X,e.Y);var b=Point(e.X+e.DX,e.Y+e.DY);var direction=(b-a).normalized;for(float d=25;d<Cell-23;d+=28)CraftedPanel.Line(vh,a+direction*d,a+direction*(d+9),1.1f,paint);nodes.Add(new Vector2Int(e.X,e.Y));nodes.Add(new Vector2Int(e.X+e.DX,e.Y+e.DY));}
+   foreach(var n in nodes){var p=Point(n.x,n.y);int degree=Streets.Degree(n.x,n.y);
+    if(degree>=3)foreach(var step in new[]{Vector2Int.left,Vector2Int.right,Vector2Int.up,Vector2Int.down})if(Streets.HasRoad(n.x,n.y,n.x+step.x,n.y+step.y)){var dir=new Vector2(step.x,-step.y);var side=new Vector2(-dir.y,dir.x);for(int stripe=-2;stripe<=2;stripe++)CraftedPanel.Line(vh,p+dir*17+side*stripe*3,p+dir*22+side*stripe*3,1.1f,new Color(.95f,.96f,.88f,.8f));}
+    if(degree==1){CityGameSkin.Round(vh,new Rect(p.x-13,p.y-13,26,26),13,walk,walk);CityGameSkin.Round(vh,new Rect(p.x-11,p.y-11,22,22),11,asphalt,asphalt);}
+   }
    if(ControlSpace){var matrix=rectTransform.worldToLocalMatrix*ControlSpace.localToWorldMatrix;var vertex=new UIVertex();for(int i=0;i<vh.currentVertCount;i++){vh.PopulateUIVertex(ref vertex,i);vertex.position=matrix.MultiplyPoint3x4(vertex.position);vh.SetUIVertex(vertex,i);}}
   }
  }

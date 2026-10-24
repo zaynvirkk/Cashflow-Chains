@@ -29,7 +29,7 @@ namespace LocalGame {
     if(name=="Permanent city map")return Wide?new Rect(0,120,w,h-248):new Rect(0,196,w,h-496);
     if(name=="City day forecast")return Wide?new Rect(24,h-114,500,98):new Rect(18,h-212,w-36,100);
     if(r.y==1202)return Wide?(r.x<100?new Rect(w-526,h-108,210,88):new Rect(w-300,h-114,276,98)):new Rect(r.x,h-96,r.width,80);
-    if(r.y==934){if(Wide){int index=r.x<100?0:r.x<290?1:r.x<380?2:3;return new Rect(22,146+index*82,index==1||index==3?140:76,68);}return new Rect(r.x,h-286,r.width,60);}
+    if(r.y==934){if(Wide){int index=r.x<100?0:r.x<290?1:r.x<380?2:r.x<520?3:4;return new Rect(22,146+index*82,index==1||index==3?140:76,68);}return new Rect(r.x,h-286,r.width,60);}
     return r;
    }if(View=="city-desk"&&Wide){float right=w*.57f,rw=w*.4f;float half=(rw-16)/2;
     if(name=="Your actual city")return new Rect(24,166,w*.53f-24,h-190);
@@ -38,7 +38,7 @@ namespace LocalGame {
     if(r.y==570)return new Rect(right,154,rw,58);if(name=="RETURN TO MY CITY")return new Rect(right,230,rw,84);
     if(name=="PEOPLE")return new Rect(right,336,half,90);if(name=="INSPECT CASHFLOW & BILLS")return new Rect(right+half+16,336,half,90);
     if(name=="FINANCING & BUSINESS STRATEGY")return new Rect(right,446,half,90);if(name=="SETTINGS")return new Rect(right+half+16,446,half,90);
-    if(name=="NAME MY CITY")return new Rect(right,558,rw,64);if(r.y==1210)return new Rect(right,h-70,rw,50);
+    if(name=="NAME MY CITY"||name=="NAME MY PORTFOLIO")return new Rect(right,558,rw,64);if(r.y==1210)return new Rect(right,h-70,rw,50);
    }if(board&&Wide&&name=="City wallet")return new Rect(28,386,252,24);
    if(name=="Title wordmark")return Wide?new Rect(52,45,w*.42f,245):new Rect(38,60,644,270);
    if(name=="Living route"||name=="Scrim")return new Rect(0,0,w,h);

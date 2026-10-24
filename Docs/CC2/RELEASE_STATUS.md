@@ -1,14 +1,14 @@
-# CC2 release status
+# Cashflow Chains 2.0 release status
 
-24October2026. IN_PROGRESS. Android-only current runtime target. The latest signed test build passes178 Editor cases and a63-action Android replay with21 clear text audits,no matched runtime exceptions,actual audio/video,MIN/MAX limits and offline cold recovery. Curated evidence:Artifacts/CC2/PersistentCityAndroidVerified.23 existing local API cases on two runtimes cover the unchanged domain. The170-row active tracker preserves145 original requirements. Main/archive remain3ac5b62;work is on feature/cashflow-chains-2-economy. Black Bag is on hold.
+## Current source checkpoint — investor in an established city
 
-Current presentation:original buildings/wordmark,new wide/portrait woodland scenery,LilitaOne/Nunito type,blue/gold/green game controls,floating HUD,continuous public streets,bounded zoom and corner-guided first construction. New cities begin empty and pay for housing/café;actual households,materials,costs,staff and obligations persist together. Existing saves are preserved.
+24October2026. The latest operator instruction supersedes empty-city founding and the required home→café sequence. Public/other-owned residences,civic services,utilities,industry,wholesale and transit already exist and grant no private income. The active app enters a versioned domain context with finite regional households/workers,private-only financial results,a real market calendar and six earned career milestones. Existing private assets and committed old-day outcomes survive entry. See ../../Docs/Decisions/2026-10-24-Investor-In-An-Existing-City.md.
 
-APK/AAB are locally upload-key signed at Builds/Release. Static checks pass API36,ARM64,nondebuggable and16KB alignment;the AAB contains the same290 game/native payload files as the successful APK. Actual execution is an x86_64 emulator using ARM64 translation,not a physical phone. Earlier desktop/failed mobile attempts remain historical. See PERSISTENT_CITY_PROGRESS.md for exact scope and limits.
-
-The complete commerce/account/manager/reward/LiveOps product,balance,physical devices,real payment/refund/restore flows and human retention/revenue acceptance remain open. New monetization is inactive. This is ready for Android prototype testing,not a public-launch or profitability claim.
+196 Editor tests and24 local API/domain cases pass. Android compilation is underway;matching signed packages and actual touch/readability/audio/recovery acceptance are pending for this source. Earlier runtime receipts remain historical. Main/archive are preserved and Black Bag is held. The complete commercial/account/LiveOps product,broader balance,physical devices,human engagement and real payment acceptance remain open. No publishing or spending.
 
 ## Historical checkpoints
+
+
 
 
 23 October2026. IN_PROGRESS. The complete Game Bible in ../GameBible governs both player experience and engineering. Its six supplied artifacts are preserved byte-for-byte; all1615 Markdown lines and the full original technical annex have been reviewed. The active tracker has157 rows,including all145 source requirements. Main/archive preserve baseline3ac5b62; feature/cashflow-chains-2-economy holds current work. Black Bag remains on hold.

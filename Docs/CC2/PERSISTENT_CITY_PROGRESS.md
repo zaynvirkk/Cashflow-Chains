@@ -1,4 +1,10 @@
-# Persistent city — Android checkpoint
+# Persistent portfolio — existing-city investor checkpoint
+
+24October2026. The latest operator direction supersedes the earlier empty-town premise. Private investment takes place inside an existing district with other owners’ homes,civic services,utilities,industry,wholesale,transport and rival shops. Public assets grant no private income. Finite public households and reserved employment participate in the economic model. Rental/grocery first investments,the earned six-step career,real market-day conditions and baseline regional visitors replace compulsory café founding. See ../Decisions/2026-10-24-Investor-In-An-Existing-City.md.
+
+Current source is being rebuilt for Android. Matching signatures,payload identity and real mobile interaction/readability/recovery evidence remain pending. Older reports below describe their original source and must not be treated as acceptance of the new investor context.
+
+## Historical Android founding checkpoint
 
 24October2026. Android is the only current runtime target. The operator’s one-city/empty-start/demographic/world-presentation revisions govern alongside the preserved Game Bible. Main/archive preserve3ac5b62. Work is on feature/cashflow-chains-2-economy;Black Bag is on hold. This is an Android test build,not the finished commercial game.
 

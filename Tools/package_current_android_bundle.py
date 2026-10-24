@@ -56,5 +56,6 @@ assert actual==expected,{'missing':sorted(expected.keys()-actual.keys()),'extra'
 assert all(hashlib.sha256((root/f).read_bytes()).hexdigest()==h for f,h in source.items()),'Game inputs changed while packaging'
 output=root/'Builds/Android/CashflowChains-1.0.0-build.aab';shutil.copyfile(aab,output)
 record={'passed':True,'producer':'Offline Gradle bundleRelease from Unity export;no second IL2CPP conversion','command':args,'apk':{'sha256':hashlib.sha256(apk.read_bytes()).hexdigest()},'aab':{'sha256':hashlib.sha256(output.read_bytes()).hexdigest()},'payloadFiles':len(expected),'payload':expected,'source':source,'apkBuildProvenance':proof,'limits':'Byte identity and packaging proof,not Play delivery,physical-phone or purchase acceptance.'}
-(root/'Artifacts/CC2/PersistentCityAndroidVerified/bundle-build-provenance.json').write_text(json.dumps(record,indent=2))
+verification=root/'Release/Verification';verification.mkdir(parents=True,exist_ok=True)
+(verification/'bundle-build-provenance.json').write_text(json.dumps(record,indent=2))
 print(json.dumps({'passed':True,'identicalPayloadFiles':len(expected),'output':str(output)}))

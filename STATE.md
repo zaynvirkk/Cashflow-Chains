@@ -1,6 +1,10 @@
-# Cashflow Chains current state
+# STATE
 
-24October2026. Android-only target;feature/cashflow-chains-2-economy. Current signed APK/AAB,178 Editor cases and63-action Android replay pass.21 clear text audits,zero matched runtime exceptions,actual audio/video,traffic movement/non-overlap,MIN/MAX limits,phone layouts and offline cold/MAX restoration are source/art/font/APK bound in Artifacts/CC2/PersistentCityAndroidVerified. API36/16KB x86_64 emulator uses ARM64 translation;physical-phone and human acceptance remain open. The AAB matches all290 game/native APK payload files and static signing/alignment checks pass. New world/type/controls,continuous roads and first-plot corners replace the rejected UI. Real city/households/materials/costs/financing are intact;23 existing API cases cover the unchanged domain. Emulator opens a separate ordinary PlayCity3 city;older saves preserved. Full monetization/account/LiveOps,advanced content,balance and coordinated reset remain unfinished. Black Bag stays on hold. No publication,spend or commercial outcome. Details:Docs/CC2/PERSISTENT_CITY_PROGRESS.md.
+24October2026 — current source checkpoint:the player enters an established city as a private investor. Public/other-owned residences,civic services,industry,wholesale,utilities and transport are separate from player ownership/income. The domain models48 public residents in18 homes,reserves public employment,allows rental/grocery first investments,and unlocks the café after actual positive cashflow. Six earned career milestones and a real operating-day market calendar provide direction. Existing assets and frozen old trading days remain protected.
+
+196 fresh Editor tests and24 local authority cases pass. The new source is compiling for Android;matching signed APK/AAB and real-input emulator acceptance remain pending. Earlier70-action growing-streets review is historical after this operator-directed setting change. Black Bag remains on hold. No publication,real payment,physical-phone or human retention/revenue result.
+
+## Historical checkpoint
 
 ## Previous checkpoint
 

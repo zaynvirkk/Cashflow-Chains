@@ -242,3 +242,22 @@ def test_one_home_census_and_vacancies_are_server_derived_not_client_claims(serv
  body={'requestId':'forged-household-count','expectedVersion':before['version'],'kind':'city-open','population':12}
  assert c.post('/v1/economy/command',headers=h,json=body).status_code==422
  assert snapshot(c,h)==before
+
+
+def test_existing_city_context_has_public_people_but_no_unowned_income(service):
+ c,h,clock,_,_=service
+ assert command(c,h,'city-open').status_code==200
+ assert command(c,h,'city-enter-region').status_code==200
+ before=snapshot(c,h);r=c.get('/v1/city/forecast',headers=h).json()
+ assert (r['PublicResidents'],r['Population'],r['PublicJobs'],r['Revenue'],r['Net'])==(48,48,24,0,0)
+ assert not before['state']['City']['Properties'] and amount(before['state'],'CASH')==200
+ assert command(c,h,'city-enter-region').status_code==200
+ assert snapshot(c,h)['state']['Economy']['Revision']==before['state']['Economy']['Revision']
+ assert command(c,h,'city-build',businessId='cafe',x=2,y=1).status_code==409
+ assert command(c,h,'city-build',businessId='home',x=1,y=1).status_code==200
+ clock[0]+=9
+ assert command(c,h,'city-advance').status_code==200
+ after=snapshot(c,h)['state'];assert after['City']['CareerStage']>=2
+ assert after['City']['EarnedCashflow']>0 and amount(after,'CASH')>120
+ assert not any(p['Kind']=='cafe' for p in after['City']['Properties'])
+ assert command(c,h,'city-toggle',propertyId=1102,open=False).status_code==409

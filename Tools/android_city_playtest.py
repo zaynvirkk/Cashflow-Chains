@@ -8,7 +8,7 @@ apk=p/'Builds/Release/CashflowChains-1.0.0.apk'
 out=p/'Artifacts/AndroidCity'/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ');out.mkdir(parents=True)
 remote='/sdcard/Android/data/'+pkg+'/files/CityReview-'+out.name
 actions=[];audit=[];process_logs=[];audio=[]
-source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*(p/'Assets/_Game').rglob('*.cs'),p/'Assets/_Game/Data/CC2/balance-v1.json',p/'Assets/_Game/Resources/CC2/balance-v1.json',*[f for folder in ['Art/V6','Fonts/V6'] for f in (p/'Assets/_Game/Resources'/folder).rglob('*') if f.is_file()],Path(__file__)]}
+source={str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [*(p/'Assets/_Game').rglob('*.cs'),p/'Assets/_Game/Data/CC2/balance-v1.json',p/'Assets/_Game/Resources/CC2/balance-v1.json',*[f for folder in ['Art/V6','Art/V7','Fonts/V6'] for f in (p/'Assets/_Game/Resources'/folder).rglob('*') if f.is_file()],Path(__file__)]}
 def cmd(*args,timeout=60):return subprocess.check_output([adb,*map(str,args)],text=True,stderr=subprocess.STDOUT,timeout=timeout).strip()
 def shell(s):return cmd('shell','-n',s)
 def read(name):
@@ -66,16 +66,18 @@ def launch():
 assert cmd('get-serialno').startswith('emulator-'),'This test is isolated to the local emulator'
 print(cmd('install','--no-incremental','-r',apk,timeout=180));activity=shell('cmd package resolve-activity --brief '+pkg).splitlines()[-1]
 try:
- shell('wm size 720x1280');launch();assert state()['EmpireSandbox'] is False;assert not city()['Properties'];assert read('city-world-state.json')['Forecast']['Population']==0;capture('01-empty-founding-city')
- tap('BUILD & DEVELOP');capture('01b-illustrated-building-tray');tap('BUILD',0);tap('START CONSTRUCTION');until(lambda:read('city-world-state.json')['Forecast']['Population']==4);capture('01c-paid-first-home')
- tap('Owned plot 2 1',kind='pointer');tap('BUILD',0);capture('02-materials-and-operating-comparison');tap('START CONSTRUCTION');until(lambda:any(b['Kind']=='cafe' and b['Level']==1 for b in city()['Properties']));until(lambda:city()['Day']>=2)
- assert len([r for r in read('empire-state.json')['Economy']['Receipts'] if r['CommandId']=='city-day-settle:1'])==1
- assert city()['LastDayRevenue']>city()['LastDayBills'];capture('03-real-cafe-trading');assert not any('SKIP' in e['Name'] for e in layout()['Elements'] if e['Kind']=='button')
+ shell('wm size 720x1280');launch();assert state()['EmpireSandbox'] is False;assert not city()['Properties'];initial=read('city-world-state.json');assert initial['Region']==1 and initial['PublicResidents']==48 and initial['PrivateResidents']==0 and initial['Population']==48;assert initial['Revenue']==0 and initial['Net']==0;assert initial['Cash']==200;assert initial['LocalStreets'];capture('01-established-city-no-private-income')
+ tap('Public building 1102',kind='pointer');capture('01a-public-hospital-not-owned');assert not any(e['Name'] in ('MOVE','PAUSE BUSINESS','COMPARE UPGRADE') for e in layout()['Elements']);tap('BACK TO MY PORTFOLIO');assert read('city-world-state.json')['Cash']==200
+ tap('MY PROGRESSION');capture('01b-real-investor-career');tap('COMPARE MY FIRST INVESTMENT');capture('01c-rental-or-market-first-choice');tap('BUILD',0);capture('02-rental-investment-forecast');tap('START FIT-OUT');until(lambda:read('city-world-state.json')['PrivateResidents']==4);capture('02a-first-private-rental-in-existing-city')
+ until(lambda:city()['Day']>=2 and city()['CareerStage']>=2);assert not any(b['Kind']=='cafe' for b in city()['Properties']);assert city()['EarnedCashflow']>0;assert len([r for r in read('empire-state.json')['Economy']['Receipts'] if r['CommandId']=='city-day-settle:1'])==1;capture('02b-real-rental-profit-without-cafe')
+ tap('Owned plot 2 1',kind='pointer');tap('BUILD',1);capture('02c-later-cafe-operating-comparison');tap('START FIT-OUT');until(lambda:any(b['Kind']=='cafe' and b['Level']==1 for b in city()['Properties']));capture('03-real-cafe-trading');assert read('city-world-state.json')['PublicResidents']==48
+ tap('Owned plot 2 1',kind='pointer');capture('03a-visual-coffee-and-payment');tap('COSTS & BILLS');capture('03aa-inspect-actual-business-costs');tap('BACK TO BUSINESS');back();assert not any('SKIP' in e['Name'] for e in layout()['Elements'] if e['Kind']=='button')
+ tap('MARKET');capture('03ab-real-market-calendar');tap('BACK TO MY PORTFOLIO')
  recording=subprocess.Popen([adb,'shell','-n','screenrecord --time-limit 20 --size 720x1280 --bit-rate 3000000 '+remote+'/real-city-motion.mp4'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
  tap('City census');capture('03b-real-resident-demographics');tap('INSPECT A HOME');capture('03c-individual-resident-profiles');back();back()
  recording.wait(timeout=35);cmd('pull',remote+'/real-city-motion.mp4',out/'real-city-motion.mp4')
  until(lambda:sum(b['Earned']+b['Purchased'] for b in read('empire-state.json')['Economy']['Balances'] if b['ItemId']=='CASH')>=92,160)
- tap('Owned plot 0 1',kind='pointer');tap('BUILD',0);tap_prefix('FIND ');tap_prefix('BUY ');tap('START CONSTRUCTION');until(lambda:len([b for b in city()['Properties'] if b['Level']>0])==3);until(lambda:read('city-world-state.json')['Forecast']['Population']==6);capture('04-second-different-household')
+ tap('Owned plot 0 1',kind='pointer');tap('BUILD',0);tap_prefix('FIND ');tap_prefix('BUY ');tap('START FIT-OUT');tap_prefix('BUILDER · ');capture('04a-real-construction-progress');until(lambda:len([b for b in city()['Properties'] if b['Level']>0])==3);until(lambda:read('city-world-state.json')['PrivateResidents']==6 and read('city-world-state.json')['PublicResidents']==48);capture('04-second-different-household')
 
  # Real touches must reach both limits without changing ownership or creating grants.
  for _ in range(8):tap('+')
@@ -86,7 +88,7 @@ try:
  for _ in range(12):tap('−')
  until(lambda:abs(read('city-world-state.json')['Zoom']-read('city-world-state.json')['MinimumZoom'])<.001 and any(e['Name']=='−' and e['DisplayText']=='MIN' for e in layout()['Elements']))
  assert next(e for e in layout()['Elements'] if e['Name']=='−')['DisplayText']=='MIN'
- capture('04c-real-minimum-zoom-and-continuous-roads');tap('FIT CITY')
+ capture('04c-real-minimum-zoom-and-growing-access-streets');tap('FIT CITY')
  tap('CITY LEDGER');until(lambda:state()['Screen']=='city-ledger');capture('05-real-population-bills-and-demand');tap('MY CITY');tap('−');capture('06-zoom-out');tap('FIT CITY')
  tap('CITY DESK');until(lambda:state()['Screen']=='city-desk');capture('07-owned-city-desk');tap('SETTINGS');tap('SAVE RECOVERY');capture('07b-safe-city-recovery');assert not any(e['Name'] in ('NEW LOCAL GAME','ARCHIVE & START OVER') for e in layout()['Elements']);tap('KEEP MY CITY');tap('FINANCING & BUSINESS STRATEGY');tap('COMPARE FINANCING');tap('REVIEW $100 TERMS');capture('08-financing-terms');back();back();back();until(lambda:state()['Screen']=='city-desk');tap('RETURN TO MY CITY')
  for size,name in [('720x1280','09-compact-mobile'),('720x1600','10-tall-mobile')]:
@@ -117,7 +119,7 @@ try:
  (out/'meminfo.txt').write_text(shell('dumpsys meminfo '+pkg));preserve_process_log();log='\n'.join(process_logs);(out/'logcat.txt').write_text(log)
  errors=[line for line in log.splitlines() if re.search(r'FATAL EXCEPTION|Fatal signal|NullReferenceException|MissingReferenceException|MissingMethodException|DllNotFoundException|InvalidOperationException|IndexOutOfRangeException|ArgumentException',line)];assert not errors,errors
  for f,h in source.items():assert hashlib.sha256((p/f).read_bytes()).hexdigest()==h,'Source changed during Android replay: '+f
- report={'passed':True,'scope':'Actual touch of the ARM64 APK through emulator native translation: same-city construction/materials,real trading,second property,finite demand/costs,financing review,bounded zoom/MAX-MIN restoration,continuous public streets,compact/tall layouts,offline cold resume and actual system edge-Back gesture. No edited save/clock/grant/purchase.','api':shell('getprop ro.build.version.sdk'),'page_size':int(shell('getconf PAGE_SIZE')),'abi':shell('getprop ro.product.cpu.abilist'),'emulatorPrimaryAbi':shell('getprop ro.product.cpu.abi'),'nativeBridge':shell('getprop ro.dalvik.vm.native.bridge'),'apk_sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'source':source,'actions':actions,'textIssues':issues,'runtimeErrors':errors,'audioSignalChecks':audio}
+ report={'passed':True,'scope':'Actual touch of the ARM64 APK through emulator native translation: existing public city with no private civic income,first rental and earned career progress without a cafe,real wholesale/calendar,private construction/materials,trading,second rental,finite demand/costs,financing review,bounded zoom/MAX-MIN restoration,public and private property-connected access streets,visual business exchange and inspectable real costs,compact/tall layouts,offline cold resume and actual system edge-Back gesture. No edited save/clock/grant/purchase.','api':shell('getprop ro.build.version.sdk'),'page_size':int(shell('getconf PAGE_SIZE')),'abi':shell('getprop ro.product.cpu.abilist'),'emulatorPrimaryAbi':shell('getprop ro.product.cpu.abi'),'nativeBridge':shell('getprop ro.dalvik.vm.native.bridge'),'apk_sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'source':source,'actions':actions,'textIssues':issues,'runtimeErrors':errors,'audioSignalChecks':audio}
  (out/'report.json').write_text(json.dumps(report,indent=2));(p/'Artifacts/latest-android-city.txt').write_text(str(out));print(out)
 finally:
  shell('wm size reset');shell('cmd connectivity airplane-mode disable');shell('input keyevent 3')
