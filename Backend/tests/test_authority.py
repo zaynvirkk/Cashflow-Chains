@@ -261,3 +261,57 @@ def test_existing_city_context_has_public_people_but_no_unowned_income(service):
  assert after['City']['EarnedCashflow']>0 and amount(after,'CASH')>120
  assert not any(p['Kind']=='cafe' for p in after['City']['Properties'])
  assert command(c,h,'city-toggle',propertyId=1102,open=False).status_code==409
+
+
+def test_dense_city_acquisition_has_no_free_assets_and_retains_existing_people(service):
+ c,h,clock,_,_=service
+ assert command(c,h,'city-open').status_code==200
+ assert command(c,h,'city-enter-region').status_code==200
+ assert command(c,h,'city-enter-metropolis').status_code==200
+ before=c.get('/v1/city/forecast',headers=h).json();assert before['Population']>80 and before['Revenue']==0
+ assert not snapshot(c,h)['state']['City']['Properties']
+ assert command(c,h,'city-acquire',propertyId=1100).status_code==409
+ assert command(c,h,'city-acquire',propertyId=12027).status_code==200
+ state=snapshot(c,h)['state'];assert amount(state,'CASH')==120 and len(state['City']['Properties'])==1
+ clock[0]+=9
+ assert command(c,h,'city-advance').status_code==200
+ after=c.get('/v1/city/forecast',headers=h).json();assert after['Population']==before['Population']
+ assert after['PrivateResidents']>0 and after['Revenue']>0
+ assert snapshot(c,h)['state']['City']['CareerStage']>=2
+
+
+def test_investor_daily_is_account_bound_idempotent_and_keeps_its_place_after_a_missed_visit(service):
+ c,h,clock,_,_=service
+ for kind in ('city-open','city-enter-region','city-enter-metropolis','investor-open'):
+  assert command(c,h,kind).status_code==200
+ assert command(c,h,'investor-daily').status_code==200
+ first=snapshot(c,h);assert amount(first['state'],'CASH')==210
+ assert command(c,h,'investor-daily').status_code==200
+ assert snapshot(c,h)['state']['Economy']['Revision']==first['state']['Economy']['Revision']
+ clock[0]+=4*86400
+ fresh=c.post('/v1/auth/refresh',json={'refreshToken':service[4]['refreshToken']}).json();h={'Authorization':'Bearer '+fresh['accessToken']}
+ assert command(c,h,'investor-daily').status_code==200
+ claims=snapshot(c,h)['state']['Investor']['Claims'];assert [x['Index'] for x in claims]==[0,1]
+ before=snapshot(c,h)
+ for kind in ('investor-daily-premium','investor-verified-purchase','investor-season-premium'):
+  assert c.post('/v1/economy/command',headers=h,json={'requestId':uuid.uuid4().hex,'expectedVersion':before['version'],'kind':kind}).status_code==422
+ assert snapshot(c,h)==before
+
+
+def test_real_acquisition_advances_investor_tracks_and_earned_chest_only_once(service):
+ c,h,clock,_,_=service
+ for kind in ('city-open','city-enter-region','city-enter-metropolis','investor-open'):
+  assert command(c,h,kind).status_code==200
+ assert command(c,h,'investor-milestone',level=0).status_code==409
+ assert command(c,h,'city-acquire',propertyId=12027).status_code==200
+ clock[0]+=9
+ assert command(c,h,'city-advance').status_code==200
+ state=snapshot(c,h)['state'];assert sum(x['Xp'] for x in state['Investor']['Activity'])==40
+ assert command(c,h,'investor-season',day=0,level=0).status_code==200
+ assert command(c,h,'investor-milestone',level=1).status_code==200
+ body={'requestId':uuid.uuid4().hex,'expectedVersion':snapshot(c,h)['version'],'kind':'investor-chest'}
+ first=c.post('/v1/economy/command',headers=h,json=body);assert first.status_code==200
+ assert c.post('/v1/economy/command',headers=h,json=body).json()==first.json()
+ assert amount(snapshot(c,h)['state'],'CHEST:bronze')==0
+ assert command(c,h,'investor-chest').status_code==409
+ assert c.post('/v1/iap/validate-and-fulfill',headers=h,json={'product':'cc2.seasonpass','verified':True}).status_code==503

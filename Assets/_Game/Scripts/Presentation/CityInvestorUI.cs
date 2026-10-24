@@ -13,7 +13,8 @@ namespace CashflowChains.Presentation {
    foreach(var building in CityRegion.Buildings){var b=building;var tile=new GameObject("Public building "+b.Id,typeof(RectTransform)).GetComponent<RectTransform>();tile.SetParent(parent,false);tile.anchorMin=tile.anchorMax=tile.pivot=new Vector2(0,1);tile.sizeDelta=new Vector2(cell-24,cell-24);tile.anchoredPosition=new Vector2((b.X+.5f)*cell+12,-(b.Y+.5f)*cell-12);
     Studio.Image(tile,"V3/plot",0,0,720,1280,new Color(.73f,.88f,1,.88f));var art=Studio.Image(tile,b.Art,15,0,690,1000);art.GetComponent<Image>().preserveAspect=true;
     if(b.Art=="factory"||b.Art=="power"){var life=FlatUI.Rect(art,"Public industry activity",0,0,720,1280).gameObject.AddComponent<BuildingLife>();life.Kind=b.Art;life.Active=true;life.raycastTarget=false;}
-    Studio.Box(tile,"Other ownership plate",0,905,720,375,FlatUI.Hex("#102B48"));Studio.Label(tile,b.Name,10,890,700,245,14,Studio.Text,TextAlignmentOptions.Center,true);Studio.Label(tile,b.Housing||b.Id==1104||b.Id==1107||b.Id==1109||b.Id==1113||b.Id==1114?"OTHER OWNER":"CITY",10,1135,700,140,11,FlatUI.Hex("#A7D5EC"),TextAlignmentOptions.Center,true);
+    string shortName=b.Housing?"HOMES":b.Id==1101?"FIRE":b.Id==1104?"AUCTION":b.Id==1105?"WATER":b.Id==1106?"TRANSIT":b.Id==1108?"POWER":b.Id==1109?"INDUSTRY":b.Id==1114?"MARKET":b.Name;
+    Studio.Box(tile,"Other ownership plate",0,860,720,420,FlatUI.Hex("#102B48"));Studio.Label(tile,shortName,10,860,700,240,13,Studio.Text,TextAlignmentOptions.Center,true);Studio.Label(tile,b.Housing||b.Id==1104||b.Id==1107||b.Id==1109||b.Id==1113||b.Id==1114?"OTHER OWNER":"CITY",10,1100,700,180,9,FlatUI.Hex("#A7D5EC"),TextAlignmentOptions.Center,true);
     var hit=FlatUI.Hit(tile,()=>WorldPublicBuilding(b.Id),()=>worldCamera.Begin(Pointer.current?.position.ReadValue()??Vector2.zero),p=>worldCamera.End());hit.Drag=p=>worldCamera.Drag(p);
    }
   }
@@ -21,14 +22,15 @@ namespace CashflowChains.Presentation {
    var guide=Studio.Button(parent,"",18,1120,684,110,WorldCareer,false,FlatUI.Hex("#0A285A"));Studio.Role(guide,"MY PROGRESSION");Studio.Label(guide.transform,(city.CareerStage>=6?"CAREER: ":"NEXT: ")+CityCareer.Names[city.CareerStage].ToUpperInvariant(),15,80,690,700,23,Studio.Text,TextAlignmentOptions.Center,true);Studio.Label(guide.transform,city.CareerStage+" / 6 MILESTONES  ›",15,840,690,330,16,FlatUI.Hex("#A4F6BA"),TextAlignmentOptions.Center,true);
   }
   void WorldCareer(){
-   var city=empire.Snapshot.City;var m=Studio.Modal(root,"YOUR INVESTOR JOURNEY",PermanentCityScreen);
+   if(empire.Snapshot.City.Region>=2){MetropolisCareer();return;}var city=empire.Snapshot.City;var m=Studio.Modal(root,"YOUR INVESTOR JOURNEY",PermanentCityScreen);
    for(int i=0;i<6;i++){int step=i;float y=225+i*115;var box=Studio.Box(m,"Career step "+i,44,y,632,100,FlatUI.Hex(i<city.CareerStage?"#154F48":i==city.CareerStage?"#235F91":"#102B50"));Studio.Label(box,(i+1).ToString(),15,110,75,950,32,i<city.CareerStage?Studio.Accent:Studio.Text,TextAlignmentOptions.Center,true);Studio.Label(box,CityCareer.Names[i],112,110,590,950,26,i<=city.CareerStage?Studio.Text:Studio.Muted,heavy:i==city.CareerStage);}
    Studio.Label(m,CityCareer.Directions[city.CareerStage],44,950,632,110,26,Studio.Text,TextAlignmentOptions.Center);
    Studio.Button(m,city.CareerStage==0?"COMPARE MY FIRST INVESTMENT":"BACK TO MY PORTFOLIO",44,1100,632,125,()=>{if(city.CareerStage==0)WorldBuildPicker(1,1,0);else PermanentCityScreen();},true);
   }
   void WorldPublicBuilding(int id){
-   var b=CityRegion.Building(id);if(b==null)return;var m=Studio.Modal(root,b.Name,PermanentCityScreen);Studio.Image(m,b.Art,220,200,280,280);Studio.Label(m,b.Housing?"OTHER OWNER · NO RENT FOR YOU":"PUBLIC / OTHER OWNER · NOT YOUR INCOME",44,505,632,70,25,FlatUI.Hex("#A7D5EC"),TextAlignmentOptions.Center,true);
-   string detail=b.Housing?CityRegion.Households(empire.Snapshot.City.Day).Single(h=>h.PropertyId==id).Residents+" residents across six occupied homes.\nThese households shop in the district and can use your businesses.":b.Role+".\nOnly businesses you own contribute to your private cashflow.";
+   var b=CityRegion.Building(id,empire.Snapshot.City.Region);if(b==null)return;var m=Studio.Modal(root,b.Name,PermanentCityScreen);Studio.Image(m,b.Art,220,200,280,280);Studio.Label(m,b.Housing?"OTHER OWNER · NO RENT FOR YOU":"PUBLIC / OTHER OWNER · NOT YOUR INCOME",44,505,632,70,25,FlatUI.Hex("#A7D5EC"),TextAlignmentOptions.Center,true);
+   string detail=b.Housing?CityRegion.Households(empire.Snapshot.City.Day,empire.Snapshot.City.Region,empire.Snapshot.City.Properties).Single(h=>h.PropertyId==id).Residents+" residents in existing homes.\nThese households shop in the district and can use your businesses.":b.Role+".\nOnly businesses you own contribute to your private cashflow.";
+   if(id==1106)detail="Regional buses and the highway already connect this district.\nEight daily regional visitor opportunities can serve your future hotels;you do not need to own a port first.";
    if(id==1107)detail="A working supply market is already here.\nYour businesses can import needed goods at published prices. You pay for actual stock and deliveries.";
    Studio.Label(m,detail,44,640,632,230,30,Studio.Text,TextAlignmentOptions.Center);
    if(b.Housing)Studio.Button(m,"MEET THESE HOUSEHOLDS",44,955,632,100,()=>WorldHouseholds(id,0));

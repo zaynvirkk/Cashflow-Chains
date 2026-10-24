@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using CashflowChains.Economy;
 namespace CashflowChains.City {
- public sealed class CityInvestmentQuote {public string Kind;public int PropertyId,X,Y,Seconds;public bool Unlocked,Affordable,BuilderAvailable;public long BeforeNet,AfterNet;public ItemAmount[] Costs,Owned;}
+ public sealed class CityInvestmentQuote {public string Kind;public int PropertyId,X,Y,Seconds;public bool Unlocked,Affordable,BuilderAvailable;public long BeforeNet,AfterNet,AssetRevenue,AssetCosts,AssetNet;public ItemAmount[] Costs,Owned;}
 }
 namespace CashflowChains.Empire {
  public sealed partial class EmpireEngine {

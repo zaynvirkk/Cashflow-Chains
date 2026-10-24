@@ -4,14 +4,14 @@ using System.Linq;
 
 namespace CashflowChains.City {
  public sealed class CityPublicBuilding {
-  public int Id,X,Y;public string Name,Art,Role;public bool Housing;
-  public CityProperty Footprint()=>new CityProperty{Id=Id,X=X,Y=Y,Kind=Housing?"home":"office",Level=Housing?5:1,Staff=0};
+  public int Id,X,Y,Level,OfferPrice,AvailableDay;public string Name,Art,Role,Kind;public bool Housing;
+  public CityProperty Footprint()=>new CityProperty{Id=Id,X=X,Y=Y,Kind=Kind??(Housing?"home":"office"),Level=Level>0?Level:Housing?5:1,Staff=0};
  }
  public sealed class CityMarketDay {
   public string Name,Description;public int ExtraImportCapacity,ExtraShoppingNeed;
  }
  public static class CityRegion {
-  public const int Version=1,PublicEmployment=24,RegionalHousingDemand=6;
+  public const int Version=2,PublicEmployment=24,RegionalHousingDemand=6;
   public static readonly CityPublicBuilding[] Buildings={
    new CityPublicBuilding{Id=1000,X=-2,Y=1,Name="WESTSIDE HOMES",Art="apartment",Housing=true,Role="Other owners · six occupied homes"},
    new CityPublicBuilding{Id=1001,X=-2,Y=3,Name="RIVERSIDE HOMES",Art="apartment",Housing=true,Role="Other owners · six occupied homes"},
@@ -33,9 +33,11 @@ namespace CashflowChains.City {
    new CityPublicBuilding{Id=1114,X=-1,Y=0,Name="CITY MARKET",Art="grocer",Role="Other-owned groceries · competes for household spending"}
   };
   public static CityPublicBuilding Building(int id)=>Buildings.FirstOrDefault(b=>b.Id==id);
-  public static CityProperty Property(int id)=>Building(id)?.Footprint();
+  public static CityPublicBuilding Building(int id,int region)=>region>=2?CityMetropolis.Building(id):Building(id);
+  public static CityProperty Property(int id,int region=1)=>Building(id,region)?.Footprint();
+  public static IEnumerable<CityProperty> FootprintsFor(int region)=>region>=2?CityMetropolis.Buildings.Select(b=>b.Footprint()):Footprints;
   public static IEnumerable<CityProperty> Footprints=>Buildings.Select(b=>b.Footprint());
-  public static CityHouseholdOccupancy[] Households(int day)=>Buildings.Where(b=>b.Housing).Select(b=>new CityHouseholdOccupancy{PropertyId=b.Id,Units=6,Occupied=6,Families=Enumerable.Range(0,6).Select(unit=>CityResidents.Household(b.Id,unit,day)).ToArray()}).ToArray();
+  public static CityHouseholdOccupancy[] Households(int day,int region=1,IEnumerable<CityProperty> owned=null)=>region>=2?CityMetropolis.Households(day,owned):Buildings.Where(b=>b.Housing).Select(b=>new CityHouseholdOccupancy{PropertyId=b.Id,Units=6,Occupied=6,Families=Enumerable.Range(0,6).Select(unit=>CityResidents.Household(b.Id,unit,day)).ToArray()}).ToArray();
   public static int Population(int day)=>Households(day).Sum(h=>h.Residents);
   public static int AvailableWorkers(int day)=>Math.Max(0,Households(day).Sum(h=>h.Workers)-PublicEmployment);
   public static CityMarketDay Market(int day)=>day%3==1?new CityMarketDay{Name="WHOLESALE DELIVERY",Description="Regional deliveries: +4 import capacity today.",ExtraImportCapacity=4}:day%3==2?new CityMarketDay{Name="NEIGHBORHOOD MARKET",Description="One extra grocery need per household;budgets still limit spending.",ExtraShoppingNeed=1}:new CityMarketDay{Name="ORDINARY TRADING",Description="Standard demand and published supply prices."};

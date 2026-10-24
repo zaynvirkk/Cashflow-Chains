@@ -23,12 +23,12 @@ namespace CashflowChains.Presentation {
   }
   void DrawCityBusinessSnapshot(RectTransform parent,CityProperty p,CityBusinessDefinition d,CityBusinessResult row,CityBuildingJob job){
    if(job!=null){
-    Studio.Label(parent,"YOUR BUILDER IS ON IT",44,450,632,70,32,Studio.Text,TextAlignmentOptions.Center,true);
+    Studio.Label(parent,job.Acquisition?"OWNERSHIP TRANSFER":"YOUR BUILDER IS ON IT",44,450,632,70,32,Studio.Text,TextAlignmentOptions.Center,true);
     var track=Studio.Box(parent,"Construction time",60,575,600,40,FlatUI.Hex("#081B38"));
     var fill=FlatUI.Panel(track,"Actual construction progress",0,0,720,1280,FlatUI.Hex("#FFE36C"));
     var remaining=Studio.Label(parent,"",44,665,632,75,32,Studio.Text,TextAlignmentOptions.Center,true);
     var progress=track.gameObject.AddComponent<CityTimeProgress>();progress.Fill=fill;progress.Label=remaining;progress.StartAt=job.StartedAt;progress.FinishAt=job.FinishAt;progress.ReadNow=()=>EmpireNow;
-    Studio.Label(parent,d.Population>0?"Residents arrive after completion.":"Your other businesses keep operating.",44,760,632,75,24,Studio.Muted,TextAlignmentOptions.Center);
+    Studio.Label(parent,job.Acquisition?"The existing property and tenants stay in place.":d.Population>0?"Residents arrive after completion.":"Your other businesses keep operating.",44,760,632,75,24,Studio.Muted,TextAlignmentOptions.Center);
     if(d.Population==0)remaining.text="BUILDING";
     return;
    }

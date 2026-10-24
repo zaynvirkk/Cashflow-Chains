@@ -11,7 +11,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 namespace CashflowChains.Presentation {
- [Serializable] public sealed class CitySave {public int Schema=2;public bool QaFixture;public Profile Profile=new Profile();public Board Board;public List<Board> CompletedPlans=new List<Board>();public CashflowChains.Empire.DevelopmentGoal Goal;public float CityZoom,CityPanX,CityPanY;public bool CityAutoFit=true;public Board[] Blueprints=new Board[12];public List<RouteContract> Contracts=new List<RouteContract>();}
+ [Serializable] public sealed class CitySave {public int Schema=2;public bool QaFixture;public Profile Profile=new Profile();public Board Board;public List<Board> CompletedPlans=new List<Board>();public CashflowChains.Empire.DevelopmentGoal Goal;public int CityViewVersion;public float CityZoom,CityPanX,CityPanY;public bool CityAutoFit=true;public Board[] Blueprints=new Board[12];public List<RouteContract> Contracts=new List<RouteContract>();}
  public sealed partial class MobileGameApp:MonoBehaviour {
   CitySave data;AtomicSave disk;CityRun run;RectTransform root,grid;Soundtrack sound;int selected=1,mapDistrict,libraryPage;bool busy,canSave=true,qaContent;string screen="title",message="";TextMeshProUGUI status,score;RoundResult result;string pendingKind;int pendingRotation;Studio.DragVisual dragVisual;bool skipRequested;UnityEngine.UI.Button runButton;CityInsight insight;long previousBest,previousWallet;
   void Start(){gameObject.AddComponent<RuntimeReview>();Application.targetFrameRate=60;Application.runInBackground=true;string dir=FlatUI.Arg("-save-dir");

@@ -10,6 +10,16 @@ public sealed class PermanentCityLayoutTests {
    Assert.LessOrEqual(clock.yMax,header.yMax);Assert.Less(header.yMax,map.yMin);Assert.Less(map.yMax,forecast.yMin);Assert.Less(forecast.yMax,action.yMin);Assert.Less(map.yMax,camera.yMin);Assert.Less(camera.yMax,forecast.yMin);Assert.LessOrEqual(action.yMax,height);Assert.Greater(map.height,0);
   }finally{Object.DestroyImmediate(go);}
  }
+ [Test] public void BareCivicRectCanReceiveAnInvisibleHitTargetWithoutLosingItsChildren(){
+  var go=new GameObject("New civic plot",typeof(RectTransform));int taps=0;
+  try{var target=FlatUI.Hit(go.GetComponent<RectTransform>(),()=>taps++,()=>{},_=>{});var image=go.GetComponent<UnityEngine.UI.Image>();Assert.NotNull(image);Assert.AreEqual(0,image.color.a);Assert.IsTrue(image.raycastTarget);target.Click();Assert.AreEqual(1,taps);}
+  finally{Object.DestroyImmediate(go);}
+ }
+ [Test] public void ExistingParcelGraphicRemainsTheOnlyGraphicAndReceivesTaps(){
+  var go=new GameObject("Drawn city parcel",typeof(RectTransform),typeof(CashflowChains.Presentation.MetroLot));int taps=0;
+  try{var original=go.GetComponent<CashflowChains.Presentation.MetroLot>();var target=FlatUI.Hit(go.GetComponent<RectTransform>(),()=>taps++,()=>{},_=>{});Assert.IsTrue(original.raycastTarget);Assert.IsNull(go.GetComponent<UnityEngine.UI.Image>());Assert.AreEqual(1,go.GetComponents<UnityEngine.UI.Graphic>().Length);target.Click();Assert.AreEqual(1,taps);}
+  finally{Object.DestroyImmediate(go);}
+ }
  [Test] public void BodyFontWeightsKeepTheirOwnAtlasMaterials(){
   var go=new GameObject("Real UI typography fixture",typeof(RectTransform));bool previous=Studio.Velvet;Studio.Velvet=false;
   try{var regular=Studio.Label(go.transform,"Household",0,0,600,100,24);var bold=Studio.Label(go.transform,"Household",0,110,600,100,24,heavy:true);regular.font.TryAddCharacters("Household");bold.font.TryAddCharacters("Household");Assert.AreNotSame(regular.font,bold.font);Assert.AreNotSame(regular.fontSharedMaterial,bold.fontSharedMaterial);Assert.AreSame(regular.font.atlasTexture,regular.fontSharedMaterial.GetTexture("_MainTex"));Assert.AreSame(bold.font.atlasTexture,bold.fontSharedMaterial.GetTexture("_MainTex"));}

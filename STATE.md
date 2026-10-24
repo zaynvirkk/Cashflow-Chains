@@ -1,8 +1,16 @@
+# Dense-city acquisition checkpoint
+
+Latest24October operator direction:the established city is fully populated,and the player acquires existing assets. Context2 has62 occupied core parcels/two peripheral vacancies plus civic facilities. No default private properties or public income. Acquisitions charge once,close in3seconds and preserve existing tenant identities/population. The replacement map-led HUD uses compact instruments,sale markers,owned income badges and a visual career route. Prior private assets and frozen old-region trading days remain compatible.
+
+217 Editor tests and27 local authority cases pass. Daily seven-claim supplies,six free/paid-domain career milestones,a 28-day/30-tier season and earned-chest odds/opening/history share the ledger. New paid checkout remains unavailable pending production authority and Play configuration. The Android rebuild is underway;matching signatures,payload checks and actual mobile acceptance remain pending. Older investor-grid captures failed their milestone-caption audit and remain historical. This is not a complete NPC/civic simulation or a store-ready commercial product. Physical devices,human engagement,balance and production commerce/LiveOps remain open. Black Bag is held;no publication or real payment.
+
+## Previous source checkpoint
+
 # STATE
 
 24October2026 — current source checkpoint:the player enters an established city as a private investor. Public/other-owned residences,civic services,industry,wholesale,utilities and transport are separate from player ownership/income. The domain models48 public residents in18 homes,reserves public employment,allows rental/grocery first investments,and unlocks the café after actual positive cashflow. Six earned career milestones and a real operating-day market calendar provide direction. Existing assets and frozen old trading days remain protected.
 
-196 fresh Editor tests and24 local authority cases pass. The new source is compiling for Android;matching signed APK/AAB and real-input emulator acceptance remain pending. Earlier70-action growing-streets review is historical after this operator-directed setting change. Black Bag remains on hold. No publication,real payment,physical-phone or human retention/revenue result.
+197 fresh Editor tests and24 local authority cases pass. The new source is compiling for Android;matching signed APK/AAB and real-input emulator acceptance remain pending. Earlier70-action growing-streets review is historical after this operator-directed setting change. Black Bag remains on hold. No publication,real payment,physical-phone or human retention/revenue result.
 
 ## Historical checkpoint
 

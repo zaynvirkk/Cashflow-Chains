@@ -60,7 +60,7 @@ namespace LocalGame
             var text=Text(r,"Label",title,26,12,668,1256,24,foreground,TextAlignmentOptions.Center);return b;
         }
         public static PointerTarget Hit(RectTransform parent,Action click,Action start,Action<Vector2> end)
-        {parent.GetComponent<UnityEngine.UI.Image>().raycastTarget=true;var h=parent.gameObject.AddComponent<PointerTarget>();parent.gameObject.AddComponent<PressMotion>();h.Click=click;h.StartDrag=start;h.EndDrag=end;return h;}
+        {var graphic=parent.GetComponent<UnityEngine.UI.Graphic>();if(!graphic){var image=parent.gameObject.AddComponent<UnityEngine.UI.Image>();image.color=Color.clear;graphic=image;}graphic.raycastTarget=true;var h=parent.gameObject.AddComponent<PointerTarget>();parent.gameObject.AddComponent<PressMotion>();h.Click=click;h.StartDrag=start;h.EndDrag=end;return h;}
         public static bool CellAt(RectTransform grid,Vector2 screen,int columns,int rows,out int x,out int y)
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(grid,screen,null,out var p);var rect=grid.rect;

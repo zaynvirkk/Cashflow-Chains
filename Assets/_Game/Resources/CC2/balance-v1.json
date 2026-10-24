@@ -1,6 +1,6 @@
 {
   "Schema": 1,
-  "Revision": 6,
+  "Revision": 7,
   "OfflineCapSeconds": 28800,
   "ProductionBonusCapBp": 10000,
   "TimeReductionCapBp": 5000,
@@ -3421,6 +3421,766 @@
         "Label": "Steel",
         "ImportPrice": 5,
         "ExportPrice": 2
+      }
+    ]
+  },
+  "Investor": {
+    "Revision": 1,
+    "SeasonDays": 28,
+    "TierXp": 30,
+    "DailyXpCap": 100,
+    "ProfitableDaysCap": 5,
+    "Daily": [
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 10
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 2
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 4
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 1
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 10
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 3
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 6
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 15
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 30
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 1
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 1
+          }
+        ]
+      }
+    ],
+    "Milestones": [
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 50
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 1
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 12
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 3
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 12
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 50
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 150
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 10
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 30
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 3
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 300
+          }
+        ]
+      }
+    ],
+    "Season": [
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 15
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 40
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 3
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 50
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 1
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 15
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 40
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 3
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 50
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 1
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 15
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 40
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 3
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 50
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 1
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 15
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 40
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 3
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 50
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 1
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 15
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 40
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 3
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 50
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 1
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 15
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 40
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 3
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 8
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 2
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 50
+          }
+        ]
+      },
+      {
+        "Free": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 1
+          }
+        ],
+        "Premium": [
+          {
+            "ItemId": "CHEST:bronze",
+            "Quantity": 2
+          }
+        ]
+      }
+    ],
+    "Bronze": [
+      {
+        "Id": "cash-small",
+        "Weight": 2500,
+        "Items": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 20
+          }
+        ]
+      },
+      {
+        "Id": "cash-large",
+        "Weight": 2500,
+        "Items": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 40
+          }
+        ]
+      },
+      {
+        "Id": "timber",
+        "Weight": 2000,
+        "Items": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 6
+          }
+        ]
+      },
+      {
+        "Id": "steel",
+        "Weight": 1500,
+        "Items": [
+          {
+            "ItemId": "STEEL",
+            "Quantity": 3
+          }
+        ]
+      },
+      {
+        "Id": "plans",
+        "Weight": 1000,
+        "Items": [
+          {
+            "ItemId": "PLANS",
+            "Quantity": 2
+          }
+        ]
+      },
+      {
+        "Id": "home-fragments",
+        "Weight": 500,
+        "Items": [
+          {
+            "ItemId": "BIZ_FRAG:home",
+            "Quantity": 3
+          }
+        ]
+      }
+    ],
+    "Products": [
+      {
+        "Id": "cc2.starter",
+        "Title": "First Investment",
+        "Family": "starter",
+        "Description": "One-time supply pack: 100 cash, 10 wood and 5 steel. Available after your first completed acquisition.",
+        "MinimumAssets": 1,
+        "Consumable": false,
+        "Items": [
+          {
+            "ItemId": "CASH",
+            "Quantity": 100
+          },
+          {
+            "ItemId": "WOOD",
+            "Quantity": 10
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 5
+          }
+        ]
+      },
+      {
+        "Id": "cc2.investorclub",
+        "Title": "Investor Club",
+        "Family": "daily",
+        "Description": "Permanent additional daily reward track. No subscription. Qualifying free daily claims can be collected retroactively; missed visits never reset progress.",
+        "MinimumAssets": 1,
+        "Consumable": false,
+        "Items": []
+      },
+      {
+        "Id": "cc2.growthfund",
+        "Title": "Investor Growth Fund",
+        "Family": "growth",
+        "Description": "Permanent extra rewards at all six real investor milestones, including milestones already reached.",
+        "MinimumAssets": 1,
+        "Consumable": false,
+        "Items": []
+      },
+      {
+        "Id": "cc2.seasonpass",
+        "Title": "City Season Pass",
+        "Family": "season",
+        "Description": "Extra rewards at earned tiers in the current 28-day season. One-time purchase for this season; no automatic renewal or automatic XP. Earned rewards remain claimable after the season.",
+        "MinimumAssets": 2,
+        "Consumable": true,
+        "Items": []
+      },
+      {
+        "Id": "cc2.materials",
+        "Title": "Development Supplies",
+        "Family": "materials",
+        "Description": "20 wood and 10 steel for eligible development. Compare earned daily rewards, free milestones and the cash materials market first.",
+        "MinimumAssets": 2,
+        "Consumable": true,
+        "Items": [
+          {
+            "ItemId": "WOOD",
+            "Quantity": 20
+          },
+          {
+            "ItemId": "STEEL",
+            "Quantity": 10
+          }
+        ]
+      },
+      {
+        "Id": "cc2.gems.small",
+        "Title": "Gem Reserve",
+        "Family": "gems",
+        "Description": "100 permanent gems. Available only when gem spending features have a complete verified online journey.",
+        "MinimumAssets": 99,
+        "Consumable": true,
+        "Items": [
+          {
+            "ItemId": "GEMS",
+            "Quantity": 100
+          }
+        ]
       }
     ]
   }

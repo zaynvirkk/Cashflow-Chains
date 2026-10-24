@@ -19,6 +19,22 @@ namespace LocalGame {
   public Rect OnBoard(Rect r){var b=BoardArea;float sourceY=Studio.Velvet?260:310;float s=b.width/644;return new Rect(b.x+(r.x-38)*s,b.y+(r.y-sourceY)*s,r.width*s,r.height*s);}
   public Vector2 Point(float x,float y,bool board=true){if(View=="title"&&x>=80&&y>=400&&y<770){var title=Layout("Title connection",new Rect(x,y,0,0));return new Vector2(title.x-Width/2,Height/2-title.y);}if(board&&View=="board"){var r=OnBoard(new Rect(x,y,0,0));return new Vector2(r.x-Width/2,Height/2-r.y);}return new Vector2(x/720*Width-Width/2,Height/2-y/1280*Height);}
   public Rect Layout(string name,Rect r){float w=Width,h=Height,extra=h-1280;bool board=View=="board";if(View=="city-world"){
+    if(name=="Metro world")return new Rect(0,96,w,h-182);
+    if(name=="Metro streets")return new Rect(0,0,w,h);
+    if(name=="Metro logo")return new Rect(16,8,214,76);
+    if(name=="Metro wallet")return new Rect(w-474,12,228,72);
+    if(name=="Metro census")return new Rect(w-234,12,128,72);
+    if(name=="Metro assets")return new Rect(w-94,12,78,72);
+    if(name=="Metro rewards")return new Rect(18,202,80,80);
+    if(name=="Metro day")return new Rect(18,108,80,80);
+    if(name=="Metro zoom in")return new Rect(w-78,108,60,60);
+    if(name=="Metro zoom out")return new Rect(w-78,178,60,60);
+    if(name=="Metro fit")return new Rect(w-78,248,60,60);
+    if(name=="Metro cashflow")return new Rect(18,h-186,w-36,80);
+    if(name=="Metro books")return new Rect(18,h-88,206,64);
+    if(name=="Metro career")return new Rect(236,h-96,78,78);
+    if(name=="Metro deals")return new Rect(330,h-96,w-348,78);
+
     if(name=="City identity backing")return new Rect(0,0,w,Wide?112:188);
     if(name=="City wordmark")return Wide?new Rect(22,12,270,92):new Rect(18,8,286,92);
     if(name=="City name")return Wide?new Rect(314,20,300,42):new Rect(26,106,278,38);

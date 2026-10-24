@@ -6,7 +6,7 @@ namespace CashflowChains.Presentation {
  public sealed class CityMapCamera:MonoBehaviour {
   public const float MaximumZoom=1.6f;
   public float FitZoom=>Mathf.Min(Viewport.rect.width/(FocusSize.x>0?FocusSize.x:Content.rect.width),Viewport.rect.height/(FocusSize.y>0?FocusSize.y:Content.rect.height))*.94f;
-  public float MinimumZoom=>Mathf.Clamp(FitZoom*.65f,.3f,MaximumZoom);
+  public float MinimumZoom=>Mathf.Clamp(FitZoom*.65f,.1f,MaximumZoom);
   public RectTransform Viewport,Content;public float Zoom=1;public Vector2 FocusSize,FocusOffset;public bool FollowFit=true;Vector2 previousViewport;public Action<float,Vector2> Changed;Vector2 previous;float pinch;bool dragging;
   public void Apply(){Zoom=Mathf.Clamp(Zoom,MinimumZoom,MaximumZoom);Content.localScale=Vector3.one*Zoom;var limit=new Vector2((Content.rect.width*Zoom+Viewport.rect.width)/2-80,(Content.rect.height*Zoom+Viewport.rect.height)/2-80);var p=Content.anchoredPosition;Content.anchoredPosition=new Vector2(Mathf.Clamp(p.x,-limit.x,limit.x),Mathf.Clamp(p.y,-limit.y,limit.y));}
   public void Scale(float factor){FollowFit=false;Zoom*=factor;Apply();Changed?.Invoke(Zoom,Content.anchoredPosition);}

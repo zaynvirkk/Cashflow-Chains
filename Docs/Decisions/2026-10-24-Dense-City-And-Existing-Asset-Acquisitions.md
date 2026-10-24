@@ -1,0 +1,13 @@
+# Complete city first;acquire existing assets
+
+The operator’s latest24October instruction supersedes the vacant investment-grid opening. The city already has cafés,restaurants,bars,clubs,hotels,houses,apartments,offices,industry and civic services. Vacant land is rare and peripheral. The player begins with no owned properties and enters through advertised acquisitions rather than creating the settlement.
+
+Regional context2 defines an8×8 urban core with62 existing parcels and two vacant outskirts lots,plus civic facilities alongside the core. Existing other-owned/public businesses remain outside the player ledger. The core has no vacant central parcels. Original commercial atlasV8 extends the original civic/building artwork. Sale markers appear only on real available offers;green income badges identify private assets. Other parcels do not carry repeated instructional text.
+
+Acquisitions are versioned domain commands. The displayed full price is charged once;existing property and tenants transfer after a real three-second closing. No construction materials are charged. Resident profile identity and total population survive a rental transfer. Ownership binds to a paid ledger receipt. Public services,unadvertised properties and already acquired addresses cannot be taken. Acquired buildings remain at their address;renovation and rare outskirts development are distinct activities. Earlier private assets and committed region0/1 days are retained through the context migration.
+
+The replacement HUD makes the city dominant:compact cash/people/day indicators,a real clock dial,three cashflow figures,sale pins,a briefcase/portfolio action,a milestone medallion and a gold deal action. Detailed finances appear on inspection. The career becomes a visual route rather than a stack of text rows. Acquisitions expose both the asset’s own income/cost/net and the effect on the whole portfolio,so competition between owned businesses is visible.
+
+The simulation remains deliberately bounded:finite household demand,budgets,workers,stock,capacity,distance and private bills are authoritative. Other owners’ detailed accounts,individual emergency/medical/legal workflows,full auction bidding and production commerce/LiveOps remain outside this slice. Do not claim that all civic or NPC systems are fully simulated,or that a polished interface proves retention/profit.
+
+Acceptance requires density and vacancy assertions,zero initial private assets/income,paid/idempotent acquisitions,preserved tenants/population,stock consumption,ownership restrictions,old-day migration promises,and current signed Android input/readability/audio/video/traffic/recovery evidence. Earlier investor-grid captures retain their failed milestone-caption audit and are historical.

@@ -31,7 +31,7 @@ namespace CashflowChains.Economy {
   public ItemDefinition[] Items; public SourceDefinition[] Sources; public ExchangeDefinition[] Exchanges;
   public UpgradeDefinition[] Upgrades; public BusinessDefinition[] Businesses;
   public int[] StarFragments; public int[] FirstCash,FirstWood;
-  public string[] EnabledFeatures;public OperationsCatalog Operations;public CashflowChains.City.CityCatalog City;
+  public CashflowChains.Engagement.InvestorCatalog Investor;public string[] EnabledFeatures;public OperationsCatalog Operations;public CashflowChains.City.CityCatalog City;
   public ItemDefinition Item(string id)=>Items.FirstOrDefault(x=>x.Id==id)??throw new ArgumentException("Unknown item: "+id);
   public BusinessDefinition Business(string id)=>Businesses.FirstOrDefault(x=>x.Id==id)??throw new ArgumentException("Unknown business: "+id);
   public UpgradeDefinition Upgrade(int level)=>Upgrades.FirstOrDefault(x=>x.Level==level)??throw new ArgumentException("Unauthored upgrade tier");
@@ -48,7 +48,7 @@ namespace CashflowChains.Economy {
    if(StarFragments==null||!StarFragments.SequenceEqual(new[]{10,10,25,55,110,220})||FirstCash==null||FirstWood==null||FirstCash.Length!=3||FirstWood.Length!=3||FirstCash.Any(x=>x<0)||FirstWood.Any(x=>x<0)||EnabledFeatures==null)throw new ArgumentException("Invalid onboarding");
    if(Exchanges==null)throw new ArgumentException("Missing exchanges");
    foreach(var e in Exchanges){Item(e.Input);Item(e.Output);if(e.Cost<1||e.Quantity<1||e.Cost>1000000000||e.Quantity>1000000000)throw new ArgumentException("Invalid exchange");}
-   if(City!=null)City.Validate(this);
+   if(City!=null)City.Validate(this);if(Revision<7)Investor=null;else if(Investor==null)throw new ArgumentException("Investor catalog missing");if(Investor!=null)Investor.Validate(this);
    if(Operations==null)throw new ArgumentException("Missing operations catalog");Operations.Validate(this);
    // Exact rational relaxation: even a profitable cycle smaller than floating-point precision is rejected.
    var ids=Items.Select(x=>x.Id).ToArray();var numerators=ids.Select(_=>BigInteger.One).ToArray();var denominators=ids.Select(_=>BigInteger.One).ToArray();

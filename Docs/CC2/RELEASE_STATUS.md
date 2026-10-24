@@ -1,10 +1,18 @@
+# Dense-city acquisition checkpoint
+
+Latest24October operator direction:the established city is fully populated,and the player acquires existing assets. Context2 has62 occupied core parcels/two peripheral vacancies plus civic facilities. No default private properties or public income. Acquisitions charge once,close in3seconds and preserve existing tenant identities/population. The replacement map-led HUD uses compact instruments,sale markers,owned income badges and a visual career route. Prior private assets and frozen old-region trading days remain compatible.
+
+217 Editor tests and27 local authority cases pass. Daily seven-claim supplies,six free/paid-domain career milestones,a 28-day/30-tier season and earned-chest odds/opening/history share the ledger. New paid checkout remains unavailable pending production authority and Play configuration. The Android rebuild is underway;matching signatures,payload checks and actual mobile acceptance remain pending. Older investor-grid captures failed their milestone-caption audit and remain historical. This is not a complete NPC/civic simulation or a store-ready commercial product. Physical devices,human engagement,balance and production commerce/LiveOps remain open. Black Bag is held;no publication or real payment.
+
+## Previous source checkpoint
+
 # Cashflow Chains 2.0 release status
 
 ## Current source checkpoint — investor in an established city
 
 24October2026. The latest operator instruction supersedes empty-city founding and the required home→café sequence. Public/other-owned residences,civic services,utilities,industry,wholesale and transit already exist and grant no private income. The active app enters a versioned domain context with finite regional households/workers,private-only financial results,a real market calendar and six earned career milestones. Existing private assets and committed old-day outcomes survive entry. See ../../Docs/Decisions/2026-10-24-Investor-In-An-Existing-City.md.
 
-196 Editor tests and24 local API/domain cases pass. Android compilation is underway;matching signed packages and actual touch/readability/audio/recovery acceptance are pending for this source. Earlier runtime receipts remain historical. Main/archive are preserved and Black Bag is held. The complete commercial/account/LiveOps product,broader balance,physical devices,human engagement and real payment acceptance remain open. No publishing or spending.
+197 Editor tests and24 local API/domain cases pass. Android compilation is underway;matching signed packages and actual touch/readability/audio/recovery acceptance are pending for this source. Earlier runtime receipts remain historical. Main/archive are preserved and Black Bag is held. The complete commercial/account/LiveOps product,broader balance,physical devices,human engagement and real payment acceptance remain open. No publishing or spending.
 
 ## Historical checkpoints
 
